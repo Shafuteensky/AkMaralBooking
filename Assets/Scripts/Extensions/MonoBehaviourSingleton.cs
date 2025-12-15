@@ -2,11 +2,20 @@ using UnityEngine;
 
 namespace Extensions.Singleton
 {
+    /// <summary>
+    /// MonoBehaviour-синглтон с проверкой на экземпляр
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         [SerializeField]
         protected bool dontDestroyOnLoad = false;
+        
+        private static T _instance;
 
+        /// <summary>
+        /// Инстанс синглтона
+        /// </summary>
         public static T Instance
         {
             get
@@ -38,7 +47,5 @@ namespace Extensions.Singleton
                 Destroy(gameObject);
             }
         }
-        
-        private static T _instance;
     }
 }
