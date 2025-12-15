@@ -1,6 +1,5 @@
-using Unity.VisualScripting;
+using Extensions.Logs;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Extentions.UIWindows
 {
@@ -9,7 +8,7 @@ namespace Extentions.UIWindows
     /// <summary>
     /// Кнопка для открытия окна интерфейса
     /// </summary>
-    public class ButtonOpenUIWindow : AbstractOnClickButton
+    public class ButtonOpenUIWindow : AbstractButton
     {
         [SerializeField] 
         protected bool needToCloseFocused = true;
@@ -17,11 +16,12 @@ namespace Extentions.UIWindows
         [SerializeField] 
         protected ID UIWindowToOpen = default;
         
-        protected override void OnButtonClick()
+        public override void OnButtonClick()
         {
             if (!UIWindowToOpen)
             {
-                Debug.LogError("UIWindowsController.Instance.OpenWindowByID: UIWindowToOpen is null");
+                ServiceDebug.LogError($"{nameof(UIWindowToOpen)} is null");
+                return;
             }
             
             UIWindowsController windowsController = UIWindowsController.Instance;

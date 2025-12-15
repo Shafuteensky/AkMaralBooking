@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Extentions.UIWindows
 {
-    public class ButtonCloseUIWindow : AbstractOnClickButton
+    public class ButtonCloseUIWindow : AbstractButton
     {
-        protected override void OnButtonClick()
+        public override void OnButtonClick()
         {
             UIWindowsController windowsController = UIWindowsController.Instance;
 
