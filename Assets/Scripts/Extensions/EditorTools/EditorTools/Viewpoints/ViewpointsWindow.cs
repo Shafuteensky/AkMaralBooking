@@ -1,20 +1,21 @@
 using System.Collections.Generic;
 using Extensions.EditorTools.EditorTools;
-using Extensions.Data;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Extensions.EditorTools.Navigator
+namespace Extensions.EditorTools.Viewpoints
 {
     /// <summary>
-    /// Навигатор
+    /// Навигатор точек обзора
     /// </summary>
     public sealed class EditorViewpointsWindow : EditorWindow
     {
         private const string WINDOW_NAME = "Viewpoints";
-        private const string CONTEXT_FILE_NAME = "EditorContext";
+
+        [SerializeField]
+        private ViewpointsDataBase dataBase;
 
         private GUIStyle _labelHeader;
         private GUIStyle _rowButton;
@@ -33,14 +34,13 @@ namespace Extensions.EditorTools.Navigator
 
         private void OnEnable()
         {
-            LoadContext();
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+            EnsureData();
         }
 
         private void OnDisable()
         {
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
-            SaveContext();
         }
 
         #region GUI
@@ -64,15 +64,17 @@ namespace Extensions.EditorTools.Navigator
 
         private void OnGUI()
         {
+            if (dataBase == null)
+            {
+                EditorGUILayout.HelpBox("ViewpointsDataBase не назначена", MessageType.Error);
+                return;
+            }
+
             if (_rowButton == null || _labelHeader == null)
                 InitStyles();
 
-            if (_data == null)
-                LoadContext();
-            
-            if (_data.Viewpoints == null)
-                _data.Viewpoints = new List<Viewpoint>();
-            
+            EnsureData();
+
             GUILayout.Space(4);
             GUILayout.Label("Восстановление после Play Mode", _labelHeader);
 
@@ -95,21 +97,33 @@ namespace Extensions.EditorTools.Navigator
             GUILayout.Space(EditorToolsConstraints.SPACE_BLOCK_SIZE);
 
             _scroll = GUILayout.BeginScrollView(_scroll);
+            DrawViewpointsUI();
+            GUILayout.EndScrollView();
+        }
 
-            if (_data != null && _data.Viewpoints != null)
+        #endregion
+
+        #region Data
+
+        private void EnsureData()
+        {
+            if (_data != null || dataBase.DataBase == null)
+                return;
+
+            if (dataBase.DataBase.Count == 0)
             {
-                DrawViewpointsUI();
+                _data = new ViewpointsData();
+                dataBase.Add(_data);
             }
             else
             {
-                GUILayout.Label("Нет данных");
+                _data = dataBase.DataBase[0];
             }
-
-            GUILayout.EndScrollView();
-
-            if (GUI.changed)
-                SaveContext();
         }
+
+        #endregion
+
+        #region Viewpoints UI
 
         private void DrawViewpointsUI()
         {
@@ -119,19 +133,16 @@ namespace Extensions.EditorTools.Navigator
                 GUILayout.Label("Сцена не сохранена");
                 return;
             }
-            List<Viewpoint> list = _data.Viewpoints;
 
+            List<Viewpoint> list = _data.Viewpoints;
             bool any = false;
             Viewpoint toRemove = null;
 
             foreach (var vp in list)
             {
-                if (string.IsNullOrEmpty(vp.ScenePath))
-                    continue;
-
                 if (vp.ScenePath != currentScene)
                     continue;
-                
+
                 any = true;
 
                 if (DrawViewpointRow(vp))
@@ -141,7 +152,7 @@ namespace Extensions.EditorTools.Navigator
             if (toRemove != null)
             {
                 _data.Viewpoints.Remove(toRemove);
-                SaveContext();
+                dataBase.RequestSave();
             }
 
             if (!any)
@@ -158,7 +169,7 @@ namespace Extensions.EditorTools.Navigator
                     GoToViewpoint(vp);
 
                 GUI.backgroundColor = Color.red;
-                if (GUILayout.Button("✕", GUILayout.Width(EditorToolsConstraints.BASE_ELEMENT_HEIGHT), GUILayout.Height(EditorToolsConstraints.BASE_ELEMENT_HEIGHT)))
+                if (GUILayout.Button("✕", GUILayout.Width(EditorToolsConstraints.BASE_ELEMENT_HEIGHT)))
                     remove = true;
                 GUI.backgroundColor = Color.white;
             }
@@ -168,61 +179,25 @@ namespace Extensions.EditorTools.Navigator
 
         #endregion
 
-        #region SaveLoad
-
-        private void LoadContext()
-        {
-            try
-            {
-                var loaded = SaveLoadManager.Load(CONTEXT_FILE_NAME, new ViewpointsData());
-
-                if (loaded == null)
-                {
-                    _data = new ViewpointsData();
-                    return;
-                }
-
-                if (loaded.Viewpoints == null)
-                    loaded.Viewpoints = new List<Viewpoint>();
-
-                _data = loaded;
-            }
-            catch
-            {
-                _data = new ViewpointsData();
-                _data.Viewpoints = new List<Viewpoint>();
-            }
-        }
-
-        private void SaveContext()
-        {
-            if (_data == null) return;
-            SaveLoadManager.Save(_data, CONTEXT_FILE_NAME);
-        }
-
-        #endregion
-
-
         #region Logic
 
         private void OnPlayModeStateChanged(PlayModeStateChange state)
         {
             if (state == PlayModeStateChange.ExitingEditMode)
             {
-                if (_data.RestoreSelectionEnabled) 
+                if (_data.RestoreSelectionEnabled)
                     CaptureSelection();
-                if (_data.RestoreViewEnabled)     
+                if (_data.RestoreViewEnabled)
                     CaptureSceneView();
-                SaveContext();
+
+                dataBase.RequestSave();
             }
 
             if (state == PlayModeStateChange.EnteredEditMode)
             {
-                LoadContext();
-
-                if (_data.RestoreSelectionEnabled) 
+                if (_data.RestoreSelectionEnabled)
                     RestoreSelection();
-                if (_data.RestoreViewEnabled)     
+                if (_data.RestoreViewEnabled)
                     RestoreSceneView();
             }
         }
@@ -230,15 +205,9 @@ namespace Extensions.EditorTools.Navigator
         private void CaptureSelection()
         {
             Object obj = Selection.activeObject;
-
-            if (obj == null)
-            {
-                _data.LastSelectedGlobalObjectId = null;
-                return;
-            }
-
-            GlobalObjectId gid = GlobalObjectId.GetGlobalObjectIdSlow(obj);
-            _data.LastSelectedGlobalObjectId = gid.ToString();
+            _data.LastSelectedGlobalObjectId = obj == null
+                ? null
+                : GlobalObjectId.GetGlobalObjectIdSlow(obj).ToString();
         }
 
         private void RestoreSelection()
@@ -257,7 +226,7 @@ namespace Extensions.EditorTools.Navigator
         private void CaptureSceneView()
         {
             SceneView sv = SceneView.lastActiveSceneView;
-            if (sv == null) 
+            if (sv == null)
                 return;
 
             _data.LastViewPosition = sv.camera.transform.position;
@@ -272,32 +241,28 @@ namespace Extensions.EditorTools.Navigator
             EditorApplication.delayCall += () =>
             {
                 SceneView sv = SceneView.lastActiveSceneView;
-                if (sv == null) 
+                if (sv == null)
                     return;
 
                 sv.Focus();
-
                 sv.LookAt(_data.LastViewPosition, Quaternion.Euler(_data.LastViewRotation), _data.LastViewSize);
-
                 sv.orthographic = _data.LastViewOrthographic;
                 sv.in2DMode = _data.LastView2D;
-
                 sv.Repaint();
-                SceneView.RepaintAll();
             };
         }
 
         private void AddViewpoint(string name)
         {
             Scene scene = EditorSceneManager.GetActiveScene();
-            if (!scene.IsValid()) 
+            if (!scene.IsValid())
                 return;
 
             SceneView sv = SceneView.lastActiveSceneView;
-            if (sv == null) 
+            if (sv == null)
                 return;
 
-            Viewpoint vp = new Viewpoint
+            _data.Viewpoints.Add(new Viewpoint
             {
                 Name = string.IsNullOrEmpty(name) ? "View" : name,
                 ScenePath = scene.path,
@@ -306,10 +271,9 @@ namespace Extensions.EditorTools.Navigator
                 Size = sv.size,
                 Orthographic = sv.orthographic,
                 Mode2D = sv.in2DMode
-            };
+            });
 
-            _data.Viewpoints.Add(vp);
-            SaveContext();
+            dataBase.RequestSave();
         }
 
         private void GoToViewpoint(Viewpoint vp)
@@ -317,18 +281,14 @@ namespace Extensions.EditorTools.Navigator
             EditorApplication.delayCall += () =>
             {
                 SceneView sv = SceneView.lastActiveSceneView;
-                if (sv == null) 
+                if (sv == null)
                     return;
 
                 sv.Focus();
-
                 sv.LookAt(vp.Position, Quaternion.Euler(vp.Rotation), vp.Size);
-
                 sv.orthographic = vp.Orthographic;
                 sv.in2DMode = vp.Mode2D;
-
                 sv.Repaint();
-                SceneView.RepaintAll();
             };
         }
 

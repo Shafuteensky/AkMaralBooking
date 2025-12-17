@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Extensions.Data.InMemoryData;
 
-namespace Extensions.EditorTools.Navigator
+namespace Extensions.EditorTools.Viewpoints
 {
     /// <summary>
     /// Структура данных точки вьюпорта SceneNavigatorWindow
@@ -22,7 +23,7 @@ namespace Extensions.EditorTools.Navigator
     /// Структура данных сохранения точек вьюпорта SceneNavigatorWindow
     /// </summary>
     [System.Serializable]
-    public class ViewpointsData
+    public sealed class ViewpointsData : InMemoryDataEntry
     {
         public string LastSelectedGlobalObjectId;
         public Vector3 LastViewPosition;
