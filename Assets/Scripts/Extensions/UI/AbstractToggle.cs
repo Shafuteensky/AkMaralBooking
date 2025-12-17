@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Extentions
+namespace Extensions
 {
     /// <summary>
     /// Абстракция переключателя

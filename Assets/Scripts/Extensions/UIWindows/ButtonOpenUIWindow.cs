@@ -1,7 +1,7 @@
 using Extensions.Logs;
 using UnityEngine;
 
-namespace Extentions.UIWindows
+namespace Extensions.UIWindows
 {
     using ID;
     

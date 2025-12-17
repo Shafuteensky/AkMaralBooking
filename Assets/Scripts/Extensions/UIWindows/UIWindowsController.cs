@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Extensions.Singleton;
 using UnityEngine;
 
-namespace Extentions.UIWindows
+namespace Extensions.UIWindows
 {
     using ID;
     
