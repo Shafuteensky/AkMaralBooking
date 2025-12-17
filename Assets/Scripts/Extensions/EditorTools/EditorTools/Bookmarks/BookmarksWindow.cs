@@ -300,7 +300,6 @@ namespace Extensions.EditorTools
 
             BookmarkData data = new BookmarkData
             {
-                Id = System.Guid.NewGuid().ToString(),
                 Name = obj.name
             };
 
@@ -325,7 +324,7 @@ namespace Extensions.EditorTools
                 data.ScenePath = go.scene.path;
 
                 GlobalObjectId gid = GlobalObjectId.GetGlobalObjectIdSlow(go);
-                data.GlobalId = gid.ToString();
+                data.Id = gid.ToString();
             }
 
             BookmarksRepository.Add(data);
@@ -354,12 +353,12 @@ namespace Extensions.EditorTools
                 return null;
             }
 
-            if (string.IsNullOrEmpty(data.GlobalId))
+            if (string.IsNullOrEmpty(data.Id))
             {
                 return null;
             }
 
-            if (!GlobalObjectId.TryParse(data.GlobalId, out GlobalObjectId gid))
+            if (!GlobalObjectId.TryParse(data.Id, out GlobalObjectId gid))
             {
                 return null;
             }

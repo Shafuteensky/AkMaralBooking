@@ -20,7 +20,6 @@ namespace Extensions.EditorTools.Bookmarks
     public sealed class BookmarkData
     {
         public string Id;
-        public string GlobalId;
 
         public string Name;
         public BookmarkType Type;
