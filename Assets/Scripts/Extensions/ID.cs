@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace Extentions.ID
+namespace Extensions.ID
 {
     /// <summary>
-    /// ”ниверсальное ID
+    /// ”ниверсальный идентификатор
     /// </summary>
-    [CreateAssetMenu(menuName = "Extentions/ID")]
+    [CreateAssetMenu(menuName = "Extensions/" + nameof(ID))]
     public class ID : ScriptableObject
     {
         /// <summary>
