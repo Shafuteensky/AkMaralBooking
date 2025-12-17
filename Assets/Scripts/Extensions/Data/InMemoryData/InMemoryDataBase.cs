@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using Extensions.Logs;
-using Extentions.ID;
 using UnityEngine;
 
 namespace Extensions.Data.InMemoryData
 {
+    using ID;
+    
     /// <summary>
     /// Базовый класс хранимой и загружаемой модели in-memory БД
     /// <remarks>
