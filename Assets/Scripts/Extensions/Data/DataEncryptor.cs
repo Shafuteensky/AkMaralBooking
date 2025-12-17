@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using Extensions.Logs;
 
-namespace Extensions.SaveLoad
+namespace Extensions.Data
 {
     /// <summary>
     /// Тип шифрования данных

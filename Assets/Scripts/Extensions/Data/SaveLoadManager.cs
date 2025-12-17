@@ -5,7 +5,7 @@ using System.Text;
 using Extensions.Logs;
 using UnityEngine;
 
-namespace Extensions.SaveLoad
+namespace Extensions.Data
 {
     /// <summary>
     /// Сохранение/загрузка в JSON с шифрованием
@@ -104,12 +104,12 @@ namespace Extensions.SaveLoad
         /// <param name="data">Сохраняемые данные</param>
         /// <param name="fileName">Название файла сохранения</param>
         /// <returns></returns>
-        public static void Save<T>(T data, string fileName)
+        public static bool Save<T>(T data, string fileName)
         {
             if (string.IsNullOrEmpty(fileName))
             {
                 ServiceDebug.LogError("Пустое имя файла, сохранение не выполнено");
-                return;
+                return false;
             }
 
             OnBeforeSave?.Invoke(fileName);
@@ -139,12 +139,14 @@ namespace Extensions.SaveLoad
                 File.WriteAllText(backupPath, encrypted);
                 
                 OnAfterSave?.Invoke(fileName);
+                return true;
             }
             catch (Exception ex)
             {
                 ServiceDebug.LogError($"Ошибка сохранения файла «{fileName}»: {ex}");
                 
                 OnSaveError?.Invoke(fileName, ex);
+                return false;
             }
         }
 

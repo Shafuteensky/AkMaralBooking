@@ -1,7 +1,7 @@
 using Extensions.Logs;
 using UnityEngine;
 
-namespace Extensions.SaveLoad
+namespace Extensions.Data
 {
     /// <summary>
     /// Сохранение/загрузка в PlayerPrefs
