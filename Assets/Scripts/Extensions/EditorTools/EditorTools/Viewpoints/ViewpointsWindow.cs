@@ -20,7 +20,6 @@ namespace Extensions.EditorTools.Viewpoints
         private GUIStyle _labelHeader;
         private GUIStyle _rowButton;
 
-        private ViewpointsData _data;
         private string _newViewName = "Viewpoint";
         private Vector2 _scroll;
 
@@ -31,19 +30,6 @@ namespace Extensions.EditorTools.Viewpoints
             window.titleContent = new GUIContent(WINDOW_NAME);
             window.Show();
         }
-
-        private void OnEnable()
-        {
-            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-            EnsureData();
-        }
-
-        private void OnDisable()
-        {
-            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
-        }
-
-        #region GUI
 
         private void InitStyles()
         {
@@ -73,17 +59,7 @@ namespace Extensions.EditorTools.Viewpoints
             if (_rowButton == null || _labelHeader == null)
                 InitStyles();
 
-            EnsureData();
-
             GUILayout.Space(4);
-            GUILayout.Label("Восстановление после Play Mode", _labelHeader);
-
-            _data.RestoreSelectionEnabled =
-                EditorGUILayout.ToggleLeft("Восстанавливать выделение после Play", _data.RestoreSelectionEnabled);
-            _data.RestoreViewEnabled =
-                EditorGUILayout.ToggleLeft("Восстанавливать камеру SceneView после Play", _data.RestoreViewEnabled);
-
-            GUILayout.Space(EditorToolsConstraints.SPACE_BLOCK_SIZE);
             GUILayout.Label("Точки камеры", _labelHeader);
 
             using (new EditorGUILayout.HorizontalScope())
@@ -101,30 +77,6 @@ namespace Extensions.EditorTools.Viewpoints
             GUILayout.EndScrollView();
         }
 
-        #endregion
-
-        #region Data
-
-        private void EnsureData()
-        {
-            if (_data != null || dataBase.DataBase == null)
-                return;
-
-            if (dataBase.DataBase.Count == 0)
-            {
-                _data = new ViewpointsData();
-                dataBase.Add(_data);
-            }
-            else
-            {
-                _data = dataBase.DataBase[0];
-            }
-        }
-
-        #endregion
-
-        #region Viewpoints UI
-
         private void DrawViewpointsUI()
         {
             string currentScene = EditorSceneManager.GetActiveScene().path;
@@ -134,11 +86,11 @@ namespace Extensions.EditorTools.Viewpoints
                 return;
             }
 
-            List<Viewpoint> list = _data.Viewpoints;
+            IReadOnlyList<ViewpointsData> items = dataBase.DataBase;
             bool any = false;
-            Viewpoint toRemove = null;
+            ViewpointsData toRemove = null;
 
-            foreach (var vp in list)
+            foreach (var vp in items)
             {
                 if (vp.ScenePath != currentScene)
                     continue;
@@ -151,15 +103,14 @@ namespace Extensions.EditorTools.Viewpoints
 
             if (toRemove != null)
             {
-                _data.Viewpoints.Remove(toRemove);
-                dataBase.RequestSave();
+                dataBase.Remove(toRemove);
             }
 
             if (!any)
                 GUILayout.Label("Нет точек для текущей сцены");
         }
 
-        private bool DrawViewpointRow(Viewpoint vp)
+        private bool DrawViewpointRow(ViewpointsData vp)
         {
             bool remove = false;
 
@@ -169,87 +120,12 @@ namespace Extensions.EditorTools.Viewpoints
                     GoToViewpoint(vp);
 
                 GUI.backgroundColor = Color.red;
-                if (GUILayout.Button("✕", GUILayout.Width(EditorToolsConstraints.BASE_ELEMENT_HEIGHT)))
+                if (GUILayout.Button("✕", GUILayout.Width(EditorToolsConstraints.BASE_ELEMENT_HEIGHT), GUILayout.Height(EditorToolsConstraints.BASE_ELEMENT_HEIGHT)))
                     remove = true;
                 GUI.backgroundColor = Color.white;
             }
 
             return remove;
-        }
-
-        #endregion
-
-        #region Logic
-
-        private void OnPlayModeStateChanged(PlayModeStateChange state)
-        {
-            if (state == PlayModeStateChange.ExitingEditMode)
-            {
-                if (_data.RestoreSelectionEnabled)
-                    CaptureSelection();
-                if (_data.RestoreViewEnabled)
-                    CaptureSceneView();
-
-                dataBase.RequestSave();
-            }
-
-            if (state == PlayModeStateChange.EnteredEditMode)
-            {
-                if (_data.RestoreSelectionEnabled)
-                    RestoreSelection();
-                if (_data.RestoreViewEnabled)
-                    RestoreSceneView();
-            }
-        }
-
-        private void CaptureSelection()
-        {
-            Object obj = Selection.activeObject;
-            _data.LastSelectedGlobalObjectId = obj == null
-                ? null
-                : GlobalObjectId.GetGlobalObjectIdSlow(obj).ToString();
-        }
-
-        private void RestoreSelection()
-        {
-            if (string.IsNullOrEmpty(_data.LastSelectedGlobalObjectId))
-                return;
-
-            if (!GlobalObjectId.TryParse(_data.LastSelectedGlobalObjectId, out GlobalObjectId gid))
-                return;
-
-            Object obj = GlobalObjectId.GlobalObjectIdentifierToObjectSlow(gid);
-            if (obj != null)
-                Selection.activeObject = obj;
-        }
-
-        private void CaptureSceneView()
-        {
-            SceneView sv = SceneView.lastActiveSceneView;
-            if (sv == null)
-                return;
-
-            _data.LastViewPosition = sv.camera.transform.position;
-            _data.LastViewRotation = sv.camera.transform.eulerAngles;
-            _data.LastViewSize = sv.size;
-            _data.LastViewOrthographic = sv.orthographic;
-            _data.LastView2D = sv.in2DMode;
-        }
-
-        private void RestoreSceneView()
-        {
-            EditorApplication.delayCall += () =>
-            {
-                SceneView sv = SceneView.lastActiveSceneView;
-                if (sv == null)
-                    return;
-
-                sv.Focus();
-                sv.LookAt(_data.LastViewPosition, Quaternion.Euler(_data.LastViewRotation), _data.LastViewSize);
-                sv.orthographic = _data.LastViewOrthographic;
-                sv.in2DMode = _data.LastView2D;
-                sv.Repaint();
-            };
         }
 
         private void AddViewpoint(string name)
@@ -262,7 +138,7 @@ namespace Extensions.EditorTools.Viewpoints
             if (sv == null)
                 return;
 
-            _data.Viewpoints.Add(new Viewpoint
+            ViewpointsData data = new ViewpointsData
             {
                 Name = string.IsNullOrEmpty(name) ? "View" : name,
                 ScenePath = scene.path,
@@ -271,12 +147,12 @@ namespace Extensions.EditorTools.Viewpoints
                 Size = sv.size,
                 Orthographic = sv.orthographic,
                 Mode2D = sv.in2DMode
-            });
+            };
 
-            dataBase.RequestSave();
+            dataBase.Add(data);
         }
 
-        private void GoToViewpoint(Viewpoint vp)
+        private void GoToViewpoint(ViewpointsData vp)
         {
             EditorApplication.delayCall += () =>
             {
@@ -291,7 +167,5 @@ namespace Extensions.EditorTools.Viewpoints
                 sv.Repaint();
             };
         }
-
-        #endregion
     }
 }
