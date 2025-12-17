@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Extensions.Data.InMemoryData
@@ -11,14 +12,18 @@ namespace Extensions.Data.InMemoryData
     public class InMemoryDataBasePauseSaver : MonoBehaviour
     {
         [SerializeField]
-        private InMemoryDataBaseObject dataBase;
+        protected List<InMemoryDataBaseObject> dataBases = new List<InMemoryDataBaseObject>();
+        
         protected virtual void OnApplicationPause(bool pause)
         {
             if (!pause) return;
 
-            if (dataBase is InMemoryDataBase<InMemoryDataEntry> inMemoryDataBase)
+            foreach (InMemoryDataBaseObject dataBase in dataBases)
             {
-                inMemoryDataBase.RequestSave();
+                if (dataBase is InMemoryDataBase<InMemoryDataEntry> inMemoryDataBase)
+                {
+                    inMemoryDataBase.RequestSave();
+                }
             }
         }
     }
