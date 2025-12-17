@@ -13,7 +13,7 @@ namespace Extensions.Data
     /// Для хранения игровых данных и структур настроек
     /// </remarks>
     /// </summary>
-    public static class SaveLoadManager
+    public static class JsonSaveLoad
     {
         #region Constants
         
@@ -89,7 +89,7 @@ namespace Extensions.Data
             public T Data;
         }
 
-        static SaveLoadManager()
+        static JsonSaveLoad()
         {
             if (!Directory.Exists(SaveDirectory))
             {

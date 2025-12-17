@@ -9,7 +9,7 @@ namespace Extensions.Data
     /// Для служебных решений и editor-скриптов
     /// </remarks>
     /// </summary>
-    public static class PrefsHelper
+    public static class PrefsSaveLoad
     {
         private const int TRUE_INT = 1;
         private const int FALSE_INT = 0;
