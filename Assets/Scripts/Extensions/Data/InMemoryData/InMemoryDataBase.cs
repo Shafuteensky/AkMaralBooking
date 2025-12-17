@@ -73,7 +73,6 @@ namespace Extensions.Data.InMemoryData
         }
 
         protected List<TData> data;
-        protected Dictionary<string, TData> index;
         
         protected bool loaded;
         protected bool dirty;
@@ -108,7 +107,6 @@ namespace Extensions.Data.InMemoryData
             }
 
             this.data.Add(data);
-            index[data.Id] = data;
 
             OnDataAdd?.Invoke();
             MarkDirty();
@@ -123,45 +121,18 @@ namespace Extensions.Data.InMemoryData
             EnsureLoaded();
 
             if (data == null || string.IsNullOrEmpty(data.Id))
+            {
+                ServiceDebug.LogWarning("Данные или его идентификатор пусты, запись не удалена");
                 return;
+            }
 
             if (this.data.Remove(data))
             {
-                index.Remove(data.Id);
-
                 OnDataRemove?.Invoke();
                 MarkDirty();
             }
             else
                 ServiceDebug.LogWarning($"Запись с id {data.Id} не найдена, запись не удалена");
-        }
-
-        /// <summary>
-        /// Удалить запись данных по индексу
-        /// </summary>
-        /// <param name="index">Индекс записи данных для удаления</param>
-        public void Remove(int index)
-        {
-            EnsureLoaded();
-
-            if (index < 0 || index >= this.data.Count)
-            {
-                ServiceDebug.LogWarning($"Невалидный индекс {index}, запись не удалена");
-                return;
-            }
-
-            TData data = this.data[index];
-            this.data.RemoveAt(index);
-
-            if (data != null && !string.IsNullOrEmpty(data.Id))
-            {
-                this.index.Remove(data.Id);
-            }
-            else
-                ServiceDebug.LogWarning($"Запись с индексом {index} не найдена, запись не удалена");
-
-            OnDataRemove?.Invoke();
-            MarkDirty();
         }
 
         /// <summary>
@@ -178,17 +149,21 @@ namespace Extensions.Data.InMemoryData
                 return;
             }
 
-            if (index.TryGetValue(id, out TData data))
+            for (int i = 0; i < data.Count; i++)
             {
-                this.data.Remove(data);
-                index.Remove(id);
+                if (data[i].Id == id)
+                {
+                    data.RemoveAt(i);
 
-                OnDataRemove?.Invoke();
-                MarkDirty();
+                    OnDataRemove?.Invoke();
+                    MarkDirty();
+                    return;
+                }
             }
-            else
-                ServiceDebug.LogWarning($"Запись с id {id} не найдена, запись не удалена");
+
+            ServiceDebug.LogWarning($"Запись с id {id} не найдена, запись не удалена");
         }
+
 
         /// <summary>
         /// Очистить все данные
@@ -198,7 +173,6 @@ namespace Extensions.Data.InMemoryData
             EnsureLoaded();
 
             data.Clear();
-            index.Clear();
 
             OnDataUpdate?.Invoke();
             OnDataClear?.Invoke();
@@ -225,7 +199,7 @@ namespace Extensions.Data.InMemoryData
                 return;
             }
 
-            if (SaveLoadManager.Save(data, saveFileName))
+            if (JsonSaveLoad.Save(data, saveFileName))
             {
                 dirty = false;
                 OnDataSaved?.Invoke();
@@ -241,8 +215,7 @@ namespace Extensions.Data.InMemoryData
                 return;
             }
 
-            data = SaveLoadManager.Load(saveFileName, new List<TData>()) ?? new List<TData>();
-            BuildIndex();
+            data = JsonSaveLoad.Load(saveFileName, new List<TData>()) ?? new List<TData>();
 
             loaded = true;
             OnDataLoaded?.Invoke();
@@ -258,27 +231,6 @@ namespace Extensions.Data.InMemoryData
                 Save();
             }
         }
-
-        private void BuildIndex()
-        {
-            index = new Dictionary<string, TData>(data.Count);
-
-            foreach (var item in data)
-            {
-                if (item == null)
-                    continue;
-
-                while (string.IsNullOrEmpty(item.Id) || index.ContainsKey(item.Id))
-                {
-                    item.Id = Guid.NewGuid().ToString(FORMAT);
-                }
-
-                index.Add(item.Id, item);
-            }
-
-            dirty = true;
-        }
-
 
         #endregion
     }
