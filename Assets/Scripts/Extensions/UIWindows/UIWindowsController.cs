@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Extensions.Singleton;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Extensions.UIWindows
@@ -11,6 +12,9 @@ namespace Extensions.UIWindows
     /// </summary>
     public class UIWindowsController : MonoBehaviourSingleton<UIWindowsController>
     {
+        /// <summary>
+        /// Текущее окно в фокусе
+        /// </summary>
         public UIWindow FocusedWindow => focusedWindow;
         
         [SerializeField]
@@ -28,6 +32,7 @@ namespace Extensions.UIWindows
         protected UIWindow focusedWindow = default;
         
         protected ID previousWindow = default;
+        protected bool transitionInProgress = false;
         
         /// <summary>
         /// Открыть окно по идентификатору
@@ -64,11 +69,27 @@ namespace Extensions.UIWindows
             
             Debug.LogError($"Window {id} not found");
         }
+        
+        /// <summary>
+        /// Открытие предыдущего окна
+        /// </summary>
+        public void OpenPreviousWindow() => OpenWindowByID(focusedWindow.PreviousWindow.Id, false);
 
+        /// <summary>
+        /// Закрытие окна в фокусе
+        /// </summary>
         public void CloseFocusedWindow() => focusedWindow.gameObject.SetActive(false);
+        
+        /// <summary>
+        /// Закрытие предыдущего окна
+        /// </summary>
+        public void ClosePreviousWindow() => focusedWindow.PreviousWindow.GameObject().SetActive(false);
 
         private void OpenNewWindow(UIWindow window)
         {
+            if (transitionInProgress)
+                return;
+            
             previousWindow = focusedWindow?.Id;
             focusedWindow = GameObject.Instantiate(window.gameObject, transform).GetComponent<UIWindow>();
             if (previousWindow)
@@ -76,9 +97,6 @@ namespace Extensions.UIWindows
             openedUIWindows.Add(focusedWindow);
         }
 
-
-        public void OpenPreviousWindow() => OpenWindowByID(focusedWindow.PreviousWindow.Id, false);
-        
         protected override void Awake()
         {
             base.Awake();
