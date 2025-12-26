@@ -8,7 +8,7 @@ namespace Extensions
     /// Абстракция переключателя
     /// </summary>
     [RequireComponent(typeof(Toggle))]
-    public abstract class AbstractToggle : MonoBehaviour
+    public abstract class GenericToggle : MonoBehaviour
     {
         /// <summary>
         /// Событие, вызываемое после изменения состояния переключателя

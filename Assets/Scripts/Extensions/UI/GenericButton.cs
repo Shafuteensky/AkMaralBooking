@@ -8,7 +8,7 @@ namespace Extensions
     /// Абстракция кнопки
     /// </summary>
     [RequireComponent(typeof(Button))]
-    public abstract class AbstractButton : MonoBehaviour
+    public abstract class GenericButton : MonoBehaviour
     {
         /// <summary>
         /// Событие, вызываемое после клика кнопки
