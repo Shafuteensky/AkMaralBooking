@@ -1,4 +1,6 @@
-using DG.Tweening;
+#if DOTWEEN
+    using DG.Tweening;
+#endif
 using UnityEngine;
 using Extensions.Coroutines;
 #if UNITY_EDITOR
@@ -8,12 +10,14 @@ using Extensions.Coroutines;
 namespace Extensions.UIWindows
 {
     /// <summary>
-    /// Кнопка для закрытия окна интерфейса с анимацией
+    /// Кнопка для закрытия окна интерфейса с анимацией DOTWEEN
     /// </summary>
     public class ButtonCloseUIWindowAnimated : GenericButton
     {
+#if DOTWEEN
         [SerializeField]
         protected DOTweenAnimation beforeCloseAnimation;
+#endif
 
         /// <summary>
         /// Закрытие текущего окна и открытие предыдущего с анимацией
@@ -27,12 +31,14 @@ namespace Extensions.UIWindows
 
             windowsController.OpenPreviousWindow();
 
+#if DOTWEEN
             if (beforeCloseAnimation)
             {
                 beforeCloseAnimation.DORestart();
                 CoroutineDelay.Run(this, beforeCloseAnimation.duration, windowsController.CloseFocusedWindow);
                 return;
             }
+#endif
 
             windowsController.CloseFocusedWindow();
         }

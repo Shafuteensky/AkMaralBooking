@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using VHierarchy.Libs;
 
 namespace Extensions.Data.InMemoryData
 {
@@ -21,7 +20,7 @@ namespace Extensions.Data.InMemoryData
             {
                 if (dataBase is InMemoryDataBase<InMemoryDataEntry> inMemoryDataBase)
                 {
-                    dataBase.Save();
+                    inMemoryDataBase.RequestSave();
                 }
             }
         }

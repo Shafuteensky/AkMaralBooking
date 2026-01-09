@@ -1,8 +1,8 @@
+using System.Collections;
+using UnityEngine;
+
 namespace Extensions.Coroutines
 {
-    using System.Collections;
-    using UnityEngine;
-
     /// <summary>
     /// Базовая модель управляемой корутиной
     /// </summary>

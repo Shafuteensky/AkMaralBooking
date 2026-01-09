@@ -1,9 +1,9 @@
+using System;
+using System.Collections;
+using UnityEngine;
+
 namespace Extensions.Coroutines
 {
-    using System;
-    using System.Collections;
-    using UnityEngine;
-
     /// <summary>
     /// Stateless-утилита для отложенного выполнения действия через корутину
     /// </summary>
