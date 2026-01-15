@@ -3,16 +3,16 @@ using System;
 namespace Extensions.Data.InMemoryData
 {
     /// <summary>
-    /// Базовый класс единицы данных
+    /// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РµРґРёРЅРёС†С‹ РґР°РЅРЅС‹С…
     /// <remarks>
-    /// Дополняется полями данных
+    /// Р”РѕРїРѕР»РЅСЏРµС‚СЃСЏ РїРѕР»СЏРјРё РґР°РЅРЅС‹С…
     /// </remarks>
     /// </summary>
     [Serializable]
     public abstract class InMemoryDataEntry
     {
         /// <summary>
-        /// Идентификатор
+        /// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ
         /// </summary>
         public string Id = String.Empty;
     }

@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Extensions.Data.InMemoryData
 {
     /// <summary>
-    /// Загрузка InMemory БД на OnEnable
+    /// Р—Р°РіСЂСѓР·РєР° InMemory Р‘Р” РЅР° OnEnable
     /// <remarks>
-    /// Используется для прогрева БД до использования
+    /// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РїСЂРѕРіСЂРµРІР° Р‘Р” РґРѕ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ
     /// </remarks>
     /// </summary>
     public class InMemoryDataBaseEnableLoader : MonoBehaviour

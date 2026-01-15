@@ -10,7 +10,7 @@ using Extensions.Coroutines;
 namespace Extensions.UIWindows
 {
     /// <summary>
-    /// Кнопка для закрытия окна интерфейса с анимацией DOTWEEN
+    /// РљРЅРѕРїРєР° РґР»СЏ Р·Р°РєСЂС‹С‚РёСЏ РѕРєРЅР° РёРЅС‚РµСЂС„РµР№СЃР° СЃ Р°РЅРёРјР°С†РёРµР№ DOTWEEN
     /// </summary>
     public class ButtonCloseUIWindowAnimated : GenericButton
     {
@@ -20,7 +20,7 @@ namespace Extensions.UIWindows
 #endif
 
         /// <summary>
-        /// Закрытие текущего окна и открытие предыдущего с анимацией
+        /// Р—Р°РєСЂС‹С‚РёРµ С‚РµРєСѓС‰РµРіРѕ РѕРєРЅР° Рё РѕС‚РєСЂС‹С‚РёРµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ СЃ Р°РЅРёРјР°С†РёРµР№
         /// </summary>
         public override void OnButtonClick()
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Extensions.Coroutines
 {
     /// <summary>
-    /// Базовая модель управляемой корутиной
+    /// Р‘Р°Р·РѕРІР°СЏ РјРѕРґРµР»СЊ СѓРїСЂР°РІР»СЏРµРјРѕР№ РєРѕСЂСѓС‚РёРЅРѕР№
     /// </summary>
     public class CoroutineTask
     {
@@ -12,20 +12,20 @@ namespace Extensions.Coroutines
         protected Coroutine coroutine;
 
         /// <summary>
-        /// Статус активности корутины
+        /// РЎС‚Р°С‚СѓСЃ Р°РєС‚РёРІРЅРѕСЃС‚Рё РєРѕСЂСѓС‚РёРЅС‹
         /// </summary>
         public bool IsRunning => coroutine != null;
 
         /// <summary>
-        /// Конструктор модели управления корутиной
+        /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РјРѕРґРµР»Рё СѓРїСЂР°РІР»РµРЅРёСЏ РєРѕСЂСѓС‚РёРЅРѕР№
         /// </summary>
-        /// <param name="owner">Скрипт-хозяин корутины</param>
+        /// <param name="owner">РЎРєСЂРёРїС‚-С…РѕР·СЏРёРЅ РєРѕСЂСѓС‚РёРЅС‹</param>
         public CoroutineTask(MonoBehaviour owner) => this.owner = owner;
 
         /// <summary>
-        /// Запуск новой корутины
+        /// Р—Р°РїСѓСЃРє РЅРѕРІРѕР№ РєРѕСЂСѓС‚РёРЅС‹
         /// </summary>
-        /// <param name="routine">Корутина</param>
+        /// <param name="routine">РљРѕСЂСѓС‚РёРЅР°</param>
         public void Start(IEnumerator routine)
         {
             if (!IsOwnerValid())
@@ -37,7 +37,7 @@ namespace Extensions.Coroutines
         }
 
         /// <summary>
-        /// Остановка текущей корутины
+        /// РћСЃС‚Р°РЅРѕРІРєР° С‚РµРєСѓС‰РµР№ РєРѕСЂСѓС‚РёРЅС‹
         /// </summary>
         public void Stop()
         {

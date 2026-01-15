@@ -4,9 +4,9 @@ using UnityEngine;
 namespace Extensions.Data.InMemoryData
 {
     /// <summary>
-    /// Срхранение InMemory БД на OnDisable
+    /// РЎСЂС…СЂР°РЅРµРЅРёРµ InMemory Р‘Р” РЅР° OnDisable
     /// <remarks>
-    /// Используется для сохранения данных БД с отключенным автосейвом
+    /// РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РґР°РЅРЅС‹С… Р‘Р” СЃ РѕС‚РєР»СЋС‡РµРЅРЅС‹Рј Р°РІС‚РѕСЃРµР№РІРѕРј
     /// </remarks>
     /// </summary>
     public class InMemoryDataBaseDisableSaver : MonoBehaviour

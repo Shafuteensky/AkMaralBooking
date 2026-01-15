@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Extensions.Singleton
 {
     /// <summary>
-    /// MonoBehaviour-синглтон с проверкой на экземпляр
+    /// MonoBehaviour-СЃРёРЅРіР»С‚РѕРЅ СЃ РїСЂРѕРІРµСЂРєРѕР№ РЅР° СЌРєР·РµРјРїР»СЏСЂ
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviour
@@ -14,7 +14,7 @@ namespace Extensions.Singleton
         private static T _instance;
 
         /// <summary>
-        /// Инстанс синглтона
+        /// РРЅСЃС‚Р°РЅСЃ СЃРёРЅРіР»С‚РѕРЅР°
         /// </summary>
         public static T Instance
         {

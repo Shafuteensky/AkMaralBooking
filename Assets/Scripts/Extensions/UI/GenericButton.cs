@@ -5,13 +5,13 @@ using UnityEngine.UI;
 namespace Extensions
 {
     /// <summary>
-    /// Абстракция кнопки
+    /// РђР±СЃС‚СЂР°РєС†РёСЏ РєРЅРѕРїРєРё
     /// </summary>
     [RequireComponent(typeof(Button))]
     public abstract class GenericButton : MonoBehaviour
     {
         /// <summary>
-        /// Событие, вызываемое после клика кнопки
+        /// РЎРѕР±С‹С‚РёРµ, РІС‹Р·С‹РІР°РµРјРѕРµ РїРѕСЃР»Рµ РєР»РёРєР° РєРЅРѕРїРєРё
         /// </summary>
         public event Action onButtonClicked;
         
@@ -30,7 +30,7 @@ namespace Extensions
         }
         
         /// <summary>
-        /// Код, выполняемый по клику кнопки
+        /// РљРѕРґ, РІС‹РїРѕР»РЅСЏРµРјС‹Р№ РїРѕ РєР»РёРєСѓ РєРЅРѕРїРєРё
         /// </summary>
         public abstract void OnButtonClick();
     }

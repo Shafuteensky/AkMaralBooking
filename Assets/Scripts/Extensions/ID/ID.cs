@@ -3,13 +3,13 @@ using UnityEngine;
 namespace Extensions.ID
 {
     /// <summary>
-    /// Универсальный идентификатор
+    /// РЈРЅРёРІРµСЂСЃР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ
     /// </summary>
     [CreateAssetMenu(menuName = "Extensions/" + nameof(ID))]
     public class ID : ScriptableObject
     {
         /// <summary>
-        /// Идентификатор
+        /// РРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ
         /// </summary>
         public string Id => id;
         

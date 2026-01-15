@@ -6,6 +6,9 @@ using System.IO;
 
 namespace Extensions.EditorTools.EditorTools
 {
+    /// <summary>
+    /// Навигатор сцен проекта
+    /// </summary>
     public sealed class ScenesSwitcherWindow : EditorWindow
     {
         private const string WINDOW_NAME = "Scenes";

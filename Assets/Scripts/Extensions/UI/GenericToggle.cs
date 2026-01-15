@@ -5,13 +5,13 @@ using UnityEngine.UI;
 namespace Extensions
 {
     /// <summary>
-    /// Абстракция переключателя
+    /// РђР±СЃС‚СЂР°РєС†РёСЏ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЏ
     /// </summary>
     [RequireComponent(typeof(Toggle))]
     public abstract class GenericToggle : MonoBehaviour
     {
         /// <summary>
-        /// Событие, вызываемое после изменения состояния переключателя
+        /// РЎРѕР±С‹С‚РёРµ, РІС‹Р·С‹РІР°РµРјРѕРµ РїРѕСЃР»Рµ РёР·РјРµРЅРµРЅРёСЏ СЃРѕСЃС‚РѕСЏРЅРёСЏ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЏ
         /// </summary>
         public event Action onToggleChanged;
         
@@ -30,7 +30,7 @@ namespace Extensions
         }
         
         /// <summary>
-        /// Код, выполняемый при изменении состояния переключателя
+        /// РљРѕРґ, РІС‹РїРѕР»РЅСЏРµРјС‹Р№ РїСЂРё РёР·РјРµРЅРµРЅРёРё СЃРѕСЃС‚РѕСЏРЅРёСЏ РїРµСЂРµРєР»СЋС‡Р°С‚РµР»СЏ
         /// </summary>
         public abstract void OnToggleChanged(bool state);
     }

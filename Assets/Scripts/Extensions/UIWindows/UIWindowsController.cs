@@ -8,12 +8,12 @@ namespace Extensions.UIWindows
     using ID;
     
     /// <summary>
-    /// Контроллер окон пользовательского интерфейса
+    /// РљРѕРЅС‚СЂРѕР»Р»РµСЂ РѕРєРѕРЅ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°
     /// </summary>
     public class UIWindowsController : MonoBehaviourSingleton<UIWindowsController>
     {
         /// <summary>
-        /// Текущее окно в фокусе
+        /// РўРµРєСѓС‰РµРµ РѕРєРЅРѕ РІ С„РѕРєСѓСЃРµ
         /// </summary>
         public UIWindow FocusedWindow => focusedWindow;
         
@@ -23,7 +23,7 @@ namespace Extensions.UIWindows
         [SerializeField]
         protected List<UIWindow> preparedUIWindows =  new List<UIWindow>();
         
-        [Header("Превью (назначаются автоматически)")]
+        [Header("РџСЂРµРІСЊСЋ (РЅР°Р·РЅР°С‡Р°СЋС‚СЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё)")]
         
         [SerializeField]
         protected List<UIWindow> openedUIWindows = new List<UIWindow>();
@@ -35,12 +35,12 @@ namespace Extensions.UIWindows
         protected bool transitionInProgress = false;
         
         /// <summary>
-        /// Открыть окно по идентификатору
+        /// РћС‚РєСЂС‹С‚СЊ РѕРєРЅРѕ РїРѕ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂСѓ
         /// </summary>
         /// <param name="id"></param>
         public void OpenWindowByID(string id, bool setPrevious = false)
         {
-            // Поиск окна в уже открытых
+            // РџРѕРёСЃРє РѕРєРЅР° РІ СѓР¶Рµ РѕС‚РєСЂС‹С‚С‹С…
             foreach (UIWindow window in openedUIWindows)
             {
                 if (window.Id.Id == id)
@@ -57,7 +57,7 @@ namespace Extensions.UIWindows
                 }
             }
             
-            // Инстанцирование нового окна
+            // РРЅСЃС‚Р°РЅС†РёСЂРѕРІР°РЅРёРµ РЅРѕРІРѕРіРѕ РѕРєРЅР°
             foreach (UIWindow window in preparedUIWindows)
             {
                 if (window.Id.Id == id)
@@ -71,17 +71,17 @@ namespace Extensions.UIWindows
         }
         
         /// <summary>
-        /// Открытие предыдущего окна
+        /// РћС‚РєСЂС‹С‚РёРµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РѕРєРЅР°
         /// </summary>
         public void OpenPreviousWindow() => OpenWindowByID(focusedWindow.PreviousWindow.Id, false);
 
         /// <summary>
-        /// Закрытие окна в фокусе
+        /// Р—Р°РєСЂС‹С‚РёРµ РѕРєРЅР° РІ С„РѕРєСѓСЃРµ
         /// </summary>
         public void CloseFocusedWindow() => focusedWindow.gameObject.SetActive(false);
         
         /// <summary>
-        /// Закрытие предыдущего окна
+        /// Р—Р°РєСЂС‹С‚РёРµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ РѕРєРЅР°
         /// </summary>
         public void ClosePreviousWindow() => focusedWindow.PreviousWindow.GameObject().SetActive(false);
 

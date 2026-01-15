@@ -5,7 +5,7 @@ namespace Extensions.UIWindows
     using ID;
     
     /// <summary>
-    /// Окно интерфейса
+    /// РћРєРЅРѕ РёРЅС‚РµСЂС„РµР№СЃР°
     /// </summary>
     public class UIWindow : MonoBehaviour
     {

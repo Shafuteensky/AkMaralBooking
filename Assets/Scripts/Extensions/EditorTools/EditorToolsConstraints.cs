@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Extensions.EditorTools.EditorTools
 {
     /// <summary>
-    /// Постоянные общие значения скриптов домена EditorTools
+    /// РџРѕСЃС‚РѕСЏРЅРЅС‹Рµ РѕР±С‰РёРµ Р·РЅР°С‡РµРЅРёСЏ СЃРєСЂРёРїС‚РѕРІ РґРѕРјРµРЅР° EditorTools
     /// </summary>
     public static class EditorToolsConstraints
     {
