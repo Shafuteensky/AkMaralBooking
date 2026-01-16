@@ -1,3 +1,4 @@
+using Extensions.Generics;
 using UnityEngine;
 #if UNITY_EDITOR
     using UnityEditor;

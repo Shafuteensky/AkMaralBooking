@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using Extensions.Logs;
+using Extensions.Log;
 using UnityEngine;
 
 namespace Extensions.Data

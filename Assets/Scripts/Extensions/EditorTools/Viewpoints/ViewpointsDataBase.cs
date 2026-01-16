@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Extensions.EditorTools.Viewpoints
 {
     /// <summary>
-    /// Сохранение и загрузка закладок ViewpointsWindow
+    /// РЎРѕС…СЂР°РЅРµРЅРёРµ Рё Р·Р°РіСЂСѓР·РєР° РІСЊСЋРїРѕСЂС‚РѕРІ ViewpointsWindow
     /// </summary>
     [CreateAssetMenu(fileName = nameof(ViewpointsDataBase), menuName = "Extensions/EditorTools/" + nameof(ViewpointsDataBase))]
     public sealed class ViewpointsDataBase : InMemoryDataBase<ViewpointsData> { }

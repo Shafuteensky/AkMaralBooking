@@ -1,4 +1,5 @@
-using Extensions.Logs;
+using Extensions.Generics;
+using Extensions.Log;
 using UnityEngine;
 
 namespace Extensions.UIWindows

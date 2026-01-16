@@ -7,16 +7,16 @@ namespace Extensions.UIWindows
     /// <summary>
     /// Окно интерфейса
     /// </summary>
-    public class UIWindow : MonoBehaviour
+    public sealed class UIWindow : MonoBehaviour
     {
         public ID Id => id;
         public ID PreviousWindow => previousWindow;
         
         [SerializeField]
-        protected ID id = default;
+        private ID id = default;
 
-        protected ID previousWindow = default;
+        private ID previousWindow = default;
         
-        public virtual void SetPreviousWindow(ID window) => previousWindow = window;
+        public void SetPreviousWindow(ID window) => previousWindow = window;
     }
 }

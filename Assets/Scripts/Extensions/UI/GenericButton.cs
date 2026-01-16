@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Extensions
+namespace Extensions.Generics
 {
     /// <summary>
     /// Абстракция кнопки

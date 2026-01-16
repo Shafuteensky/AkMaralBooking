@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Extensions.EditorTools.EditorTools
+namespace Extensions.EditorTools
 {
     /// <summary>
     /// Постоянные общие значения скриптов домена EditorTools

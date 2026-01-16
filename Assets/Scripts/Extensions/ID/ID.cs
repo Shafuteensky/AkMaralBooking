@@ -15,6 +15,5 @@ namespace Extensions.ID
         
         [SerializeField]
         protected string id = string.Empty;
-        
     }
 }

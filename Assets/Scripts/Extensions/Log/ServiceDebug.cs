@@ -2,7 +2,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-namespace Extensions.Logs
+namespace Extensions.Log
 {
     /// <summary>
     /// Служебные дебаги

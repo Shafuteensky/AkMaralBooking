@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Extentions
+namespace Extentions.Generics
 {
     /// <summary>
     /// Абстрактный триггер

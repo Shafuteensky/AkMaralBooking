@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using Extensions.EditorTools.Bookmarks;
-using Extensions.EditorTools.EditorTools;
-using Extensions.Logs;
+using Extensions.Log;
 
 namespace Extensions.EditorTools
 {

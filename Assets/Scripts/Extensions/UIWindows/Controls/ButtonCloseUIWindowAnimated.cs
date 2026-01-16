@@ -3,6 +3,7 @@
 #endif
 using UnityEngine;
 using Extensions.Coroutines;
+using Extensions.Generics;
 #if UNITY_EDITOR
     using UnityEditor;
 #endif

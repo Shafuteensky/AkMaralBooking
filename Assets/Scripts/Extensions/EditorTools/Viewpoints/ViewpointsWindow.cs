@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Extensions.EditorTools.EditorTools;
+using Extensions.EditorTools;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 namespace Extensions.EditorTools.Viewpoints
 {
     /// <summary>
-    /// Навигатор точек обзора
+    /// Навигатор точек обзора на сценах
     /// </summary>
     public sealed class EditorViewpointsWindow : EditorWindow
     {

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Extensions.Logs;
+using Extensions.Log;
 using UnityEngine;
 
 namespace Extensions.Data.InMemoryData
