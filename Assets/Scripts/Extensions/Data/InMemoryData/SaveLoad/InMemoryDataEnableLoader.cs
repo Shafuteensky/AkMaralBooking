@@ -4,23 +4,23 @@ using UnityEngine;
 namespace Extensions.Data.InMemoryData
 {
     /// <summary>
-    /// Срхранение InMemory БД на OnDisable
+    /// Загрузка InMemory БД на OnEnable
     /// <remarks>
-    /// Используется для сохранения данных БД с отключенным автосейвом
+    /// Используется для прогрева БД до использования
     /// </remarks>
     /// </summary>
-    public class InMemoryDataBaseDisableSaver : MonoBehaviour
+    public class InMemoryDataEnableLoader : MonoBehaviour
     {
         [SerializeField]
         protected List<InMemoryDataBaseObject> dataBases = new List<InMemoryDataBaseObject>();
 
-        protected virtual void OnDisable()
+        protected virtual void OnEnable()
         {
             foreach (InMemoryDataBaseObject dataBase in dataBases)
             {
-                if (dataBase is InMemoryDataBase<InMemoryDataEntry> inMemoryDataBase)
+                if (dataBase is InMemoryDataContainer<InMemoryDataItem> inMemoryDataBase)
                 {
-                    inMemoryDataBase.RequestSave();
+                    var _ = inMemoryDataBase.Data;
                 }
             }
         }

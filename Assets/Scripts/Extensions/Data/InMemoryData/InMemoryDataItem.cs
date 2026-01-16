@@ -9,7 +9,7 @@ namespace Extensions.Data.InMemoryData
     /// </remarks>
     /// </summary>
     [Serializable]
-    public abstract class InMemoryDataEntry
+    public abstract class InMemoryDataItem
     {
         /// <summary>
         /// Идентификатор

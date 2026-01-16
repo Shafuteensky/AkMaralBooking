@@ -4,23 +4,25 @@ using UnityEngine;
 namespace Extensions.Data.InMemoryData
 {
     /// <summary>
-    /// Загрузка InMemory БД на OnEnable
+    /// Загрузка InMemory БД при остановке приложения на паузу
     /// <remarks>
     /// Используется для прогрева БД до использования
     /// </remarks>
     /// </summary>
-    public class InMemoryDataBaseEnableLoader : MonoBehaviour
+    public class InMemoryDataPauseSaver : MonoBehaviour
     {
         [SerializeField]
         protected List<InMemoryDataBaseObject> dataBases = new List<InMemoryDataBaseObject>();
-
-        protected virtual void OnEnable()
+        
+        protected virtual void OnApplicationPause(bool pause)
         {
+            if (!pause) return;
+
             foreach (InMemoryDataBaseObject dataBase in dataBases)
             {
-                if (dataBase is InMemoryDataBase<InMemoryDataEntry> inMemoryDataBase)
+                if (dataBase is InMemoryDataContainer<InMemoryDataItem> inMemoryDataBase)
                 {
-                    var _ = inMemoryDataBase.DataBase;
+                    inMemoryDataBase.RequestSave();
                 }
             }
         }

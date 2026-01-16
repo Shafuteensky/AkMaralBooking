@@ -6,6 +6,6 @@ namespace Extensions.EditorTools.Viewpoints
     /// <summary>
     /// Сохранение и загрузка вьюпортов ViewpointsWindow
     /// </summary>
-    [CreateAssetMenu(fileName = nameof(ViewpointsDataBase), menuName = "Extensions/EditorTools/" + nameof(ViewpointsDataBase))]
-    public sealed class ViewpointsDataBase : InMemoryDataBase<ViewpointsData> { }
+    [CreateAssetMenu(fileName = nameof(ViewpointsDataBaseBase), menuName = "Extensions/EditorTools/" + nameof(ViewpointsDataBaseBase))]
+    public sealed class ViewpointsDataBaseBase : InMemoryDataContainer<ViewpointsData> { }
 }

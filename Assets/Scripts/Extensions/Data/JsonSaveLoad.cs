@@ -139,7 +139,6 @@ namespace Extensions.Data
                 File.WriteAllText(backupPath, encrypted);
                 
                 OnAfterSave?.Invoke(fileName);
-                return true;
             }
             catch (Exception ex)
             {
@@ -148,6 +147,7 @@ namespace Extensions.Data
                 OnSaveError?.Invoke(fileName, ex);
                 return false;
             }
+            return true;
         }
 
         /// <summary>

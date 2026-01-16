@@ -19,7 +19,7 @@ namespace Extensions.EditorTools
         private const string UNKNOWN_SCENE_SECTION = "UnknownScene";
         
         [SerializeField]
-        private BookmarksDataBase dataBase;
+        private BookmarksDataBaseBase dataBaseBase;
 
         private GUIStyle _bookmarkStyle;
         private GUIStyle _selectedBookmarkStyle;
@@ -38,7 +38,7 @@ namespace Extensions.EditorTools
 
         private void OnGUI()
         {
-            if (dataBase == null)
+            if (dataBaseBase == null)
             {
                 EditorGUILayout.HelpBox("BookmarksDataBase не назначена", MessageType.Error);
                 return;
@@ -130,7 +130,7 @@ namespace Extensions.EditorTools
 
         private void DrawBookmarksList()
         {
-            IReadOnlyList<BookmarkData> items = dataBase.DataBase;
+            IReadOnlyList<BookmarkData> items = dataBaseBase.Data;
 
             if (items.Count == 0)
             {
@@ -291,7 +291,7 @@ namespace Extensions.EditorTools
 
             if (GUILayout.Button("✕", GUILayout.Width(EditorToolsConstraints.BASE_ELEMENT_HEIGHT), GUILayout.Height(EditorToolsConstraints.BASE_ELEMENT_HEIGHT)))
             {
-                dataBase.Remove(data);
+                dataBaseBase.Remove(data);
             }
 
             GUI.backgroundColor = Color.white;
@@ -335,7 +335,7 @@ namespace Extensions.EditorTools
                 data.Id = gid.ToString();
             }
 
-            dataBase.Add(data);
+            dataBaseBase.Add(data);
         }
 
         private GameObject GetSceneGameObject(Object obj)
