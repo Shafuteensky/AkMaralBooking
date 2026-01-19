@@ -46,6 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 954475516192706074}
   - component: {fileID: -7314217135538238799}
+  - component: {fileID: 6465354373561653469}
   m_Layer: 5
   m_Name: ClientView
   m_TagString: Untagged
@@ -87,6 +88,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: {fileID: 11400000, guid: a5c19e8ae3b79f8448962fe8d00f9786, type: 2}
+--- !u!114 &6465354373561653469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207562499272426183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c31502ea3a4c0d8a26e8c4fbfdcbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.View.LoadClientDataOnOpen
+  selectionContext: {fileID: 11400000, guid: 7f54c7f73f69c4749acf0bb4b3ecd21d, type: 2}
+  container: {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
+  nameInputField: {fileID: 6561928847731047113}
+  contactNumberInputField: {fileID: 3859992778284447697}
+  ratingToggleGroup: {fileID: 6498216266912359323}
+  notesInputField: {fileID: 3340419004445038174}
 --- !u!1001 &3210925075311745332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1094,3 +1113,47 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5966239813309707758, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
   m_PrefabInstance: {fileID: 8109847619653738971}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3340419004445038174 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6832094860383303557, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
+  m_PrefabInstance: {fileID: 8109847619653738971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3859992778284447697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4979439166454863370, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
+  m_PrefabInstance: {fileID: 8109847619653738971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6498216266912359323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3073067058602951232, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
+  m_PrefabInstance: {fileID: 8109847619653738971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf96526c23dd3f47b1d8255d5df77e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Extensions.Generics.GenericToggleGroup
+--- !u!114 &6561928847731047113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3142194173963639570, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
+  m_PrefabInstance: {fileID: 8109847619653738971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

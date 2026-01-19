@@ -1095,6 +1095,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2754504858806841587}
   - component: {fileID: -5127121569774340334}
+  - component: {fileID: 1918528163020107719}
+  - component: {fileID: 8059342908190806906}
   m_Layer: 5
   m_Name: EntriesCalendar
   m_TagString: Untagged
@@ -1136,6 +1138,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: {fileID: 11400000, guid: 730ec476803ec1940a0e1585dc6e16cd, type: 2}
+--- !u!114 &1918528163020107719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6539864250997625777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1350b8c923c241d3959b263c77693100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.DropdownIdBinder
+  dropdown: {fileID: 5482666949006866160}
+--- !u!114 &8059342908190806906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6539864250997625777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcedf16c34fe443a9cffef06d7646c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.InMemoryDataDropdownFactory
+  optionsProvider: {fileID: 11400000, guid: c1dffeee12ccfc14b8f04589f0ee8a88, type: 2}
+  rebuildOnEnable: 1
 --- !u!1 &7092564429187165904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,6 +1831,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needToCloseFocused: 1
   UIWindowToOpen: {fileID: 11400000, guid: 6c2e14c06b83c96459f617417c6051fd, type: 2}
+--- !u!114 &5482666949006866160 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6741700068298591124, guid: 523a68d35a2c7584aa38a630865076e4, type: 3}
+  m_PrefabInstance: {fileID: 1268059014684360036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b743370ac3e4ec2a1668f5455a8ef8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6393493096487935693
 PrefabInstance:
   m_ObjectHideFlags: 0

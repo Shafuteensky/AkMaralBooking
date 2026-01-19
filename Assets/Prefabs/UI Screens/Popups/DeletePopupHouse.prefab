@@ -151,6 +151,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6678810681829465156, guid: a288baa79ff5aa74581f493dc2729911, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7185534294295621702}
+    - targetCorrespondingSourceObject: {fileID: 6678810681829465156, guid: a288baa79ff5aa74581f493dc2729911, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8273467155601225356}
   m_SourcePrefab: {fileID: 100100000, guid: a288baa79ff5aa74581f493dc2729911, type: 3}
 --- !u!1 &7052565288175259060 stripped
 GameObject:
@@ -171,3 +174,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needToCloseFocused: 1
   UIWindowToOpen: {fileID: 11400000, guid: 6c2e14c06b83c96459f617417c6051fd, type: 2}
+--- !u!114 &8273467155601225356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7052565288175259060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef0e67c37a14f2c8284f9c9a7f88304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.DeleteHouseSelectionButton
+  selectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}

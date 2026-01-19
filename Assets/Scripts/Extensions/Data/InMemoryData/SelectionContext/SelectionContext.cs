@@ -24,14 +24,14 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// <summary>
         /// Идентификатор активной выбранной записи контейнера
         /// </summary>
-        public string DataItemId { get; private set; }
+        public string SelectedId { get; private set; }
 
-        public override bool HasSelection => Container != null && !string.IsNullOrEmpty(DataItemId);
+        public override bool HasSelection => Container != null && !string.IsNullOrEmpty(SelectedId);
 
         public override void Clear()
         {
             Container = null;
-            DataItemId = string.Empty;
+            SelectedId = string.Empty;
 
             onSelectionChanged?.Invoke();
         }
@@ -40,11 +40,11 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// Выбрать данные как активные
         /// </summary>
         /// <param name="container">Конейнер данных</param>
-        /// <param name="dataItemId">Идентификатор </param>
+        /// <param name="dataItemId">Идентификатор</param>
         public void Select(InMemoryDataContainer<TData> container, string dataItemId)
         {
             Container = container;
-            DataItemId = dataItemId;
+            SelectedId = dataItemId;
 
             onSelectionChanged?.Invoke();
         }
@@ -63,7 +63,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
                 return false;
             }
 
-            return Container.TryGetById(DataItemId, out dataItem);
+            return Container.TryGetById(SelectedId, out dataItem);
         }
     }
 }

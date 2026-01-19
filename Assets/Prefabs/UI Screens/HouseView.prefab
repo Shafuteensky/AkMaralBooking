@@ -1364,6 +1364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6042161398324917079}
   - component: {fileID: -3745489633327289831}
+  - component: {fileID: 8301709100766075352}
   m_Layer: 5
   m_Name: HouseView
   m_TagString: Untagged
@@ -1405,6 +1406,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: {fileID: 11400000, guid: 8a593b1de34bb0f409e059cfb8075cec, type: 2}
+--- !u!114 &8301709100766075352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2513310915668262185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de81e9d4de554117b2a364843c15e22e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.LoadHouseDataOnOpen
+  selectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
+  container: {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  nameInputField: {fileID: 1944182813268001399}
+  numberInputField: {fileID: 7248863208282080073}
+  ownerNameInputField: {fileID: 3866384227843926261}
+  ownerContactNumberInputField: {fileID: 2925175345512984670}
 --- !u!1 &2667248003173487041
 GameObject:
   m_ObjectHideFlags: 0
@@ -5322,7 +5341,7 @@ PrefabInstance:
     - target: {fileID: 7291940675514284107, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
       propertyPath: UIWindowToOpen
       value: 
-      objectReference: {fileID: 11400000, guid: 439f078092cecb746973942b07501bea, type: 2}
+      objectReference: {fileID: 11400000, guid: 3e8e4a8bbd2eeca4a83db854d6c13c6e, type: 2}
     - target: {fileID: 7336480033413155121, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0

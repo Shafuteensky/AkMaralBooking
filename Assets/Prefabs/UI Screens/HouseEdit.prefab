@@ -147,6 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1833165268102549131}
   - component: {fileID: -5823305446517073006}
+  - component: {fileID: 3702659862472756549}
   m_Layer: 5
   m_Name: HouseEdit
   m_TagString: Untagged
@@ -188,6 +189,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: {fileID: 11400000, guid: 3e8e4a8bbd2eeca4a83db854d6c13c6e, type: 2}
+--- !u!114 &3702659862472756549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 288165384086576939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de81e9d4de554117b2a364843c15e22e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.LoadHouseDataOnOpen
+  selectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
+  container: {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  nameInputField: {fileID: 1925463254667326870}
+  numberInputField: {fileID: 2296458188763099466}
+  ownerNameInputField: {fileID: 4384257774931307091}
+  ownerContactNumberInputField: {fileID: 6710435790219821743}
 --- !u!1 &324209581370953866
 GameObject:
   m_ObjectHideFlags: 0

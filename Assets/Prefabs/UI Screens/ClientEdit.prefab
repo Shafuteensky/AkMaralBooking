@@ -46,6 +46,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5615969777589976906}
   - component: {fileID: 4667790373107922274}
+  - component: {fileID: -106809215035825302}
   m_Layer: 5
   m_Name: ClientEdit
   m_TagString: Untagged
@@ -87,6 +88,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: {fileID: 11400000, guid: 8a60c20f46433c34584a986e728de0c9, type: 2}
+--- !u!114 &-106809215035825302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928678256239355722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6c31502ea3a4c0d8a26e8c4fbfdcbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.View.LoadClientDataOnOpen
+  selectionContext: {fileID: 11400000, guid: 7f54c7f73f69c4749acf0bb4b3ecd21d, type: 2}
+  container: {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
+  nameInputField: {fileID: 7569500402210142994}
+  contactNumberInputField: {fileID: 544251645320197642}
+  ratingToggleGroup: {fileID: 7508255135667397184}
+  notesInputField: {fileID: 2037718736787855237}
 --- !u!1001 &4798326428423610368
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,6 +116,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 60220609434496787, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 72016444431412775, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 360598908520584729, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
