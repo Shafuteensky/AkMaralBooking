@@ -7,8 +7,5 @@ namespace StarletBooking.Data
     /// Контейнер данных о клиентах
     /// </summary>
     [CreateAssetMenu(fileName = nameof(ClientsDataContainer), menuName = "StarletBooking/Data/" + nameof(ClientsDataContainer))]
-    public class ClientsDataContainer : InMemoryDataContainer<ClientData>
-    {
-        
-    }
+    public class ClientsDataContainer : InMemoryDataContainer<ClientData> { }
 }

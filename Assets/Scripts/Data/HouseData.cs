@@ -1,0 +1,50 @@
+using System;
+using Extensions.Data.InMemoryData;
+using UnityEngine;
+
+namespace StarletBooking.Data
+{
+    /// <summary>
+    /// Данные о доме
+    /// </summary>
+    [Serializable]
+    public class HouseData : InMemoryDataItem
+    {
+        [SerializeField]
+        protected string name = string.Empty;
+        [SerializeField]
+        protected string number = string.Empty;
+        [SerializeField]
+        protected string ownerName = string.Empty;
+        [SerializeField]
+        protected string ownerContactNumber = string.Empty;
+
+        /// <summary>
+        /// Наименование дома
+        /// </summary>
+        public string Name => name;
+        /// <summary>
+        /// Номер дома
+        /// </summary>
+        public string Number => number;
+        /// <summary>
+        /// Имя владельца
+        /// </summary>
+        public string OwnerName => ownerName;
+        /// <summary>
+        /// Контактный номер владельца
+        /// </summary>
+        public string OwnerContactNumber => ownerContactNumber;
+
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
+        public HouseData(string name, string number, string ownerName, string ownerContactNumber)
+        {
+            this.name = name;
+            this.number = number;
+            this.ownerName = ownerName;
+            this.ownerContactNumber = ownerContactNumber;
+        }
+    }
+}
