@@ -1,35 +1,39 @@
+using System;
 using Extensions.Generics;
 using Extensions.Log;
+using UnityEngine;
 
 namespace Extensions.Data.InMemoryData.SelectionContext
 {
     /// <summary>
-    /// Кнопка
+    /// КНопка назначения контекста данных
     /// </summary>
-    /// <typeparam name="TData"></typeparam>
-    public class AssignSelectionContextButton<TData> : GenericButton
+    /// <typeparam name="TData">Тип данных</typeparam>
+    public abstract class AssignSelectionContextButton<TData> : GenericButton
         where TData : InMemoryDataItem
     {
+        [SerializeField]
         private SelectionContext<TData> selectionContext;
+        [SerializeField]
         private InMemoryDataContainer<TData> container;
-        private string entryId;
+        
+        private string _entryId;
 
-        public void Initialize(SelectionContext<TData> context, InMemoryDataContainer<TData> sourceContainer, string id)
-        {
-            selectionContext = context;
-            container = sourceContainer;
-            entryId = id;
-        }
+        /// <summary>
+        /// Инициализация данных
+        /// </summary>
+        /// <param name="id">Идентификатор записи данных</param>
+        public void Initialize(string id) => _entryId = id;
         
         public override void OnButtonClick()
         {
-            if (selectionContext == null || container == null || string.IsNullOrEmpty(entryId))
+            if (selectionContext == null || container == null || string.IsNullOrEmpty(_entryId))
             {
                 ServiceDebug.LogError("Инициализация не выполнена или не полностью выполнена");
                 return;
             }
 
-            selectionContext.Select(container, entryId);
+            selectionContext.Select(container, _entryId);
         }
     }
 }

@@ -24,7 +24,6 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// <summary>
         /// Идентификатор активной выбранной записи контейнера
         /// </summary>
-        [field: SerializeField]
         public string DataItemId { get; private set; }
 
         public override bool HasSelection => Container != null && !string.IsNullOrEmpty(DataItemId);

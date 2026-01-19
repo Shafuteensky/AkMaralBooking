@@ -1,11 +1,11 @@
-#if DOTWEEN
-    using DG.Tweening;
-#endif
 using UnityEngine;
 using Extensions.Coroutines;
 using Extensions.Generics;
 #if UNITY_EDITOR
     using UnityEditor;
+#endif
+#if DOTWEEN
+    using DG.Tweening;
 #endif
 
 namespace Extensions.UIWindows
