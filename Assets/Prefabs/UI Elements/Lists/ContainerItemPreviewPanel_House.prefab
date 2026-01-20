@@ -139,6 +139,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2282526415513677223}
+    - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1533622567010268678}
   m_SourcePrefab: {fileID: 100100000, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
 --- !u!1 &3926812217919259591 stripped
 GameObject:
@@ -159,11 +162,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.AssignHouseDataContextButton
   selectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
   container: {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+--- !u!114 &1533622567010268678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926812217919259591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c3d7bb8b341491585c6fc5275461288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Preview.ShowHousePreviewPanel
+  container: {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  number: {fileID: 6264704389436934234}
+  houseName: {fileID: 174312996558548634}
 --- !u!224 &4736182180174797454 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6951834925274986358, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
   m_PrefabInstance: {fileID: 2432979063115214328}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6264704389436934234 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8589242870501336482, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+  m_PrefabInstance: {fileID: 2432979063115214328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4722841105264053598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,6 +309,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1483009043681388211}
   m_SourcePrefab: {fileID: 100100000, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
+--- !u!114 &174312996558548634 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4891382300039422916, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
+  m_PrefabInstance: {fileID: 4722841105264053598}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1400217639755005375 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5973027031128322273, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}

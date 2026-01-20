@@ -88,11 +88,11 @@ namespace Extensions.Data.InMemoryData.UI
                 }
 
                 GameObject instance = Instantiate(buttonPrefab, buttonsRoot);
-                AssignSelectionContextButton<TData> contextButton = instance.GetComponentInChildren<AssignSelectionContextButton<TData>>();
+                ContextIdHolder idHolder = instance.GetComponentInChildren<ContextIdHolder>();
 
-                if (contextButton != null)
+                if (idHolder != null)
                 {
-                    contextButton.Initialize(item.Id);
+                    idHolder.Initialize(item.Id);
                 }
 
                 if (spawnDelay > 0.0f)
