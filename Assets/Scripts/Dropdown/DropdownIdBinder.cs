@@ -113,12 +113,13 @@ namespace StarletBooking.UI
         /// <param name="id"></param>
         public void SetSelectedById(string id)
         {
-            if (dropdown == null)
+            if (string.IsNullOrEmpty(id))
             {
+                ServiceDebug.LogError("Идентификатор не назначен");
                 return;
             }
-
-            if (string.IsNullOrEmpty(id))
+            
+            if (Logic.IsNull(dropdown))
             {
                 return;
             }

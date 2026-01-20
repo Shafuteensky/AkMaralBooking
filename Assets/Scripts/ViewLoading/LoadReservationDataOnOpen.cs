@@ -5,6 +5,7 @@ using StarletBooking.Data.View;
 using StarletBooking.UI;
 using TMPro;
 using UnityEngine;
+using VHierarchy.Libs;
 
 namespace StarletBooking.Data.Controls
 {
@@ -74,35 +75,51 @@ namespace StarletBooking.Data.Controls
                 Logic.IsNull(exchangeRateInputField) ||
                 Logic.IsNull(prepaymentInputField))
             { return;}
+            
+            arrivalDate.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.ArrivalDate.ToShortDateString());
+            departureDate.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.DepartureDate.ToShortDateString());
+            daysInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Days.ToString());
+            
+            paymentPerDayInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.PaymentPerDay.ToString());
+            prepaymentInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Prepayment.ToString());
+            exchangeRateInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Prepayment.ToString());
 
-            paymentPerDayInputField.text = dataItem.PaymentPerDay.ToString();
-            daysInputField.text = dataItem.Days.ToString();
-            arrivalDate.text = dataItem.ArrivalDate.ToLongDateString();
-            departureDate.text = dataItem.DepartureDate.ToLongDateString();
-            prepaymentInputField.text = dataItem.Prepayment.ToString();
-            exchangeRateInputField.text = dataItem.ExchangeRate.ToString();
-
-            if (clientsDropdown == null &&
-                clientsContainer.TryGetById(dataItem.ClientId, out ClientData clientItem) &&
-                housesContainer.TryGetById(dataItem.HouseId, out HouseData houseItem))
-            {
-                clientNameInputField.text = clientItem.Name;
-                clientNumberInputField.text = clientItem.ContactNumber;
-                clientNotesInputField.text = clientItem.Notes;
-
-                clientRatingToggleGroup.SetMode(ToggleGroupMode.Range);
-                clientRatingToggleGroup.SetRange(clientItem.Rating);
-                
-                houseNameInputField.text = houseItem.Name;
-                houseNumberInputField.text = houseItem.Number;
-                houseNotesInputField.text = houseItem.Notes;
-                houseOwnerNameInputField.text = houseItem.OwnerName;
-                houseOwnerNumberInputField.text = houseItem.OwnerContactNumber;
-            }
-            else
+            if (clientsDropdown != null && housesDropdown != null)
             {
                 clientsDropdown.SetSelectedById(dataItem.ClientId);
                 housesDropdown.SetSelectedById(dataItem.HouseId);
+            }
+            else
+            {
+                clientsContainer.TryGetById(dataItem.ClientId, out ClientData clientItem);
+                housesContainer.TryGetById(dataItem.HouseId, out HouseData houseItem);
+                
+                clientNameInputField.text = clientItem == null ? DataHelpers.NotFoundString : 
+                    DataHelpers.GetString(clientItem.Name);
+                clientNumberInputField.text = clientItem == null ? DataHelpers.NotFoundString : 
+                    DataHelpers.GetString(clientItem.ContactNumber);
+                clientNotesInputField.text = clientItem == null ? DataHelpers.NotFoundString : 
+                    DataHelpers.GetString(clientItem.Notes);
+
+                clientRatingToggleGroup.SetMode(ToggleGroupMode.Range);
+                clientRatingToggleGroup.SetRange(clientItem == null ? 0 : clientItem.Rating);
+                
+                houseNameInputField.text = houseItem == null ? DataHelpers.NotFoundString : 
+                    DataHelpers.GetString(houseItem.Name);
+                houseNumberInputField.text = houseItem == null ? DataHelpers.NotFoundString : 
+                    DataHelpers.GetString(houseItem.Number);
+                houseNotesInputField.text = houseItem == null ? DataHelpers.NotFoundString : 
+                    DataHelpers.GetString(houseItem.Notes);
+                houseOwnerNameInputField.text = houseItem == null ? DataHelpers.NotFoundString : 
+                    DataHelpers.GetString(houseItem.OwnerName);
+                houseOwnerNumberInputField.text = houseItem == null ? DataHelpers.NotFoundString : 
+                    DataHelpers.GetString(houseItem.OwnerContactNumber);
             }
         }
 

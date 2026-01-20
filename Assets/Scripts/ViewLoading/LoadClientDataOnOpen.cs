@@ -32,13 +32,17 @@ namespace StarletBooking.Data.View
                 return;
             }
             
-            colorPicker.SetColor(dataItem.Color);
-            nameInputField.text = dataItem.Name;
-            contactNumberInputField.text = dataItem.ContactNumber;
-            notesInputField.text = dataItem.Notes;
+            colorPicker.SetColor(dataItem?.Color ?? DataHelpers.NotFoundColor);
+
+            nameInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Name);
+            contactNumberInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.ContactNumber);
+            notesInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Notes); 
 
             ratingToggleGroup.SetMode(ToggleGroupMode.Range);
-            ratingToggleGroup.SetRange(dataItem.Rating);
+            ratingToggleGroup.SetRange(dataItem?.Rating ?? 0);
         }
 
         protected override void ApplyEmpty()

@@ -32,11 +32,16 @@ namespace StarletBooking.Data.Controls
                 return;
             }
 
-            nameInputField.text = dataItem.Name;
-            numberInputField.text = dataItem.Number;
-            notesInputField.text = dataItem.Notes;
-            ownerNameInputField.text = dataItem.OwnerName;
-            ownerContactNumberInputField.text = dataItem.OwnerContactNumber;
+            nameInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Name); 
+            numberInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Number);
+            notesInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Notes); 
+            ownerNameInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.OwnerName); 
+            ownerContactNumberInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.OwnerContactNumber);
         }
 
         protected override void ApplyEmpty()

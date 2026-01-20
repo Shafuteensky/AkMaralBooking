@@ -26,9 +26,12 @@ namespace StarletBooking.Data.Preview
                 return;
             }
 
-            colorImage.color = data.Color;
-            clientName.text = data.Name;
-            rating.text = data.Rating.ToString();
+            colorImage.color = data?.Color ?? DataHelpers.NotFoundColor;
+
+            clientName.text = data == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(data.Name); 
+            rating.text = data == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(data.Rating.ToString()); 
         }
     }
 }

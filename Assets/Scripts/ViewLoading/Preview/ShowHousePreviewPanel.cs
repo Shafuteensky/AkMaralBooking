@@ -22,8 +22,10 @@ namespace StarletBooking.Data.Preview
                 return;
             }
 
-            number.text = data.Number;
-            houseName.text = data.Name;
+            number.text =  data == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(data.Number); 
+            houseName.text =  data == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(data.Name); 
         }
     }
 }

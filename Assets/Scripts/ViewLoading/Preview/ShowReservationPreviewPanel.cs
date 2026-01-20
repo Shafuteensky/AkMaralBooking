@@ -44,13 +44,18 @@ namespace StarletBooking.Data.Preview
             }
 
             ClientData clientData = clientsContainer.GetById(data.ClientId);
-            colorImage.color = clientData.Color;
-            clientName.text = clientData.Name;
+            colorImage.color = clientData?.Color ?? DataHelpers.NotFoundColor; 
+            clientName.text = clientData == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(clientData.Name);
             
-            houseNumber.text = housesContainer.GetById(data.HouseId).Number;
+            HouseData houseData = housesContainer.GetById(data.HouseId);
+            houseNumber.text = houseData == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(houseData.Number); 
             
-            arrivalDate.text = data.ArrivalDate.ToShortDateString();
-            departureDate.text = data.DepartureDate.ToShortDateString();
+            arrivalDate.text = data == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(data.ArrivalDate.ToShortDateString()); 
+            departureDate.text = data == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(data.DepartureDate.ToShortDateString()); 
         }
     }
 }

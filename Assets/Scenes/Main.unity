@@ -623,7 +623,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9b2c5721b4d42e285adc89f26e3def2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.Data.InMemoryData.InMemoryDataBasePauseSaver
-  dataBases: []
+  dataBases:
+  - {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
+  - {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  - {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
 --- !u!114 &1579969050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +639,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d24682ceb040487c99edfac0c6e29f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.Data.InMemoryData.InMemoryDataBaseLoader
-  dataBases: []
+  dataBases:
+  - {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
+  - {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  - {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
 --- !u!114 &1579969051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -649,7 +655,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d284bcca989d4598bafbdf78be784ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.Data.InMemoryData.InMemoryDataBaseDisableSaver
-  dataBases: []
+  dataBases:
+  - {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
+  - {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  - {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

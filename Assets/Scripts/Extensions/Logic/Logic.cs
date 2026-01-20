@@ -8,6 +8,8 @@ namespace Extensions.Logic
     /// </summary>
     public static class Logic
     {
+        #region Проверки
+        
         /// <summary>
         /// Проверка объекта на существование
         /// </summary>
@@ -34,5 +36,7 @@ namespace Extensions.Logic
         /// <returns></returns>
         [HideInCallstack]
         public static bool IsNotNull(Object obj) => !IsNull(obj);
+        
+        #endregion
     }
 }
