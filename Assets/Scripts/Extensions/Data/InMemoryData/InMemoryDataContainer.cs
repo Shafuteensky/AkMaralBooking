@@ -26,6 +26,16 @@ namespace Extensions.Data.InMemoryData
 
         [SerializeField]
         protected bool autoSave = true;
+        
+        /// <summary>
+        /// Название файла сохранения
+        /// </summary>
+        public string SaveFileName => saveFileName;
+        
+        /// <summary>
+        /// Процесс выполнения сохранения
+        /// </summary>
+        public bool IsSavingInProgress { get; private set; }
 
         #region Events
 

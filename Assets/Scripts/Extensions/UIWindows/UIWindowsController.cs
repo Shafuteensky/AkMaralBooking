@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Extensions.Log;
 using Extensions.Singleton;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -67,7 +68,7 @@ namespace Extensions.UIWindows
                 }
             }
             
-            Debug.LogError($"Window {id} not found");
+            ServiceDebug.LogError($"Окно с id {id} не найдено в {nameof(UIWindowsController)}");
         }
         
         /// <summary>

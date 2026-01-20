@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 7864324584726003342}
   - component: {fileID: -8145907542830530133}
   - component: {fileID: 5944008726589650213}
+  - component: {fileID: 7092229804663814950}
   m_Layer: 5
   m_Name: ClientsList
   m_TagString: Untagged
@@ -550,7 +551,24 @@ MonoBehaviour:
   container: {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
   buttonPrefab: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
   buttonsRoot: {fileID: 4377555924496661290}
-  rebuildOnEnable: 1
+  rebuildOnStart: 1
+  rebuildOnEnable: 0
+  spawnDelay: 0.05
+--- !u!114 &7092229804663814950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2960039079141250753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68c21cf2d134e9c8d3e7b1793b5994e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Extensions.Data.InMemoryData.UI.PopulateClientsOnAfterSave
+  factory: {fileID: 5944008726589650213}
+  container: {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
+  loadingOverlay: {fileID: 11400000, guid: e7c957d1646afba448341a1ae627f1f7, type: 2}
 --- !u!1 &4455069945794894735
 GameObject:
   m_ObjectHideFlags: 0
