@@ -16,13 +16,13 @@ namespace StarletBooking.Data.Controls
         private ReservationsDataContainer _reservationDataContainer;
             
         [SerializeField]
+        private DropdownIdBinder _housesDropDown;
+        [SerializeField]
         private DropdownIdBinder _clientsDropDown;
-        //[SerializeField]
-        //color
-        //[SerializeField]
-        //arrivalDate
-        //[SerializeField]
-        //departureDate
+        [SerializeField] 
+        private TMP_InputField arrivalDate;
+        [SerializeField] 
+        private TMP_InputField departureDate;
         [SerializeField]
         private TMP_InputField _paymentPerDayInputField;
         [SerializeField]
@@ -60,8 +60,8 @@ namespace StarletBooking.Data.Controls
             float.TryParse(_exchangeRateInputField.text, out rate);
 
             ReservationData newHouse = new ReservationData(
+                _housesDropDown.SelectedId,
                 _clientsDropDown.SelectedId,
-                Color.chartreuse,
                 DateTime.Today,
                 DateTime.Today,
                 paymentPerDay,

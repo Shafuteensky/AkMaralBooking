@@ -11,9 +11,9 @@ namespace StarletBooking.Data
     public class ReservationData : InMemoryDataItem
     {
         [SerializeField]
-        protected string clientId = default;
+        protected string houseId = default;
         [SerializeField]
-        protected Color color = Color.white;
+        protected string clientId = default;
         
         [SerializeField]
         protected string arrivalDateIso = string.Empty;
@@ -30,13 +30,13 @@ namespace StarletBooking.Data
         protected float exchangeRate = 0f;
 
         /// <summary>
+        /// Идентификатор дома
+        /// </summary>
+        public string HouseId => houseId;
+        /// <summary>
         /// Идентификатор клиента
         /// </summary>
         public string ClientId => clientId;
-        /// <summary>
-        /// Цвет записи
-        /// </summary>
-        public Color Color => color;
 
         /// <summary>
         /// Дата прибытия (ISO)
@@ -68,8 +68,8 @@ namespace StarletBooking.Data
         /// Конструктор класса
         /// </summary>
         public ReservationData(
+            string houseId,
             string clientId,
-            Color color,
             DateTime arrivalDate,
             DateTime departureDate,
             float paymentPerDay,
@@ -77,8 +77,8 @@ namespace StarletBooking.Data
             float prepayment,
             float exchangeRate)
         {
+            this.houseId = houseId;
             this.clientId = clientId;
-            this.color = color;
             this.arrivalDateIso = arrivalDate.ToString("o");
             this.departureDateIso = departureDate.ToString("o");
             this.paymentPerDay = paymentPerDay;

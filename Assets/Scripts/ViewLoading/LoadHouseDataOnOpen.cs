@@ -15,6 +15,8 @@ namespace StarletBooking.Data.Controls
         [SerializeField]
         protected TMP_InputField numberInputField = default;
         [SerializeField]
+        protected TMP_InputField notesInputField = default;
+        [SerializeField]
         protected TMP_InputField ownerNameInputField = default;
         [SerializeField]
         protected TMP_InputField ownerContactNumberInputField = default;
@@ -23,6 +25,7 @@ namespace StarletBooking.Data.Controls
         {
             if (Logic.IsNull(nameInputField) ||
                 Logic.IsNull(numberInputField) ||
+                Logic.IsNull(notesInputField) ||
                 Logic.IsNull(ownerNameInputField) ||
                 Logic.IsNull(ownerContactNumberInputField))
             {
@@ -31,6 +34,7 @@ namespace StarletBooking.Data.Controls
 
             nameInputField.text = dataItem.Name;
             numberInputField.text = dataItem.Number;
+            notesInputField.text = dataItem.Notes;
             ownerNameInputField.text = dataItem.OwnerName;
             ownerContactNumberInputField.text = dataItem.OwnerContactNumber;
         }
@@ -39,6 +43,7 @@ namespace StarletBooking.Data.Controls
         {
             if (nameInputField != null) { nameInputField.text = string.Empty; }
             if (numberInputField != null) { numberInputField.text = string.Empty; }
+            if (notesInputField != null) { notesInputField.text = string.Empty; }
             if (ownerNameInputField != null) { ownerNameInputField.text = string.Empty; }
             if (ownerContactNumberInputField != null) { ownerContactNumberInputField.text = string.Empty; }
         }

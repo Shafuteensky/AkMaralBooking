@@ -15,6 +15,8 @@ namespace StarletBooking.Data
         [SerializeField]
         protected string number = string.Empty;
         [SerializeField]
+        protected string notes = string.Empty;
+        [SerializeField]
         protected string ownerName = string.Empty;
         [SerializeField]
         protected string ownerContactNumber = string.Empty;
@@ -28,6 +30,10 @@ namespace StarletBooking.Data
         /// </summary>
         public string Number => number;
         /// <summary>
+        /// Заметки о доме
+        /// </summary>
+        public string Notes => notes;
+        /// <summary>
         /// Имя владельца
         /// </summary>
         public string OwnerName => ownerName;
@@ -39,10 +45,11 @@ namespace StarletBooking.Data
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        public HouseData(string name, string number, string ownerName, string ownerContactNumber)
+        public HouseData(string name, string number, string notes, string ownerName, string ownerContactNumber)
         {
             this.name = name;
             this.number = number;
+            this.notes = notes;
             this.ownerName = ownerName;
             this.ownerContactNumber = ownerContactNumber;
         }

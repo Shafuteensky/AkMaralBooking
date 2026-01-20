@@ -14,6 +14,8 @@ namespace StarletBooking.Data.View
         protected TMP_InputField nameInputField = default;
         [SerializeField]
         protected TMP_InputField contactNumberInputField = default;
+        [SerializeField] 
+        protected ColorPicker.ColorPicker colorPicker;
         [SerializeField]
         protected GenericToggleGroup ratingToggleGroup = default;
         [SerializeField]
@@ -21,14 +23,16 @@ namespace StarletBooking.Data.View
 
         protected override void ApplyToView(ClientData dataItem)
         {
-            if (Logic.IsNull(nameInputField) ||
+            if (Logic.IsNull(colorPicker) ||
+                Logic.IsNull(nameInputField) ||
                 Logic.IsNull(contactNumberInputField) ||
                 Logic.IsNull(ratingToggleGroup) ||
                 Logic.IsNull(notesInputField))
             {
                 return;
             }
-
+            
+            colorPicker.SetColor(dataItem.Color);
             nameInputField.text = dataItem.Name;
             contactNumberInputField.text = dataItem.ContactNumber;
             notesInputField.text = dataItem.Notes;
@@ -40,6 +44,7 @@ namespace StarletBooking.Data.View
         protected override void ApplyEmpty()
         {
             if (nameInputField != null) { nameInputField.text = string.Empty; }
+            if (colorPicker != null) { colorPicker.SetColor(Random.ColorHSV()); }
             if (contactNumberInputField != null) { contactNumberInputField.text = string.Empty; }
             if (notesInputField != null) { notesInputField.text = string.Empty; }
 

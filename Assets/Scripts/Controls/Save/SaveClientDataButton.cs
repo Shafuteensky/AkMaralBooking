@@ -14,6 +14,8 @@ namespace StarletBooking.Data.Controls
         private ClientsDataContainer _clientsDataContainer;
         [SerializeField]
         private TMP_InputField _nameInputField;
+        [SerializeField] 
+        private ColorPicker.ColorPicker _colorPicker;
         [SerializeField]
         private TMP_InputField _contactNumberInputField;
         [SerializeField]
@@ -29,7 +31,8 @@ namespace StarletBooking.Data.Controls
                 return;
             }
             
-            if (_nameInputField == null 
+            if (_colorPicker == null
+                || _nameInputField == null 
                 || _contactNumberInputField == null
                 || _ratingToggleGroup == null 
                 || _notesInputField == null)
@@ -39,7 +42,7 @@ namespace StarletBooking.Data.Controls
             }
             
             ClientData newClient = new ClientData(
-                _nameInputField.text, _contactNumberInputField.text, 
+                _nameInputField.text, _colorPicker.GetColor(), _contactNumberInputField.text, 
                 _ratingToggleGroup.GetActiveCount(), _notesInputField.text);
             
             _clientsDataContainer.Add(newClient);

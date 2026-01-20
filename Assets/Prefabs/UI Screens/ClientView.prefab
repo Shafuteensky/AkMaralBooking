@@ -104,6 +104,7 @@ MonoBehaviour:
   container: {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
   nameInputField: {fileID: 6561928847731047113}
   contactNumberInputField: {fileID: 3859992778284447697}
+  colorPicker: {fileID: 5177958710772733282}
   ratingToggleGroup: {fileID: 6498216266912359323}
   notesInputField: {fileID: 3340419004445038174}
 --- !u!1001 &3210925075311745332
@@ -859,6 +860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClientView
       objectReference: {fileID: 0}
+    - target: {fileID: 4795091003196656698, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4979439166454863370, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
       propertyPath: m_Interactable
       value: 0
@@ -1135,6 +1140,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5177958710772733282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3985748833240724665, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}
+  m_PrefabInstance: {fileID: 8109847619653738971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a39404e0314f599e9ab9603a5f4942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.ColorPicker.ColorPicker
 --- !u!114 &6498216266912359323 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3073067058602951232, guid: 8493c600d0e0c7543b39e3b30488531f, type: 3}

@@ -17,6 +17,8 @@ namespace StarletBooking.Data.Controls
         [SerializeField]
         private TMP_InputField _numberInputField;
         [SerializeField]
+        private TMP_InputField _notesInputField;
+        [SerializeField]
         private TMP_InputField _ownerNameInputField;
         [SerializeField]
         private TMP_InputField _ownerContactNumberInputField;
@@ -31,6 +33,7 @@ namespace StarletBooking.Data.Controls
             
             if (_nameInputField == null 
                 || _numberInputField == null
+                || _notesInputField == null
                 || _ownerNameInputField == null 
                 || _ownerContactNumberInputField == null)
             {
@@ -39,7 +42,7 @@ namespace StarletBooking.Data.Controls
             }
             
             HouseData newHouse = new HouseData(
-                _nameInputField.text, _numberInputField.text, 
+                _nameInputField.text, _numberInputField.text, _notesInputField.text,
                 _ownerNameInputField.text, _ownerContactNumberInputField.text);
             
             _houseDataContainer.Add(newHouse);

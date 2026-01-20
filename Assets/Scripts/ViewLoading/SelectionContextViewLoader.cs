@@ -1,5 +1,6 @@
 using Extensions.Data.InMemoryData;
 using Extensions.Data.InMemoryData.SelectionContext;
+using Extensions.Log;
 using Extensions.Logic;
 using UnityEngine;
 
@@ -42,27 +43,24 @@ namespace StarletBooking.Data.View
         /// </summary>
         public void Rebuild()
         {
+            ApplyEmpty();
+            
             if (selectionContext == null || container == null)
             {
                 return;
             }
 
             string id = selectionContext.SelectedId;
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id) || 
+                !container.TryGetById(id, out TData dataItem) || 
+                dataItem == null)
             {
-                ApplyEmpty();
-                return;
-            }
-
-            if (!container.TryGetById(id, out TData dataItem) || dataItem == null)
-            {
-                ApplyEmpty();
+                ServiceDebug.LogError("Ошибка получения данных");
                 return;
             }
 
             ApplyToView(dataItem);
         }
-
 
         protected void OnSelectionChanged() => Rebuild();
         
