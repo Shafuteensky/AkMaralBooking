@@ -28,7 +28,7 @@ namespace Extensions.UIWindows
         [SerializeField] protected Transform root;
         
         [Header("Превью (назначаются автоматически)"), Space]
-        [SerializeField] protected List<UIWindow> openedUIWindows = new List<UIWindow>();
+        [SerializeField] protected List<UIWindow> openedUIWindows = new();
         [SerializeField] protected UIWindow lastOpenedWindow;
         
         #endregion
@@ -36,6 +36,7 @@ namespace Extensions.UIWindows
         #region Переменные
         
         protected UIWindowID previousWindow;
+        protected HashSet<UIWindow> activeUIWindows = new();
         
         #endregion
 
@@ -72,6 +73,7 @@ namespace Extensions.UIWindows
                     lastOpenedWindow.transform.SetAsLastSibling();
                     
                     if (setPrevious) lastOpenedWindow.SetPreviousWindow(previousWindow);
+                    activeUIWindows.Add(lastOpenedWindow);
                     
                     return;
                 }
@@ -110,13 +112,25 @@ namespace Extensions.UIWindows
                 if (window.Id.Id == id)
                 {
                     CloseOpenedWindow(window);
+                    activeUIWindows.Remove(window);
                     return;
                 }
             }
-            
-            ServiceDebug.LogError($"Окно с id {id} не найдено в {nameof(UIWindowsController)}");
         }
 
+        /// <summary>
+        /// Закрыть все активные окна
+        /// </summary>
+        public void CloseAllWindows(UIWindow except = null)
+        {
+            foreach (UIWindow window in activeUIWindows)
+            {
+                if (except != null && window.Id.Id == except.Id.Id) continue;
+                CloseOpenedWindow(window);
+            }
+            activeUIWindows.Clear();
+        }
+        
         #endregion
         
         #region Внутренние операции
@@ -132,6 +146,7 @@ namespace Extensions.UIWindows
             
             lastOpenedWindow.transform.SetAsLastSibling();
             openedUIWindows.Add(lastOpenedWindow);
+            activeUIWindows.Add(lastOpenedWindow);
         }
 
         private void CloseOpenedWindow(UIWindow window)

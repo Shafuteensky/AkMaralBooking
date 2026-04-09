@@ -542,9 +542,10 @@ MonoBehaviour:
   - {fileID: 8175441984097762281, guid: 6490d3f6946d5a246ae494395de78c88, type: 3}
   - {fileID: 8175441984097762281, guid: 9b3fbca30e979f5469800fa0aea786ac, type: 3}
   - {fileID: 8175441984097762281, guid: 8383057c79961034686d6c12b0ee5008, type: 3}
-  - {fileID: -3745489633327289831, guid: ed8ca3a7bcc9eb842b898169451fe264, type: 3}
+  - {fileID: 8722698054976595851, guid: 26f460bd1e2661140b285e9b58e18c63, type: 3}
+  root: {fileID: 1458427839}
   openedUIWindows: []
-  focusedWindow: {fileID: 0}
+  lastOpenedWindow: {fileID: 0}
 --- !u!1 &1570167786
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,6 +628,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
   - {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
   - {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
+  waitForSaveCompletion: 1
+  saveOnQuit: 1
+  saveOnFocusLost: 0
+  showSaveLog: 0
+  saveTimeoutSeconds: 5
 --- !u!114 &1579969050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,6 +649,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
   - {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
   - {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
+  useAsyncPreload: 1
+  showLoadingLog: 0
 --- !u!114 &1579969051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -659,6 +667,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
   - {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
   - {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
+  waitForSaveCompletion: 1
+  showSaveLog: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

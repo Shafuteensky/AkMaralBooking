@@ -1,3 +1,4 @@
+using System;
 using Extensions.Log;
 using UnityEngine;
 
@@ -8,13 +9,16 @@ namespace Extensions.UIWindows
     /// </summary>
     public class ButtonOpenUIWindow : UIWindowControlButton
     {
-        [SerializeField] protected bool needToCloseThis = true;
         [SerializeField] protected UIWindowID UIWindowToOpen;
+        [SerializeField] protected bool needToCloseThis = true;
+        [SerializeField] private bool closePrevious = false;
+
+        public override void OnButtonClick() => OpenUIWindow();
         
         /// <summary>
         /// Открытие нового окна по нажатию на кнопку
         /// </summary>
-        public override void OnButtonClick()
+        private void OpenUIWindow()
         {
             if (!UIWindowToOpen)
             {
@@ -24,7 +28,9 @@ namespace Extensions.UIWindows
             
             UIWindowsController windowsController = UIWindowsController.Instance;
 
+            if (closePrevious) windowsController.CloseWindowById(parentUIWindow.PreviousWindow.Id);
             if (needToCloseThis) windowsController.CloseWindowById(parentUIWindow.Id.Id);
+            
             windowsController.OpenWindowByID(UIWindowToOpen.Id);
         }
     }

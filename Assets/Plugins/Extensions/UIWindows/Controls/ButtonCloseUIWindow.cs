@@ -8,14 +8,17 @@ namespace Extensions.UIWindows
     /// <summary>
     /// Кнопка для закрытия окна интерфейса
     /// </summary>
-    public class ButtonCloseUIWindow : UIWindowControlButton
+    public sealed class ButtonCloseUIWindow : UIWindowControlButton
     {
-        [SerializeField] protected bool needToOpenPrevious = true;
-        
+        [SerializeField] private bool closeAll = false;
+        [SerializeField] private bool needToOpenPrevious = true;
+
+        public override void OnButtonClick() => CloseUIWindow();
+
         /// <summary>
         /// Закрытие текущего окна в фокусе и открытие предыдущего
         /// </summary>
-        public override void OnButtonClick()
+        private void CloseUIWindow()
         {
             UIWindowsController windowsController = UIWindowsController.Instance;
             
@@ -25,13 +28,16 @@ namespace Extensions.UIWindows
                 return;
             }
             
-            windowsController.CloseWindowById(parentUIWindow.Id.Id);
+            if (closeAll)
+                windowsController.CloseAllWindows();
+            else
+                windowsController.CloseWindowById(parentUIWindow.Id.Id);
             if (needToOpenPrevious) windowsController.OpenPreviousWindow();
         }
 
 #if UNITY_EDITOR
         [ContextMenu("Convert To ButtonCloseUIWindowAnimated")]
-        protected void ConvertToAnimated()
+        private void ConvertToAnimated()
         {
             GameObject go = gameObject;
 
