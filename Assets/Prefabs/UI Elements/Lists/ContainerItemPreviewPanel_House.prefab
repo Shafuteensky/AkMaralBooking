@@ -134,12 +134,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 542862374164691360, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+    - {fileID: 3665595425321417708, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6951834925274986358, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1400217639755005375}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4605672490564271645}
     - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2282526415513677223}
@@ -152,6 +156,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
   m_PrefabInstance: {fileID: 2432979063115214328}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4605672490564271645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926812217919259591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff16f79deaa4b41a04b194f6991232f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ContextIdHolders.HouseIdHolder
 --- !u!114 &2282526415513677223
 MonoBehaviour:
   m_ObjectHideFlags: 0

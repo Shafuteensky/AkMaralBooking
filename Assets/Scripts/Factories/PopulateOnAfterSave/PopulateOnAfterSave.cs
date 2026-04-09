@@ -12,12 +12,9 @@ namespace Extensions.Data.InMemoryData.UI
         where TContainer : InMemoryDataContainer<TData>
         where TData : InMemoryDataEntry
     {
-        [SerializeField]
-        protected GenericDataPreviewButtonFactory<TContainer, TData> factory;
-        [SerializeField]
-        protected InMemoryDataContainer<TData> container;
-        [SerializeField]
-        protected ID loadingOverlay;
+        [SerializeField] protected GenericDataPreviewButtonFactory<TContainer, TData> factory;
+        [SerializeField] protected InMemoryDataContainer<TData> container;
+        [SerializeField] protected UIWindowID loadingOverlay;
 
         protected UIWindowsController windowsController;
         
@@ -52,10 +49,7 @@ namespace Extensions.Data.InMemoryData.UI
             if (saveFileName == container.Id)
             {
                 factory.Rebuild();
-                if (windowsController.FocusedWindow.Id.Id == loadingOverlay.Id)
-                {
-                    windowsController.CloseFocusedWindow();
-                }
+                windowsController.CloseWindowById(loadingOverlay.Id);
             }
         }
         

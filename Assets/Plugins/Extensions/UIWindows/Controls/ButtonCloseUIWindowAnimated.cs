@@ -13,7 +13,7 @@ namespace Extensions.UIWindows
     /// <summary>
     /// Кнопка для закрытия окна интерфейса с анимацией DOTWEEN
     /// </summary>
-    public class ButtonCloseUIWindowAnimated : AbstractButton
+    public class ButtonCloseUIWindowAnimated : UIWindowControlButton
     {
 #if DOTWEEN
         [SerializeField]
@@ -27,7 +27,7 @@ namespace Extensions.UIWindows
         {
             UIWindowsController windowsController = UIWindowsController.Instance;
 
-            if (!windowsController.FocusedWindow.PreviousWindow)
+            if (!windowsController.LastOpenedWindow.PreviousWindow)
                 return;
 
             windowsController.OpenPreviousWindow();
@@ -36,14 +36,16 @@ namespace Extensions.UIWindows
             if (beforeCloseAnimation)
             {
                 beforeCloseAnimation.DORestart();
-                CoroutineDelay.Run(this, beforeCloseAnimation.duration, windowsController.CloseFocusedWindow);
+                CoroutineDelay.Run(this, beforeCloseAnimation.duration, CloseThis);
                 return;
             }
 #endif
 
-            windowsController.CloseFocusedWindow();
+            CloseThis();
         }
-
+        
+        private void CloseThis() => UIWindowsController.Instance?.CloseWindowById(parentUIWindow.Id.Id);
+        
 #if UNITY_EDITOR
         [ContextMenu("Convert To ButtonCloseUIWindow")]
         protected void ConvertToNonAnimated()

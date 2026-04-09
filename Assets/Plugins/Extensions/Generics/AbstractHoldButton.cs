@@ -4,7 +4,6 @@ using Extensions.Coroutines;
 using Extensions.ScriptableValues;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Extensions.Generics
 {
@@ -41,10 +40,9 @@ namespace Extensions.Generics
 
         #endregion
         
-        [SerializeField]
-        protected FloatValue holdDurationValue;
-        [SerializeField]
-        protected bool useUnscaledTime = true;
+        [Header("Параметры удержания"), Space]
+        [SerializeField] protected FloatValue holdDurationValue;
+        [SerializeField] protected bool useUnscaledTime = true;
 
         protected CoroutineTask holdTask;
 
@@ -52,7 +50,7 @@ namespace Extensions.Generics
         protected float holdDuration;
         protected float holdTime;
 
-        protected virtual void Awake()
+        protected override void Awake()
         {
             base.Awake();
             holdTask = new CoroutineTask(this);

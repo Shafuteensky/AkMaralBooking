@@ -14,34 +14,28 @@ namespace Extensions.UIWindows
         #region Свойства
         
         /// <summary>
-        /// Текущее окно в фокусе
+        /// Последнее открытое окно
         /// </summary>
-        public UIWindow FocusedWindow => focusedWindow;
+        public UIWindow LastOpenedWindow => lastOpenedWindow;
         
         #endregion
         
         #region Параметры
         
         [Header("Настройки"), Space]
-        [SerializeField]
-        protected UIWindow startWindow;
-        [SerializeField]
-        protected List<UIWindow> preparedUIWindows =  new List<UIWindow>();
-        [SerializeField]
-        protected Transform root;
+        [SerializeField] protected UIWindow startWindow;
+        [SerializeField] protected List<UIWindow> preparedUIWindows =  new List<UIWindow>();
+        [SerializeField] protected Transform root;
         
         [Header("Превью (назначаются автоматически)"), Space]
-        [SerializeField]
-        protected List<UIWindow> openedUIWindows = new List<UIWindow>();
-        [SerializeField]
-        protected UIWindow focusedWindow;
+        [SerializeField] protected List<UIWindow> openedUIWindows = new List<UIWindow>();
+        [SerializeField] protected UIWindow lastOpenedWindow;
         
         #endregion
         
         #region Переменные
         
         protected UIWindowID previousWindow;
-        protected bool transitionInProgress = false;
         
         #endregion
 
@@ -58,7 +52,7 @@ namespace Extensions.UIWindows
         
         #endregion
 
-        #region Управление окнами
+        #region Открытие окон
         
         /// <summary>
         /// Открыть окно по идентификатору
@@ -71,13 +65,13 @@ namespace Extensions.UIWindows
             {
                 if (window.Id.Id == id)
                 {
-                    previousWindow = focusedWindow.Id;
+                    previousWindow = lastOpenedWindow.Id;
 
-                    focusedWindow = window;
-                    focusedWindow.gameObject.SetActive(true); 
-                    focusedWindow.transform.SetAsLastSibling();
+                    lastOpenedWindow = window;
+                    lastOpenedWindow.gameObject.SetActive(true); 
+                    lastOpenedWindow.transform.SetAsLastSibling();
                     
-                    if (setPrevious) focusedWindow.SetPreviousWindow(previousWindow);
+                    if (setPrevious) lastOpenedWindow.SetPreviousWindow(previousWindow);
                     
                     return;
                 }
@@ -99,29 +93,52 @@ namespace Extensions.UIWindows
         /// <summary>
         /// Открытие предыдущего окна
         /// </summary>
-        public void OpenPreviousWindow() => OpenWindowByID(focusedWindow.PreviousWindow.Id, false);
+        public void OpenPreviousWindow() => OpenWindowByID(lastOpenedWindow.PreviousWindow.Id);
 
-        /// <summary>
-        /// Закрытие окна в фокусе
-        /// </summary>
-        public void CloseFocusedWindow() => focusedWindow.gameObject.SetActive(false);
+        #endregion
+
+        #region Закрытие окон
         
         /// <summary>
-        /// Закрытие предыдущего окна
+        /// Закрытие окна по идентификатору
         /// </summary>
-        public void ClosePreviousWindow() => focusedWindow.PreviousWindow.GameObject().SetActive(false);
+        /// <param name="id"></param>
+        public void CloseWindowById(string id)
+        {
+            foreach (UIWindow window in openedUIWindows)
+            {
+                if (window.Id.Id == id)
+                {
+                    CloseOpenedWindow(window);
+                    return;
+                }
+            }
+            
+            ServiceDebug.LogError($"Окно с id {id} не найдено в {nameof(UIWindowsController)}");
+        }
+
+        #endregion
+        
+        #region Внутренние операции
 
         private void OpenNewWindow(UIWindow window)
         {
-            if (transitionInProgress) return;
+            if (window == null) return;
             
-            previousWindow = focusedWindow?.Id;
-            focusedWindow = Instantiate(window.gameObject, root).GetComponent<UIWindow>();
+            previousWindow = lastOpenedWindow?.Id;
+            lastOpenedWindow = Instantiate(window.gameObject, root).GetComponent<UIWindow>();
             
-            if (previousWindow) focusedWindow.SetPreviousWindow(previousWindow);
+            if (previousWindow) lastOpenedWindow.SetPreviousWindow(previousWindow);
             
-            focusedWindow.transform.SetAsLastSibling();
-            openedUIWindows.Add(focusedWindow);
+            lastOpenedWindow.transform.SetAsLastSibling();
+            openedUIWindows.Add(lastOpenedWindow);
+        }
+
+        private void CloseOpenedWindow(UIWindow window)
+        {
+            if (window == null) return;
+            
+            window.GameObject().SetActive(false);
         }
         
         #endregion

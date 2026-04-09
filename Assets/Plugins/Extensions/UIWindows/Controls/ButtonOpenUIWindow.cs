@@ -1,4 +1,3 @@
-using Extensions.Generics;
 using Extensions.Log;
 using UnityEngine;
 
@@ -7,13 +6,10 @@ namespace Extensions.UIWindows
     /// <summary>
     /// Кнопка для открытия окна интерфейса
     /// </summary>
-    public class ButtonOpenUIWindow : AbstractButton
+    public class ButtonOpenUIWindow : UIWindowControlButton
     {
-        [SerializeField] 
-        protected bool needToCloseFocused = true;
-        
-        [SerializeField] 
-        protected UIWindowID UIWindowToOpen = default;
+        [SerializeField] protected bool needToCloseThis = true;
+        [SerializeField] protected UIWindowID UIWindowToOpen;
         
         /// <summary>
         /// Открытие нового окна по нажатию на кнопку
@@ -22,14 +18,13 @@ namespace Extensions.UIWindows
         {
             if (!UIWindowToOpen)
             {
-                ServiceDebug.LogError($"{nameof(UIWindowToOpen)} is null");
+                ServiceDebug.LogError($"Окно для открытия ({nameof(UIWindowToOpen)}) не назначено");
                 return;
             }
             
             UIWindowsController windowsController = UIWindowsController.Instance;
 
-            if (needToCloseFocused) 
-                windowsController.CloseFocusedWindow();
+            if (needToCloseThis) windowsController.CloseWindowById(parentUIWindow.Id.Id);
             windowsController.OpenWindowByID(UIWindowToOpen.Id);
         }
     }

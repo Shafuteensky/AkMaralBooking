@@ -1,4 +1,3 @@
-using Extensions.Generics;
 using UnityEngine;
 #if UNITY_EDITOR
     using UnityEditor;
@@ -9,23 +8,25 @@ namespace Extensions.UIWindows
     /// <summary>
     /// Кнопка для закрытия окна интерфейса
     /// </summary>
-    public class ButtonCloseUIWindow : AbstractButton
+    public class ButtonCloseUIWindow : UIWindowControlButton
     {
+        [SerializeField] protected bool needToOpenPrevious = true;
+        
         /// <summary>
         /// Закрытие текущего окна в фокусе и открытие предыдущего
         /// </summary>
         public override void OnButtonClick()
         {
             UIWindowsController windowsController = UIWindowsController.Instance;
-
-            if (!windowsController.FocusedWindow.PreviousWindow)
+            
+            if (!windowsController.LastOpenedWindow.PreviousWindow)
             {
-                Debug.LogError($"Предыдущее окно не назначено для {windowsController.FocusedWindow.name}");
+                Debug.LogError($"Предыдущее окно не назначено для {windowsController.LastOpenedWindow.name}");
                 return;
             }
-
-            windowsController.CloseFocusedWindow();
-            windowsController.OpenPreviousWindow();
+            
+            windowsController.CloseWindowById(parentUIWindow.Id.Id);
+            if (needToOpenPrevious) windowsController.OpenPreviousWindow();
         }
 
 #if UNITY_EDITOR
