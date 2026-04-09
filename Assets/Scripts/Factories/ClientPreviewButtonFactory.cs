@@ -5,5 +5,5 @@ namespace Extensions.Data.InMemoryData.UI
     /// <summary>
     /// Фабрика списка клиентов
     /// </summary>
-    public class ClientPreviewButtonFactory : GenericDataPreviewButtonFactory<ClientData> { }
+    public class ClientPreviewButtonFactory : GenericDataPreviewButtonFactory<ClientsDataContainer, ClientData> { }
 }

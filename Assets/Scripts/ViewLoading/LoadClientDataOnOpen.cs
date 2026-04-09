@@ -1,5 +1,5 @@
 using Extensions.Generics;
-using Extensions.Logic;
+using Extensions.Helpers;
 using TMPro;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace StarletBooking.Data.View
         [SerializeField] 
         protected ColorPicker.ColorPicker colorPicker;
         [SerializeField]
-        protected GenericToggleGroup ratingToggleGroup = default;
+        protected ToggleGroupControl ratingToggleGroup = default;
         [SerializeField]
         protected TMP_InputField notesInputField = default;
 

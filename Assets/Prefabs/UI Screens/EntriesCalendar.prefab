@@ -1799,38 +1799,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: HouseChoose
       objectReference: {fileID: 0}
+    - target: {fileID: 8829451412312661038, guid: 523a68d35a2c7584aa38a630865076e4, type: 3}
+      propertyPath: UIWindowToOpen
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c2e14c06b83c96459f617417c6051fd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 569050320219350098, guid: 523a68d35a2c7584aa38a630865076e4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6424069600830365091}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 523a68d35a2c7584aa38a630865076e4, type: 3}
 --- !u!224 &1601487229760863887 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 549629172856013803, guid: 523a68d35a2c7584aa38a630865076e4, type: 3}
   m_PrefabInstance: {fileID: 1268059014684360036}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1620346664248219958 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 569050320219350098, guid: 523a68d35a2c7584aa38a630865076e4, type: 3}
-  m_PrefabInstance: {fileID: 1268059014684360036}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6424069600830365091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1620346664248219958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36bf6a4d50dc44a2a06ad2bc36aa773d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  needToCloseFocused: 1
-  UIWindowToOpen: {fileID: 11400000, guid: 6c2e14c06b83c96459f617417c6051fd, type: 2}
 --- !u!114 &5482666949006866160 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6741700068298591124, guid: 523a68d35a2c7584aa38a630865076e4, type: 3}
@@ -1850,6 +1832,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 62051199314191748}
     m_Modifications:
+    - target: {fileID: 1870132653047603999, guid: bb2d7aeecbcfcdf478bc320c7238c4a2, type: 3}
+      propertyPath: UIWindowToOpen
+      value: 
+      objectReference: {fileID: 11400000, guid: 07186e672c1e8c1479a4fbfd09ba2f6c, type: 2}
     - target: {fileID: 3663404609965847253, guid: bb2d7aeecbcfcdf478bc320c7238c4a2, type: 3}
       propertyPath: m_Name
       value: TopPanelButton_Clients

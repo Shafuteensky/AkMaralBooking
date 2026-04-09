@@ -10,7 +10,7 @@ namespace StarletBooking.Data.Controls
     /// <summary>
     /// Сохранение записи об аренде
     /// </summary>
-    public class SaveReservationDataButton : GenericButton
+    public class SaveReservationDataButton : AbstractButton
     {
         [SerializeField]
         private ReservationsDataContainer _reservationDataContainer;

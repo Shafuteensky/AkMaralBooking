@@ -10,9 +10,9 @@ namespace StarletBooking.Data.Preview
     /// </summary>
     [RequireComponent(typeof(ContextIdHolder))]
     public abstract class ShowPreviewPanel<TData> : MonoBehaviour
-        where TData : InMemoryDataItem
+        where TData : InMemoryDataEntry
     {
-        protected TData data => container.GetById(idHolder.Id);
+        protected TData data => container.GetById(idHolder.EntryId);
         
         [SerializeField]
         private InMemoryDataContainer<TData> container;

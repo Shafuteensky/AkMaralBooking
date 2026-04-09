@@ -8,7 +8,7 @@ namespace StarletBooking.Data
     /// Данные о клиенте
     /// </summary>
     [Serializable]
-    public class ClientData : InMemoryDataItem
+    public class ClientData : InMemoryDataEntry
     {
         [SerializeField]
         protected string name = string.Empty;

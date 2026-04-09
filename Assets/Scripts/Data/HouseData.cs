@@ -8,7 +8,7 @@ namespace StarletBooking.Data
     /// Данные о доме
     /// </summary>
     [Serializable]
-    public class HouseData : InMemoryDataItem
+    public class HouseData : InMemoryDataEntry
     {
         [SerializeField]
         protected string name = string.Empty;

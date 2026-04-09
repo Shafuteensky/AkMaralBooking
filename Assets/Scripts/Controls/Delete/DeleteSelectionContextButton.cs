@@ -2,7 +2,7 @@ using Extensions.Generics;
 using Extensions.Log;
 using Extensions.Data.InMemoryData.SelectionContext;
 using Extensions.Data.InMemoryData;
-using Extensions.Logic;
+using Extensions.Helpers;
 using UnityEngine;
 
 namespace StarletBooking.Data.Controls
@@ -10,8 +10,8 @@ namespace StarletBooking.Data.Controls
     /// <summary>
     /// Универсальная кнопка удаления активного элемента из SelectionContext
     /// </summary>
-    public abstract class DeleteSelectionContextButtonBase<TData> : GenericButton
-        where TData : InMemoryDataItem
+    public abstract class DeleteSelectionContextButtonBase<TData> : AbstractButton
+        where TData : InMemoryDataEntry
     {
         [SerializeField]
         protected SelectionContext<TData> selectionContext;

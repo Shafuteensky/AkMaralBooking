@@ -5,5 +5,5 @@ namespace Extensions.Data.InMemoryData.UI
     /// <summary>
     /// Заполнение фабрикой списка клиентов по завершению сохранения
     /// </summary>
-    public class PopulateClientsOnAfterSave : PopulateOnAfterSave<ClientData> { }
+    public class PopulateClientsOnAfterSave : PopulateOnAfterSave<ClientsDataContainer, ClientData> { }
 }

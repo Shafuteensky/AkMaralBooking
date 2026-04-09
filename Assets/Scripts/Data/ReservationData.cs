@@ -8,7 +8,7 @@ namespace StarletBooking.Data
     /// Данные о записи аренды
     /// </summary>
     [Serializable]
-    public class ReservationData : InMemoryDataItem
+    public class ReservationData : InMemoryDataEntry
     {
         [SerializeField]
         protected string houseId = default;

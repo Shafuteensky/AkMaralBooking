@@ -1,19 +1,19 @@
+using Extensions.Helpers;
+using Extensions.Identification;
 using Extensions.UIWindows;
 using UnityEngine;
 
 namespace Extensions.Data.InMemoryData.UI
 {
-    using Logic;
-    using ID;
-    
     /// <summary>
     /// Выполнить популяцию фабрики по завершению процесса сохранения
     /// </summary>
-    public abstract class PopulateOnAfterSave<TData> : MonoBehaviour
-        where TData : InMemoryDataItem
+    public abstract class PopulateOnAfterSave<TContainer, TData> : MonoBehaviour
+        where TContainer : InMemoryDataContainer<TData>
+        where TData : InMemoryDataEntry
     {
         [SerializeField]
-        protected GenericDataPreviewButtonFactory<TData> factory;
+        protected GenericDataPreviewButtonFactory<TContainer, TData> factory;
         [SerializeField]
         protected InMemoryDataContainer<TData> container;
         [SerializeField]
@@ -49,7 +49,7 @@ namespace Extensions.Data.InMemoryData.UI
 
         private void OnAfterSave(string saveFileName)
         {
-            if (saveFileName == container.SaveFileName)
+            if (saveFileName == container.Id)
             {
                 factory.Rebuild();
                 if (windowsController.FocusedWindow.Id.Id == loadingOverlay.Id)

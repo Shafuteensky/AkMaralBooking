@@ -1,7 +1,7 @@
 using Extensions.Data.InMemoryData;
 using Extensions.Data.InMemoryData.SelectionContext;
+using Extensions.Helpers;
 using Extensions.Log;
-using Extensions.Logic;
 using UnityEngine;
 
 namespace StarletBooking.Data.View
@@ -9,7 +9,7 @@ namespace StarletBooking.Data.View
     /// <summary>
     /// Базовый загрузчик UI из SelectionContext при открытии страницы
     /// </summary>
-    public abstract class SelectionContextViewLoader<TData> : MonoBehaviour where TData : InMemoryDataItem
+    public abstract class SelectionContextViewLoader<TData> : MonoBehaviour where TData : InMemoryDataEntry
     {
         [SerializeField]
         protected SelectionContext<TData> selectionContext;
@@ -52,7 +52,7 @@ namespace StarletBooking.Data.View
 
             string id = selectionContext.SelectedId;
             if (string.IsNullOrEmpty(id) || 
-                !container.TryGetById(id, out TData dataItem) || 
+                !container.GetById(id, out TData dataItem) || 
                 dataItem == null)
             {
                 ServiceDebug.LogError("Ошибка получения данных");

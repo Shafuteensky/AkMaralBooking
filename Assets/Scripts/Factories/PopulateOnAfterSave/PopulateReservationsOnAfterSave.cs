@@ -5,5 +5,5 @@ namespace Extensions.Data.InMemoryData.UI
     /// <summary>
     /// Заполнение фабрикой списка записей аренды по завершению сохранения
     /// </summary>
-    public class PopulateReservationsOnAfterSave : PopulateOnAfterSave<ReservationData> { }
+    public class PopulateReservationsOnAfterSave : PopulateOnAfterSave<ReservationsDataContainer, ReservationData> { }
 }

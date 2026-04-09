@@ -1,11 +1,10 @@
 using Extensions.Generics;
+using Extensions.Helpers;
 using Extensions.Log;
-using Extensions.Logic;
 using StarletBooking.Data.View;
 using StarletBooking.UI;
 using TMPro;
 using UnityEngine;
-using VHierarchy.Libs;
 
 namespace StarletBooking.Data.Controls
 {
@@ -41,7 +40,7 @@ namespace StarletBooking.Data.Controls
         [SerializeField]
         protected TMP_InputField clientNumberInputField = default;
         [SerializeField]
-        protected GenericToggleGroup clientRatingToggleGroup = default;
+        protected ToggleGroupControl clientRatingToggleGroup = default;
         [SerializeField]
         protected TMP_InputField clientNotesInputField = default;
         [SerializeField]
@@ -97,8 +96,8 @@ namespace StarletBooking.Data.Controls
             }
             else
             {
-                clientsContainer.TryGetById(dataItem.ClientId, out ClientData clientItem);
-                housesContainer.TryGetById(dataItem.HouseId, out HouseData houseItem);
+                clientsContainer.GetById(dataItem.ClientId, out ClientData clientItem);
+                housesContainer.GetById(dataItem.HouseId, out HouseData houseItem);
                 
                 clientNameInputField.text = clientItem == null ? DataHelpers.NotFoundString : 
                     DataHelpers.GetString(clientItem.Name);

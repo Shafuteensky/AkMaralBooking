@@ -1,9 +1,6 @@
-using System;
 using System.Collections.Generic;
-using Extensions.Log;
-using Extensions.Logic;
+using Extensions.Helpers;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace StarletBooking.UI
 {

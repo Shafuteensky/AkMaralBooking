@@ -8,7 +8,7 @@ namespace StarletBooking.Data.Controls
     /// <summary>
     /// Сохранение записи о клиенте
     /// </summary>
-    public class SaveClientDataButton : GenericButton
+    public class SaveClientDataButton : AbstractButton
     {
         [SerializeField]
         private ClientsDataContainer _clientsDataContainer;
@@ -19,7 +19,7 @@ namespace StarletBooking.Data.Controls
         [SerializeField]
         private TMP_InputField _contactNumberInputField;
         [SerializeField]
-        private GenericToggleGroup _ratingToggleGroup;
+        private ToggleGroupControl _ratingToggleGroup;
         [SerializeField]
         private TMP_InputField _notesInputField;
         

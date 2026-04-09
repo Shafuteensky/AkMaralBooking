@@ -1,13 +1,14 @@
 using System.Collections.Generic;
 using Extensions.Data.InMemoryData;
-using Extensions.Log;
-using Extensions.Logic;
+using Extensions.Helpers;
 using StarletBooking.Data;
 using UnityEngine;
 
 namespace StarletBooking.UI
 {
-    [CreateAssetMenu(fileName = nameof(HousesDropdownOptionsProvider), menuName = "StarletBooking/UI/Dropdown/" + nameof(HousesDropdownOptionsProvider))]
+    [CreateAssetMenu(
+        fileName = nameof(HousesDropdownOptionsProvider), 
+        menuName = "StarletBooking/UI/Dropdown/" + nameof(HousesDropdownOptionsProvider))]
     public class HousesDropdownOptionsProvider : InMemoryDropdownOptionsProvider
     {
         [SerializeField]
