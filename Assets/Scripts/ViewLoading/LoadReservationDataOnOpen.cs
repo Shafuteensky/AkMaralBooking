@@ -126,7 +126,7 @@ namespace StarletBooking.Data.Controls
         {
             if (clientsDropdown != null)
             {
-                clientsDropdown.SetSelectedById(string.Empty);
+                clientsDropdown.ClearSelection();
             }
 
             if (paymentPerDayInputField != null) { paymentPerDayInputField.text = string.Empty; }

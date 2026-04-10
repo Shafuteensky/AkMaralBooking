@@ -61,14 +61,11 @@ namespace StarletBooking.UI
         }
 
         /// <summary>
-        /// 
+        /// Заполнить дропдаун-список
         /// </summary>
         public void SetOptions(List<string> labels, List<string> newIds, int selectedIndex = 0)
         {
-            if (Logic.IsNull(dropdown))
-            {
-                return;
-            }
+            if (Logic.IsNull(dropdown)) return;
 
             dropdown.ClearOptions();
             ids.Clear();
@@ -91,15 +88,9 @@ namespace StarletBooking.UI
 
             dropdown.AddOptions(options);
 
-            if (selectedIndex < 0)
-            {
-                selectedIndex = 0;
-            }
+            if (selectedIndex < 0) selectedIndex = 0;
 
-            if (ids.Count > 0 && selectedIndex >= ids.Count)
-            {
-                selectedIndex = ids.Count - 1;
-            }
+            if (ids.Count > 0 && selectedIndex >= ids.Count) selectedIndex = ids.Count - 1;
 
             dropdown.value = Mathf.Max(0, selectedIndex);
             dropdown.RefreshShownValue();
@@ -119,10 +110,7 @@ namespace StarletBooking.UI
                 return;
             }
             
-            if (Logic.IsNull(dropdown))
-            {
-                return;
-            }
+            if (Logic.IsNull(dropdown)) return;
 
             for (int i = 0; i < ids.Count; i++)
             {
@@ -134,6 +122,18 @@ namespace StarletBooking.UI
                     return;
                 }
             }
+        }
+
+        /// <summary>
+        /// Очистить выбора (активация дефолтного отсутствия выбора)
+        /// </summary>
+        public void ClearSelection()
+        {
+            if (Logic.IsNull(dropdown)) return;
+            
+            dropdown.value = 0;
+            dropdown.RefreshShownValue();
+            onSelectedIdChanged?.Invoke(SelectedId);
         }
 
         protected void OnDropdownChanged(int _) => onSelectedIdChanged?.Invoke(SelectedId);

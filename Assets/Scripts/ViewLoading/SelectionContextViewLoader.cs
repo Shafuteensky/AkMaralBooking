@@ -45,15 +45,13 @@ namespace StarletBooking.Data.View
         {
             ApplyEmpty();
             
-            if (selectionContext == null || container == null)
-            {
-                return;
-            }
+            if (selectionContext == null || container == null) return;
 
             string id = selectionContext.SelectedId;
-            if (string.IsNullOrEmpty(id) || 
-                !container.GetById(id, out TData dataItem) || 
-                dataItem == null)
+            
+            if (string.IsNullOrEmpty(id)) return;
+            
+            if (!container.GetById(id, out TData dataItem) || dataItem == null)
             {
                 ServiceDebug.LogError("Ошибка получения данных");
                 return;
