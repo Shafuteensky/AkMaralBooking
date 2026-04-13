@@ -77,6 +77,22 @@ namespace StarletBooking.Data
             float prepayment,
             float exchangeRate)
         {
+            UpdateData(houseId, clientId, arrivalDate, departureDate, paymentPerDay, days, prepayment, exchangeRate);
+        }
+        
+        /// <summary>
+        /// Обновить данные
+        /// </summary>
+        public void UpdateData(
+            string houseId,
+            string clientId,
+            DateTime arrivalDate,
+            DateTime departureDate,
+            float paymentPerDay,
+            int days,
+            float prepayment,
+            float exchangeRate)
+        {
             this.houseId = houseId;
             this.clientId = clientId;
             this.arrivalDateIso = arrivalDate.ToString("o");

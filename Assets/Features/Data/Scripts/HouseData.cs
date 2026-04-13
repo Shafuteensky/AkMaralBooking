@@ -47,6 +47,14 @@ namespace StarletBooking.Data
         /// </summary>
         public HouseData(string name, string number, string notes, string ownerName, string ownerContactNumber)
         {
+            UpdateData(name, number, notes, ownerName, ownerContactNumber);
+        }
+
+        /// <summary>
+        /// Обновить данные
+        /// </summary>
+        public void UpdateData(string name, string number, string notes, string ownerName, string ownerContactNumber)
+        {
             this.name = name;
             this.number = number;
             this.notes = notes;

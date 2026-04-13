@@ -51,6 +51,14 @@ namespace StarletBooking.Data
         /// <param name="notes">Заметки</param>
         public ClientData(string name, Color color, string contactNumber, int rating, string notes)
         {
+            UpdateData(name, color, contactNumber, rating, notes);
+        }
+
+        /// <summary>
+        /// Обновить данные
+        /// </summary>
+        public void UpdateData(string name, Color color, string contactNumber, int rating, string notes)
+        {
             this.name = name;
             this.color = color;
             this.contactNumber = contactNumber;

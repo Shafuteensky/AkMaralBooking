@@ -1,5 +1,4 @@
 using System;
-using Extensions.Generics;
 using Extensions.Log;
 using StarletBooking.UI;
 using TMPro;
@@ -10,31 +9,22 @@ namespace StarletBooking.Data.Controls
     /// <summary>
     /// Сохранение записи об аренде
     /// </summary>
-    public class SaveReservationDataButton : AbstractButton
+    public class SaveReservationDataButton : SaveDataButton<ReservationsDataContainer, ReservationSelectionContext>
     {
-        [SerializeField]
-        private ReservationsDataContainer _reservationDataContainer;
-            
-        [SerializeField]
-        private DropdownIdBinder _housesDropDown;
-        [SerializeField]
-        private DropdownIdBinder _clientsDropDown;
-        [SerializeField] 
-        private TMP_InputField arrivalDate;
-        [SerializeField] 
-        private TMP_InputField departureDate;
-        [SerializeField]
-        private TMP_InputField _paymentPerDayInputField;
-        [SerializeField]
-        private TMP_InputField _daysInputField;
-        [SerializeField]
-        private TMP_InputField _prepaymentInputField;
-        [SerializeField]
-        private TMP_InputField _exchangeRateInputField;
+        [Header("Поля данных"), Space]
+        [SerializeField] private DropdownIdBinder _housesDropDown;
+        [SerializeField] private DropdownIdBinder _clientsDropDown;
+        [SerializeField] private TMP_InputField arrivalDate;
+        [SerializeField] private TMP_InputField departureDate;
+        [SerializeField] private TMP_InputField _paymentPerDayInputField;
+        [SerializeField] private TMP_InputField _daysInputField;
+        [SerializeField] private TMP_InputField _prepaymentInputField;
+        [SerializeField] private TMP_InputField _exchangeRateInputField;
         
         public override void OnButtonClick()
         {
-            if (_reservationDataContainer == null)
+            if (dataContainer == null
+                || selectionContext == null)
             {
                 ServiceDebug.LogError("Отсутствует ссылка на контейнер данных, запись не добавлена");
                 return;
@@ -58,18 +48,33 @@ namespace StarletBooking.Data.Controls
             float.TryParse(_prepaymentInputField.text, out prepayment);
             float rate = 0f;
             float.TryParse(_exchangeRateInputField.text, out rate);
-
-            ReservationData newHouse = new ReservationData(
-                _housesDropDown.SelectedId,
-                _clientsDropDown.SelectedId,
-                DateTime.Today,
-                DateTime.Today,
-                paymentPerDay,
-                days,
-                prepayment,
-                rate);
-                
-            _reservationDataContainer.Add(newHouse);
+            
+            if (!selectionContext.HasSelection)
+            {
+                ReservationData newHouse = new ReservationData(
+                    _housesDropDown.SelectedId,
+                    _clientsDropDown.SelectedId,
+                    DateTime.Today,
+                    DateTime.Today,
+                    paymentPerDay,
+                    days,
+                    prepayment,
+                    rate);
+                dataContainer.Add(newHouse);
+            }
+            else
+            {
+                selectionContext.GetSelectedData().UpdateData(
+                    _housesDropDown.SelectedId,
+                    _clientsDropDown.SelectedId,
+                    DateTime.Today,
+                    DateTime.Today,
+                    paymentPerDay,
+                    days,
+                    prepayment,
+                    rate);
+                dataContainer.MarkDirty();
+            }
         }
     }
 }
