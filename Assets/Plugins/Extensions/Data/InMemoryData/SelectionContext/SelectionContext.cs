@@ -22,13 +22,17 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         public InMemoryDataContainer<TData> Container { get; private set; }
 
         /// <summary>
+        /// Есть ли выбор
+        /// </summary>
+        public override bool HasSelection => IsContainerInited() && !string.IsNullOrEmpty(SelectedId);
+        
+        /// <summary>
         /// Идентификатор активной выбранной записи контейнера
         /// </summary>
-        public string SelectedId => selectedIdStatic;
+        public string SelectedId => selectedId;
 
-        public override bool HasSelection => IsContainerInited() && !string.IsNullOrEmpty(SelectedId);
 
-        private static string selectedIdStatic;
+        private string selectedId;
 
         /// <summary>
         /// Выбрать данные как активные
@@ -36,7 +40,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// <param name="dataItemId">Идентификатор</param>
         public void Select(string dataItemId)
         {
-            selectedIdStatic = dataItemId;
+            selectedId = dataItemId;
             onSelectionChanged?.Invoke();
         }
 
@@ -45,7 +49,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// </summary>
         public override void Clear()
         {
-            selectedIdStatic = string.Empty;
+            selectedId = string.Empty;
             onSelectionChanged?.Invoke();
         }
 

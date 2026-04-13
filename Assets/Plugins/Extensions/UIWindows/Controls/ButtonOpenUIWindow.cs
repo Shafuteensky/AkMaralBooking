@@ -1,4 +1,3 @@
-using System;
 using Extensions.Log;
 using UnityEngine;
 
