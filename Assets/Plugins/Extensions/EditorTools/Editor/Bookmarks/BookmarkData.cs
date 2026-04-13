@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Extensions.Data.InMemoryData;
 
 namespace Extensions.EditorTools.Bookmarks
@@ -20,20 +19,12 @@ namespace Extensions.EditorTools.Bookmarks
     [Serializable]
     public sealed class BookmarkData : InMemoryDataEntry
     {
+        public string ObjectId;
+        
         public string Name;
         public BookmarkType Type;
 
         public string AssetPath;
         public string ScenePath;
-    }
-
-
-    /// <summary>
-    /// Файл сохранения закладок ObjectBookmarksWindow
-    /// </summary>
-    [Serializable]
-    public sealed class BookmarksFile
-    {
-        public List<BookmarkData> Items = new List<BookmarkData>();
     }
 }

@@ -36,6 +36,8 @@ namespace Extensions.Data.InMemoryData
         [Header("Сохранение данных контейнера"), Space]
         [SerializeField] protected bool autoSave = true;
         
+        protected virtual string SaveProfile => null;
+        
         /// <summary>
         /// Хранимые данные
         /// </summary>
@@ -70,9 +72,9 @@ namespace Extensions.Data.InMemoryData
 
             OnInitialize();
 
-            if (JsonSaveLoad.Exists(id))
+            if (JsonSaveLoad.Exists(id, SaveProfile))
             {
-                data = JsonSaveLoad.Load(id, default(TData));
+                data = JsonSaveLoad.Load(id, default(TData), SaveProfile);
 
                 if (data == null)
                 {
@@ -133,7 +135,7 @@ namespace Extensions.Data.InMemoryData
             }
 
             // Синхронное сохранение через кэш
-            if (JsonSaveLoad.Save(data, id))
+            if (JsonSaveLoad.Save(data, id, SaveProfile))
             {
                 dirty = false;
                 onDataSaved?.Invoke();
@@ -159,7 +161,7 @@ namespace Extensions.Data.InMemoryData
                 return false;
             }
 
-            if (await JsonSaveLoad.SaveAsync(data, id))
+            if (await JsonSaveLoad.SaveAsync(data, id, SaveProfile))
             {
                 dirty = false;
                 onDataSaved?.Invoke();
@@ -182,7 +184,7 @@ namespace Extensions.Data.InMemoryData
                 return;
             }
 
-            await JsonSaveLoad.PreloadAsync(id, new TData());
+            await JsonSaveLoad.PreloadAsync(id, new TData(), SaveProfile);
             
             // После preload данные уже в кэше, можем загрузить синхронно
             EnsureLoaded();

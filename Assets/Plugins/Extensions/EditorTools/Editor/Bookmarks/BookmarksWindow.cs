@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -5,12 +6,12 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using Extensions.EditorTools.Bookmarks;
 using Extensions.Log;
+using Object = UnityEngine.Object;
 
 namespace Extensions.EditorTools
 {
     /// <summary>
-    /// Окно для закладок объектов (Scene + Project).
-    /// Полная поддержка JSON, GUID, FileID и восстановления объектов между сессиями.
+    /// Окно для закладок объектов (Scene + Project)
     /// </summary>
     public sealed class BookmarksWindow : EditorWindow
     {
@@ -19,14 +20,13 @@ namespace Extensions.EditorTools
         private const string UNKNOWN_SCENE_SECTION = "UnknownScene";
         
         [SerializeField]
-        private BookmarksDataBaseBase dataBaseBase;
+        private BookmarksDataBase dataBase;
 
-        private GUIStyle _bookmarkStyle;
-        private GUIStyle _selectedBookmarkStyle;
-        private GUIStyle _dropStyle;
-        private Vector2 _scroll = Vector2.zero;
+        private GUIStyle bookmarkStyle;
+        private GUIStyle selectedBookmarkStyle;
+        private Vector2 scroll = Vector2.zero;
         
-        private Dictionary<string, bool> _foldouts = new Dictionary<string, bool>();
+        private readonly Dictionary<string, bool> foldouts = new Dictionary<string, bool>();
 
         [MenuItem("Tools/" + WINDOW_NAME)]
         public static void Open()
@@ -38,13 +38,13 @@ namespace Extensions.EditorTools
 
         private void OnGUI()
         {
-            if (dataBaseBase == null)
+            if (dataBase == null)
             {
                 EditorGUILayout.HelpBox("BookmarksDataBase не назначена", MessageType.Error);
                 return;
             }
 
-            if (_bookmarkStyle == null)
+            if (bookmarkStyle == null)
             {
                 InitStyles();
             }
@@ -52,7 +52,7 @@ namespace Extensions.EditorTools
             DrawAddButton();
             GUILayout.Space(EditorToolsConstraints.SPACE_BLOCK_SIZE);
 
-            _scroll = GUILayout.BeginScrollView(_scroll);
+            scroll = GUILayout.BeginScrollView(scroll);
             DrawBookmarksList();
             GUILayout.EndScrollView();
         }
@@ -61,7 +61,7 @@ namespace Extensions.EditorTools
 
         private void InitStyles()
         {
-            _bookmarkStyle = new GUIStyle(GUI.skin.button)
+            bookmarkStyle = new GUIStyle(GUI.skin.button)
             {
                 alignment = TextAnchor.MiddleLeft,
                 fontSize = EditorToolsConstraints.BASE_FONT_SIZE,
@@ -69,18 +69,10 @@ namespace Extensions.EditorTools
                 padding = new RectOffset(EditorToolsConstraints.TEXT_PADDING, EditorToolsConstraints.TEXT_PADDING, 0, 0)
             };
 
-            _selectedBookmarkStyle = new GUIStyle(_bookmarkStyle)
+            selectedBookmarkStyle = new GUIStyle(bookmarkStyle)
             {
                 fontStyle = FontStyle.Bold,
                 normal = { textColor = Color.green }
-            };
-            
-            _dropStyle = new GUIStyle(GUI.skin.button)
-            {
-                alignment = TextAnchor.MiddleLeft,
-                fontSize = EditorToolsConstraints.BASE_FONT_SIZE,
-                fixedHeight = EditorToolsConstraints.BASE_ELEMENT_HEIGHT,
-                padding = new RectOffset(EditorToolsConstraints.TEXT_PADDING, EditorToolsConstraints.TEXT_PADDING, 0, 0)
             };
         }
 
@@ -97,40 +89,13 @@ namespace Extensions.EditorTools
             GUI.enabled = true;
         }
 
-        private void DrawDragAndDropZone()
-        {
-            Rect dropRect = GUILayoutUtility.GetRect(80, EditorToolsConstraints.BASE_ELEMENT_HEIGHT, GUILayout.ExpandWidth(false));
-            GUI.Box(dropRect, "Drop", _dropStyle);  
-            
-            Event evt = Event.current;
-
-            if (dropRect.Contains(evt.mousePosition))
-            {
-                if (evt.type == EventType.DragUpdated)
-                {
-                    DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
-                    evt.Use();
-                }
-
-                if (evt.type == EventType.DragPerform)
-                {
-                    DragAndDrop.AcceptDrag();
-                    foreach (Object obj in DragAndDrop.objectReferences)
-                    {
-                        AddBookmark(obj);
-                    }
-                    evt.Use();
-                }
-            }
-        }
-
         #endregion
 
         #region Bookmark List
 
         private void DrawBookmarksList()
         {
-            IReadOnlyList<BookmarkData> items = dataBaseBase.Data;
+            IReadOnlyList<BookmarkData> items = dataBase.Data;
 
             if (items.Count == 0)
             {
@@ -172,7 +137,7 @@ namespace Extensions.EditorTools
                 if (a == UNKNOWN_SCENE_SECTION) return 1;
                 if (b == UNKNOWN_SCENE_SECTION) return -1;
 
-                return a.CompareTo(b);
+                return String.Compare(a, b, StringComparison.Ordinal);
             });
 
             foreach (string key in sortedKeys)
@@ -193,12 +158,11 @@ namespace Extensions.EditorTools
                         : $"Сцена: {sceneName} ({groups[key].Count})";
                 }
 
-                if (!_foldouts.ContainsKey(key))
-                    _foldouts[key] = true;
+                foldouts.TryAdd(key, true);
 
-                _foldouts[key] = EditorGUILayout.Foldout(_foldouts[key], foldoutLabel, true);
+                foldouts[key] = EditorGUILayout.Foldout(foldouts[key], foldoutLabel, true);
 
-                if (_foldouts[key])
+                if (foldouts[key])
                 {
                     EditorGUI.indentLevel++;
 
@@ -228,7 +192,7 @@ namespace Extensions.EditorTools
             bool isSelected = resolved != null && resolved == selected;
 
             DrawNameButton(data, resolved, isSelected);
-            DrawSceneActionIfNeeded(data, resolved);
+            DrawSceneActionIfNeeded(data);
             DrawRemoveButton(data);
 
             EditorGUILayout.EndHorizontal();
@@ -248,7 +212,7 @@ namespace Extensions.EditorTools
         {
             GUI.enabled = resolved != null;
 
-            if (GUILayout.Button(data.Name, isSelected ? _selectedBookmarkStyle : _bookmarkStyle))
+            if (GUILayout.Button(data.Name, isSelected ? selectedBookmarkStyle : bookmarkStyle))
             {
                 Selection.activeObject = resolved;
                 EditorGUIUtility.PingObject(resolved);
@@ -257,7 +221,7 @@ namespace Extensions.EditorTools
             GUI.enabled = true;
         }
 
-        private void DrawSceneActionIfNeeded(BookmarkData data, Object resolved)
+        private void DrawSceneActionIfNeeded(BookmarkData data)
         {
             if (data.Type != BookmarkType.SceneObject)
             {
@@ -291,7 +255,7 @@ namespace Extensions.EditorTools
 
             if (GUILayout.Button("✕", GUILayout.Width(EditorToolsConstraints.BASE_ELEMENT_HEIGHT), GUILayout.Height(EditorToolsConstraints.BASE_ELEMENT_HEIGHT)))
             {
-                dataBaseBase.Remove(data);
+                dataBase.Remove(data);
             }
 
             GUI.backgroundColor = Color.white;
@@ -313,26 +277,28 @@ namespace Extensions.EditorTools
 
             string assetPath = AssetDatabase.GetAssetPath(obj);
             bool isSceneObj = obj is GameObject || obj is Component;
-
+            GameObject gameObject = GetSceneGameObject(obj);
+            
             if (!string.IsNullOrEmpty(assetPath) && !isSceneObj)
             {
                 data.Type = BookmarkType.ProjectAsset;
                 data.AssetPath = assetPath;
+                data.ObjectId = GlobalObjectId.GetGlobalObjectIdSlow(gameObject).ToString();
             }
             else
             {
-                GameObject go = GetSceneGameObject(obj);
-                if (go == null)
+                data.ObjectId = GlobalObjectId.GetGlobalObjectIdSlow(gameObject).ToString();
+                if (gameObject == null)
                 {
                     ServiceDebug.LogWarning("Невозможно сохранить закладку на объект сцены");
                     return;
                 }
 
                 data.Type = BookmarkType.SceneObject;
-                data.ScenePath = go.scene.path;
+                data.ScenePath = gameObject.scene.path;
             }
 
-            dataBaseBase.Add(data);
+            dataBase.Add(data);
         }
 
         private GameObject GetSceneGameObject(Object obj)
@@ -358,12 +324,12 @@ namespace Extensions.EditorTools
                 return null;
             }
 
-            if (string.IsNullOrEmpty(data.Id))
+            if (string.IsNullOrEmpty(data.ObjectId))
             {
                 return null;
             }
 
-            if (!GlobalObjectId.TryParse(data.Id, out GlobalObjectId gid))
+            if (!GlobalObjectId.TryParse(data.ObjectId, out GlobalObjectId gid))
             {
                 return null;
             }

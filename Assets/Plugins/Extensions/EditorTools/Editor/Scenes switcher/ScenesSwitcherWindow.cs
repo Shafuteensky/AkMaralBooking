@@ -1,8 +1,10 @@
 using UnityEditor;
 using UnityEditor.SceneManagement;
+using System.IO;
+using Cysharp.Threading.Tasks;
+using Extensions.Data;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.IO;
 
 namespace Extensions.EditorTools
 {
@@ -82,7 +84,8 @@ namespace Extensions.EditorTools
             {
                 PlayerPrefs.DeleteAll();
                 PlayerPrefs.Save();
-                PlayProject();
+
+                JsonSaveLoad.DeleteAllAsync().ContinueWith(PlayProject).Forget();
             }
 
             ResetBG();

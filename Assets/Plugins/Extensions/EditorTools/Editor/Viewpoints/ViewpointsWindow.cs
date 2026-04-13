@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Extensions.EditorTools;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -15,7 +14,7 @@ namespace Extensions.EditorTools.Viewpoints
         private const string WINDOW_NAME = "Viewpoints";
 
         [SerializeField]
-        private ViewpointsDataBaseBase dataBaseBase;
+        private ViewpointsDataBase dataBaseBase;
 
         private GUIStyle _labelHeader;
         private GUIStyle _rowButton;

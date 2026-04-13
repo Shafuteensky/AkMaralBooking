@@ -7,6 +7,8 @@ namespace Extensions.EditorTools
     /// </summary>
     public static class EditorToolsConstraints
     {
+        public const string PERSISTENT_SERVICE_PROFILE_NAME = "developer";
+        
         public const int BASE_FONT_SIZE = 12;
         public const int TEXT_PADDING = 6;
         public const int SPACE_BLOCK_SIZE = 6;
