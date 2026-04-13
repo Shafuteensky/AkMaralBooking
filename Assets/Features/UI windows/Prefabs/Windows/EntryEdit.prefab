@@ -4357,7 +4357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453ee522397f480889d5464d5fde003e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.SaveReservationDataButton
-  _reservationDataContainer: {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
+  dataContainer: {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
+  selectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
   _housesDropDown: {fileID: 6139005096251407603}
   _clientsDropDown: {fileID: 7113248052120892214}
   arrivalDate: {fileID: 5941742137000687926}

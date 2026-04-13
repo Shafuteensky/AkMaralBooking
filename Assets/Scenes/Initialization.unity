@@ -505,6 +505,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI root
       objectReference: {fileID: 0}
+    - target: {fileID: 2956115611763742754, guid: 0262044935a8029449a0b32207a51e83, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5974493510084586027, guid: 0262044935a8029449a0b32207a51e83, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -628,38 +632,38 @@ MonoBehaviour:
   commonVolume: {fileID: 11400000, guid: 4171d3c6af4c63244aef2f5d66cc77bc, type: 2}
   musicDefaults:
     mixerGroup: {fileID: 7144483531774929622, guid: f82efc8c9af0bc14a9d02554e752ec64, type: 2}
-    volumeModifier: 0
+    volumeModifier: 1
     volume: {fileID: 11400000, guid: fcf257cf7e91d9146b6c740325976b98, type: 2}
     fadeSeconds: 0
-    pitchMin: 0
-    pitchMax: 0
+    pitchMin: 1
+    pitchMax: 1
     spatialPreset: {fileID: 11400000, guid: b10f41c08c193e348a4d9399e7a45926, type: 2}
     priority: 0
   ambienceDefaults:
     mixerGroup: {fileID: -8402992433433051038, guid: f82efc8c9af0bc14a9d02554e752ec64, type: 2}
-    volumeModifier: 0
+    volumeModifier: 1
     volume: {fileID: 11400000, guid: e13e00e75d6043f488fb77453e09ba5a, type: 2}
     fadeSeconds: 0
-    pitchMin: 0
-    pitchMax: 0
+    pitchMin: 1
+    pitchMax: 1
     spatialPreset: {fileID: 11400000, guid: b10f41c08c193e348a4d9399e7a45926, type: 2}
     priority: 0
   uiDefaults:
     mixerGroup: {fileID: 2423196961612810497, guid: f82efc8c9af0bc14a9d02554e752ec64, type: 2}
-    volumeModifier: 0
+    volumeModifier: 1
     volume: {fileID: 11400000, guid: 1d3f14731840a1145ad0a732c9609f34, type: 2}
     fadeSeconds: 0
-    pitchMin: -1
-    pitchMax: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
     spatialPreset: {fileID: 11400000, guid: b10f41c08c193e348a4d9399e7a45926, type: 2}
     priority: 0
   sfxDefaults:
     mixerGroup: {fileID: -3782064098807318639, guid: f82efc8c9af0bc14a9d02554e752ec64, type: 2}
-    volumeModifier: 0
+    volumeModifier: 1
     volume: {fileID: 11400000, guid: f021520ca9248d344981c495f38f39d9, type: 2}
     fadeSeconds: 0
-    pitchMin: -1
-    pitchMax: 1
+    pitchMin: 0.9
+    pitchMax: 1.1
     spatialPreset: {fileID: 11400000, guid: b10f41c08c193e348a4d9399e7a45926, type: 2}
     priority: 0
   oneShotPrefab: {fileID: 8007241443552093141, guid: adf7dcf0bb9b6e9439818faa0789bccb, type: 3}

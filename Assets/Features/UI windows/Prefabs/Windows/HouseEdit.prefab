@@ -5488,7 +5488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6d33368c7a4e01941f32759abe0223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.SaveHouseDataButton
-  _houseDataContainer: {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  dataContainer: {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  selectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
   _nameInputField: {fileID: 1925463254667326870}
   _numberInputField: {fileID: 2296458188763099466}
   _notesInputField: {fileID: 7836636093201890844}
