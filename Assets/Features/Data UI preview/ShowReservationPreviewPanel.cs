@@ -42,7 +42,7 @@ namespace StarletBooking.Data.Preview
             {
                 return;
             }
-
+            
             ClientData clientData = clientsContainer.GetById(data.ClientId);
             colorImage.color = clientData?.Color ?? DataHelpers.NotFoundColor; 
             clientName.text = clientData == null ? DataHelpers.NotFoundString : 

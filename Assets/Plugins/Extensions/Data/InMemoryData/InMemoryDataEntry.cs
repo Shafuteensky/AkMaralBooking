@@ -1,23 +1,22 @@
 using System;
+using Extensions.Helpers;
+using Newtonsoft.Json;
 
 namespace Extensions.Data.InMemoryData
 {
     /// <summary>
     /// Базовый класс единицы данных
+    /// </summary>
     /// <remarks>
     /// Дополняется полями данных
     /// </remarks>
-    /// </summary>
     [Serializable]
     public abstract class InMemoryDataEntry
     {
-        protected const string GUID_FORMAT = "N";
-        
         /// <summary>
         /// Идентификатор
         /// </summary>
-        public string Id => id;
-        
-        private string id = Guid.NewGuid().ToString(GUID_FORMAT);
+        [JsonProperty]
+        public string Id { get; private set; } = IdGenerator.NewGuid();
     }
 }

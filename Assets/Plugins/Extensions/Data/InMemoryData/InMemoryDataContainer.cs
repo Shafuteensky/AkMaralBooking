@@ -11,10 +11,9 @@ namespace Extensions.Data.InMemoryData
     /// </remarks>
     /// </summary>
     /// <typeparam name="TData">Единица данных</typeparam>
-    public abstract class InMemoryDataContainer<TData> : InMemoryDataBaseObject<List<TData>> where TData : InMemoryDataEntry
+    public abstract class InMemoryDataContainer<TData> : InMemoryDataBaseObject<List<TData>> 
+        where TData : InMemoryDataEntry
     {
-        protected const string FORMAT = "N";
-
         #region Events
 
         /// <summary>
@@ -55,10 +54,7 @@ namespace Extensions.Data.InMemoryData
 
                     foreach (var item in Data)
                     {
-                        if (item == null || string.IsNullOrEmpty(item.Id))
-                        {
-                            continue;
-                        }
+                        if (item == null || string.IsNullOrEmpty(item.Id))  continue;
 
                         indexById[item.Id] = item;
                     }
@@ -91,7 +87,7 @@ namespace Extensions.Data.InMemoryData
                 return false;
             }
 
-            bool isEntryFound= IndexById.TryGetValue(entryId, out entry);
+            bool isEntryFound = IndexById.TryGetValue(entryId, out entry);
             return isEntryFound;
         }
 
@@ -102,10 +98,7 @@ namespace Extensions.Data.InMemoryData
         /// <returns>Найденная запись или null</returns>
         public TData GetById(string entryId)
         {
-            if (GetById(entryId, out TData entry))
-            {
-                return entry;
-            }
+            if (GetById(entryId, out TData entry)) return entry;
 
             ServiceDebug.LogWarning($"Данные с id «{entryId}» не найдены в контейнере {name} ({nameof(TData)})");
             return null;

@@ -34,8 +34,7 @@ namespace Extensions.Data.InMemoryData
         #endregion
         
         [Header("Сохранение данных контейнера"), Space]
-        [SerializeField]
-        protected bool autoSave = true;
+        [SerializeField] protected bool autoSave = true;
         
         /// <summary>
         /// Хранимые данные
@@ -57,36 +56,38 @@ namespace Extensions.Data.InMemoryData
             }
         }
 
-        [NonSerialized]
-        protected TData data;
+        [NonSerialized] protected TData data;
         
-        [NonSerialized]
-        protected bool loaded;
-        [NonSerialized]
-        protected bool dirty;
+        [NonSerialized] protected bool loaded;
+        [NonSerialized] protected bool dirty;
         
         /// <summary>
         /// Гарантированная загрузка данных (синхронно через кэш)
         /// </summary>
         public override void EnsureLoaded()
         {
-            if (loaded)
-            {
-                return;
-            }
+            if (loaded) return;
 
             OnInitialize();
-            // Синхронная загрузка через кэш JsonSaveLoad
-            data = JsonSaveLoad.Load(id, default(TData));
-            // Первый запсук (сохранений нет)
-            if (data == null || data.Equals(default(TData)))
+
+            if (JsonSaveLoad.Exists(id))
             {
-                ServiceDebug.LogWarning($"Данные контейнера {name} пусты, загружены данные по-умолчанию");
+                data = JsonSaveLoad.Load(id, default(TData));
+
+                if (data == null)
+                {
+                    ServiceDebug.LogError($"Не удалось загрузить данные контейнера {name}, созданы данные по-умолчанию");
+                    data = new TData();
+                }
+            }
+            else
+            {
+                ServiceDebug.LogWarning($"Данные контейнера {name} не найдены, созданы данные по-умолчанию");
                 data = new TData();
-                Save(true); // Форсированное сохранение пустых данных при первом запуске
             }
 
             loaded = true;
+            dirty = false;
             OnDataLoaded();
         }
 
