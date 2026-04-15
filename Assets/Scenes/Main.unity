@@ -492,25 +492,72 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   startWindow: {fileID: -5127121569774340334, guid: 443c02744d981d64b92c2aa99f55c6b2, type: 3}
   preparedUIWindows:
-  - {fileID: 4667790373107922274, guid: 753171548068caf43b393c91eb6923b4, type: 3}
   - {fileID: -8145907542830530133, guid: e33ba98c734a64f4b91b26b55117a543, type: 3}
+  - {fileID: 4667790373107922274, guid: 753171548068caf43b393c91eb6923b4, type: 3}
   - {fileID: -7314217135538238799, guid: 939ed100b7a8aae4bb0a655efc93e537, type: 3}
-  - {fileID: -5127121569774340334, guid: 443c02744d981d64b92c2aa99f55c6b2, type: 3}
   - {fileID: 2860962930900644063, guid: ce622a1992c7f1c42894b1e3512f7556, type: 3}
+  - {fileID: -5127121569774340334, guid: 443c02744d981d64b92c2aa99f55c6b2, type: 3}
   - {fileID: -1072057320042193951, guid: 6ac54954fdf26594dac87cdbf3170385, type: 3}
-  - {fileID: -6608021808311959075, guid: 055d96e41c30fd6478fa3dbd6e2fd3ef, type: 3}
-  - {fileID: -5823305446517073006, guid: ab2e9368ebea43540954b63c6b34c84f, type: 3}
+  - {fileID: 6913516454155631688, guid: 055d96e41c30fd6478fa3dbd6e2fd3ef, type: 3}
   - {fileID: 5819087834783152207, guid: 9768d5e51c2e4a248967e507c263c54d, type: 3}
+  - {fileID: -5823305446517073006, guid: ab2e9368ebea43540954b63c6b34c84f, type: 3}
   - {fileID: -3745489633327289831, guid: f920e64d1a87f7742b241b1d456c5e30, type: 3}
-  - {fileID: -3745489633327289831, guid: a288baa79ff5aa74581f493dc2729911, type: 3}
   - {fileID: 8175441984097762281, guid: 6490d3f6946d5a246ae494395de78c88, type: 3}
   - {fileID: 8175441984097762281, guid: 9b3fbca30e979f5469800fa0aea786ac, type: 3}
   - {fileID: 8175441984097762281, guid: 8383057c79961034686d6c12b0ee5008, type: 3}
   - {fileID: 8722698054976595851, guid: 26f460bd1e2661140b285e9b58e18c63, type: 3}
   - {fileID: 8722698054976595851, guid: 0e275b1e36f81fe4b8154c11a5849e69, type: 3}
-  root: {fileID: 1458427839}
+  root: {fileID: 1927422543}
   openedUIWindows: []
   lastOpenedWindow: {fileID: 0}
+--- !u!1 &1927422542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1927422543}
+  - component: {fileID: 1927422544}
+  m_Layer: 5
+  m_Name: UI root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1927422543
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927422542}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1458427839}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1927422544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927422542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6ce2f53300408cb5ccc2002a4b3f5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Helpers.SafeAreaFitter
 --- !u!1001 &2791512197214257956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -521,7 +568,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1583343523163640151, guid: 0262044935a8029449a0b32207a51e83, type: 3}
       propertyPath: m_Name
-      value: UI root
+      value: UI canvas
       objectReference: {fileID: 0}
     - target: {fileID: 5974493510084586027, guid: 0262044935a8029449a0b32207a51e83, type: 3}
       propertyPath: m_Pivot.x
@@ -605,7 +652,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5974493510084586027, guid: 0262044935a8029449a0b32207a51e83, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1927422543}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0262044935a8029449a0b32207a51e83, type: 3}
 --- !u!1660057539 &9223372036854775807
