@@ -1,6 +1,6 @@
 using UnityEngine;
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
 #endif
 
 namespace Extensions.UIWindows
@@ -21,18 +21,22 @@ namespace Extensions.UIWindows
         private void CloseUIWindow()
         {
             UIWindowsController windowsController = UIWindowsController.Instance;
-            
-            if (!windowsController.LastOpenedWindow.PreviousWindow)
-            {
-                Debug.LogError($"Предыдущее окно не назначено для {windowsController.LastOpenedWindow.name}");
-                return;
-            }
-            
+
             if (closeAll)
                 windowsController.CloseAllWindows();
             else
                 windowsController.CloseWindowById(parentUIWindow.Id.Id);
-            if (needToOpenPrevious) windowsController.OpenPreviousWindow();
+
+            if (!needToOpenPrevious) return;
+            if (parentUIWindow.Type != UIWindowType.window) return;
+            
+            if (!windowsController.HasPreviousWindow(parentUIWindow))
+            {
+                Debug.LogError($"Предыдущее окно не назначено для {parentUIWindow.name}");
+                return;
+            }
+            
+            windowsController.OpenPreviousWindow(parentUIWindow);
         }
 
 #if UNITY_EDITOR

@@ -15,9 +15,13 @@ namespace Extensions.UIWindows
         /// Идентификатор предыдущего окна
         /// </summary>
         public UIWindowID PreviousWindow => previousWindow;
+        /// <summary>
+        /// Тип окна
+        /// </summary>
+        public UIWindowType Type => type;
         
-        [SerializeField]
-        private UIWindowID id;
+        [SerializeField] private UIWindowID id;
+        [SerializeField] private UIWindowType type;
 
         private UIWindowID previousWindow;
         
