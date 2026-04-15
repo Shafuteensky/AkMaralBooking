@@ -202,7 +202,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -40, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &8126954452470553232
 MonoBehaviour:
@@ -296,13 +296,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scrollbar Vertical
       objectReference: {fileID: 0}
-    - target: {fileID: 2257714678794069709, guid: 431cae6e421d3d6478cb897d868457f8, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 2193722732403756467, guid: 431cae6e421d3d6478cb897d868457f8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2257714678794069709, guid: 431cae6e421d3d6478cb897d868457f8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2257714678794069709, guid: 431cae6e421d3d6478cb897d868457f8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2257714678794069709, guid: 431cae6e421d3d6478cb897d868457f8, type: 3}
       propertyPath: m_AnchorMin.y

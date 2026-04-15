@@ -2110,6 +2110,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5228893005093638379}
   m_SourcePrefab: {fileID: 100100000, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+--- !u!114 &1286998306745003357 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8828126047449652975, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+  m_PrefabInstance: {fileID: 7737074181926073266}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &2407424928656212359 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5347883607035081269, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
@@ -2133,7 +2144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.ColorPicker.ColorPickerListener
   colorPicker: {fileID: 212914524626070150}
-  image: {fileID: 0}
+  image: {fileID: 1286998306745003357}
 --- !u!1001 &7937880705419921567
 PrefabInstance:
   m_ObjectHideFlags: 0
