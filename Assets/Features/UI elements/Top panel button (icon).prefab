@@ -123,5 +123,48 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3783223715481210456, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1218885763602933328}
+    - targetCorrespondingSourceObject: {fileID: 3783223715481210456, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4078323194346957701}
   m_SourcePrefab: {fileID: 100100000, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+--- !u!1 &6705276823848493978 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3783223715481210456, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+  m_PrefabInstance: {fileID: 7605832454996323778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1218885763602933328
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705276823848493978}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &4078323194346957701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6705276823848493978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283ca0fc64f4a2245be6f37c180d92cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Tweeners.OpenScreenAnimation
+  moveEnabled: 0
+  fromOffset: {x: -50, y: 0, z: 0}
+  moveDuration: 0.25
+  moveEase: 6
+  fadeEnabled: 1
+  fadeFrom: 0
+  fadeDuration: 0.25
+  fadeEase: 6

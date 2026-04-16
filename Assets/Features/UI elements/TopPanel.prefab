@@ -363,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.UIWindows.ButtonOpenUIWindow
   UIWindowToOpen: {fileID: 0}
   needToCloseThis: 1
-  closePrevious: 0
+  openMode: 0
 --- !u!114 &151671345961976317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +814,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3783223715481210456, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3058956243611615944}
+    - targetCorrespondingSourceObject: {fileID: 3783223715481210456, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2023311108046421090}
+    - targetCorrespondingSourceObject: {fileID: 3783223715481210456, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5369402681904217851}
   m_SourcePrefab: {fileID: 100100000, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
 --- !u!1 &17092341711739274 stripped
 GameObject:
@@ -832,8 +838,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fcce01ad4348aaad3ac942e5e2dcaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.UIWindows.ButtonCloseUIWindow
-  closeAll: 0
   needToOpenPrevious: 1
+--- !u!225 &2023311108046421090
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17092341711739274}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &5369402681904217851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17092341711739274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283ca0fc64f4a2245be6f37c180d92cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Tweeners.OpenScreenAnimation
+  moveEnabled: 0
+  fromOffset: {x: -50, y: 0, z: 0}
+  moveDuration: 0.25
+  moveEase: 6
+  fadeEnabled: 1
+  fadeFrom: 0
+  fadeDuration: 0.25
+  fadeEase: 6
 --- !u!224 &9118508616208950759 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5347883607035081269, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
@@ -972,7 +1009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0fcce01ad4348aaad3ac942e5e2dcaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.UIWindows.ButtonCloseUIWindow
-  closeAll: 0
   needToOpenPrevious: 1
 --- !u!224 &7134329713046757453 stripped
 RectTransform:
@@ -1479,7 +1515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.UIWindows.ButtonOpenUIWindow
   UIWindowToOpen: {fileID: 0}
   needToCloseThis: 1
-  closePrevious: 0
+  openMode: 0
 --- !u!224 &6015220811401839090 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2574413689780477943, guid: 04472d84a32eee547bbf1a480e91fbf3, type: 3}
@@ -1620,7 +1656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIWindowToOpen: {fileID: 0}
   needToCloseThis: 0
-  closePrevious: 0
+  openMode: 0
 --- !u!224 &5903909853668292329 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2574413689780477943, guid: 04472d84a32eee547bbf1a480e91fbf3, type: 3}
