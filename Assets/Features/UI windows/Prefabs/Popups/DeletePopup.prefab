@@ -752,6 +752,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 8525679973526315224, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 8828126047449652975, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -788,4 +792,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIWindowToOpen: {fileID: 0}
   needToCloseThis: 1
-  closePrevious: 1
+  openMode: 1

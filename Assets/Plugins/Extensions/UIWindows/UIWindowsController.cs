@@ -56,7 +56,7 @@ namespace Extensions.UIWindows
                 return;
             }
 
-            OpenWindowByID(startWindow.Id.Id, null, false);
+            OpenWindowByID(startWindow.Id.Id, null, false, UIWindowOpenMode.Forward);
         }
 
         #endregion
@@ -66,13 +66,19 @@ namespace Extensions.UIWindows
         /// <summary>
         /// Открыть окно по идентификатору
         /// </summary>
-        public void OpenWindowByID(string id) => OpenWindowByID(id, lastOpenedWindow);
+        public void OpenWindowByID(string id) => OpenWindowByID(id, lastOpenedWindow, true, UIWindowOpenMode.Forward);
 
         /// <summary>
         /// Открыть окно по идентификатору
         /// </summary>
-        public void OpenWindowByID(string id, UIWindow sourceWindow, bool addSourceToNavigation = true)
+        public void OpenWindowByID(string id, UIWindow sourceWindow, bool addSourceToNavigation = true, UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
         {
+            if (openMode == UIWindowOpenMode.Pop)
+            {
+                PopToWindow(id);
+                return;
+            }
+
             UIWindow window = GetOrCreateWindowById(id);
 
             if (window == null)
@@ -85,6 +91,8 @@ namespace Extensions.UIWindows
 
             if (previousWindow)
                 window.SetPreviousWindow(previousWindow);
+            else
+                window.SetPreviousWindow(null);
 
             if (addSourceToNavigation && window.Type == UIWindowType.window && previousWindow)
                 navigationStack.Push(previousWindow);
@@ -105,7 +113,7 @@ namespace Extensions.UIWindows
 
             if (!previousWindow) return;
 
-            OpenWindowByID(previousWindow.Id, currentWindow, false);
+            OpenWindowByID(previousWindow.Id, currentWindow, false, UIWindowOpenMode.Forward);
         }
 
         /// <summary>
@@ -161,6 +169,122 @@ namespace Extensions.UIWindows
         #endregion
 
         #region Внутренние операции
+
+        private void PopToWindow(string id)
+        {
+            if (navigationStack.Count == 0)
+                return;
+
+            // 1. Обрезаем стек до нужного окна
+            Stack<UIWindowID> newStack = new();
+
+            bool found = false;
+
+            foreach (UIWindowID item in navigationStack)
+            {
+                if (item.Id == id)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                ServiceDebug.LogError($"PopTo: окно {id} не найдено в стеке");
+                return;
+            }
+
+            // rebuild stack
+            while (navigationStack.Count > 0)
+            {
+                UIWindowID top = navigationStack.Pop();
+
+                newStack.Push(top);
+
+                if (top.Id == id)
+                    break;
+            }
+
+            navigationStack.Clear();
+
+            while (newStack.Count > 0)
+                navigationStack.Push(newStack.Pop());
+
+            // 2. Закрываем все окна выше target
+            UIWindow targetWindow = GetOpenedWindowById(id);
+
+            if (targetWindow == null)
+            {
+                ServiceDebug.LogError($"PopTo: окно {id} не найдено среди открытых");
+                return;
+            }
+
+            List<UIWindow> toClose = new(activeUIWindows);
+
+            foreach (UIWindow window in toClose)
+            {
+                if (window == targetWindow)
+                    continue;
+
+                if (window.Type == UIWindowType.popup)
+                {
+                    CloseOpenedWindow(window);
+                    activeUIWindows.Remove(window);
+                    continue;
+                }
+
+                if (window.Id.Id != id)
+                {
+                    CloseOpenedWindow(window);
+                    activeUIWindows.Remove(window);
+                }
+            }
+
+            // 3. Активируем target
+            ActivateWindow(targetWindow);
+        }
+
+        private void TrimNavigationStackTo(string id)
+        {
+            if (navigationStack.Count == 0)
+                return;
+
+            Stack<UIWindowID> reversedStack = new();
+            bool targetFound = false;
+
+            while (navigationStack.Count > 0)
+            {
+                UIWindowID navigationWindow = navigationStack.Pop();
+
+                if (!navigationWindow)
+                    continue;
+
+                if (navigationWindow.Id == id)
+                {
+                    targetFound = true;
+                    break;
+                }
+
+                reversedStack.Push(navigationWindow);
+            }
+
+            if (!targetFound)
+            {
+                while (reversedStack.Count > 0)
+                    navigationStack.Push(reversedStack.Pop());
+
+                return;
+            }
+        }
+
+        private UIWindowID GetTopNavigationWindow()
+        {
+            if (navigationStack.Count == 0)
+                return null;
+
+            return navigationStack.Peek();
+        }
 
         private UIWindow GetOrCreateWindowById(string id)
         {

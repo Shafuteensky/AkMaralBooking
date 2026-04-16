@@ -10,7 +10,7 @@ namespace Extensions.UIWindows
     {
         [SerializeField] protected UIWindowID UIWindowToOpen;
         [SerializeField] protected bool needToCloseThis = true;
-        [SerializeField] private bool closePrevious = false;
+        [SerializeField] private UIWindowOpenMode openMode = UIWindowOpenMode.Forward;
 
         public override void OnButtonClick() => OpenUIWindow();
 
@@ -27,13 +27,10 @@ namespace Extensions.UIWindows
 
             UIWindowsController windowsController = UIWindowsController.Instance;
 
-            if (closePrevious && parentUIWindow.PreviousWindow)
-                windowsController.CloseWindowById(parentUIWindow.PreviousWindow.Id);
-
-            if (needToCloseThis)
+            if (needToCloseThis && openMode == UIWindowOpenMode.Forward)
                 windowsController.CloseWindowById(parentUIWindow.Id.Id);
 
-            windowsController.OpenWindowByID(UIWindowToOpen.Id, parentUIWindow);
+            windowsController.OpenWindowByID(UIWindowToOpen.Id, parentUIWindow, true, openMode);
         }
     }
 }
