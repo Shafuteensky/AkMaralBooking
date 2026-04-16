@@ -10,32 +10,40 @@ namespace StarletBooking.Tweeners
     [RequireComponent(typeof(CanvasGroup))]
     public sealed class OpenScreenAnimation : MonoBehaviour
     {
-        [Header("Move")]
+        [Header("Move"), Space]
         [SerializeField] private bool moveEnabled = true;
         [SerializeField] private Vector3 fromOffset = new Vector3(-50f, 0f, 0f);
         [SerializeField] private float moveDuration = 0.25f;
         [SerializeField] private Ease moveEase = Ease.OutQuad;
 
-        [Header("Fade")]
+        [Header("Fade"), Space]
         [SerializeField] private bool fadeEnabled = true;
         [SerializeField] private float fadeFrom = 0f;
         [SerializeField] private float fadeDuration = 0.25f;
         [SerializeField] private Ease fadeEase = Ease.OutQuad;
-        
+
         private RectTransform targetTransform;
         private CanvasGroup canvasGroup;
-
         private Sequence sequence;
+        private Vector3 defaultAnchoredPosition;
 
         private void Awake()
         {
             targetTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
+            defaultAnchoredPosition = targetTransform.anchoredPosition3D;
         }
 
-        private void OnEnable() => Play();
+        private void OnEnable()
+        {
+            Play();
+        }
 
-        private void OnDisable() => Kill();
+        private void OnDisable()
+        {
+            Kill();
+            RestoreDefaultState();
+        }
 
         /// <summary>
         /// Проиграть анимацию
@@ -43,37 +51,24 @@ namespace StarletBooking.Tweeners
         public void Play()
         {
             Kill();
-
-            if (targetTransform == null)
-                targetTransform = transform as RectTransform;
-
-            if (canvasGroup == null)
-                canvasGroup = GetComponent<CanvasGroup>();
+            RestoreClosedState();
 
             sequence = DOTween.Sequence();
 
             if (moveEnabled)
             {
-                Vector3 startPos = targetTransform.anchoredPosition + (Vector2)fromOffset;
-                targetTransform.anchoredPosition = startPos;
-
                 sequence.Join(
-                    targetTransform.DOAnchorPos(startPos - (Vector3)fromOffset, moveDuration)
+                    targetTransform.DOAnchorPos3D(defaultAnchoredPosition, moveDuration)
                         .SetEase(moveEase)
                 );
             }
 
             if (fadeEnabled)
             {
-                if (canvasGroup != null)
-                {
-                    canvasGroup.alpha = fadeFrom;
-
-                    sequence.Join(
-                        canvasGroup.DOFade(1f, fadeDuration)
-                            .SetEase(fadeEase)
-                    );
-                }
+                sequence.Join(
+                    canvasGroup.DOFade(1f, fadeDuration)
+                        .SetEase(fadeEase)
+                );
             }
 
             sequence.Play();
@@ -85,7 +80,35 @@ namespace StarletBooking.Tweeners
         public void Kill()
         {
             if (sequence != null && sequence.IsActive())
+            {
                 sequence.Kill();
+                sequence = null;
+            }
+        }
+
+        /// <summary>
+        /// Восстановить стартовое скрытое состояние
+        /// </summary>
+        private void RestoreClosedState()
+        {
+            if (moveEnabled)
+                targetTransform.anchoredPosition3D = defaultAnchoredPosition + fromOffset;
+            else
+                targetTransform.anchoredPosition3D = defaultAnchoredPosition;
+
+            if (fadeEnabled)
+                canvasGroup.alpha = fadeFrom;
+            else
+                canvasGroup.alpha = 1f;
+        }
+
+        /// <summary>
+        /// Восстановить нормальное состояние
+        /// </summary>
+        private void RestoreDefaultState()
+        {
+            targetTransform.anchoredPosition3D = defaultAnchoredPosition;
+            canvasGroup.alpha = 1f;
         }
     }
 }

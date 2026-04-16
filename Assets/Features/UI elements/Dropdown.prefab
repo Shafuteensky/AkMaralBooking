@@ -258,6 +258,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3384118778153402740}
   - component: {fileID: 5913041349818769310}
+  - component: {fileID: 8972781306782481730}
   m_Layer: 5
   m_Name: Item
   m_TagString: Untagged
@@ -335,6 +336,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!114 &8972781306782481730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493446132590706061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7011a51033254833ab61f25b49b20a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Audio.PointerSoundsPlayer
+  model: 2
+  spatialPreset: {fileID: 11400000, guid: b10f41c08c193e348a4d9399e7a45926, type: 2}
+  enterSound: {fileID: 0}
+  downSound: {fileID: 8300000, guid: d26e5b633b6f1944b8b2ae8a3ce6d326, type: 3}
+  upSound: {fileID: 8300000, guid: 72c790b752b80554c95e1bc35620116c, type: 3}
 --- !u!1 &8737712406355099897
 GameObject:
   m_ObjectHideFlags: 0
