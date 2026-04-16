@@ -19,12 +19,12 @@ namespace Extensions.UIWindows
         /// Тип окна
         /// </summary>
         public UIWindowType Type => type;
-        
+
         [SerializeField] private UIWindowID id;
-        [SerializeField] private UIWindowType type;
+        [SerializeField] private UIWindowType type = UIWindowType.window;
 
         private UIWindowID previousWindow;
-        
+
         /// <summary>
         /// Установить предыдущее окно
         /// </summary>

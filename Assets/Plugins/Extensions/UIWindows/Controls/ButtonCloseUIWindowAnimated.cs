@@ -30,7 +30,7 @@ namespace Extensions.UIWindows
             if (!windowsController.LastOpenedWindow.PreviousWindow)
                 return;
 
-            windowsController.OpenPreviousWindow();
+            // TODO windowsController.OpenPreviousWindow();
 
 #if DOTWEEN
             if (beforeCloseAnimation)

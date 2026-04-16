@@ -13,7 +13,7 @@ namespace Extensions.UIWindows
         [SerializeField] private bool closePrevious = false;
 
         public override void OnButtonClick() => OpenUIWindow();
-        
+
         /// <summary>
         /// Открытие нового окна по нажатию на кнопку
         /// </summary>
@@ -24,13 +24,16 @@ namespace Extensions.UIWindows
                 ServiceDebug.LogError($"Окно для открытия ({nameof(UIWindowToOpen)}) не назначено");
                 return;
             }
-            
+
             UIWindowsController windowsController = UIWindowsController.Instance;
 
-            if (closePrevious) windowsController.CloseWindowById(parentUIWindow.PreviousWindow.Id);
-            if (needToCloseThis) windowsController.CloseWindowById(parentUIWindow.Id.Id);
-            
-            windowsController.OpenWindowByID(UIWindowToOpen.Id);
+            if (closePrevious && parentUIWindow.PreviousWindow)
+                windowsController.CloseWindowById(parentUIWindow.PreviousWindow.Id);
+
+            if (needToCloseThis)
+                windowsController.CloseWindowById(parentUIWindow.Id.Id);
+
+            windowsController.OpenWindowByID(UIWindowToOpen.Id, parentUIWindow);
         }
     }
 }
