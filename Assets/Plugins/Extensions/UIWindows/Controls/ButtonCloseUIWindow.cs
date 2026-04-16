@@ -1,6 +1,5 @@
 using UnityEngine;
 #if UNITY_EDITOR
-using UnityEditor;
 #endif
 
 namespace Extensions.UIWindows
@@ -42,23 +41,5 @@ namespace Extensions.UIWindows
         {
             this.needToOpenPrevious = needToOpenPrevious;
         }
-
-#if UNITY_EDITOR
-        [ContextMenu("Convert to animated")]
-        private void ConvertToAnimated()
-        {
-            GameObject go = gameObject;
-            Undo.RecordObject(go, "Convert to animated");
-            
-            bool cachedNeedToOpenPrevious = needToOpenPrevious;
-            
-            DestroyImmediate(this, true);
-
-            ButtonCloseUIWindowAnimated animatedButton = go.AddComponent<ButtonCloseUIWindowAnimated>();
-            animatedButton.UpdateParams(cachedNeedToOpenPrevious);
-
-            EditorUtility.SetDirty(go);
-        }
-#endif
     }
 }

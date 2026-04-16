@@ -1,5 +1,4 @@
 using Extensions.Log;
-using UnityEditor;
 using UnityEngine;
 
 namespace Extensions.UIWindows
@@ -49,25 +48,5 @@ namespace Extensions.UIWindows
             this.needToCloseThis = needToCloseThis;
             this.openMode = openMode;
         }
-
-#if UNITY_EDITOR
-        [ContextMenu("Convert to animated")]
-        private void ConvertToAnimated()
-        {
-            GameObject go = gameObject;
-            Undo.RecordObject(go, "Convert to animated");
-
-            UIWindowID cachedWindowToOpen = UIWindowToOpen;
-            bool cachedNeedToCloseThis = needToCloseThis;
-            UIWindowOpenMode cachedOpenMode = openMode;
-
-            DestroyImmediate(this, true);
-
-            ButtonOpenUIWindowAnimated animatedButton = go.AddComponent<ButtonOpenUIWindowAnimated>();
-            animatedButton.UpdateParams(cachedWindowToOpen, cachedNeedToCloseThis, cachedOpenMode);
-
-            EditorUtility.SetDirty(go);
-        }
-#endif
     }
 }

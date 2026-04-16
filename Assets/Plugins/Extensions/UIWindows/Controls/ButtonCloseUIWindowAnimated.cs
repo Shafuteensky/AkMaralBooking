@@ -1,6 +1,5 @@
 using UnityEngine;
 using Extensions.Coroutines;
-using UnityEditor;
 #if DOTWEEN
 using DG.Tweening;
 #endif
@@ -26,23 +25,5 @@ namespace Extensions.UIWindows
 #endif
             base.OnButtonClick();
         }
-
-#if UNITY_EDITOR
-        [ContextMenu("Convert to simple (unanimated)")]
-        private void ConvertToSimple()
-        {
-            GameObject go = gameObject;
-            Undo.RecordObject(go, "Convert to simple (unanimated)");
-
-            bool cachedNeedToOpenPrevious = needToOpenPrevious;
-
-            DestroyImmediate(this, true);
-
-            ButtonCloseUIWindow animatedButton = go.AddComponent<ButtonCloseUIWindow>();
-            animatedButton.UpdateParams(cachedNeedToOpenPrevious);
-
-            EditorUtility.SetDirty(go);
-        }
-#endif
     }
 }
