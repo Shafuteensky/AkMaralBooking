@@ -63,7 +63,7 @@ namespace Extensions.ScriptableValues
 
             if (Application.isPlaying && isSaveable)
             {
-                JsonSaveLoad.Save(runtimeValue, Id);
+                JsonSaveLoad.Save(runtimeValue, Id, SaveProfile);
             }
         }
         
@@ -84,7 +84,7 @@ namespace Extensions.ScriptableValues
                 return;
             }
 
-            T loadedValue = JsonSaveLoad.Load(Id, defaultValue);
+            T loadedValue = JsonSaveLoad.Load(Id, defaultValue, SaveProfile);
             runtimeValue = loadedValue;
         }
     }
