@@ -9,14 +9,12 @@ namespace Extensions.Audio
     /// </summary>
     public abstract class BaseAudioPlayer : MonoBehaviour
     {
-        [Header("Воспроизведение")]
+        [Header("Воспроизведение"), Space]
 
-        [SerializeField]
         [Tooltip("Тип аудио трека")]
-        protected AudioModel model = AudioModel.Sfx;
-        [SerializeField]
+        [SerializeField] protected AudioModel model = AudioModel.Sfx;
         [Tooltip("Оставить пустым, если нужны дефолтные значения от типа аудио")]
-        protected AudioSpatialPreset spatialPreset;
+        [SerializeField] protected AudioSpatialPreset spatialPreset;
         
         protected AudioController audioController;
         protected AudioDefaults defaults;

@@ -1,4 +1,5 @@
 using Extensions.Log;
+using UnityEditor;
 using UnityEngine;
 
 namespace Extensions.UIWindows
@@ -8,16 +9,22 @@ namespace Extensions.UIWindows
     /// </summary>
     public class ButtonOpenUIWindow : UIWindowControlButton
     {
+        /// <summary>
+        /// Режим открытия
+        /// </summary>
+        public UIWindowOpenMode OpenMode => openMode;
+        
         [SerializeField] protected UIWindowID UIWindowToOpen;
         [SerializeField] protected bool needToCloseThis = true;
-        [SerializeField] private UIWindowOpenMode openMode = UIWindowOpenMode.Forward;
+        [Tooltip("Режим открытия: Forward — обычный переход вперёд, Pop — возврат к окну через обрезку хвоста истории")]
+        [SerializeField] protected UIWindowOpenMode openMode = UIWindowOpenMode.Forward;
 
         public override void OnButtonClick() => OpenUIWindow();
 
         /// <summary>
         /// Открытие нового окна по нажатию на кнопку
         /// </summary>
-        private void OpenUIWindow()
+        protected void OpenUIWindow()
         {
             if (!UIWindowToOpen)
             {
@@ -32,5 +39,35 @@ namespace Extensions.UIWindows
 
             windowsController.OpenWindowByID(UIWindowToOpen.Id, parentUIWindow, true, openMode);
         }
+
+        /// <summary>
+        /// Обновить параметры
+        /// </summary>
+        public void UpdateParams(UIWindowID UIWindowToOpen, bool needToCloseThis, UIWindowOpenMode openMode)
+        {
+            this.UIWindowToOpen = UIWindowToOpen;
+            this.needToCloseThis = needToCloseThis;
+            this.openMode = openMode;
+        }
+
+#if UNITY_EDITOR
+        [ContextMenu("Convert to animated")]
+        private void ConvertToAnimated()
+        {
+            GameObject go = gameObject;
+            Undo.RecordObject(go, "Convert to animated");
+
+            UIWindowID cachedWindowToOpen = UIWindowToOpen;
+            bool cachedNeedToCloseThis = needToCloseThis;
+            UIWindowOpenMode cachedOpenMode = openMode;
+
+            DestroyImmediate(this, true);
+
+            ButtonOpenUIWindowAnimated animatedButton = go.AddComponent<ButtonOpenUIWindowAnimated>();
+            animatedButton.UpdateParams(cachedWindowToOpen, cachedNeedToCloseThis, cachedOpenMode);
+
+            EditorUtility.SetDirty(go);
+        }
+#endif
     }
 }

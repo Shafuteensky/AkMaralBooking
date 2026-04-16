@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Extensions.Log;
 using Extensions.Singleton;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Extensions.UIWindows
@@ -24,19 +23,18 @@ namespace Extensions.UIWindows
 
         [Header("Настройки"), Space]
         [SerializeField] protected UIWindow startWindow;
-        [SerializeField] protected List<UIWindow> preparedUIWindows = new List<UIWindow>();
+        [SerializeField] protected List<UIWindow> preparedUIWindows = new();
         [SerializeField] protected Transform root;
-
-        [Header("Превью (назначаются автоматически)"), Space]
-        [SerializeField] protected List<UIWindow> openedUIWindows = new();
-        [SerializeField] protected UIWindow lastOpenedWindow;
 
         #endregion
 
         #region Переменные
 
-        protected HashSet<UIWindow> activeUIWindows = new();
-        protected Stack<UIWindowID> navigationStack = new();
+        protected readonly List<UIWindow> openedUIWindows = new();
+        protected UIWindow lastOpenedWindow;
+        
+        protected readonly HashSet<UIWindow> activeUIWindows = new();
+        protected readonly Stack<UIWindowID> navigationStack = new();
 
         #endregion
 
@@ -45,10 +43,8 @@ namespace Extensions.UIWindows
         protected override void Awake()
         {
             base.Awake();
-            Instance.preparedUIWindows = preparedUIWindows;
 
-            if (root == null)
-                root = transform;
+            if (root == null) root = transform;
 
             if (startWindow == null)
             {
@@ -66,13 +62,22 @@ namespace Extensions.UIWindows
         /// <summary>
         /// Открыть окно по идентификатору
         /// </summary>
-        public void OpenWindowByID(string id) => OpenWindowByID(id, lastOpenedWindow, true, UIWindowOpenMode.Forward);
+        public void OpenWindowByID(string id)
+        {
+            OpenWindowByID(id, lastOpenedWindow, true, UIWindowOpenMode.Forward);
+        }
 
         /// <summary>
         /// Открыть окно по идентификатору
         /// </summary>
         public void OpenWindowByID(string id, UIWindow sourceWindow, bool addSourceToNavigation = true, UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                ServiceDebug.LogError($"Передан пустой id в {nameof(OpenWindowByID)}");
+                return;
+            }
+
             if (openMode == UIWindowOpenMode.Pop)
             {
                 PopToWindow(id);
@@ -89,12 +94,9 @@ namespace Extensions.UIWindows
 
             UIWindowID previousWindow = ResolvePreviousWindow(sourceWindow);
 
-            if (previousWindow)
-                window.SetPreviousWindow(previousWindow);
-            else
-                window.SetPreviousWindow(null);
+            window.SetPreviousWindow(previousWindow ? previousWindow : null);
 
-            if (addSourceToNavigation && window.Type == UIWindowType.window && previousWindow)
+            if (ShouldAddToNavigation(window, previousWindow, addSourceToNavigation))
                 navigationStack.Push(previousWindow);
 
             ActivateWindow(window);
@@ -136,13 +138,16 @@ namespace Extensions.UIWindows
         /// </summary>
         public void CloseWindowById(string id)
         {
+            if (string.IsNullOrEmpty(id)) return;
+
             UIWindow window = GetOpenedWindowById(id);
 
             if (window == null) return;
 
             CloseOpenedWindow(window);
             activeUIWindows.Remove(window);
-            UpdateLastOpenedWindow();
+
+            if (lastOpenedWindow == window) UpdateLastOpenedWindow();
         }
 
         /// <summary>
@@ -154,15 +159,13 @@ namespace Extensions.UIWindows
 
             foreach (UIWindow window in windowsToClose)
             {
-                if (except != null && window.Id.Id == except.Id.Id) continue;
+                if (except != null && window == except) continue;
 
                 CloseOpenedWindow(window);
                 activeUIWindows.Remove(window);
             }
 
-            if (except == null)
-                navigationStack.Clear();
-
+            navigationStack.Clear();
             UpdateLastOpenedWindow();
         }
 
@@ -170,13 +173,14 @@ namespace Extensions.UIWindows
 
         #region Внутренние операции
 
+        /// <summary>
+        /// Выполнить переход по стеку навигации к указанному окну
+        /// </summary>
         private void PopToWindow(string id)
         {
-            UIWindow targetWindow = GetOpenedWindowById(id);
-
-            if (targetWindow == null)
+            if (string.IsNullOrEmpty(id))
             {
-                ServiceDebug.LogError($"PopTo: окно {id} не найдено среди открытых");
+                ServiceDebug.LogError($"Передан пустой id в {nameof(PopToWindow)}");
                 return;
             }
 
@@ -186,12 +190,19 @@ namespace Extensions.UIWindows
                 return;
             }
 
+            UIWindow targetWindow = GetOrCreateWindowById(id);
+
+            if (targetWindow == null)
+            {
+                ServiceDebug.LogError($"PopTo: окно {id} не найдено в {nameof(UIWindowsController)}");
+                return;
+            }
+
             List<UIWindow> windowsToClose = new(activeUIWindows);
 
             foreach (UIWindow window in windowsToClose)
             {
-                if (window == targetWindow)
-                    continue;
+                if (window == targetWindow) continue;
 
                 CloseOpenedWindow(window);
                 activeUIWindows.Remove(window);
@@ -200,55 +211,41 @@ namespace Extensions.UIWindows
             ActivateWindow(targetWindow);
         }
 
+        /// <summary>
+        /// Обрезать стек навигации до указанного окна
+        /// </summary>
         private bool TrimNavigationStackTo(string id)
         {
-            if (navigationStack.Count == 0)
-                return false;
+            if (navigationStack.Count == 0) return false;
 
-            List<UIWindowID> items = new(navigationStack);
-            items.Reverse();
+            bool isFound = false;
 
-            int targetIndex = -1;
-
-            for (int i = 0; i < items.Count; i++)
+            while (navigationStack.Count > 0)
             {
-                if (items[i] != null && items[i].Id == id)
+                UIWindowID navigationWindow = navigationStack.Pop();
+
+                if (!navigationWindow) continue;
+
+                if (navigationWindow.Id == id)
                 {
-                    targetIndex = i;
+                    isFound = true;
                     break;
                 }
             }
 
-            if (targetIndex < 0)
-                return false;
-
-            navigationStack.Clear();
-
-            for (int i = 0; i < targetIndex; i++)
-                navigationStack.Push(items[i]);
-
-            return true;
+            return isFound;
         }
 
-        private UIWindowID GetTopNavigationWindow()
-        {
-            if (navigationStack.Count == 0)
-                return null;
-
-            return navigationStack.Peek();
-        }
-
+        /// <summary>
+        /// Получить уже открытое окно или создать его из подготовленного списка
+        /// </summary>
         private UIWindow GetOrCreateWindowById(string id)
         {
             UIWindow openedWindow = GetOpenedWindowById(id);
-
-            if (openedWindow != null)
-                return openedWindow;
+            if (openedWindow != null) return openedWindow;
 
             UIWindow preparedWindow = GetPreparedWindowById(id);
-
-            if (preparedWindow == null)
-                return null;
+            if (preparedWindow == null) return null;
 
             UIWindow instantiatedWindow = Instantiate(preparedWindow.gameObject, root).GetComponent<UIWindow>();
             openedUIWindows.Add(instantiatedWindow);
@@ -256,44 +253,65 @@ namespace Extensions.UIWindows
             return instantiatedWindow;
         }
 
+        /// <summary>
+        /// Определить предыдущее окно для навигации
+        /// </summary>
         private UIWindowID ResolvePreviousWindow(UIWindow sourceWindow)
         {
             UIWindow navigationSource = sourceWindow;
+            if (navigationSource == null) navigationSource = lastOpenedWindow;
+            if (navigationSource == null) return null;
 
-            if (navigationSource == null)
-                navigationSource = lastOpenedWindow;
-
-            if (navigationSource == null)
-                return null;
-
-            if (navigationSource.Type == UIWindowType.popup)
-                return navigationSource.PreviousWindow;
+            if (navigationSource.Type == UIWindowType.popup) return navigationSource.PreviousWindow;
 
             return navigationSource.Id;
         }
 
+        /// <summary>
+        /// Нужно ли добавлять окно в стек навигации
+        /// </summary>
+        private bool ShouldAddToNavigation(UIWindow targetWindow, UIWindowID previousWindow, bool addSourceToNavigation)
+        {
+            if (!addSourceToNavigation) return false;
+            if (targetWindow == null) return false;
+            if (targetWindow.Type != UIWindowType.window) return false;
+            if (!previousWindow) return false;
+            if (targetWindow.Id == previousWindow) return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Получить подготовленное окно по идентификатору
+        /// </summary>
         private UIWindow GetPreparedWindowById(string id)
         {
             foreach (UIWindow window in preparedUIWindows)
             {
-                if (window.Id.Id == id)
-                    return window;
+                if (window == null) continue;
+                if (window.Id.Id == id) return window;
             }
 
             return null;
         }
 
+        /// <summary>
+        /// Получить открытое окно по идентификатору
+        /// </summary>
         private UIWindow GetOpenedWindowById(string id)
         {
             foreach (UIWindow window in openedUIWindows)
             {
-                if (window.Id.Id == id)
-                    return window;
+                if (window == null) continue;
+                if (window.Id.Id == id) return window;
             }
 
             return null;
         }
 
+        /// <summary>
+        /// Активировать окно
+        /// </summary>
         private void ActivateWindow(UIWindow window)
         {
             if (window == null) return;
@@ -305,6 +323,9 @@ namespace Extensions.UIWindows
             lastOpenedWindow = window;
         }
 
+        /// <summary>
+        /// Обновить ссылку на последнее открытое окно
+        /// </summary>
         private void UpdateLastOpenedWindow()
         {
             UIWindow topWindow = null;
@@ -312,7 +333,8 @@ namespace Extensions.UIWindows
 
             foreach (UIWindow window in activeUIWindows)
             {
-                if (window == null || !window.gameObject.activeSelf) continue;
+                if (window == null) continue;
+                if (!window.gameObject.activeSelf) continue;
 
                 int siblingIndex = window.transform.GetSiblingIndex();
 
@@ -326,11 +348,14 @@ namespace Extensions.UIWindows
             lastOpenedWindow = topWindow;
         }
 
+        /// <summary>
+        /// Закрыть открытое окно
+        /// </summary>
         private void CloseOpenedWindow(UIWindow window)
         {
             if (window == null) return;
 
-            window.GameObject().SetActive(false);
+            window.gameObject.SetActive(false);
         }
 
         #endregion

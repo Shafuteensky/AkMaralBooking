@@ -7,20 +7,20 @@ using DG.Tweening;
 
 namespace Extensions.UIWindows
 {
-    public class ButtonCloseUIWindowAnimated : ButtonCloseUIWindow
+    public class ButtonOpenUIWindowAnimated : ButtonOpenUIWindow
     {
 #if DOTWEEN
         [Header("Анимация"), Space]
-        [SerializeField] protected DOTweenAnimation beforeCloseAnimation;
+        [SerializeField] protected DOTweenAnimation beforeOpenAnimation;
 #endif
 
         public override void OnButtonClick()
         {
 #if DOTWEEN
-            if (beforeCloseAnimation)
+            if (openMode == UIWindowOpenMode.Pop && beforeOpenAnimation)
             {
-                beforeCloseAnimation.DORestart();
-                CoroutineDelay.Run(this, beforeCloseAnimation.duration, base.OnButtonClick);
+                beforeOpenAnimation.DORestart();
+                CoroutineDelay.Run(this, beforeOpenAnimation.duration, base.OnButtonClick);
                 return;
             }
 #endif
@@ -32,14 +32,17 @@ namespace Extensions.UIWindows
         private void ConvertToSimple()
         {
             GameObject go = gameObject;
+
             Undo.RecordObject(go, "Convert to simple (unanimated)");
 
-            bool cachedNeedToOpenPrevious = needToOpenPrevious;
+            UIWindowID cachedWindowToOpen = UIWindowToOpen;
+            bool cachedNeedToCloseThis = needToCloseThis;
+            UIWindowOpenMode cachedOpenMode = openMode;
 
             DestroyImmediate(this, true);
 
-            ButtonCloseUIWindow animatedButton = go.AddComponent<ButtonCloseUIWindow>();
-            animatedButton.UpdateParams(cachedNeedToOpenPrevious);
+            ButtonOpenUIWindow simpleButton = go.AddComponent<ButtonOpenUIWindow>();
+            simpleButton.UpdateParams(cachedWindowToOpen, cachedNeedToCloseThis, cachedOpenMode);
 
             EditorUtility.SetDirty(go);
         }
