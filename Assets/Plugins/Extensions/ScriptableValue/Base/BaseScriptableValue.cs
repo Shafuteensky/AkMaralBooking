@@ -8,7 +8,7 @@ namespace Extensions.ScriptableValues
     /// </summary>
     public abstract class BaseScriptableValue : IdentifiableObject
     {
-        protected const string GLOBAL_PROFILE = "GlobalValues";
+        protected const string GLOBAL_PROFILE = "global values";
         
         /// <summary>
         /// Сброс значения к дефолтному

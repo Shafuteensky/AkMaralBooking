@@ -168,7 +168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3201533900307095728, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_Name
-      value: Phone text
+      value: Client phone text
       objectReference: {fileID: 0}
     - target: {fileID: 6799837912470315907, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_fontSize
@@ -179,6 +179,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+--- !u!114 &555236901585315950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1760027677491610199, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+  m_PrefabInstance: {fileID: 2294661928679647801}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!224 &1173591510200687042 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1121723546787984379, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
@@ -484,6 +495,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4346408668388168584, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      propertyPath: nameInputField
+      value: 
+      objectReference: {fileID: 6572297007821156055}
+    - target: {fileID: 4346408668388168584, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      propertyPath: notesInputField
+      value: 
+      objectReference: {fileID: 4802435820497907808}
+    - target: {fileID: 4346408668388168584, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      propertyPath: contactNumberInputField
+      value: 
+      objectReference: {fileID: 555236901585315950}
     - target: {fileID: 4448610654332609970, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
       propertyPath: m_text
       value: "\u200B"
@@ -728,7 +751,8 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 67bbbd0d395a11f4385a03ff257feffc, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4346408668388168584, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7443531858299426193, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
     - {fileID: 3107712479324117808, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
@@ -858,7 +882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3201533900307095728, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_Name
-      value: Name text
+      value: Client name text
       objectReference: {fileID: 0}
     - target: {fileID: 6799837912470315907, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_fontSize
@@ -874,6 +898,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1121723546787984379, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
   m_PrefabInstance: {fileID: 4853088840244833408}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6572297007821156055 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1760027677491610199, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+  m_PrefabInstance: {fileID: 4853088840244833408}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1001 &6541885517751775799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -964,7 +999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3201533900307095728, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_Name
-      value: Notes text
+      value: Client notes text
       objectReference: {fileID: 0}
     - target: {fileID: 6799837912470315907, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_fontSize
@@ -983,6 +1018,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+--- !u!114 &4802435820497907808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1760027677491610199, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+  m_PrefabInstance: {fileID: 6541885517751775799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!224 &6149766071116153292 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1121723546787984379, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}

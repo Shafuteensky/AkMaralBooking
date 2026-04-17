@@ -73,7 +73,7 @@ namespace StarletBooking.Data.Controls
                     days,
                     prepayment,
                     rate);
-                dataContainer.MarkDirty();
+                dataContainer.NotifyUpdated();
             }
         }
     }

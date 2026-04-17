@@ -25,22 +25,14 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// Есть ли выбор
         /// </summary>
         public override bool HasSelection => IsContainerInited() && !string.IsNullOrEmpty(SelectedId);
-        
-        /// <summary>
-        /// Идентификатор активной выбранной записи контейнера
-        /// </summary>
-        public string SelectedId => selectedId;
-
-
-        private string selectedId;
 
         /// <summary>
         /// Выбрать данные как активные
         /// </summary>
         /// <param name="dataItemId">Идентификатор</param>
-        public void Select(string dataItemId)
+        public override void Select(string selectionDataId)
         {
-            selectedId = dataItemId;
+            selectedId = selectionDataId;
             onSelectionChanged?.Invoke();
         }
 

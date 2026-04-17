@@ -16,6 +16,10 @@ namespace StarletBooking.UI
         /// Событие изменения выбора в dropdown-списке
         /// </summary>
         public event Action<string> onSelectedIdChanged;
+        /// <summary>
+        /// Событие обновления опций
+        /// </summary>
+        public event Action onOptionsSet;
         
         [SerializeField]
         protected TMP_Dropdown dropdown = default;
@@ -74,6 +78,7 @@ namespace StarletBooking.UI
             {
                 dropdown.value = 0;
                 dropdown.RefreshShownValue();
+                onOptionsSet?.Invoke();
                 return;
             }
 
@@ -95,6 +100,7 @@ namespace StarletBooking.UI
             dropdown.value = Mathf.Max(0, selectedIndex);
             dropdown.RefreshShownValue();
 
+            onOptionsSet?.Invoke();
             onSelectedIdChanged?.Invoke(SelectedId);
         }
 

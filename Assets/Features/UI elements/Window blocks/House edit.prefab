@@ -287,7 +287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Name
-      value: Notes input field
+      value: House notes input field
       objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
@@ -409,7 +409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Name
-      value: Name input field
+      value: Owner name input field
       objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
@@ -997,7 +997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Name
-      value: Name input field
+      value: House name input field
       objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
@@ -1111,7 +1111,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Name
-      value: Phone input field
+      value: Owner phone input field
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_ContentType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_KeyboardType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_InputValidator
+      value: 
+      objectReference: {fileID: 11400000, guid: 35adc9739cfb6974f87f88af27cb229d, type: 2}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
@@ -1605,7 +1625,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Name
-      value: Number input field
+      value: House number input field
       objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x

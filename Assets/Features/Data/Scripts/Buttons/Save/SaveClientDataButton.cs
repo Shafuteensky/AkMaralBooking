@@ -48,7 +48,7 @@ namespace StarletBooking.Data.Controls
                 selectionContext.GetSelectedData().UpdateData(
                     _nameInputField.text, _colorPicker.GetColor(), _contactNumberInputField.text, 
                     _ratingToggleGroup.GetActiveCount(), _notesInputField.text);
-                dataContainer.MarkDirty();
+                dataContainer.NotifyUpdated();
             }
         }
     }

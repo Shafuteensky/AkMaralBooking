@@ -9,18 +9,13 @@ namespace Extensions.Data.InMemoryData.SelectionContext
     /// </summary>
     /// <typeparam name="TData">Тип данных</typeparam>
     [RequireComponent(typeof(ContextIdHolder))]
-    public abstract class AssignSelectionContextButton<TData> : MonoBehaviour, IPointerDownHandler
-        where TData : InMemoryDataEntry
+    public sealed class AssignSelectionContextButton : MonoBehaviour, IPointerDownHandler
     {
-        [SerializeField]
-        private SelectionContext<TData> selectionContext;
+        [SerializeField] private BaseSelectionContext selectionContext;
 
-        protected ContextIdHolder idHolder;
+        private ContextIdHolder idHolder;
 
-        protected virtual void Awake()
-        {
-            idHolder = GetComponent<ContextIdHolder>();
-        }
+        private void Awake() => idHolder = GetComponent<ContextIdHolder>();
 
         public void OnPointerDown(PointerEventData eventData)
         {

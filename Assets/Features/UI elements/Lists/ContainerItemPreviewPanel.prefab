@@ -77,9 +77,9 @@ GameObject:
   - component: {fileID: 4762953630875066769}
   - component: {fileID: 3232745873023924234}
   - component: {fileID: 7776578124975221727}
-  - component: {fileID: 542862374164691360}
   - component: {fileID: 3665595425321417708}
   - component: {fileID: 7506497520217413580}
+  - component: {fileID: 1515528024077341340}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -223,19 +223,6 @@ MonoBehaviour:
   UIWindowToOpen: {fileID: 0}
   needToCloseThis: 1
   openMode: 0
---- !u!114 &542862374164691360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710659195076619839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70fdd0691af74f3da5a3eefa56520c1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.AssignClientDataContextButton
-  selectionContext: {fileID: 0}
 --- !u!114 &3665595425321417708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +252,19 @@ MonoBehaviour:
   enterSound: {fileID: 0}
   downSound: {fileID: 8300000, guid: d26e5b633b6f1944b8b2ae8a3ce6d326, type: 3}
   upSound: {fileID: 8300000, guid: 72c790b752b80554c95e1bc35620116c, type: 3}
+--- !u!114 &1515528024077341340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710659195076619839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea92394b323434f962ca185b3f8deb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Data.InMemoryData.SelectionContext.AssignSelectionContextButton
+  selectionContext: {fileID: 0}
 --- !u!1 &6337003198228371576
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +450,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6951834925274986358}
     m_Modifications:
+    - target: {fileID: 2555274327354113291, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4027993604060245775, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewDataPanel

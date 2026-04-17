@@ -268,6 +268,15 @@ namespace Extensions.Data.InMemoryData
 
         #endregion
 
+        #region Update
+        
+        /// <summary>
+        /// Оповещение об обновлении данных
+        /// </summary>
+        public void NotifyUpdated() => MarkDirty();
+        
+        #endregion
+
         #region SaveLoad
         
         protected override void MarkDirty(bool notify = true)

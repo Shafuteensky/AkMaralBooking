@@ -1,18 +1,17 @@
-using Extensions.Generics;
-using Extensions.Data.InMemoryData.SelectionContext;
 using Extensions.Helpers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-namespace StarletBooking.Data.Controls
+namespace Extensions.Data.InMemoryData.SelectionContext
 {
     /// <summary>
     /// Кнопка очистки выбора <see cref="BaseSelectionContext"/>
     /// </summary>
-    public class ClearSelectionButton : AbstractButton
+    public sealed class ClearSelectionContextButton : MonoBehaviour, IPointerDownHandler
     {
         [SerializeField] private BaseSelectionContext selectionContext; 
         
-        public override void OnButtonClick()
+        public void OnPointerDown(PointerEventData eventData)
         {
             if (Logic.IsNotNull(selectionContext)) selectionContext.Clear();
         }

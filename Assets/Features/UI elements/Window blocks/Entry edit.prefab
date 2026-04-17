@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 355950667223942628}
   - component: {fileID: 5427839897127123769}
   - component: {fileID: 6185716352731489698}
+  - component: {fileID: 1174693321466582857}
   m_Layer: 5
   m_Name: House choose
   m_TagString: Untagged
@@ -275,6 +276,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.InMemoryDataDropdownFactory
   optionsProvider: {fileID: 11400000, guid: c1dffeee12ccfc14b8f04589f0ee8a88, type: 2}
   rebuildOnEnable: 1
+--- !u!114 &1174693321466582857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845182581711614781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fec90c98f2b467a94daca538476d548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.ReservationHomeDropdownSelector
+  selectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
 --- !u!1 &4012812321114361367
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,6 +510,7 @@ GameObject:
   - component: {fileID: 8150856056636005963}
   - component: {fileID: 5767690818303762792}
   - component: {fileID: 253868876690045272}
+  - component: {fileID: 5949009103335153210}
   m_Layer: 5
   m_Name: Client choose
   m_TagString: Untagged
@@ -551,6 +566,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.InMemoryDataDropdownFactory
   optionsProvider: {fileID: 11400000, guid: 5860619ecefa5ed48b7b32beeaa5bb8b, type: 2}
   rebuildOnEnable: 1
+--- !u!114 &5949009103335153210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777660748558894489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7855e2258965436188cc3b1650bc186e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.ReservationClientDropdownSelector
+  selectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
 --- !u!1 &5366608624491348659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1044,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Days input field
       objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_ContentType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_KeyboardType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_InputValidator
+      value: 
+      objectReference: {fileID: 11400000, guid: d50d6eb8d0681eb48bbc9c94506b7bcb, type: 2}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1138,6 +1182,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
   m_PrefabInstance: {fileID: 961647076723018524}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7640692752944271780 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+  m_PrefabInstance: {fileID: 961647076723018524}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075381991101788958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1001 &1782297210848314411
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1351,6 +1406,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3201533900307095728, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4508779628634907857}
+    - targetCorrespondingSourceObject: {fileID: 3201533900307095728, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4485424577731164023}
   m_SourcePrefab: {fileID: 100100000, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
 --- !u!1 &999082013862736053 stripped
 GameObject:
@@ -1377,6 +1435,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &4485424577731164023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999082013862736053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b63223fab3f4c4888cefad84343366b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.DebtCalculator
+  totalInput: {fileID: 8731974891476346273}
+  prepaymentInput: {fileID: 6785814713281845141}
 --- !u!224 &3324351749469561854 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1121723546787984379, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
@@ -1526,7 +1598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIWindowToOpen: {fileID: 11400000, guid: 07186e672c1e8c1479a4fbfd09ba2f6c, type: 2}
   needToCloseThis: 1
-  closePrevious: 0
+  openMode: 0
 --- !u!1001 &2871078843064235955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1550,6 +1622,18 @@ PrefabInstance:
     - target: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Name
       value: Rate input field
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_ContentType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_KeyboardType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
@@ -1642,6 +1726,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9075995446718592671}
+    - targetCorrespondingSourceObject: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1348191441400418527}
   m_SourcePrefab: {fileID: 100100000, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
 --- !u!1 &1301188726856126385 stripped
 GameObject:
@@ -1668,6 +1755,18 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1348191441400418527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301188726856126385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c3a5b1f7f14275b9f2464dba830757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.CurrencyRateToInputField
 --- !u!224 &5288889924778130396 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
@@ -1940,6 +2039,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prepay input field
       objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_ContentType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_KeyboardType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_InputValidator
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d74bafe9730fac4db6768fc83397305, type: 2}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2062,6 +2177,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
   m_PrefabInstance: {fileID: 4142550791354567981}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6785814713281845141 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+  m_PrefabInstance: {fileID: 4142550791354567981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912987455178208559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1001 &4183573598154313799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2687,6 +2813,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Payment input field
       objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_ContentType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_KeyboardType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_InputValidator
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d74bafe9730fac4db6768fc83397305, type: 2}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2784,6 +2926,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
   m_PrefabInstance: {fileID: 5191535682770244286}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3412971275691378694 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+  m_PrefabInstance: {fileID: 5191535682770244286}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068794503241018044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1 &9068794503241018044 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
@@ -3192,7 +3345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIWindowToOpen: {fileID: 11400000, guid: 6c2e14c06b83c96459f617417c6051fd, type: 2}
   needToCloseThis: 1
-  closePrevious: 0
+  openMode: 0
 --- !u!224 &8627433078106144012 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2528545826723775493, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
@@ -3217,6 +3370,26 @@ PrefabInstance:
     - target: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Name
       value: Departure date input field
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_ContentType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_KeyboardType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_InputValidator
+      value: 
+      objectReference: {fileID: 11400000, guid: aa0c6578a9b7dd0468b695c8df406bf7, type: 2}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
@@ -3305,13 +3478,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4728923359175269452}
   m_SourcePrefab: {fileID: 100100000, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
 --- !u!224 &4290011981749142867 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
   m_PrefabInstance: {fileID: 6139770273225935164}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6981149207060656446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+  m_PrefabInstance: {fileID: 6139770273225935164}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4728923359175269452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6981149207060656446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8683f159e142acb5c13c604007bd46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.Input.DateInputFormatter
 --- !u!1001 &6420652501957905781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3541,6 +3734,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3201533900307095728, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5332633609104794050}
+    - targetCorrespondingSourceObject: {fileID: 3201533900307095728, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3753751446223677894}
   m_SourcePrefab: {fileID: 100100000, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
 --- !u!1 &5561040779532650310 stripped
 GameObject:
@@ -3567,11 +3763,36 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &3753751446223677894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561040779532650310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96691c338dd4688bff773338005bfe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.Output.TotalPriceCalculator
+  dollarInput: {fileID: 3412971275691378694}
+  daysInput: {fileID: 7640692752944271780}
 --- !u!224 &7985940564288771085 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1121723546787984379, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
   m_PrefabInstance: {fileID: 7008422624442034166}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8731974891476346273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1760027677491610199, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+  m_PrefabInstance: {fileID: 7008422624442034166}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561040779532650310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1001 &7017245226942276379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3670,7 +3891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5313593851736788739, guid: c05a9b0421ddc104faf4f82b5d72d341, type: 3}
       propertyPath: m_fontSize
-      value: 22.9
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5313593851736788739, guid: c05a9b0421ddc104faf4f82b5d72d341, type: 3}
       propertyPath: m_fontSizeMax
@@ -3816,6 +4037,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Arrival date input field
       objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_ContentType
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_KeyboardType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_InputValidator
+      value: 
+      objectReference: {fileID: 11400000, guid: aa0c6578a9b7dd0468b695c8df406bf7, type: 2}
+    - target: {fileID: 7444808042706328248, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      propertyPath: m_CharacterValidation
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3903,10 +4144,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6222963304378044440}
   m_SourcePrefab: {fileID: 100100000, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
 --- !u!224 &1225315954602827375 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
   m_PrefabInstance: {fileID: 9204449424691499520}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5362128284390926850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3879533044318287874, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
+  m_PrefabInstance: {fileID: 9204449424691499520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6222963304378044440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5362128284390926850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8683f159e142acb5c13c604007bd46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.Input.DateInputFormatter

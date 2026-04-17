@@ -8,22 +8,22 @@ namespace StarletBooking.UI
     /// Фабрика заполнения dropdown-списка из InMemoryData-контейнера
     /// </summary>
     [RequireComponent(typeof(DropdownIdBinder))]
-    public class InMemoryDataDropdownFactory : MonoBehaviour
+    public sealed class InMemoryDataDropdownFactory : MonoBehaviour
     {
         [SerializeField]
-        protected InMemoryDropdownOptionsProvider optionsProvider;
+        private InMemoryDropdownOptionsProvider optionsProvider;
 
         [SerializeField]
-        protected bool rebuildOnEnable = true;
+        private bool rebuildOnEnable = true;
         
-        protected DropdownIdBinder binder;
+        private DropdownIdBinder binder;
 
-        protected readonly List<string> labels = new List<string>();
-        protected readonly List<string> ids = new List<string>();
+        private readonly List<string> labels = new List<string>();
+        private readonly List<string> ids = new List<string>();
+        
+        private void Awake() => binder = GetComponent<DropdownIdBinder>();
 
-        protected void Awake() => binder = GetComponent<DropdownIdBinder>();
-
-        protected virtual void OnEnable()
+        private void OnEnable()
         {
             if (rebuildOnEnable)
             {
@@ -41,9 +41,9 @@ namespace StarletBooking.UI
             {
                 return;
             }
-
+            
             optionsProvider.BuildOptions(labels, ids);
-            binder.SetOptions(labels, ids, 0);
+            binder.SetOptions(labels, ids);
         }
 
         /// <summary>

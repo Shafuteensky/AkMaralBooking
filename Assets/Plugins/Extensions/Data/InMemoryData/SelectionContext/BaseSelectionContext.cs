@@ -13,8 +13,20 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         public abstract bool HasSelection { get; }
         
         /// <summary>
+        /// Идентификатор активной выбранной записи контейнера
+        /// </summary>
+        public string SelectedId => selectedId;
+
+        protected string selectedId;
+        
+        /// <summary>
         /// Очистка выбора
         /// </summary>
         public abstract void Clear();
+
+        /// <summary>
+        /// Задание выбора
+        /// </summary>
+        public abstract void Select(string selectionDataId);
     }
 }

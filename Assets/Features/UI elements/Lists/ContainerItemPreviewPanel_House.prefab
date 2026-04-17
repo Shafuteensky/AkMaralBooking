@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: selectionContext
       value: 
       objectReference: {fileID: 11400000, guid: 7f54c7f73f69c4749acf0bb4b3ecd21d, type: 2}
+    - target: {fileID: 1515528024077341340, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+      propertyPath: selectionContext
+      value: 
+      objectReference: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
+    - target: {fileID: 1703654634380311405, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2013611081955895982, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -94,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668895518539024375, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       propertyPath: m_fontSize
-      value: 16.65
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6337003198228371576, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       propertyPath: m_Name
@@ -132,6 +140,10 @@ PrefabInstance:
       propertyPath: UIWindowToOpen
       value: 
       objectReference: {fileID: 11400000, guid: 8a593b1de34bb0f409e059cfb8075cec, type: 2}
+    - target: {fileID: 8328453151147921077, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 250c2ba0b16a73042986ad053fc232a5, type: 3}
     - target: {fileID: 8589242870501336482, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       propertyPath: m_text
       value: 26
@@ -148,9 +160,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4605672490564271645}
-    - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2282526415513677223}
     - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1533622567010268678}
@@ -172,19 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff16f79deaa4b41a04b194f6991232f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ContextIdHolders.HouseIdHolder
---- !u!114 &2282526415513677223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3926812217919259591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aa628dcb2024c24b375f0b1759fe789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.AssignHouseDataContextButton
-  selectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
 --- !u!114 &1533622567010268678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +220,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4736182180174797454}
     m_Modifications:
+    - target: {fileID: 2555274327354113291, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4027993604060245775, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewDataPanel (1)
@@ -232,6 +232,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Villa Del Mar
       objectReference: {fileID: 0}
+    - target: {fileID: 5135841527764207827, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dd53dd9995c6bd64daed6547e85b05e7, type: 3}
     - target: {fileID: 5973027031128322273, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -370,6 +374,6 @@ MonoBehaviour:
   m_MinHeight: -1
   m_PreferredWidth: -1
   m_PreferredHeight: -1
-  m_FlexibleWidth: 5
+  m_FlexibleWidth: 2.5
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
