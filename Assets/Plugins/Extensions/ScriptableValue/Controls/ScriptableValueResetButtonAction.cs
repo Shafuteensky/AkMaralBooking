@@ -7,7 +7,7 @@ namespace Extensions.UI
     /// <summary>
     /// Кнопка сброса ScriptableValue к дефолтному значению
     /// </summary>
-    public sealed class ScriptableValueResetButton : AbstractButton
+    public sealed class ScriptableValueResetButtonAction : AbstractButtonAction
     {
         [SerializeField]
         [Tooltip("Сбрасываемое значение")]
@@ -16,7 +16,7 @@ namespace Extensions.UI
         /// <summary>
         /// Код, выполняемый по клику кнопки
         /// </summary>
-        public override void OnButtonClick()
+        public override void OnButtonClickAction()
         {
             if (value == null) return;
 

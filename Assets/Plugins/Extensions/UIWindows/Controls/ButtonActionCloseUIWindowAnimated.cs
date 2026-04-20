@@ -6,24 +6,24 @@ using DG.Tweening;
 
 namespace Extensions.UIWindows
 {
-    public class ButtonCloseUIWindowAnimated : ButtonCloseUIWindow
+    public class ButtonActionCloseUIWindowAnimated : ButtonActionCloseUIWindow
     {
 #if DOTWEEN
         [Header("Анимация"), Space]
         [SerializeField] protected DOTweenAnimation beforeCloseAnimation;
 #endif
 
-        public override void OnButtonClick()
+        public override void OnButtonClickAction()
         {
 #if DOTWEEN
             if (beforeCloseAnimation)
             {
                 beforeCloseAnimation.DORestart();
-                CoroutineDelay.Run(this, beforeCloseAnimation.duration, base.OnButtonClick);
+                CoroutineDelay.Run(this, beforeCloseAnimation.duration, base.OnButtonClickAction);
                 return;
             }
 #endif
-            base.OnButtonClick();
+            base.OnButtonClickAction();
         }
     }
 }

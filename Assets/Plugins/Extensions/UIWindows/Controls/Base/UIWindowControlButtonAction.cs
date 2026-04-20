@@ -5,7 +5,7 @@ namespace Extensions.UIWindows
     /// <summary>
     /// Абстракция кнопки управления окнами <see cref="UIWindow"/>
     /// </summary>
-    public abstract class UIWindowControlButton : AbstractButton
+    public abstract class UIWindowControlButtonAction : AbstractButtonAction
     {
         protected UIWindow parentUIWindow;
         

@@ -1,25 +1,24 @@
 using System;
+using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using Extensions.Coroutines;
 using Extensions.ScriptableValues;
-using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Extensions.Generics
 {
     /// <summary>
-    /// Абстракция зажимаемой кнопки
+    /// Оркестратор очередности действий кнопок <see cref="AbstractHoldButtonAction"/>
     /// </summary>
-    public abstract class AbstractHoldButton : BaseAbstractButton, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
+    [RequireComponent(typeof(Button))]
+    public sealed class HoldButtonClickOrchestrator : BaseButtonOrchestrator,
+        IPointerDownHandler, IPointerExitHandler
     {
-        protected const float DEFAULT_HOLD_DURATION = 1f;
+        private const float DEFAULT_HOLD_DURATION = 1f;
         
         #region События
         
-        /// <summary>
-        /// Кнопка зажата до конца, выполнение действия кнопки
-        /// </summary>
-        public event Action onButtonClicked;
         /// <summary>
         /// Зажатие кнопки начато
         /// </summary>
@@ -39,38 +38,52 @@ namespace Extensions.Generics
         public event Action onHoldCompleted;
 
         #endregion
+
+        #region Параметры
         
         [Header("Параметры удержания"), Space]
-        [SerializeField] protected FloatValue holdDurationValue;
-        [SerializeField] protected bool useUnscaledTime = true;
+        [SerializeField] private FloatValue holdDurationValue;
+        [SerializeField] private bool useUnscaledTime = true;
+        
+        #endregion
+        
+        #region Переменные
 
-        protected CoroutineTask holdTask;
+        private CoroutineTask holdTask;
 
-        protected bool isHolding;
-        protected float holdDuration;
-        protected float holdTime;
-
-        protected override void Awake()
+        private bool isHolding;
+        private float holdDuration;
+        private float holdTime;
+        
+        #endregion
+        
+        #region MonoBehaviour
+        
+        private void Awake()
         {
-            base.Awake();
+            button = GetComponent<Button>();
             holdTask = new CoroutineTask(this);
         }
-
-        protected virtual void OnEnable()
+        
+        private void OnEnable()
         {
+            button.onClick.AddListener(TryCancelHold);
             holdDuration = holdDurationValue == null ? DEFAULT_HOLD_DURATION : holdDurationValue.Value;
             if (holdDuration < 0f) holdDuration = 0f;
         }
-
-        protected virtual void OnDisable()
+        
+        private void OnDisable()
         {
+            button.onClick.RemoveListener(TryCancelHold);
             if (isHolding) CancelHoldInternal(true);
             else holdTask?.Stop();
         }
-
+        
+        #endregion
+        
         #region Pointer Events
 
-        public virtual void OnPointerDown(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
             if (button == null || !button.interactable) return;
             // if (eventData.button != PointerEventData.InputButton.Left) return; // TODO заменить на настраиваемую конфигурацию?
@@ -78,15 +91,43 @@ namespace Extensions.Generics
             StartHold();
         }
 
-        public virtual void OnPointerUp(PointerEventData eventData) => TryCancelHold();
-
-        public virtual void OnPointerExit(PointerEventData eventData) => TryCancelHold();
+        public void OnPointerExit(PointerEventData eventData) => TryCancelHold();
         
         #endregion
 
-        #region Internal
+        #region Обработка действий
+        
+        /// <summary>
+        /// Добавить действие для выполнения по нажатию
+        /// </summary>
+        public void AddAction(AbstractHoldButtonAction action)
+        {
+            if (action == null) actions.Add(action);
+            sortActionsByPriority();
+        }
 
-        protected virtual void StartHold()
+        /// <summary>
+        /// Удалить действие для выполнения по нажатию
+        /// </summary>
+        public void RemoveAction(AbstractHoldButtonAction action)
+        {
+            if (action == null) actions.Remove(action);
+        }
+        
+        #endregion
+        
+        #region Зажатие кнопки
+
+        /// <summary>
+        /// Прогресс зажатия до выполнения действия (0f-1f)
+        /// </summary>
+        public float GetProgress()
+        {
+            if (holdDuration <= 0f) return 1f;
+            return Mathf.Clamp01(holdTime / holdDuration);
+        }
+        
+        private void StartHold()
         {
             if (holdTask == null || holdTask.IsRunning) return;
 
@@ -105,7 +146,7 @@ namespace Extensions.Generics
             holdTask.Start(HoldRoutine());
         }
 
-        protected virtual IEnumerator HoldRoutine()
+        private IEnumerator HoldRoutine()
         {
             while (isHolding)
             {
@@ -137,7 +178,7 @@ namespace Extensions.Generics
             CancelHoldInternal(false);
         }
 
-        protected virtual void CancelHoldInternal(bool silent)
+        private void CancelHoldInternal(bool silent)
         {
             isHolding = false;
             holdTime = 0f;
@@ -148,7 +189,7 @@ namespace Extensions.Generics
             if (!silent) onHoldCanceled?.Invoke();
         }
 
-        protected virtual void CompleteHoldInternal()
+        private void CompleteHoldInternal()
         {
             isHolding = false;
             holdTime = 0f;
@@ -158,14 +199,7 @@ namespace Extensions.Generics
 
             onHoldCompleted?.Invoke();
 
-            OnButtonClick();
-            onButtonClicked?.Invoke();
-        }
-
-        protected float GetProgress()
-        {
-            if (holdDuration <= 0f) return 1f;
-            return Mathf.Clamp01(holdTime / holdDuration);
+            ProcessActions();
         }
         
         #endregion

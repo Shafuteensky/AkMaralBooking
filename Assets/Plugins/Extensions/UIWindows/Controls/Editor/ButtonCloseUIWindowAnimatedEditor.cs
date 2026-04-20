@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Extensions.UIWindows.Editor
 {
-    [CustomEditor(typeof(ButtonCloseUIWindowAnimated))]
+    [CustomEditor(typeof(ButtonActionCloseUIWindowAnimated))]
     public class ButtonCloseUIWindowAnimatedEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
@@ -16,7 +16,7 @@ namespace Extensions.UIWindows.Editor
 
             if (GUILayout.Button("Convert To ButtonCloseUIWindow"))
             {
-                Converter.ConvertComponent<ButtonCloseUIWindowAnimated, ButtonCloseUIWindow>((ButtonCloseUIWindowAnimated)target);
+                Converter.ConvertComponent<ButtonActionCloseUIWindowAnimated, ButtonActionCloseUIWindow>((ButtonActionCloseUIWindowAnimated)target);
             }
         }
     }

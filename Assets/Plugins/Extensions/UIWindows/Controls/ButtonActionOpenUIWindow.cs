@@ -6,7 +6,7 @@ namespace Extensions.UIWindows
     /// <summary>
     /// Кнопка для открытия окна интерфейса
     /// </summary>
-    public class ButtonOpenUIWindow : UIWindowControlButton
+    public class ButtonActionOpenUIWindow : UIWindowControlButtonAction
     {
         /// <summary>
         /// Режим открытия
@@ -18,8 +18,10 @@ namespace Extensions.UIWindows
         [Tooltip("Режим открытия: Forward — обычный переход вперёд, Pop — возврат к окну через обрезку хвоста истории")]
         [SerializeField] protected UIWindowOpenMode openMode = UIWindowOpenMode.Forward;
 
-        public override void OnButtonClick() => OpenUIWindow();
+        public override void OnButtonClickAction() => OpenUIWindow();
 
+        public override int GetPriority => 0;
+        
         /// <summary>
         /// Открытие нового окна по нажатию на кнопку
         /// </summary>

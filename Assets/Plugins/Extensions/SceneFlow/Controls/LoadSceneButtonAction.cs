@@ -5,9 +5,9 @@ using UnityEngine;
 namespace Extensions.SceneFlow
 {
     /// <summary>
-    /// Открыть сцену по зажатию кнопки
+    /// Открыть сцену по нажатию кнопки
     /// </summary>
-    public class LoadSceneHoldButton : AbstractHoldButton
+    public class LoadSceneButtonAction : AbstractButtonAction
     {
         [SerializeField]
         protected SceneID targetScene = default;
@@ -15,7 +15,7 @@ namespace Extensions.SceneFlow
         [SerializeField]
         protected bool additive = false;
 
-        public override void OnButtonClick()
+        public override void OnButtonClickAction()
         {
             if (SceneController.Instance == null)
             {

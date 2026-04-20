@@ -7,12 +7,14 @@ namespace Extensions.UIWindows
     /// <summary>
     /// Кнопка для закрытия окна интерфейса
     /// </summary>
-    public class ButtonCloseUIWindow : UIWindowControlButton
+    public class ButtonActionCloseUIWindow : UIWindowControlButtonAction
     {
         [SerializeField] protected bool needToOpenPrevious = true;
 
-        public override void OnButtonClick() => CloseUIWindow();
+        public override void OnButtonClickAction() => CloseUIWindow();
 
+        public override int GetPriority => 0;
+        
         /// <summary>
         /// Закрытие текущего окна в фокусе и открытие предыдущего
         /// </summary>

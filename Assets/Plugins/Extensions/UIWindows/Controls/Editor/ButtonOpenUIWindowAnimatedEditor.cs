@@ -5,16 +5,16 @@ using UnityEngine;
 
 namespace Extensions.UIWindows.Editor
 {
-    [CustomEditor(typeof(ButtonOpenUIWindowAnimated))]
+    [CustomEditor(typeof(ButtonActionOpenUIWindowAnimated))]
     public class ButtonOpenUIWindowAnimatedEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
-            ButtonOpenUIWindowAnimated button = (ButtonOpenUIWindowAnimated)target;
+            ButtonActionOpenUIWindowAnimated buttonAction = (ButtonActionOpenUIWindowAnimated)target;
 
-            if (button.OpenMode != UIWindowOpenMode.Pop)
+            if (buttonAction.OpenMode != UIWindowOpenMode.Pop)
             {
                 EditorGUILayout.HelpBox(
                     "Анимация открытия используется только в режиме Pop. В режиме Forward она не применяется.",
@@ -26,7 +26,7 @@ namespace Extensions.UIWindows.Editor
 
             if (GUILayout.Button("Convert To ButtonOpenUIWindow"))
             {
-                Converter.ConvertComponent<ButtonOpenUIWindowAnimated, ButtonOpenUIWindow>((ButtonOpenUIWindowAnimated)target);
+                Converter.ConvertComponent<ButtonActionOpenUIWindowAnimated, ButtonActionOpenUIWindow>((ButtonActionOpenUIWindowAnimated)target);
             }
         }
     }

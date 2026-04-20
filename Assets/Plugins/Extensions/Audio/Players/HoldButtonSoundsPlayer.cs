@@ -8,33 +8,36 @@ namespace Extensions.Audio
     /// <summary>
     /// Воспроизведение звуков кнопкой с удержанием
     /// </summary>
+    [RequireComponent(typeof(HoldButtonClickOrchestrator))]
     public class HoldButtonSoundsPlayer : BaseAudioPlayer
     {
         [Header("Звуки"), Space]
-        [SerializeField]
-        protected AudioResource onHoldCompleteSound;
+        [SerializeField] protected AudioResource onHoldCompleteSound;
         // TODO добавить звук процесса зажатия
         
-        [Header("Кнопка"), Space]
-        [SerializeField]
-        protected AbstractHoldButton holdButton;
+        protected HoldButtonClickOrchestrator orchestrator;
+
+        protected virtual void Awake()
+        {
+            orchestrator = GetComponent<HoldButtonClickOrchestrator>();
+        }
 
         protected override void OnEnable()
         {
             base.OnEnable();
-            if (holdButton == null)
+            if (orchestrator == null)
             {
                 ServiceDebug.LogError("Кнопка не назначена");
                 return;
             }
-            holdButton.onHoldCompleted += PlayOnHoldCompleted;
+            orchestrator.onHoldCompleted += PlayOnHoldCompleted;
         }
 
         protected override void OnDisable()
         {
             base.OnDisable();
-            if (holdButton == null) return;
-            holdButton.onHoldCompleted -= PlayOnHoldCompleted;
+            if (orchestrator == null) return;
+            orchestrator.onHoldCompleted -= PlayOnHoldCompleted;
         }
         
         protected void PlayOnHoldCompleted()

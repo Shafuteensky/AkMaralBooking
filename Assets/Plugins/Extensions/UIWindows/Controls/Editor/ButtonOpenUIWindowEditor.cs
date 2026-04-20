@@ -5,21 +5,21 @@ using UnityEngine;
 
 namespace Extensions.UIWindows.Editor
 {
-    [CustomEditor(typeof(ButtonOpenUIWindow), true)]
+    [CustomEditor(typeof(ButtonActionOpenUIWindow), true)]
     public class ButtonOpenUIWindowEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
-            if (target.GetType() != typeof(ButtonOpenUIWindow))
+            if (target.GetType() != typeof(ButtonActionOpenUIWindow))
                 return;
 
             GUILayout.Space(8f);
 
             if (GUILayout.Button("Convert To ButtonOpenUIWindowAnimated"))
             {
-                Converter.ConvertComponent<ButtonOpenUIWindow, ButtonOpenUIWindowAnimated>((ButtonOpenUIWindow)target);
+                Converter.ConvertComponent<ButtonActionOpenUIWindow, ButtonActionOpenUIWindowAnimated>((ButtonActionOpenUIWindow)target);
             }
         }
     }

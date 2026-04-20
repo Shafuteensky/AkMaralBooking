@@ -5,21 +5,21 @@ using UnityEngine;
 
 namespace Extensions.UIWindows.Editor
 {
-    [CustomEditor(typeof(ButtonCloseUIWindow), true)]
+    [CustomEditor(typeof(ButtonActionCloseUIWindow), true)]
     public class ButtonCloseUIWindowEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
 
-            if (target.GetType() != typeof(ButtonCloseUIWindow))
+            if (target.GetType() != typeof(ButtonActionCloseUIWindow))
                 return;
 
             GUILayout.Space(8f);
 
             if (GUILayout.Button("Convert To ButtonCloseUIWindowAnimated"))
             {
-                Converter.ConvertComponent<ButtonCloseUIWindow, ButtonCloseUIWindowAnimated>((ButtonCloseUIWindow)target);
+                Converter.ConvertComponent<ButtonActionCloseUIWindow, ButtonActionCloseUIWindowAnimated>((ButtonActionCloseUIWindow)target);
             }
         }
     }
