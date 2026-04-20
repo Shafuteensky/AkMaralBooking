@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using Extensions.Log;
 using StarletBooking.UI;
 using TMPro;
@@ -49,13 +50,16 @@ namespace StarletBooking.Data.Controls
             float rate = 0f;
             float.TryParse(_exchangeRateInputField.text, out rate);
             
+            DateTime arrivalDateTime = DateTime.ParseExact(arrivalDate.text, DataHelpers.DateFormat, CultureInfo.InvariantCulture);
+            DateTime departureDateTime = DateTime.ParseExact(departureDate.text, DataHelpers.DateFormat, CultureInfo.InvariantCulture);
+            
             if (!selectionContext.HasSelection)
             {
                 ReservationData newHouse = new ReservationData(
                     _housesDropDown.SelectedId,
                     _clientsDropDown.SelectedId,
-                    DateTime.Today,
-                    DateTime.Today,
+                    arrivalDateTime,
+                    departureDateTime,
                     paymentPerDay,
                     days,
                     prepayment,
@@ -67,8 +71,8 @@ namespace StarletBooking.Data.Controls
                 selectionContext.GetSelectedData().UpdateData(
                     _housesDropDown.SelectedId,
                     _clientsDropDown.SelectedId,
-                    DateTime.Today,
-                    DateTime.Today,
+                    arrivalDateTime,
+                    departureDateTime,
                     paymentPerDay,
                     days,
                     prepayment,

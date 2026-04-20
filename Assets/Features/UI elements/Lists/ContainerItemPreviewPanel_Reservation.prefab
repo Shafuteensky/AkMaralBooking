@@ -73,7 +73,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1006149803245377668, guid: 051bdaf60799eb644b97ce81d146e861, type: 3}
       propertyPath: m_Name
-      value: Separator (1)
+      value: Separator
       objectReference: {fileID: 0}
     - target: {fileID: 6125353686969876726, guid: 051bdaf60799eb644b97ce81d146e861, type: 3}
       propertyPath: m_Pivot.x
@@ -303,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5434657087627576956, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}
       propertyPath: m_Name
-      value: ArrivalText
+      value: DepartureText
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -339,7 +339,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 695486994105960182, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
       propertyPath: m_Name
-      value: DepartureText
+      value: ArrivalText
       objectReference: {fileID: 0}
     - target: {fileID: 2215384548658479983, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
       propertyPath: m_IsActive
@@ -558,10 +558,10 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5973027031128322273, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1882012261327197212}
+      addedObject: {fileID: 5887987343182979859}
     - targetCorrespondingSourceObject: {fileID: 5973027031128322273, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5887987343182979859}
+      addedObject: {fileID: 1882012261327197212}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4027993604060245775, guid: 0e24e971d7c1cfe409f4712c063883c2, type: 3}
       insertIndex: -1
@@ -1003,6 +1003,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3403819119930017667}
+    - targetCorrespondingSourceObject: {fileID: 1710659195076619839, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7649541392446461759}
   m_SourcePrefab: {fileID: 100100000, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
 --- !u!1 &2519574795969741969 stripped
 GameObject:
@@ -1064,8 +1067,20 @@ MonoBehaviour:
   clientName: {fileID: 6991999147643464207}
   housesContainer: {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
   houseNumber: {fileID: 7214503722807367209}
-  arrivalDate: {fileID: 3492884408927417669}
-  departureDate: {fileID: 9061272791062786423}
+  arrivalDate: {fileID: 9061272791062786423}
+  departureDate: {fileID: 3492884408927417669}
+--- !u!114 &7649541392446461759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3926812217919259591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &4193525309631661910 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2013611081955895982, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}

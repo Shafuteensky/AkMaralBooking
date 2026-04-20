@@ -76,9 +76,9 @@ namespace StarletBooking.Data.Controls
             { return;}
             
             arrivalDate.text = dataItem == null ? DataHelpers.NotFoundString : 
-                DataHelpers.GetString(dataItem.ArrivalDate.ToShortDateString());
+                DataHelpers.GetString(dataItem.ArrivalDate.ToString(DataHelpers.DateFormat));
             departureDate.text = dataItem == null ? DataHelpers.NotFoundString : 
-                DataHelpers.GetString(dataItem.DepartureDate.ToShortDateString());
+                DataHelpers.GetString(dataItem.DepartureDate.ToString(DataHelpers.DateFormat));
             daysInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(dataItem.Days.ToString());
             
