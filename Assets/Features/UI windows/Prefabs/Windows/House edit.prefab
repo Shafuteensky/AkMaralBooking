@@ -30,8 +30,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6101755612065605443}
   - {fileID: 5767176026701373028}
+  - {fileID: 6101755612065605443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -757,9 +757,24 @@ PrefabInstance:
     - {fileID: 4229981430699076084, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 17092341711739274, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5767911624509149623}
+    - targetCorrespondingSourceObject: {fileID: 3300453907318603167, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7251853600076283007}
     - targetCorrespondingSourceObject: {fileID: 2140882392968600608, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6320504854707702484}
+    - targetCorrespondingSourceObject: {fileID: 2140882392968600608, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9033140865086898701}
+    - targetCorrespondingSourceObject: {fileID: 6543464456107044381, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3877432669717578921}
+    - targetCorrespondingSourceObject: {fileID: 3411807232238619268, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5604967842129533324}
   m_SourcePrefab: {fileID: 100100000, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
 --- !u!1 &1091368125152051750 stripped
 GameObject:
@@ -785,6 +800,86 @@ MonoBehaviour:
   _notesInputField: {fileID: 4378985992833494677}
   _ownerNameInputField: {fileID: 3739476748269033714}
   _ownerContactNumberInputField: {fileID: 8764213773253490212}
+--- !u!114 &9033140865086898701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091368125152051750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &1345478780223539084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 17092341711739274, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 1337745795022544390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5767911624509149623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345478780223539084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &4452243841862751362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3411807232238619268, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 1337745795022544390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5604967842129533324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452243841862751362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &4565860440052147097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3300453907318603167, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 1337745795022544390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7251853600076283007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4565860440052147097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &5215079271725330459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6543464456107044381, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 1337745795022544390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3877432669717578921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215079271725330459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &6101755612065605443 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5061318998147070277, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}

@@ -31,8 +31,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1289998235307891878}
   - {fileID: 3498299479827728399}
+  - {fileID: 1289998235307891878}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -119,6 +119,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -225,7 +229,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -234,8 +242,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6315463941099847287}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &3679426394183722696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 392134395000628495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6315463941099847287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3679426394183722696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &4558558898940617305 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
@@ -273,6 +301,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -379,7 +411,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -388,13 +424,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5601568969146552651}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
 --- !u!224 &3900344324643678621 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
   m_PrefabInstance: {fileID: 869946186586156747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4209877854840794380 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 869946186586156747}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5601568969146552651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4209877854840794380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &1105943279499834771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,6 +483,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -533,7 +593,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -542,13 +606,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5933126126240861274}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
 --- !u!224 &3849307198289474245 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
   m_PrefabInstance: {fileID: 1105943279499834771}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4118488419786339924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 1105943279499834771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5933126126240861274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4118488419786339924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &1940712724693017531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -581,6 +665,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -687,7 +775,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -696,13 +788,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3485777067835645697}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
 --- !u!224 &2367959909286077677 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
   m_PrefabInstance: {fileID: 1940712724693017531}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3211098527037235324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 1940712724693017531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3485777067835645697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211098527037235324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &2356751339546576732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -735,6 +847,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -841,7 +957,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -850,8 +970,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1830739704853310617}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &1642136229986452635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 2356751339546576732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1830739704853310617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642136229986452635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &1911419422060118026 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
@@ -889,6 +1029,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -995,7 +1139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -1004,8 +1152,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5383562694819356459}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &1713502217861420340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 2430048071045125875}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5383562694819356459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713502217861420340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &1984722759085724069 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
@@ -1043,6 +1211,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1149,7 +1321,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -1158,8 +1334,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2031219610830837163}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &1250036065804253467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 2821456538895235804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2031219610830837163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250036065804253467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &2095782175935380874 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
@@ -1197,6 +1393,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1303,7 +1503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -1312,8 +1516,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7345934754957002812}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &1236252244823326917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 2834692940230853378}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7345934754957002812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1236252244823326917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &2118027975515440212 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
@@ -1351,6 +1575,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1457,7 +1685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -1466,13 +1698,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3447137744212432534}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
 --- !u!224 &1156207842042215347 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
   m_PrefabInstance: {fileID: 3042685008822598885}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2037631498160127778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 3042685008822598885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3447137744212432534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037631498160127778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &4263028174573268483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1505,6 +1757,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1611,7 +1867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -1620,13 +1880,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5641365487807433597}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
 --- !u!224 &79715163336304981 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
   m_PrefabInstance: {fileID: 4263028174573268483}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &961385900314865092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 4263028174573268483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5641365487807433597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961385900314865092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &5109254155824938936
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1659,6 +1939,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1765,7 +2049,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -1774,8 +2062,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4748162586665896836}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &8113623395425320063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 5109254155824938936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4748162586665896836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113623395425320063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &8995327384040683758 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
@@ -1813,6 +2121,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1919,7 +2231,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -1928,13 +2244,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6615732833693619466}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
 --- !u!224 &8101809160408227651 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
   m_PrefabInstance: {fileID: 5358454029021599765}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8945234510210538450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 5358454029021599765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6615732833693619466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945234510210538450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &5866874423566485863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1967,6 +2303,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2073,7 +2413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -2082,8 +2426,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5767911624509149623}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &7427990342273370784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 5866874423566485863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5767911624509149623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427990342273370784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &7735273454562561585 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
@@ -2121,6 +2485,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2227,7 +2595,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -2236,8 +2608,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5304923519660361592}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &7425377821664955957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 5869011794132635122}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5304923519660361592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425377821664955957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &7728333282998094500 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
@@ -2810,13 +3202,113 @@ PrefabInstance:
     - {fileID: 637911730738648584, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
     - {fileID: 889600112466287989, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 17092341711739274, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2115998536202957935}
+    - targetCorrespondingSourceObject: {fileID: 3300453907318603167, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6907592306086598541}
+    - targetCorrespondingSourceObject: {fileID: 2140882392968600608, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5216426113470991942}
+    - targetCorrespondingSourceObject: {fileID: 6543464456107044381, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2950058889437815618}
+    - targetCorrespondingSourceObject: {fileID: 3411807232238619268, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6979531561648129050}
   m_SourcePrefab: {fileID: 100100000, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+--- !u!1 &942547677440248830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6543464456107044381, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 6330816838604531171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2950058889437815618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942547677440248830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &1289998235307891878 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5061318998147070277, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
   m_PrefabInstance: {fileID: 6330816838604531171}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5363335733289269699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2140882392968600608, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 6330816838604531171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5216426113470991942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5363335733289269699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &6334081134746287209 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 17092341711739274, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 6330816838604531171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2115998536202957935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6334081134746287209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &8683706194292158311 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3411807232238619268, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 6330816838604531171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6979531561648129050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8683706194292158311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &8797224458131855484 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3300453907318603167, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 6330816838604531171}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6907592306086598541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8797224458131855484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &6714479198844029493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2841,6 +3333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scroll view
       objectReference: {fileID: 0}
+    - target: {fileID: 2308418048483177031, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3210688479036265845, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -2851,6 +3347,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5010448495045481347, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010448495045481347, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594769187210422320, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7292662336235841747, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
@@ -3111,6 +3615,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3217,7 +3725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6991999147643464207, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_fontSize
-      value: 23.1
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 7132802959812685909, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
       propertyPath: m_Name
@@ -3226,8 +3738,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2598673891411938630}
   m_SourcePrefab: {fileID: 100100000, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+--- !u!1 &4845940282079790011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: c1573ece86148034a95f750c4221f2f0, type: 3}
+  m_PrefabInstance: {fileID: 8448449344614596732}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2598673891411938630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4845940282079790011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &5696084754954585898 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: c1573ece86148034a95f750c4221f2f0, type: 3}

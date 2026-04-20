@@ -1573,6 +1573,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6746666204649781352, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8182918124272989077}
+    - targetCorrespondingSourceObject: {fileID: 6746666204649781352, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5099220434459112981}
   m_SourcePrefab: {fileID: 100100000, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
 --- !u!224 &454305146498045417 stripped
 RectTransform:
@@ -1599,6 +1602,18 @@ MonoBehaviour:
   UIWindowToOpen: {fileID: 11400000, guid: 07186e672c1e8c1479a4fbfd09ba2f6c, type: 2}
   needToCloseThis: 1
   openMode: 0
+--- !u!114 &5099220434459112981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8717225315254364548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &2871078843064235955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2747,40 +2762,40 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 6854333589393617351}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 355950667223942628}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 6339038718650610521}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 8150856056636005963}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 448050111704232317}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 1821932145134471203}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 6
       addedObject: {fileID: 680933875297348537}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 7
       addedObject: {fileID: 5371636866478118216}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 8
       addedObject: {fileID: 2679550333067457909}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 9
       addedObject: {fileID: 1317428449151326187}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 10
       addedObject: {fileID: 3975262624985812059}
     - targetCorrespondingSourceObject: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
-      insertIndex: -1
+      insertIndex: 11
       addedObject: {fileID: 3396791290640858338}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
@@ -3325,6 +3340,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6746666204649781352, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
       insertIndex: -1
       addedObject: {fileID: 728210061346767096}
+    - targetCorrespondingSourceObject: {fileID: 6746666204649781352, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2407082408511796937}
   m_SourcePrefab: {fileID: 100100000, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
 --- !u!1 &652184728221909345 stripped
 GameObject:
@@ -3346,6 +3364,18 @@ MonoBehaviour:
   UIWindowToOpen: {fileID: 11400000, guid: 6c2e14c06b83c96459f617417c6051fd, type: 2}
   needToCloseThis: 1
   openMode: 0
+--- !u!114 &2407082408511796937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652184728221909345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &8627433078106144012 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2528545826723775493, guid: f8542386dcf57a44a8dde256546d26da, type: 3}

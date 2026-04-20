@@ -31,8 +31,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7581740495282555327}
   - {fileID: 7981864091578741989}
+  - {fileID: 7581740495282555327}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -111,6 +111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scroll view
       objectReference: {fileID: 0}
+    - target: {fileID: 2308418048483177031, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3210688479036265845, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -121,6 +125,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5010448495045481347, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5010448495045481347, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594769187210422320, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7292662336235841747, guid: 0f73283c41defe54598d36e418e93fa8, type: 3}
@@ -378,6 +390,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -510,6 +526,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (1)
@@ -517,8 +537,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6130434083943159589}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+--- !u!1 &2743828643343944549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 1183003546542606498}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6130434083943159589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2743828643343944549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &3051393772815880180 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -556,6 +596,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -688,6 +732,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (2)
@@ -695,8 +743,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8010340167323391211}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+--- !u!1 &2872083943326490775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 1271536583118021456}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8010340167323391211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2872083943326490775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &3140982306330469382 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -734,6 +802,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -866,6 +938,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (8)
@@ -873,8 +949,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4103658085042377080}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+--- !u!1 &2638934894734908676 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 1360570486818561731}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4103658085042377080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638934894734908676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &2941926614214629781 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -912,6 +1008,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1044,6 +1144,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (11)
@@ -1051,8 +1155,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 377955836600150405}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+--- !u!1 &2323569317054059063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 1603333228657955312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &377955836600150405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323569317054059063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &3202703780332721830 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -1090,6 +1214,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1222,6 +1350,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (6)
@@ -1229,8 +1361,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7457130865757712615}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+--- !u!1 &1688215225294481921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 2383363139097373126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7457130865757712615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688215225294481921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &1954858181819379344 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -1268,6 +1420,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1400,6 +1556,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (13)
@@ -1407,8 +1567,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9093603403068517407}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+--- !u!1 &1308865972843997264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 2617946269008243607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9093603403068517407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308865972843997264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &2190637623301582017 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -1446,6 +1626,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1578,6 +1762,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (10)
@@ -1585,13 +1773,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3719183755201393009}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
 --- !u!224 &1200991355468901423 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
   m_PrefabInstance: {fileID: 3069381590472551289}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2082480122752968894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 3069381590472551289}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3719183755201393009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082480122752968894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &3389708722287620346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2227,13 +2435,113 @@ PrefabInstance:
     - {fileID: 637911730738648584, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
     - {fileID: 889600112466287989, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 17092341711739274, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7424875422409178121}
+    - targetCorrespondingSourceObject: {fileID: 3300453907318603167, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5702061543208966508}
+    - targetCorrespondingSourceObject: {fileID: 2140882392968600608, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8537366217404932581}
+    - targetCorrespondingSourceObject: {fileID: 6543464456107044381, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4675251871900556295}
+    - targetCorrespondingSourceObject: {fileID: 3411807232238619268, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3804512243982192783}
   m_SourcePrefab: {fileID: 100100000, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+--- !u!1 &23510335236225662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3411807232238619268, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 3389708722287620346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3804512243982192783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23510335236225662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &200193889078431077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3300453907318603167, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 3389708722287620346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5702061543208966508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200193889078431077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &3401927989538367856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 17092341711739274, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 3389708722287620346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7424875422409178121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401927989538367856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!1 &3656741675863583962 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2140882392968600608, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 3389708722287620346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8537366217404932581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3656741675863583962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &7581740495282555327 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5061318998147070277, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
   m_PrefabInstance: {fileID: 3389708722287620346}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8486369798921952999 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6543464456107044381, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+  m_PrefabInstance: {fileID: 3389708722287620346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4675251871900556295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486369798921952999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &3493461461629158971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2264,6 +2572,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1866430114346941182, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -2398,6 +2710,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (9)
@@ -2405,8 +2721,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7849718784413953411}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+--- !u!1 &433913847985833468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 3493461461629158971}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7849718784413953411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433913847985833468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &741160712362574189 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -2444,6 +2780,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2576,6 +2916,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (4)
@@ -2583,13 +2927,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5982582853733735471}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
 --- !u!224 &8094756987903656737 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
   m_PrefabInstance: {fileID: 5360479390124688503}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8942716688190834608 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 5360479390124688503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5982582853733735471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8942716688190834608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &5476019666001305637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2622,6 +2986,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2754,6 +3122,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (7)
@@ -2761,13 +3133,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3491227885478939042}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
 --- !u!224 &8200175116621653875 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
   m_PrefabInstance: {fileID: 5476019666001305637}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9043347036508939234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 5476019666001305637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3491227885478939042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043347036508939234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &6196398003050246946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2800,6 +3192,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2932,6 +3328,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (5)
@@ -2939,8 +3339,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1233142107164641192}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+--- !u!1 &7169961295205249253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 6196398003050246946}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1233142107164641192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169961295205249253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!224 &8055921767724315764 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
@@ -2978,6 +3398,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3110,6 +3534,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (3)
@@ -3117,13 +3545,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4858198676870211203}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
 --- !u!224 &7074080370861610997 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
   m_PrefabInstance: {fileID: 6349595619454193827}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7953530094353142628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 6349595619454193827}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4858198676870211203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7953530094353142628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &6384862409665849206
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3156,6 +3604,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3288,6 +3740,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client (12)
@@ -3295,13 +3751,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8042871127985984790}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
 --- !u!224 &7109481241465069600 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
   m_PrefabInstance: {fileID: 6384862409665849206}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7990863896231371953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 6384862409665849206}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8042871127985984790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7990863896231371953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
 --- !u!1001 &8688058701309244716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3334,6 +3810,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3920160602606950037, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3466,6 +3946,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7526843508332033812, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8516908621217101184, guid: feadba32339efe249a58802af6dde2d1, type: 3}
       propertyPath: m_Name
       value: ContainerItemPreviewPanel_Client
@@ -3473,10 +3957,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5767911624509149623}
   m_SourcePrefab: {fileID: 100100000, guid: feadba32339efe249a58802af6dde2d1, type: 3}
 --- !u!224 &4800918938193228410 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4193525309631661910, guid: feadba32339efe249a58802af6dde2d1, type: 3}
   m_PrefabInstance: {fileID: 8688058701309244716}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5687194979676108523 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3926812217919259591, guid: feadba32339efe249a58802af6dde2d1, type: 3}
+  m_PrefabInstance: {fileID: 8688058701309244716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5767911624509149623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5687194979676108523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
