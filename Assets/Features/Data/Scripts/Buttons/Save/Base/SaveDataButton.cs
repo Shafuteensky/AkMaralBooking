@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace StarletBooking.Data.Controls
 {
-    public abstract class SaveDataButton<TDataContainer, TSelectionContext> : AbstractButton
+    public abstract class SaveDataButton<TDataContainer, TSelectionContext> : AbstractButtonAction
         where TDataContainer : InMemoryDataBaseObject
         where TSelectionContext : BaseSelectionContext
     {

@@ -21,7 +21,7 @@ namespace StarletBooking.Data.Controls
         [SerializeField] private TMP_InputField _prepaymentInputField;
         [SerializeField] private TMP_InputField _exchangeRateInputField;
         
-        public override void OnButtonClick()
+        public override void OnButtonClickAction()
         {
             if (dataContainer == null
                 || selectionContext == null)

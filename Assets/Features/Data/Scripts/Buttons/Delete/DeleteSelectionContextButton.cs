@@ -10,13 +10,13 @@ namespace StarletBooking.Data.Controls
     /// <summary>
     /// Универсальная кнопка удаления активного элемента из SelectionContext
     /// </summary>
-    public abstract class DeleteSelectionContextButtonBase<TData> : AbstractButton
+    public abstract class DeleteSelectionContextButtonBase<TData> : AbstractButtonAction
         where TData : InMemoryDataEntry
     {
         [SerializeField]
         protected SelectionContext<TData> selectionContext;
 
-        public override void OnButtonClick()
+        public override void OnButtonClickAction()
         {
             if (Logic.IsNull(selectionContext) ||
                 Logic.IsNull(selectionContext.Container) ||

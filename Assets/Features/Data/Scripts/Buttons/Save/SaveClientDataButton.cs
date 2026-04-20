@@ -17,7 +17,7 @@ namespace StarletBooking.Data.Controls
         [SerializeField] private ToggleGroupControl _ratingToggleGroup;
         [SerializeField] private TMP_InputField _notesInputField;
         
-        public override void OnButtonClick()
+        public override void OnButtonClickAction()
         {
             if (dataContainer == null
                 || selectionContext == null)

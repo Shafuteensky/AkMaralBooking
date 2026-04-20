@@ -16,7 +16,7 @@ namespace StarletBooking.Data.Controls
         [SerializeField] private TMP_InputField _ownerNameInputField;
         [SerializeField] private TMP_InputField _ownerContactNumberInputField;
         
-        public override void OnButtonClick()
+        public override void OnButtonClickAction()
         {
             if (dataContainer == null 
                 || selectionContext == null)
