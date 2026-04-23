@@ -32,6 +32,8 @@ namespace Project.UI
         private float lastTargetNormalizedPosition = -1f;
         private Coroutine refreshFocusStateCoroutine;
 
+        private const float referenceHeight = 853f;
+
         private void Awake()
         {
             scrollRect = GetComponent<ScrollRect>();
@@ -53,7 +55,7 @@ namespace Project.UI
                 enabled = false;
                 return;
             }
-            
+
             if (scrollRect.content == null)
             {
                 ServiceDebug.LogError($"Content не найден у {name}");
@@ -97,7 +99,7 @@ namespace Project.UI
             inputFields.Clear();
             scrollRect.content.GetComponentsInChildren(true, inputFields);
 
-            foreach (var inputField in inputFields)
+            foreach (TMP_InputField inputField in inputFields)
             {
                 if (inputField == null)
                 {
@@ -113,7 +115,7 @@ namespace Project.UI
 
             if (activeInputField != null)
             {
-                StartTracking();
+                ScheduleRefreshFocusState();
             }
             else
             {
@@ -123,14 +125,7 @@ namespace Project.UI
 
         private void OnInputSelected(string _)
         {
-            ResolveActiveInputField();
-
-            if (activeInputField == null)
-            {
-                return;
-            }
-
-            StartTracking();
+            ScheduleRefreshFocusState();
         }
 
         private void OnInputDeselected(string _)
@@ -143,12 +138,24 @@ namespace Project.UI
             ScheduleRefreshFocusState();
         }
 
+        private void ScheduleRefreshFocusState()
+        {
+            if (refreshFocusStateCoroutine != null)
+            {
+                return;
+            }
+
+            refreshFocusStateCoroutine = StartCoroutine(RefreshFocusStateNextFrame());
+        }
+
         private IEnumerator RefreshFocusStateNextFrame()
         {
+            yield return null;
             yield return null;
 
             refreshFocusStateCoroutine = null;
 
+            Canvas.ForceUpdateCanvases();
             ResolveActiveInputField();
 
             if (activeInputField != null)
@@ -157,7 +164,7 @@ namespace Project.UI
                 yield break;
             }
 
-            if (!TouchScreenKeyboard.visible)
+            if (GetKeyboardHeightInScreenPixels() <= 0f)
             {
                 StopTracking();
             }
@@ -188,16 +195,15 @@ namespace Project.UI
         private IEnumerator TrackFocusedInputVisibility()
         {
             yield return null;
-            Canvas.ForceUpdateCanvases();
-            EnsureActiveInputVisible();
 
             while (ShouldTrack())
             {
+                Canvas.ForceUpdateCanvases();
                 ResolveActiveInputField();
                 EnsureActiveInputVisible();
                 yield return null;
             }
-            
+
             KillScrollTween();
             trackingCoroutine = null;
             lastTargetNormalizedPosition = -1f;
@@ -205,7 +211,7 @@ namespace Project.UI
 
         private bool ShouldTrack()
         {
-            return isActiveAndEnabled && (activeInputField != null || TouchScreenKeyboard.visible);
+            return isActiveAndEnabled && (activeInputField != null || GetKeyboardHeightInScreenPixels() > 0f);
         }
 
         private void ResolveActiveInputField()
@@ -227,7 +233,7 @@ namespace Project.UI
                 }
             }
 
-            foreach (var inputField in inputFields)
+            foreach (TMP_InputField inputField in inputFields)
             {
                 if (inputField == null)
                 {
@@ -252,30 +258,48 @@ namespace Project.UI
             }
 
             float keyboardHeight = GetKeyboardHeightInScreenPixels();
-            if (keyboardHeight <= 0f) return;
+            if (keyboardHeight <= 0f)
+            {
+                return;
+            }
 
             RectTransform inputRectTransform = activeInputField.GetComponent<RectTransform>();
-            if (inputRectTransform == null) return;
+            if (inputRectTransform == null)
+            {
+                return;
+            }
 
             float canvasScaleFactor = rootCanvas.scaleFactor;
-            if (canvasScaleFactor <= 0f) canvasScaleFactor = 1f;
+            if (canvasScaleFactor <= 0f)
+            {
+                canvasScaleFactor = 1f;
+            }
 
             float visibleBottomScreenY = Mathf.Max(
                 GetBottomScreenY(viewport),
                 keyboardHeight + bottomPadding * canvasScaleFactor);
 
             float inputBottomScreenY = GetBottomScreenY(inputRectTransform);
-            if (inputBottomScreenY >= visibleBottomScreenY) return;
+            if (inputBottomScreenY >= visibleBottomScreenY)
+            {
+                return;
+            }
 
             float hiddenContentHeight = scrollRect.content.rect.height - viewport.rect.height;
-            if (hiddenContentHeight <= 0f) return;
+            if (hiddenContentHeight <= 0f)
+            {
+                return;
+            }
 
             float hiddenPartInCanvasUnits = (visibleBottomScreenY - inputBottomScreenY) / canvasScaleFactor;
 
             float targetNormalizedPosition = Mathf.Clamp01(
                 scrollRect.verticalNormalizedPosition - hiddenPartInCanvasUnits / hiddenContentHeight);
 
-            if (Mathf.Abs(targetNormalizedPosition - lastTargetNormalizedPosition) < 0.001f) return;
+            if (Mathf.Abs(targetNormalizedPosition - lastTargetNormalizedPosition) < 0.001f)
+            {
+                return;
+            }
 
             lastTargetNormalizedPosition = targetNormalizedPosition;
             ScrollTo(targetNormalizedPosition);
@@ -283,12 +307,84 @@ namespace Project.UI
 
         private float GetKeyboardHeightInScreenPixels()
         {
-            if (!TouchScreenKeyboard.visible) return 0f;
+#if UNITY_EDITOR
+            return 0f;
+
+#elif UNITY_ANDROID
+            try
+            {
+                using (AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+                {
+                    AndroidJavaObject currentActivity = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity");
+                    AndroidJavaObject unityPlayer = currentActivity.Get<AndroidJavaObject>("mUnityPlayer");
+                    AndroidJavaObject view = unityPlayer.Call<AndroidJavaObject>("getView");
+
+                    using (AndroidJavaObject rect = new AndroidJavaObject("android.graphics.Rect"))
+                    {
+                        view.Call("getWindowVisibleDisplayFrame", rect);
+
+                        int screenHeight = Screen.height;
+                        int rectHeight = rect.Call<int>("height");
+                        int keyboardHeight = screenHeight - rectHeight;
+
+                        if (keyboardHeight <= 0)
+                        {
+                            return 0f;
+                        }
+
+                        return keyboardHeight;
+                    }
+                }
+            }
+            catch
+            {
+                return 0f;
+            }
+
+#elif UNITY_IOS
+            if (!TouchScreenKeyboard.visible)
+            {
+                return 0f;
+            }
 
             Rect keyboardArea = TouchScreenKeyboard.area;
-            if (keyboardArea.height <= 0f) return 0f;
+            if (keyboardArea.height <= 0f)
+            {
+                return 0f;
+            }
 
             return keyboardArea.height;
+
+#else
+            return 0f;
+#endif
+        }
+
+        private float GetKeyboardHeightInCanvasUnits()
+        {
+            float keyboardHeightInScreenPixels = GetKeyboardHeightInScreenPixels();
+            if (keyboardHeightInScreenPixels <= 0f)
+            {
+                return 0f;
+            }
+
+#if UNITY_ANDROID && !UNITY_EDITOR
+            float scaleFactor = Screen.height / referenceHeight;
+            if (scaleFactor <= 0f)
+            {
+                scaleFactor = 1f;
+            }
+
+            return keyboardHeightInScreenPixels / scaleFactor;
+#else
+            float canvasScaleFactor = rootCanvas.scaleFactor;
+            if (canvasScaleFactor <= 0f)
+            {
+                canvasScaleFactor = 1f;
+            }
+
+            return keyboardHeightInScreenPixels / canvasScaleFactor;
+#endif
         }
 
         private float GetBottomScreenY(RectTransform target)
@@ -299,7 +395,10 @@ namespace Project.UI
 
             for (int i = 1; i < worldCorners.Length; i++)
             {
-                if (worldCorners[i].y < bottom) bottom = worldCorners[i].y;
+                if (worldCorners[i].y < bottom)
+                {
+                    bottom = worldCorners[i].y;
+                }
             }
 
             return bottom;
@@ -329,26 +428,25 @@ namespace Project.UI
 
         private void KillScrollTween()
         {
-            if (scrollTween != null && scrollTween.IsActive()) scrollTween.Kill();
+            if (scrollTween != null && scrollTween.IsActive())
+            {
+                scrollTween.Kill();
+            }
         }
 
         private void UnsubscribeFromInputFields()
         {
-            foreach (var inputField in inputFields)
+            foreach (TMP_InputField inputField in inputFields)
             {
-                if (inputField == null) continue;
+                if (inputField == null)
+                {
+                    continue;
+                }
 
                 inputField.onSelect.RemoveListener(OnInputSelected);
                 inputField.onDeselect.RemoveListener(OnInputDeselected);
                 inputField.onEndEdit.RemoveListener(OnInputEndEdit);
             }
-        }
-        
-        private void ScheduleRefreshFocusState()
-        {
-            if (refreshFocusStateCoroutine != null) return;
-
-            refreshFocusStateCoroutine = StartCoroutine(RefreshFocusStateNextFrame());
         }
     }
 }
