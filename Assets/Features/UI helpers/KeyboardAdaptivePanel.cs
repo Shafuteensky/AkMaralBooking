@@ -1,11 +1,10 @@
 using DG.Tweening;
-using Extensions.Log;
 using UnityEngine;
 
 namespace Project.UI
 {
     /// <summary>
-    /// Адаптирует UI-контейнер под экранную клавиатуру на мобильных устройствах
+    /// Адаптация full stretch панели под клавиатуру (Android + iOS)
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public sealed class KeyboardAdaptivePanel : MonoBehaviour
@@ -14,29 +13,21 @@ namespace Project.UI
         [SerializeField] private float animationDuration = 0.2f;
 
         private RectTransform rectTransform;
-        private Canvas rootCanvas;
 
-        private Vector2 defaultAnchoredPosition;
         private Vector2 defaultOffsetMin;
         private Vector2 defaultOffsetMax;
 
-        private Tween moveTween;
         private float currentOffset;
         private float targetOffset;
+
+        private const float referenceHeight = 853f;
+        
+        private Tween tween;
 
         private void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
 
-            Canvas parentCanvas = GetComponentInParent<Canvas>();
-            if (parentCanvas == null)
-            {
-                ServiceDebug.LogError($"Не найден Canvas в родителях у {name}, панель не будет адаптирована");
-                enabled = false;
-                return;
-            }
-
-            rootCanvas = parentCanvas.rootCanvas;
             CacheDefaultState();
 
             currentOffset = 0f;
@@ -51,65 +42,83 @@ namespace Project.UI
 
         private void Update()
         {
-            float nextTargetOffset = GetKeyboardOffset();
+            float nextOffset = GetKeyboardHeight();
 
-            if (Mathf.Approximately(targetOffset, nextTargetOffset))
-            {
-                return;
-            }
+            if (Mathf.Approximately(targetOffset, nextOffset)) return;
 
-            targetOffset = nextTargetOffset;
-            AnimateToOffset(targetOffset);
+            targetOffset = nextOffset;
+            AnimateTo(targetOffset);
         }
 
         private void OnDisable()
         {
             KillTween();
             ApplyOffsetImmediate(0f);
+
             currentOffset = 0f;
             targetOffset = 0f;
         }
 
-        private void OnDestroy()
-        {
-            KillTween();
-        }
+        private void OnDestroy() => KillTween();
 
         private void CacheDefaultState()
         {
-            defaultAnchoredPosition = rectTransform.anchoredPosition;
             defaultOffsetMin = rectTransform.offsetMin;
             defaultOffsetMax = rectTransform.offsetMax;
         }
 
-        private bool IsVerticallyStretched()
+        /// <summary>
+        /// Получить высоту клавиатуры (Android / iOS)
+        /// </summary>
+        private float GetKeyboardHeight()
         {
-            return !Mathf.Approximately(rectTransform.anchorMin.y, rectTransform.anchorMax.y);
-        }
+#if UNITY_EDITOR
+            return 0f;
 
-        private float GetKeyboardOffset()
-        {
-            if (!TouchScreenKeyboard.visible)
+#elif UNITY_ANDROID
+            try
+            {
+                using (AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+                {
+                    AndroidJavaObject currentActivity = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity");
+                    AndroidJavaObject unityPlayer = currentActivity.Get<AndroidJavaObject>("mUnityPlayer");
+                    AndroidJavaObject view = unityPlayer.Call<AndroidJavaObject>("getView");
+
+                    using (AndroidJavaObject rect = new AndroidJavaObject("android.graphics.Rect"))
+                    {
+                        view.Call("getWindowVisibleDisplayFrame", rect);
+
+                        int screenHeight = Screen.height;
+                        int rectHeight = rect.Call<int>("height");
+                        int keyboardHeight = screenHeight - rectHeight;
+
+                        float scaleFactor = screenHeight / referenceHeight;
+                        float result = keyboardHeight / scaleFactor;
+
+                        return result > 0 ? result + extraPadding : 0f;
+                    }
+                }
+            }
+            catch (System.Exception e)
             {
                 return 0f;
             }
 
-            Rect keyboardArea = TouchScreenKeyboard.area;
-            if (keyboardArea.height <= 0f)
-            {
-                return 0f;
-            }
+#elif UNITY_IOS
+            int screenHeight = Screen.height;
+            int keyboardHeight = (int)TouchScreenKeyboard.area.height;
 
-            float canvasScaleFactor = rootCanvas.scaleFactor;
-            if (canvasScaleFactor <= 0f)
-            {
-                canvasScaleFactor = 1f;
-            }
+            float scaleFactor = screenHeight / referenceHeight;
+            float result = keyboardHeight / scaleFactor;
 
-            return keyboardArea.height / canvasScaleFactor + extraPadding;
+            return result > 0 ? result + extraPadding : 0f;
+
+#else
+            return 0f;
+#endif
         }
 
-        private void AnimateToOffset(float offset)
+        private void AnimateTo(float offset)
         {
             KillTween();
 
@@ -119,37 +128,27 @@ namespace Project.UI
                 return;
             }
 
-            moveTween = DOTween
+            tween = DOTween
                 .To(() => currentOffset, ApplyOffsetImmediate, offset, animationDuration)
                 .SetEase(Ease.OutCubic)
                 .SetUpdate(true)
-                .OnKill(() => moveTween = null);
+                .OnKill(() => tween = null);
         }
 
         private void ApplyOffsetImmediate(float offset)
         {
             currentOffset = offset;
 
-            if (IsVerticallyStretched())
-            {
-                Vector2 offsetMin = defaultOffsetMin;
-                offsetMin.y += offset;
-                rectTransform.offsetMin = offsetMin;
-                rectTransform.offsetMax = defaultOffsetMax;
-                return;
-            }
+            Vector2 offsetMin = defaultOffsetMin;
+            offsetMin.y = defaultOffsetMin.y + offset;
 
-            Vector2 anchoredPosition = defaultAnchoredPosition;
-            anchoredPosition.y += offset;
-            rectTransform.anchoredPosition = anchoredPosition;
+            rectTransform.offsetMin = offsetMin;
+            rectTransform.offsetMax = defaultOffsetMax;
         }
 
         private void KillTween()
         {
-            if (moveTween != null && moveTween.IsActive())
-            {
-                moveTween.Kill();
-            }
+            if (tween != null && tween.IsActive()) tween.Kill();
         }
     }
 }
