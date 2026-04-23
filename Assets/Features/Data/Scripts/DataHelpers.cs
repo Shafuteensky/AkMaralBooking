@@ -1,7 +1,4 @@
-using Extensions.Data.InMemoryData;
-using Extensions.Log;
 using UnityEngine;
-using VHierarchy.Libs;
 
 namespace StarletBooking.Data
 {
@@ -42,7 +39,7 @@ namespace StarletBooking.Data
         /// <returns>Информативная строка</returns>
         public static string GetString(string dataString)
         {
-            if (dataString.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(dataString))
             {
                 return EMPTY_STRING;
             }
