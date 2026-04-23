@@ -1,10 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
 
-namespace Project.UI
+namespace StarletBooking.UI
 {
     /// <summary>
-    /// Адаптация full stretch панели под клавиатуру (Android + iOS)
+    /// Адаптация full stretch панели под мобильную клавиатуру
     /// </summary>
     [RequireComponent(typeof(RectTransform))]
     public sealed class KeyboardAdaptivePanel : MonoBehaviour
@@ -20,8 +20,6 @@ namespace Project.UI
         private float currentOffset;
         private float targetOffset;
 
-        private const float referenceHeight = 853f;
-        
         private Tween tween;
 
         private void Awake()
@@ -61,61 +59,33 @@ namespace Project.UI
 
         private void OnDestroy() => KillTween();
 
+        /// <summary>
+        /// Обновить дефолтное состояние панели
+        /// </summary>
+        public void RefreshDefaultPosition()
+        {
+            defaultOffsetMin = rectTransform.offsetMin;
+            defaultOffsetMax = rectTransform.offsetMax;
+
+            if (!Mathf.Approximately(currentOffset, 0f))
+            {
+                defaultOffsetMin.y -= currentOffset;
+            }
+        }
+
         private void CacheDefaultState()
         {
             defaultOffsetMin = rectTransform.offsetMin;
             defaultOffsetMax = rectTransform.offsetMax;
         }
 
-        /// <summary>
-        /// Получить высоту клавиатуры (Android / iOS)
-        /// </summary>
         private float GetKeyboardHeight()
         {
-#if UNITY_EDITOR
-            return 0f;
+            float keyboardHeight = MobileScreenHelper.GetKeyboardHeightInCanvasUnits();
 
-#elif UNITY_ANDROID
-            try
-            {
-                using (AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-                {
-                    AndroidJavaObject currentActivity = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity");
-                    AndroidJavaObject unityPlayer = currentActivity.Get<AndroidJavaObject>("mUnityPlayer");
-                    AndroidJavaObject view = unityPlayer.Call<AndroidJavaObject>("getView");
+            if (keyboardHeight <= 0f) return 0f;
 
-                    using (AndroidJavaObject rect = new AndroidJavaObject("android.graphics.Rect"))
-                    {
-                        view.Call("getWindowVisibleDisplayFrame", rect);
-
-                        int screenHeight = Screen.height;
-                        int rectHeight = rect.Call<int>("height");
-                        int keyboardHeight = screenHeight - rectHeight;
-
-                        float scaleFactor = screenHeight / referenceHeight;
-                        float result = keyboardHeight / scaleFactor;
-
-                        return result > 0 ? result + extraPadding : 0f;
-                    }
-                }
-            }
-            catch (System.Exception e)
-            {
-                return 0f;
-            }
-
-#elif UNITY_IOS
-            int screenHeight = Screen.height;
-            int keyboardHeight = (int)TouchScreenKeyboard.area.height;
-
-            float scaleFactor = screenHeight / referenceHeight;
-            float result = keyboardHeight / scaleFactor;
-
-            return result > 0 ? result + extraPadding : 0f;
-
-#else
-            return 0f;
-#endif
+            return keyboardHeight + extraPadding;
         }
 
         private void AnimateTo(float offset)

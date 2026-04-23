@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Project.UI.Output
+namespace StarletBooking.UI.Output
 {
     /// <summary>
     /// Вычисляет итоговую стоимость: сумма в долларах * количество дней

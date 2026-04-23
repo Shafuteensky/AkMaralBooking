@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Project.UI
+namespace StarletBooking.UI
 {
     /// <summary>
     /// Вычисляет долг: итоговая сумма минус предоплата

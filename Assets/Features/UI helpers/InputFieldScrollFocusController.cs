@@ -7,11 +7,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Project.UI
+namespace StarletBooking.UI
 {
     /// <summary>
     /// Автоматически прокручивает ScrollRect так, чтобы активный TMP_InputField
-    /// оставался в видимой области над экранной клавиатурой.
+    /// оставался в видимой области над экранной клавиатурой
     /// </summary>
     [RequireComponent(typeof(ScrollRect))]
     public sealed class InputFieldScrollFocusController : MonoBehaviour
@@ -31,8 +31,6 @@ namespace Project.UI
         private Tween scrollTween;
         private float lastTargetNormalizedPosition = -1f;
         private Coroutine refreshFocusStateCoroutine;
-
-        private const float referenceHeight = 853f;
 
         private void Awake()
         {
@@ -64,10 +62,7 @@ namespace Project.UI
             }
         }
 
-        private void OnEnable()
-        {
-            RefreshInputFields();
-        }
+        private void OnEnable() => RefreshInputFields();
 
         private void OnDisable()
         {
@@ -83,14 +78,11 @@ namespace Project.UI
             activeInputField = null;
         }
 
-        private void OnDestroy()
-        {
-            KillScrollTween();
-        }
+        private void OnDestroy() => KillScrollTween();
 
         /// <summary>
-        /// Пересобирает список полей ввода внутри ScrollRect и заново подписывается на их события.
-        /// Вызывать после динамического создания или удаления TMP_InputField.
+        /// Пересобирает список полей ввода внутри ScrollRect и заново подписывается на их события
+        /// Вызывать после динамического создания или удаления TMP_InputField
         /// </summary>
         public void RefreshInputFields()
         {
@@ -101,49 +93,26 @@ namespace Project.UI
 
             foreach (TMP_InputField inputField in inputFields)
             {
-                if (inputField == null)
-                {
-                    continue;
-                }
+                if (inputField == null) continue;
 
-                inputField.onSelect.AddListener(OnInputSelected);
-                inputField.onDeselect.AddListener(OnInputDeselected);
-                inputField.onEndEdit.AddListener(OnInputEndEdit);
+                inputField.onSelect.AddListener(OnInputUpdate);
+                inputField.onDeselect.AddListener(OnInputUpdate);
+                inputField.onEndEdit.AddListener(OnInputUpdate);
             }
 
             ResolveActiveInputField();
 
             if (activeInputField != null)
-            {
                 ScheduleRefreshFocusState();
-            }
             else
-            {
                 StopTracking();
-            }
         }
 
-        private void OnInputSelected(string _)
-        {
-            ScheduleRefreshFocusState();
-        }
-
-        private void OnInputDeselected(string _)
-        {
-            ScheduleRefreshFocusState();
-        }
-
-        private void OnInputEndEdit(string _)
-        {
-            ScheduleRefreshFocusState();
-        }
+        private void OnInputUpdate(string _) => ScheduleRefreshFocusState();
 
         private void ScheduleRefreshFocusState()
         {
-            if (refreshFocusStateCoroutine != null)
-            {
-                return;
-            }
+            if (refreshFocusStateCoroutine != null) return;
 
             refreshFocusStateCoroutine = StartCoroutine(RefreshFocusStateNextFrame());
         }
@@ -164,18 +133,12 @@ namespace Project.UI
                 yield break;
             }
 
-            if (GetKeyboardHeightInScreenPixels() <= 0f)
-            {
-                StopTracking();
-            }
+            if (MobileScreenHelper.GetKeyboardHeightInScreenPixels() <= 0f) StopTracking();
         }
 
         private void StartTracking()
         {
-            if (trackingCoroutine != null)
-            {
-                return;
-            }
+            if (trackingCoroutine != null) return;
 
             trackingCoroutine = StartCoroutine(TrackFocusedInputVisibility());
         }
@@ -209,10 +172,7 @@ namespace Project.UI
             lastTargetNormalizedPosition = -1f;
         }
 
-        private bool ShouldTrack()
-        {
-            return isActiveAndEnabled && (activeInputField != null || GetKeyboardHeightInScreenPixels() > 0f);
-        }
+        private bool ShouldTrack() => isActiveAndEnabled && (activeInputField != null || MobileScreenHelper.GetKeyboardHeightInScreenPixels() > 0f);
 
         private void ResolveActiveInputField()
         {
@@ -235,10 +195,7 @@ namespace Project.UI
 
             foreach (TMP_InputField inputField in inputFields)
             {
-                if (inputField == null)
-                {
-                    continue;
-                }
+                if (inputField == null) continue;
 
                 if (inputField.isFocused)
                 {
@@ -257,134 +214,34 @@ namespace Project.UI
                 return;
             }
 
-            float keyboardHeight = GetKeyboardHeightInScreenPixels();
-            if (keyboardHeight <= 0f)
-            {
-                return;
-            }
+            float keyboardHeight = MobileScreenHelper.GetKeyboardHeightInScreenPixels();
+            if (keyboardHeight <= 0f) return;
 
             RectTransform inputRectTransform = activeInputField.GetComponent<RectTransform>();
-            if (inputRectTransform == null)
-            {
-                return;
-            }
+            if (inputRectTransform == null) return;
 
             float canvasScaleFactor = rootCanvas.scaleFactor;
-            if (canvasScaleFactor <= 0f)
-            {
-                canvasScaleFactor = 1f;
-            }
+            if (canvasScaleFactor <= 0f) canvasScaleFactor = 1f;
 
             float visibleBottomScreenY = Mathf.Max(
                 GetBottomScreenY(viewport),
                 keyboardHeight + bottomPadding * canvasScaleFactor);
 
             float inputBottomScreenY = GetBottomScreenY(inputRectTransform);
-            if (inputBottomScreenY >= visibleBottomScreenY)
-            {
-                return;
-            }
+            if (inputBottomScreenY >= visibleBottomScreenY) return;
 
             float hiddenContentHeight = scrollRect.content.rect.height - viewport.rect.height;
-            if (hiddenContentHeight <= 0f)
-            {
-                return;
-            }
+            if (hiddenContentHeight <= 0f) return;
 
             float hiddenPartInCanvasUnits = (visibleBottomScreenY - inputBottomScreenY) / canvasScaleFactor;
 
             float targetNormalizedPosition = Mathf.Clamp01(
                 scrollRect.verticalNormalizedPosition - hiddenPartInCanvasUnits / hiddenContentHeight);
 
-            if (Mathf.Abs(targetNormalizedPosition - lastTargetNormalizedPosition) < 0.001f)
-            {
-                return;
-            }
+            if (Mathf.Abs(targetNormalizedPosition - lastTargetNormalizedPosition) < 0.001f) return;
 
             lastTargetNormalizedPosition = targetNormalizedPosition;
             ScrollTo(targetNormalizedPosition);
-        }
-
-        private float GetKeyboardHeightInScreenPixels()
-        {
-#if UNITY_EDITOR
-            return 0f;
-
-#elif UNITY_ANDROID
-            try
-            {
-                using (AndroidJavaClass unityPlayerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
-                {
-                    AndroidJavaObject currentActivity = unityPlayerClass.GetStatic<AndroidJavaObject>("currentActivity");
-                    AndroidJavaObject unityPlayer = currentActivity.Get<AndroidJavaObject>("mUnityPlayer");
-                    AndroidJavaObject view = unityPlayer.Call<AndroidJavaObject>("getView");
-
-                    using (AndroidJavaObject rect = new AndroidJavaObject("android.graphics.Rect"))
-                    {
-                        view.Call("getWindowVisibleDisplayFrame", rect);
-
-                        int screenHeight = Screen.height;
-                        int rectHeight = rect.Call<int>("height");
-                        int keyboardHeight = screenHeight - rectHeight;
-
-                        if (keyboardHeight <= 0)
-                        {
-                            return 0f;
-                        }
-
-                        return keyboardHeight;
-                    }
-                }
-            }
-            catch
-            {
-                return 0f;
-            }
-
-#elif UNITY_IOS
-            if (!TouchScreenKeyboard.visible)
-            {
-                return 0f;
-            }
-
-            Rect keyboardArea = TouchScreenKeyboard.area;
-            if (keyboardArea.height <= 0f)
-            {
-                return 0f;
-            }
-
-            return keyboardArea.height;
-
-#else
-            return 0f;
-#endif
-        }
-
-        private float GetKeyboardHeightInCanvasUnits()
-        {
-            float keyboardHeightInScreenPixels = GetKeyboardHeightInScreenPixels();
-            if (keyboardHeightInScreenPixels <= 0f)
-            {
-                return 0f;
-            }
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-            float scaleFactor = Screen.height / referenceHeight;
-            if (scaleFactor <= 0f)
-            {
-                scaleFactor = 1f;
-            }
-
-            return keyboardHeightInScreenPixels / scaleFactor;
-#else
-            float canvasScaleFactor = rootCanvas.scaleFactor;
-            if (canvasScaleFactor <= 0f)
-            {
-                canvasScaleFactor = 1f;
-            }
-
-            return keyboardHeightInScreenPixels / canvasScaleFactor;
-#endif
         }
 
         private float GetBottomScreenY(RectTransform target)
@@ -395,10 +252,7 @@ namespace Project.UI
 
             for (int i = 1; i < worldCorners.Length; i++)
             {
-                if (worldCorners[i].y < bottom)
-                {
-                    bottom = worldCorners[i].y;
-                }
+                if (worldCorners[i].y < bottom) bottom = worldCorners[i].y;
             }
 
             return bottom;
@@ -428,24 +282,18 @@ namespace Project.UI
 
         private void KillScrollTween()
         {
-            if (scrollTween != null && scrollTween.IsActive())
-            {
-                scrollTween.Kill();
-            }
+            if (scrollTween != null && scrollTween.IsActive()) scrollTween.Kill();
         }
 
         private void UnsubscribeFromInputFields()
         {
             foreach (TMP_InputField inputField in inputFields)
             {
-                if (inputField == null)
-                {
-                    continue;
-                }
+                if (inputField == null) continue;
 
-                inputField.onSelect.RemoveListener(OnInputSelected);
-                inputField.onDeselect.RemoveListener(OnInputDeselected);
-                inputField.onEndEdit.RemoveListener(OnInputEndEdit);
+                inputField.onSelect.RemoveListener(OnInputUpdate);
+                inputField.onDeselect.RemoveListener(OnInputUpdate);
+                inputField.onEndEdit.RemoveListener(OnInputUpdate);
             }
         }
     }
