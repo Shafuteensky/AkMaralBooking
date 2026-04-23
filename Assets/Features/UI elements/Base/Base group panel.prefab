@@ -507,7 +507,18 @@ MonoBehaviour:
   collapsedHeight: 70
   fitter: {fileID: 4283573749604538659}
   panel: {fileID: 5119795987392497002}
-  animation: {fileID: 7923010325777809054}
+  collapseAnimation: {fileID: 7991837379216256706}
+--- !u!114 &7991837379216256706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 300947040807447521, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}
+  m_PrefabInstance: {fileID: 7693723204515775779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::DG.Tweening.DOTweenAnimation
 --- !u!224 &8391984561206324756 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2212332857329986359, guid: 294b0318acaca0d4c9418e512c364c52, type: 3}

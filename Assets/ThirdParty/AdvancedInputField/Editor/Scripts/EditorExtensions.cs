@@ -73,13 +73,6 @@ namespace AdvancedInputFieldPlugin.Editor
 			Selection.activeObject = settings;
 		}
 
-		[MenuItem("Tools/Advanced Input Field/About", false, 201)]
-		public static void OpenVersionInfo()
-		{
-			VersionInfoWindow window = (VersionInfoWindow)EditorWindow.GetWindowWithRect(typeof(VersionInfoWindow), new Rect(0, 0, 640, 480), true, VersionInfoWindow.TITLE);
-			window.Initialize();
-		}
-
 		private static void CreateInstance(GameObject prefab)
 		{
 			GameObject instance = GameObject.Instantiate(prefab);

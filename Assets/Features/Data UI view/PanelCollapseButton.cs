@@ -16,7 +16,7 @@ namespace Features.Data_UI_view
         [SerializeField] private ContentSizeFitter fitter;
         [SerializeField] private RectTransform panel;
         
-        [SerializeField] private DOTweenAnimation animation;
+        [SerializeField] private DOTweenAnimation collapseAnimation;
         
         private bool isCollapsed;
         
@@ -29,10 +29,10 @@ namespace Features.Data_UI_view
             if (isCollapsed && panel != null)
             {
                 panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, collapsedHeight);
-                if (animation != null) animation.tween.Restart();
+                if (collapseAnimation != null) collapseAnimation.tween.Restart();
             }
             else
-                if (animation != null) animation.tween.PlayBackwards();
+                if (collapseAnimation != null) collapseAnimation.tween.PlayBackwards();
             
             LayoutRebuilder.ForceRebuildLayoutImmediate(panel.parent.transform as RectTransform);
         }

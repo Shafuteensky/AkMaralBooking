@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 8863329457871556723}
   - component: {fileID: 4961891567295132040}
   - component: {fileID: 2856879057097032658}
+  - component: {fileID: 5458816398946963990}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -248,6 +249,18 @@ MonoBehaviour:
   enterSound: {fileID: 0}
   downSound: {fileID: 8300000, guid: 005b621d2141c5e4587e0f7da6a8a72e, type: 3}
   upSound: {fileID: 8300000, guid: 72c790b752b80554c95e1bc35620116c, type: 3}
+--- !u!114 &5458816398946963990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7841625303233922225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593f97ac251d4d308ec0fdb20938917d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.ScrollRectChildDragRouter
 --- !u!1 &8493446132590706061
 GameObject:
   m_ObjectHideFlags: 0

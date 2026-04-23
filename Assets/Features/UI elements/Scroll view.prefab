@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7900135726909080122}
   - component: {fileID: 4484626217498146667}
   - component: {fileID: 1518939205345062094}
+  - component: {fileID: 8488605775854396768}
   m_Layer: 5
   m_Name: Scroll view
   m_TagString: Untagged
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8488605775854396768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117401428372381732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466cca0609644c689ad511cc987af944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.InputFieldScrollFocusController
+  bottomPadding: 24
+  scrollDuration: 0.2
 --- !u!1 &6158334399631879359
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4605227574955744669, guid: 431cae6e421d3d6478cb897d868457f8, type: 3}
       propertyPath: m_Size
-      value: 0.99999857
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4605227574955744669, guid: 431cae6e421d3d6478cb897d868457f8, type: 3}
       propertyPath: m_Value

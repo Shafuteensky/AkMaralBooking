@@ -200,8 +200,6 @@ MonoBehaviour:
   preparedUIWindows:
   - {fileID: 8722698054976595851, guid: 0e275b1e36f81fe4b8154c11a5849e69, type: 3}
   root: {fileID: 436722262}
-  openedUIWindows: []
-  lastOpenedWindow: {fileID: 0}
 --- !u!1001 &436722261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -212,7 +210,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1583343523163640151, guid: 0262044935a8029449a0b32207a51e83, type: 3}
       propertyPath: m_Name
-      value: UI root
+      value: UI canvas
       objectReference: {fileID: 0}
     - target: {fileID: 5974493510084586027, guid: 0262044935a8029449a0b32207a51e83, type: 3}
       propertyPath: m_Pivot.x
@@ -301,7 +299,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 0262044935a8029449a0b32207a51e83, type: 3}
 --- !u!224 &436722262 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5974493510084586027, guid: 0262044935a8029449a0b32207a51e83, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3016063338095351358, guid: 0262044935a8029449a0b32207a51e83, type: 3}
   m_PrefabInstance: {fileID: 436722261}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1323960648

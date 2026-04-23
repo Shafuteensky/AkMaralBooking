@@ -335,11 +335,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1458427839 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5974493510084586027, guid: 0262044935a8029449a0b32207a51e83, type: 3}
-  m_PrefabInstance: {fileID: 2791512197214257956}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1570167786
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,57 +502,7 @@ MonoBehaviour:
   - {fileID: 8175441984097762281, guid: 8383057c79961034686d6c12b0ee5008, type: 3}
   - {fileID: 8722698054976595851, guid: 26f460bd1e2661140b285e9b58e18c63, type: 3}
   - {fileID: 8722698054976595851, guid: 0e275b1e36f81fe4b8154c11a5849e69, type: 3}
-  root: {fileID: 1927422543}
-  openedUIWindows: []
-  lastOpenedWindow: {fileID: 0}
---- !u!1 &1927422542
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1927422543}
-  - component: {fileID: 1927422544}
-  m_Layer: 5
-  m_Name: UI root
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1927422543
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927422542}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1458427839}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1927422544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927422542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6ce2f53300408cb5ccc2002a4b3f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Helpers.SafeAreaFitter
+  root: {fileID: 2791512197214257957}
 --- !u!1001 &2791512197214257956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -652,12 +597,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5974493510084586027, guid: 0262044935a8029449a0b32207a51e83, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1927422543}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0262044935a8029449a0b32207a51e83, type: 3}
+--- !u!224 &2791512197214257957 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3016063338095351358, guid: 0262044935a8029449a0b32207a51e83, type: 3}
+  m_PrefabInstance: {fileID: 2791512197214257956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

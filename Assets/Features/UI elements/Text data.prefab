@@ -61,6 +61,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121723546787984379}
   - component: {fileID: 1760027677491610199}
+  - component: {fileID: 4341314241123058862}
   m_Layer: 5
   m_Name: Text data
   m_TagString: Untagged
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Text: Text
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
-  m_ReadOnly: 0
+  m_ReadOnly: 1
   m_RichText: 1
   m_GlobalFontAsset: {fileID: 0}
   m_OnFocusSelectAll: 1
@@ -190,6 +191,18 @@ MonoBehaviour:
   isAlert: 0
   m_InputValidator: {fileID: 0}
   m_ShouldActivateOnSelect: 1
+--- !u!114 &4341314241123058862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3201533900307095728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593f97ac251d4d308ec0fdb20938917d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.ScrollRectChildDragRouter
 --- !u!1001 &5441679819631775820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -267,6 +280,10 @@ PrefabInstance:
       value: "Text\u200B"
       objectReference: {fileID: 0}
     - target: {fileID: 3950947116977881371, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950947116977881371, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}
       propertyPath: m_TextWrappingMode
       value: 3
       objectReference: {fileID: 0}
@@ -322,6 +339,10 @@ PrefabInstance:
     - target: {fileID: 4429749373663504744, guid: 2c131b7bf2b56bf469af7a18e9176151, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4429749373663504744, guid: 2c131b7bf2b56bf469af7a18e9176151, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4429749373663504744, guid: 2c131b7bf2b56bf469af7a18e9176151, type: 3}
       propertyPath: m_PixelsPerUnitMultiplier
