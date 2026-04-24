@@ -13,48 +13,30 @@ namespace StarletBooking.Data.Controls
     /// </summary>
     public class LoadReservationDataOnOpen : SelectionContextViewLoader<ReservationData>
     {
-        [SerializeField]
-        protected TMP_InputField paymentPerDayInputField = default;
-        [SerializeField]
-        protected TMP_InputField daysInputField = default;
-        [SerializeField]
-        protected TMP_InputField prepaymentInputField = default;
-        [SerializeField]
-        protected TMP_InputField exchangeRateInputField = default;
-        [SerializeField] 
-        private TMP_InputField arrivalDate;
-        [SerializeField] 
-        private TMP_InputField departureDate;
+        [SerializeField] protected TMP_InputField paymentPerDayInputField = default;
+        [SerializeField] protected TMP_InputField daysInputField = default;
+        [SerializeField] protected TMP_InputField prepaymentInputField = default;
+        [SerializeField] protected TMP_InputField discountInputField = default;
+        [SerializeField] protected TMP_InputField exchangeRateInputField = default;
+        [SerializeField] private TMP_InputField arrivalDate;
+        [SerializeField] private TMP_InputField departureDate;
 
         [Header("Edit")]
-        [SerializeField]
-        protected DropdownIdBinder clientsDropdown = default;
-        [SerializeField]
-        protected DropdownIdBinder housesDropdown = default;
+        [SerializeField] protected DropdownIdBinder clientsDropdown = default;
+        [SerializeField] protected DropdownIdBinder housesDropdown = default;
         
         [Header("View")]
-        [SerializeField]
-        protected ClientsDataContainer clientsContainer;
-        [SerializeField]
-        protected TMP_InputField clientNameInputField = default;
-        [SerializeField]
-        protected TMP_InputField clientNumberInputField = default;
-        [SerializeField]
-        protected ToggleGroupControl clientRatingToggleGroup = default;
-        [SerializeField]
-        protected TMP_InputField clientNotesInputField = default;
-        [SerializeField]
-        protected HousesDataContainer housesContainer;
-        [SerializeField]
-        protected TMP_InputField houseNameInputField = default;
-        [SerializeField]
-        protected TMP_InputField houseNumberInputField = default;
-        [SerializeField]
-        protected TMP_InputField houseOwnerNameInputField = default;
-        [SerializeField]
-        protected TMP_InputField houseOwnerNumberInputField = default;
-        [SerializeField]
-        protected TMP_InputField houseNotesInputField = default;
+        [SerializeField] protected ClientsDataContainer clientsContainer;
+        [SerializeField] protected TMP_InputField clientNameInputField = default;
+        [SerializeField] protected TMP_InputField clientNumberInputField = default;
+        [SerializeField] protected ToggleGroupControl clientRatingToggleGroup = default;
+        [SerializeField] protected TMP_InputField clientNotesInputField = default;
+        [SerializeField] protected HousesDataContainer housesContainer;
+        [SerializeField] protected TMP_InputField houseNameInputField = default;
+        [SerializeField] protected TMP_InputField houseNumberInputField = default;
+        [SerializeField] protected TMP_InputField houseOwnerNameInputField = default;
+        [SerializeField] protected TMP_InputField houseOwnerNumberInputField = default;
+        [SerializeField] protected TMP_InputField houseNotesInputField = default;
         
         protected override void ApplyToView(ReservationData dataItem)
         {
@@ -72,7 +54,8 @@ namespace StarletBooking.Data.Controls
                 Logic.IsNull(arrivalDate) ||
                 Logic.IsNull(departureDate) ||
                 Logic.IsNull(exchangeRateInputField) ||
-                Logic.IsNull(prepaymentInputField))
+                Logic.IsNull(prepaymentInputField) ||
+                Logic.IsNull(discountInputField)) 
             { return;}
             
             arrivalDate.text = dataItem == null ? DataHelpers.NotFoundString : 
@@ -84,10 +67,12 @@ namespace StarletBooking.Data.Controls
             
             paymentPerDayInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(dataItem.PaymentPerDay.ToString());
+            discountInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
+                DataHelpers.GetString(dataItem.Discount.ToString());
             prepaymentInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(dataItem.Prepayment.ToString());
             exchangeRateInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
-                DataHelpers.GetString(dataItem.Prepayment.ToString());
+                DataHelpers.GetString(dataItem.ExchangeRate.ToString());
 
             if (clientsDropdown != null && housesDropdown != null)
             {
@@ -132,6 +117,7 @@ namespace StarletBooking.Data.Controls
             if (paymentPerDayInputField != null) { paymentPerDayInputField.text = string.Empty; }
             if (daysInputField != null) { daysInputField.text = string.Empty; }
             if (prepaymentInputField != null) { prepaymentInputField.text = string.Empty; }
+            if (discountInputField != null) { discountInputField.text = string.Empty; }
             if (arrivalDate != null) { arrivalDate.text = string.Empty; }
             if (departureDate != null) { departureDate.text = string.Empty; }
             if (exchangeRateInputField != null) { exchangeRateInputField.text = string.Empty; }

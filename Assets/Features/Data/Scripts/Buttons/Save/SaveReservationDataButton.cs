@@ -20,6 +20,7 @@ namespace StarletBooking.Data.Controls
         [SerializeField] private TMP_InputField _paymentPerDayInputField;
         [SerializeField] private TMP_InputField _daysInputField;
         [SerializeField] private TMP_InputField _prepaymentInputField;
+        [SerializeField] private TMP_InputField _discountInputField;
         [SerializeField] private TMP_InputField _exchangeRateInputField;
         
         public override void OnButtonClickAction()
@@ -35,20 +36,18 @@ namespace StarletBooking.Data.Controls
                 || _paymentPerDayInputField == null
                 || _daysInputField == null 
                 || _prepaymentInputField == null
+                || _discountInputField == null
                 || _exchangeRateInputField == null )
             {
                 ServiceDebug.LogError("Не все ссылки на поля ввода заполнены, запись не добавлена");
                 return;
             }
 
-            float paymentPerDay = 0f;
-            float.TryParse(_paymentPerDayInputField.text, out paymentPerDay);
-            int days = 1;
-            int.TryParse(_daysInputField.text, out days);
-            float prepayment = 0f;
-            float.TryParse(_prepaymentInputField.text, out prepayment);
-            float rate = 0f;
-            float.TryParse(_exchangeRateInputField.text, out rate);
+            float.TryParse(_paymentPerDayInputField.text, out var paymentPerDay);
+            int.TryParse(_daysInputField.text, out var days);
+            float.TryParse(_prepaymentInputField.text, out var prepayment);
+            float.TryParse(_discountInputField.text, out var discount);
+            float.TryParse(_exchangeRateInputField.text, out var rate);
             
             DateTime arrivalDateTime = DateTime.ParseExact(arrivalDate.text, DataHelpers.DateFormat, CultureInfo.InvariantCulture);
             DateTime departureDateTime = DateTime.ParseExact(departureDate.text, DataHelpers.DateFormat, CultureInfo.InvariantCulture);
@@ -63,6 +62,7 @@ namespace StarletBooking.Data.Controls
                     paymentPerDay,
                     days,
                     prepayment,
+                    discount,
                     rate);
                 dataContainer.Add(newHouse);
             }
@@ -76,6 +76,7 @@ namespace StarletBooking.Data.Controls
                     paymentPerDay,
                     days,
                     prepayment,
+                    discount,
                     rate);
                 dataContainer.NotifyUpdated();
             }

@@ -10,24 +10,17 @@ namespace StarletBooking.Data
     [Serializable]
     public class ReservationData : InMemoryDataEntry
     {
-        [SerializeField]
-        protected string houseId = default;
-        [SerializeField]
-        protected string clientId = default;
+        [SerializeField] protected string houseId = default;
+        [SerializeField] protected string clientId = default;
         
-        [SerializeField]
-        protected string arrivalDateIso = string.Empty;
-        [SerializeField]
-        protected string departureDateIso = string.Empty;
+        [SerializeField] protected string arrivalDateIso = string.Empty;
+        [SerializeField] protected string departureDateIso = string.Empty;
 
-        [SerializeField]
-        protected float paymentPerDay = 0f;
-        [SerializeField]
-        protected int days = 0;
-        [SerializeField]
-        protected float prepayment = 0f;
-        [SerializeField]
-        protected float exchangeRate = 0f;
+        [SerializeField] protected float paymentPerDay = 0f;
+        [SerializeField] protected int days = 0;
+        [SerializeField] protected float prepayment = 0f;
+        [SerializeField] protected float discount = 0f;
+        [SerializeField] protected float exchangeRate = 0f;
 
         /// <summary>
         /// Идентификатор дома
@@ -60,6 +53,10 @@ namespace StarletBooking.Data
         /// </summary>
         public float Prepayment => prepayment;
         /// <summary>
+        /// Персональная скидка
+        /// </summary>
+        public float Discount => discount;
+        /// <summary>
         /// Курс валют (доллар/сом)
         /// </summary>
         public float ExchangeRate => exchangeRate;
@@ -75,9 +72,10 @@ namespace StarletBooking.Data
             float paymentPerDay,
             int days,
             float prepayment,
+            float discount,
             float exchangeRate)
         {
-            UpdateData(houseId, clientId, arrivalDate, departureDate, paymentPerDay, days, prepayment, exchangeRate);
+            UpdateData(houseId, clientId, arrivalDate, departureDate, paymentPerDay, days, prepayment, discount, exchangeRate);
         }
         
         /// <summary>
@@ -91,6 +89,7 @@ namespace StarletBooking.Data
             float paymentPerDay,
             int days,
             float prepayment,
+            float discount,
             float exchangeRate)
         {
             this.houseId = houseId;
@@ -100,6 +99,7 @@ namespace StarletBooking.Data
             this.paymentPerDay = paymentPerDay;
             this.days = days;
             this.prepayment = prepayment;
+            this.discount = discount;
             this.exchangeRate = exchangeRate;
         }
     }
