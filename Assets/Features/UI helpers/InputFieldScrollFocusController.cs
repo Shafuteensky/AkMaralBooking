@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Extensions.Coroutines;
 using Extensions.Log;
 using TMPro;
 using UnityEngine;
@@ -27,10 +27,10 @@ namespace StarletBooking.UI
         private Canvas rootCanvas;
 
         private TMP_InputField activeInputField;
-        private Coroutine trackingCoroutine;
         private Tween scrollTween;
         private float lastTargetNormalizedPosition = -1f;
-        private Coroutine refreshFocusStateCoroutine;
+        private bool refreshFocusStateScheduled;
+        private bool trackingScheduled;
 
         private void Awake()
         {
@@ -68,14 +68,10 @@ namespace StarletBooking.UI
         {
             UnsubscribeFromInputFields();
 
-            if (refreshFocusStateCoroutine != null)
-            {
-                StopCoroutine(refreshFocusStateCoroutine);
-                refreshFocusStateCoroutine = null;
-            }
+            refreshFocusStateScheduled = false;
 
             StopTracking();
-            activeInputField = null;
+            SetActiveInputField(null);
         }
 
         private void OnDestroy() => KillScrollTween();
@@ -103,26 +99,27 @@ namespace StarletBooking.UI
             ResolveActiveInputField();
 
             if (activeInputField != null)
-                ScheduleRefreshFocusState();
+                RefreshFocusStateNextFrame();
             else
                 StopTracking();
         }
 
-        private void OnInputUpdate(string _) => ScheduleRefreshFocusState();
-
-        private void ScheduleRefreshFocusState()
+        /// <summary>
+        /// Обновить фокус
+        /// </summary>
+        public void RefreshFocusStateNextFrame()
         {
-            if (refreshFocusStateCoroutine != null) return;
+            if (refreshFocusStateScheduled) return;
 
-            refreshFocusStateCoroutine = StartCoroutine(RefreshFocusStateNextFrame());
+            refreshFocusStateScheduled = true;
+            CoroutineDelay.Run(this, RefreshFocusState);
         }
 
-        private IEnumerator RefreshFocusStateNextFrame()
-        {
-            yield return null;
-            yield return null;
+        private void OnInputUpdate(string _) => RefreshFocusStateNextFrame();
 
-            refreshFocusStateCoroutine = null;
+        private void RefreshFocusState()
+        {
+            refreshFocusStateScheduled = false;
 
             Canvas.ForceUpdateCanvases();
             ResolveActiveInputField();
@@ -130,7 +127,8 @@ namespace StarletBooking.UI
             if (activeInputField != null)
             {
                 StartTracking();
-                yield break;
+                EnsureActiveInputVisible();
+                return;
             }
 
             if (MobileScreenHelper.GetKeyboardHeightInScreenPixels() <= 0f) StopTracking();
@@ -138,46 +136,40 @@ namespace StarletBooking.UI
 
         private void StartTracking()
         {
-            if (trackingCoroutine != null) return;
+            if (trackingScheduled) return;
 
-            trackingCoroutine = StartCoroutine(TrackFocusedInputVisibility());
+            trackingScheduled = true;
+            CoroutineDelay.Run(this, TrackFocusedInputVisibility);
         }
 
         private void StopTracking()
         {
-            if (trackingCoroutine != null)
-            {
-                StopCoroutine(trackingCoroutine);
-                trackingCoroutine = null;
-            }
-
+            trackingScheduled = false;
             KillScrollTween();
             lastTargetNormalizedPosition = -1f;
         }
 
-        private IEnumerator TrackFocusedInputVisibility()
+        private void TrackFocusedInputVisibility()
         {
-            yield return null;
+            if (!trackingScheduled) return;
 
-            while (ShouldTrack())
+            Canvas.ForceUpdateCanvases();
+            ResolveActiveInputField();
+            EnsureActiveInputVisible();
+
+            if (!ShouldTrack())
             {
-                Canvas.ForceUpdateCanvases();
-                ResolveActiveInputField();
-                EnsureActiveInputVisible();
-                yield return null;
+                StopTracking();
+                return;
             }
 
-            KillScrollTween();
-            trackingCoroutine = null;
-            lastTargetNormalizedPosition = -1f;
+            CoroutineDelay.Run(this, TrackFocusedInputVisibility);
         }
 
         private bool ShouldTrack() => isActiveAndEnabled && (activeInputField != null || MobileScreenHelper.GetKeyboardHeightInScreenPixels() > 0f);
 
         private void ResolveActiveInputField()
         {
-            activeInputField = null;
-
             GameObject selectedObject = EventSystem.current != null
                 ? EventSystem.current.currentSelectedGameObject
                 : null;
@@ -188,7 +180,7 @@ namespace StarletBooking.UI
 
                 if (selectedInputField != null && inputFields.Contains(selectedInputField))
                 {
-                    activeInputField = selectedInputField;
+                    SetActiveInputField(selectedInputField);
                     return;
                 }
             }
@@ -199,10 +191,21 @@ namespace StarletBooking.UI
 
                 if (inputField.isFocused)
                 {
-                    activeInputField = inputField;
+                    SetActiveInputField(inputField);
                     return;
                 }
             }
+
+            SetActiveInputField(null);
+        }
+
+        private void SetActiveInputField(TMP_InputField inputField)
+        {
+            if (activeInputField == inputField) return;
+
+            activeInputField = inputField;
+            lastTargetNormalizedPosition = -1f;
+            KillScrollTween();
         }
 
         private void EnsureActiveInputVisible()

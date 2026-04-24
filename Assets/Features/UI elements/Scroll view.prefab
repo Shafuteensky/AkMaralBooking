@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4484626217498146667}
   - component: {fileID: 1518939205345062094}
   - component: {fileID: 8488605775854396768}
+  - component: {fileID: 7658310389978888815}
   m_Layer: 5
   m_Name: Scroll view
   m_TagString: Untagged
@@ -92,6 +93,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Project.UI.InputFieldScrollFocusController
   bottomPadding: 24
   scrollDuration: 0.2
+--- !u!114 &7658310389978888815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117401428372381732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379d880b18354319a27ac3dcb2ae5583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.InputFieldFocusBinder
+  keyboardAdaptivePanel: {fileID: 0}
 --- !u!1 &6158334399631879359
 GameObject:
   m_ObjectHideFlags: 0

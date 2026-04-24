@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,6 +10,11 @@ namespace StarletBooking.UI
     [RequireComponent(typeof(RectTransform))]
     public sealed class KeyboardAdaptivePanel : MonoBehaviour
     {
+        /// <summary>
+        /// Событие окончания обновления положения панели
+        /// </summary>
+        public event Action onOffsetCompleted;
+        
         [SerializeField] private float extraPadding = 24f;
         [SerializeField] private float animationDuration = 0.2f;
 
@@ -21,6 +27,7 @@ namespace StarletBooking.UI
         private float targetOffset;
 
         private Tween tween;
+        
 
         private void Awake()
         {
@@ -97,11 +104,12 @@ namespace StarletBooking.UI
                 ApplyOffsetImmediate(offset);
                 return;
             }
-
+            
             tween = DOTween
                 .To(() => currentOffset, ApplyOffsetImmediate, offset, animationDuration)
                 .SetEase(Ease.OutCubic)
                 .SetUpdate(true)
+                .OnComplete(() => onOffsetCompleted?.Invoke())
                 .OnKill(() => tween = null);
         }
 
