@@ -9,9 +9,8 @@ namespace Extensions.ScriptableValues
     [DisallowMultipleComponent]
     public class FloatValueSliderBinder : AbstractSlider
     {
-        [SerializeField]
         [Tooltip("Хранилище значения, синхронизируемое со слайдером")]
-        protected FloatValue floatValue;
+        [SerializeField] protected FloatValue floatValue;
 
         protected override void OnEnable()
         {

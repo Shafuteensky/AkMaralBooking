@@ -1,5 +1,6 @@
 using System.Collections;
-using TMPro;
+using Extensions.Generics;
+using StarletBooking.Data;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -8,29 +9,25 @@ namespace StarletBooking.UI.Input
     /// <summary>
     /// Загружает курс USD → KGS и выводит его в TMP_InputField
     /// </summary>
-    [RequireComponent(typeof(TMP_InputField))]
-    public class CurrencyRateToInputField : MonoBehaviour
+    [DisallowMultipleComponent]
+    public sealed class CurrencyRateToInputField : AbstractInputField
     {
         private const string Url = "https://api.exchangerate.host/latest?base=USD&symbols=KGS";
 
-        protected TMP_InputField _inputField;
-
-        protected virtual void Awake()
+        protected override void OnEnable()
         {
-            _inputField = GetComponent<TMP_InputField>();
-        }
+            base.OnEnable();
 
-        protected virtual void OnEnable()
-        {
-            if (!string.IsNullOrEmpty(_inputField.text))
-            {
-                return;
-            }
+            if (!string.IsNullOrEmpty(inputField.text)) return;
 
             StartCoroutine(LoadRate());
         }
 
-        protected IEnumerator LoadRate()
+        public override void OnInputFieldValueUpdated(string value)
+        {
+        }
+
+        private IEnumerator LoadRate()
         {
             using (UnityWebRequest request = UnityWebRequest.Get(Url))
             {
@@ -39,39 +36,40 @@ namespace StarletBooking.UI.Input
                 if (request.result != UnityWebRequest.Result.Success)
                 {
                     Debug.Log("Currency load error: " + request.error);
-                    SetText("—");
+                    SetDefaultRate();
                     yield break;
                 }
 
                 Response response = JsonUtility.FromJson<Response>(request.downloadHandler.text);
 
-                if (response == null || response.rates == null)
+                if (response == null || response.rates == null || response.rates.KGS <= 0)
                 {
-                    SetText("—");
+                    SetDefaultRate();
                     yield break;
                 }
 
-                float rate = response.rates.KGS;
-                SetText(rate.ToString("0.00", System.Globalization.CultureInfo.GetCultureInfo("ru-RU")));
+                SetRate(response.rates.KGS);
             }
         }
 
-        /// <summary>
-        /// Устанавливает текст без вызова событий TMP_InputField
-        /// </summary>
-        protected void SetText(string value)
+        private void SetRate(float value)
         {
-            _inputField.SetTextWithoutNotify(value);
+            inputField.SetTextWithoutNotify(value.ToString("0.00", System.Globalization.CultureInfo.GetCultureInfo("ru-RU")));
+        }
+
+        private void SetDefaultRate()
+        {
+            SetRate(DataBus.instance.DefaultExchangeRate.Value);
         }
 
         [System.Serializable]
-        protected class Response
+        private sealed class Response
         {
             public Rates rates;
         }
 
         [System.Serializable]
-        protected class Rates
+        private sealed class Rates
         {
             public float KGS;
         }
