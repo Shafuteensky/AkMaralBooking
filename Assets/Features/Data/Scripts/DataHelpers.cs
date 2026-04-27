@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using UnityEngine;
 
 namespace StarletBooking.Data
@@ -45,6 +47,19 @@ namespace StarletBooking.Data
             }
             
             return dataString;
+        }
+        
+        /// <summary>
+        /// Пытается распарсить дату из строки в формате DateFormat
+        /// </summary>
+        public static bool TryGetDate(string value, out DateTime date)
+        {
+            return DateTime.TryParseExact(
+                value,
+                DateFormat,
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out date);
         }
     }
 }

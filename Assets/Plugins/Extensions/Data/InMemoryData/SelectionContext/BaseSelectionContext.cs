@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Extensions.Data.InMemoryData.SelectionContext
@@ -7,6 +8,11 @@ namespace Extensions.Data.InMemoryData.SelectionContext
     /// </summary>
     public abstract class BaseSelectionContext : ScriptableObject
     {
+        /// <summary>
+        /// Событие изменения активного элемента
+        /// </summary>
+        public event Action onSelectionChanged;
+
         /// <summary>
         /// Наличие активного выбранного элемента
         /// </summary>
@@ -28,5 +34,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// Задание выбора
         /// </summary>
         public abstract void Select(string selectionDataId);
+        
+        protected void OnSelectionChanged() => onSelectionChanged?.Invoke();
     }
 }

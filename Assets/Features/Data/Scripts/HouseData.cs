@@ -10,16 +10,12 @@ namespace StarletBooking.Data
     [Serializable]
     public class HouseData : InMemoryDataEntry
     {
-        [SerializeField]
-        protected string name = string.Empty;
-        [SerializeField]
-        protected string number = string.Empty;
-        [SerializeField]
-        protected string notes = string.Empty;
-        [SerializeField]
-        protected string ownerName = string.Empty;
-        [SerializeField]
-        protected string ownerContactNumber = string.Empty;
+        [SerializeField] protected string name = string.Empty;
+        [SerializeField] protected string number = string.Empty;
+        [SerializeField] protected string notes = string.Empty;
+        [SerializeField] protected string paymentPerDay = string.Empty;
+        [SerializeField] protected string ownerName = string.Empty;
+        [SerializeField] protected string ownerContactNumber = string.Empty;
 
         /// <summary>
         /// Наименование дома
@@ -34,6 +30,10 @@ namespace StarletBooking.Data
         /// </summary>
         public string Notes => notes;
         /// <summary>
+        /// Стоимость аренды за день
+        /// </summary>
+        public string PaymentPerDay => paymentPerDay;
+        /// <summary>
         /// Имя владельца
         /// </summary>
         public string OwnerName => ownerName;
@@ -45,19 +45,20 @@ namespace StarletBooking.Data
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        public HouseData(string name, string number, string notes, string ownerName, string ownerContactNumber)
+        public HouseData(string name, string number, string notes, string paymentPerDay, string ownerName, string ownerContactNumber)
         {
-            UpdateData(name, number, notes, ownerName, ownerContactNumber);
+            UpdateData(name, number, notes, paymentPerDay, ownerName, ownerContactNumber);
         }
 
         /// <summary>
         /// Обновить данные
         /// </summary>
-        public void UpdateData(string name, string number, string notes, string ownerName, string ownerContactNumber)
+        public void UpdateData(string name, string number, string notes, string paymentPerDay, string ownerName, string ownerContactNumber)
         {
             this.name = name;
             this.number = number;
             this.notes = notes;
+            this.paymentPerDay = paymentPerDay;
             this.ownerName = ownerName;
             this.ownerContactNumber = ownerContactNumber;
         }

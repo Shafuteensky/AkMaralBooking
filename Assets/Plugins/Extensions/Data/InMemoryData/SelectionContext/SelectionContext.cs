@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using Extensions.Log;
 using UnityEngine;
 
@@ -10,11 +10,6 @@ namespace Extensions.Data.InMemoryData.SelectionContext
     /// <typeparam name="TData">Тип хранимых данных</typeparam>
     public abstract class SelectionContext<TData> : BaseSelectionContext where TData : InMemoryDataEntry
     {
-        /// <summary>
-        /// Событие изменения активного элемента
-        /// </summary>
-        public event Action onSelectionChanged;
-
         /// <summary>
         /// Контейнер, данные которого назначаются как активный выбор контекста
         /// </summary>
@@ -32,8 +27,16 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// <param name="dataItemId">Идентификатор</param>
         public override void Select(string selectionDataId)
         {
+            bool contains = Container.Data.Any(x => x.Id == selectionDataId);
+            if (!contains)
+            {
+                ServiceDebug.LogError($"Запись с идентификатором «{selectionDataId}» отсутствует в {Container.name}, " +
+                                      "контекст выбора не будет обновлен");
+                return;
+            }
+            
             selectedId = selectionDataId;
-            onSelectionChanged?.Invoke();
+            OnSelectionChanged();
         }
 
         /// <summary>
@@ -42,7 +45,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         public override void Clear()
         {
             selectedId = string.Empty;
-            onSelectionChanged?.Invoke();
+            OnSelectionChanged();
         }
 
         #region Получение данных
