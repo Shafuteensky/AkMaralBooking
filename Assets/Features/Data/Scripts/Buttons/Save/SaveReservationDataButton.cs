@@ -48,9 +48,9 @@ namespace StarletBooking.Data.Controls
             float.TryParse(_prepaymentInputField.text, out var prepayment);
             float.TryParse(_discountInputField.text, out var discount);
             float.TryParse(_exchangeRateInputField.text, out var rate);
-            
-            DateTime arrivalDateTime = DateTime.ParseExact(arrivalDate.text, DataHelpers.DateFormat, CultureInfo.InvariantCulture);
-            DateTime departureDateTime = DateTime.ParseExact(departureDate.text, DataHelpers.DateFormat, CultureInfo.InvariantCulture);
+
+            if (!DataHelpers.TryGetDate(arrivalDate.text, out DateTime arrivalDateTime)) arrivalDateTime = DateTime.Now;
+            if (!DataHelpers.TryGetDate(departureDate.text, out DateTime departureDateTime)) departureDateTime = DateTime.Now;
             
             if (!selectionContext.HasSelection)
             {

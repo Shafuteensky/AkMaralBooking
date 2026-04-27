@@ -41,11 +41,7 @@ namespace StarletBooking.Data
         /// <returns>Информативная строка</returns>
         public static string GetString(string dataString)
         {
-            if (string.IsNullOrEmpty(dataString))
-            {
-                return EMPTY_STRING;
-            }
-            
+            if (string.IsNullOrEmpty(dataString)) return EMPTY_STRING;
             return dataString;
         }
         
