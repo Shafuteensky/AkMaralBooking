@@ -42,7 +42,7 @@ namespace StarletBooking.UI.Output
 
             int total = dollars * days;
 
-            _resultInput.SetTextWithoutNotify(total + "$");
+            _resultInput.SetTextWithoutNotify(total.ToString());
         }
 
         private int ParseInt(string text, int defaultValue)

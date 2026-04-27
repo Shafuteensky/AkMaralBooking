@@ -2026,6 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.UI.DebtCalculator
   totalInput: {fileID: 1058384114581659448}
+  discountInput: {fileID: 6004688701268497579}
   prepaymentInput: {fileID: 5616452245477486133}
 --- !u!1001 &2691242828357374444
 PrefabInstance:
@@ -2995,7 +2996,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 254350211955331755, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_text
-      value: 500$
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 254350211955331755, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_Enabled
@@ -3015,19 +3016,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8398349571068175128, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_ContentType
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8398349571068175128, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_KeyboardType
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8398349571068175128, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_InputValidator
       value: 
-      objectReference: {fileID: 11400000, guid: 9d74bafe9730fac4db6768fc83397305, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8398349571068175128, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_CharacterValidation
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9005909168404312449, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_text
@@ -3922,7 +3923,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.LoadReservationDropdowns
   selectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
-  container: {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
   clientsDropdown: {fileID: 5767690818303762792}
   housesDropdown: {fileID: 5427839897127123769}
 --- !u!114 &2351527268513933079
@@ -3938,7 +3938,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.LoadReservationFields
   selectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
-  container: {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
   viewOutputFormat: 0
   paymentPerDayInputField: {fileID: 4359735414926061990}
   daysInputField: {fileID: 8778811566650615812}
@@ -3957,7 +3956,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 254350211955331755, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_text
-      value: 150$
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 254350211955331755, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_Enabled
@@ -3977,19 +3976,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8398349571068175128, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_ContentType
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8398349571068175128, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_KeyboardType
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8398349571068175128, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_InputValidator
       value: 
-      objectReference: {fileID: 11400000, guid: 9d74bafe9730fac4db6768fc83397305, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8398349571068175128, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_CharacterValidation
-      value: 8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9005909168404312449, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       propertyPath: m_text

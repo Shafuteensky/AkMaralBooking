@@ -11,6 +11,7 @@ namespace StarletBooking.UI
     public class DebtCalculator : MonoBehaviour
     {
         [SerializeField] private TMP_InputField totalInput;
+        [SerializeField] private TMP_InputField discountInput;
         [SerializeField] private TMP_InputField prepaymentInput;
 
         private TMP_InputField _debtInput;
@@ -20,6 +21,7 @@ namespace StarletBooking.UI
         private void OnEnable()
         {
             totalInput.onValueChanged.AddListener(OnValueChanged);
+            discountInput.onValueChanged.AddListener(OnValueChanged);
             prepaymentInput.onValueChanged.AddListener(OnValueChanged);
 
             UpdateDebt();
@@ -28,6 +30,7 @@ namespace StarletBooking.UI
         private void OnDisable()
         {
             totalInput.onValueChanged.RemoveListener(OnValueChanged);
+            discountInput.onValueChanged.RemoveListener(OnValueChanged);
             prepaymentInput.onValueChanged.RemoveListener(OnValueChanged);
         }
 
@@ -36,12 +39,13 @@ namespace StarletBooking.UI
         private void UpdateDebt()
         {
             int total = ParseInt(totalInput.text, 0);
+            int discount = ParseInt(discountInput.text, 0);
             int prepayment = ParseInt(prepaymentInput.text, 0);
-            int debt = total - prepayment;
+            int debt = total - prepayment - discount;
 
             if (debt < 0) debt = 0;
 
-            _debtInput.SetTextWithoutNotify(debt + "$");
+            _debtInput.SetTextWithoutNotify(debt.ToString());
         }
 
         private int ParseInt(string text, int defaultValue)
