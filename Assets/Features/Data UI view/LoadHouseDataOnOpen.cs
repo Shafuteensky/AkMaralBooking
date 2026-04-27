@@ -10,16 +10,12 @@ namespace StarletBooking.Data.Controls
     /// </summary>
     public class LoadHouseDataOnOpen : SelectionContextViewLoader<HouseData>
     {
-        [SerializeField]
-        protected TMP_InputField nameInputField = default;
-        [SerializeField]
-        protected TMP_InputField numberInputField = default;
-        [SerializeField]
-        protected TMP_InputField notesInputField = default;
-        [SerializeField]
-        protected TMP_InputField ownerNameInputField = default;
-        [SerializeField]
-        protected TMP_InputField ownerContactNumberInputField = default;
+        [Header("Заполняемые поля"), Space]
+        [SerializeField] protected TMP_InputField nameInputField;
+        [SerializeField] protected TMP_InputField numberInputField;
+        [SerializeField] protected TMP_InputField notesInputField;
+        [SerializeField] protected TMP_InputField ownerNameInputField;
+        [SerializeField] protected TMP_InputField ownerContactNumberInputField;
 
         protected override void ApplyToView(HouseData dataItem)
         {

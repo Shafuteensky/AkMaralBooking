@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 954475516192706074}
   - component: {fileID: -7314217135538238799}
-  - component: {fileID: 6465354373561653469}
   m_Layer: 5
   m_Name: Client view
   m_TagString: Untagged
@@ -53,25 +52,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: {fileID: 11400000, guid: a5c19e8ae3b79f8448962fe8d00f9786, type: 2}
   type: 0
---- !u!114 &6465354373561653469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3207562499272426183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6c31502ea3a4c0d8a26e8c4fbfdcbd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.View.LoadClientDataOnOpen
-  selectionContext: {fileID: 11400000, guid: 7f54c7f73f69c4749acf0bb4b3ecd21d, type: 2}
-  container: {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
-  nameInputField: {fileID: 1666582502952161340}
-  contactNumberInputField: {fileID: 5449645542860445317}
-  colorPicker: {fileID: 9031724816981060393}
-  ratingToggleGroup: {fileID: 1457511476462018515}
-  notesInputField: {fileID: 1058402354504732299}
 --- !u!1001 &2171224688688199780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1679,63 +1659,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 982fb11d3c645ee499b2e3fdb200d3d4, type: 3}
---- !u!114 &1058402354504732299 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4802435820497907808, guid: 982fb11d3c645ee499b2e3fdb200d3d4, type: 3}
-  m_PrefabInstance: {fileID: 5482462644182105835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
---- !u!114 &1457511476462018515 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6354438669360718136, guid: 982fb11d3c645ee499b2e3fdb200d3d4, type: 3}
-  m_PrefabInstance: {fileID: 5482462644182105835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf96526c23dd3f47b1d8255d5df77e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Extensions.Generics.GenericToggleGroup
---- !u!114 &1666582502952161340 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6572297007821156055, guid: 982fb11d3c645ee499b2e3fdb200d3d4, type: 3}
-  m_PrefabInstance: {fileID: 5482462644182105835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
---- !u!114 &5449645542860445317 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 555236901585315950, guid: 982fb11d3c645ee499b2e3fdb200d3d4, type: 3}
-  m_PrefabInstance: {fileID: 5482462644182105835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!224 &9029161641003671782 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3556603554339347981, guid: 982fb11d3c645ee499b2e3fdb200d3d4, type: 3}
   m_PrefabInstance: {fileID: 5482462644182105835}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9031724816981060393 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3549609893376742850, guid: 982fb11d3c645ee499b2e3fdb200d3d4, type: 3}
-  m_PrefabInstance: {fileID: 5482462644182105835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7a39404e0314f599e9ab9603a5f4942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.ColorPicker.ColorPicker

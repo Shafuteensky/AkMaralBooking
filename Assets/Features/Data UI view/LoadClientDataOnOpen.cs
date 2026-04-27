@@ -10,16 +10,12 @@ namespace StarletBooking.Data.View
     /// </summary>
     public class LoadClientDataOnOpen : SelectionContextViewLoader<ClientData>
     {
-        [SerializeField]
-        protected TMP_InputField nameInputField = default;
-        [SerializeField]
-        protected TMP_InputField contactNumberInputField = default;
-        [SerializeField] 
-        protected ColorPicker.ColorPicker colorPicker;
-        [SerializeField]
-        protected ToggleGroupControl ratingToggleGroup = default;
-        [SerializeField]
-        protected TMP_InputField notesInputField = default;
+        [Header("Заполняемые поля"), Space]
+        [SerializeField] protected TMP_InputField nameInputField;
+        [SerializeField] protected TMP_InputField contactNumberInputField;
+        [SerializeField] protected TMP_InputField notesInputField;
+        [SerializeField] protected ColorPicker.ColorPicker colorPicker;
+        [SerializeField] protected ToggleGroupControl ratingToggleGroup;
 
         protected override void ApplyToView(ClientData dataItem)
         {

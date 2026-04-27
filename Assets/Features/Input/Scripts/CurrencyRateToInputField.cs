@@ -52,7 +52,7 @@ namespace StarletBooking.UI.Input
                 }
 
                 float rate = response.rates.KGS;
-                SetText("1$ = " + rate.ToString("0.##") + " сом");
+                SetText(rate.ToString("0.00", System.Globalization.CultureInfo.GetCultureInfo("ru-RU")));
             }
         }
 

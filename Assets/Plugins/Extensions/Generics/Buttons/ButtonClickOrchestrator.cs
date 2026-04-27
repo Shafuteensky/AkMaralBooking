@@ -7,6 +7,7 @@ namespace Extensions.Generics
     /// Оркестратор очередности действий кнопок <see cref="AbstractButtonAction"/>
     /// </summary>
     [RequireComponent(typeof(Button))]
+    [DisallowMultipleComponent]
     public sealed class ButtonClickOrchestrator : BaseButtonOrchestrator
     {
         private void Awake() => button = GetComponent<Button>();

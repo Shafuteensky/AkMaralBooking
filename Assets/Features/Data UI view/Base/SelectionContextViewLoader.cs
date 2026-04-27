@@ -1,3 +1,4 @@
+using System;
 using Extensions.Data.InMemoryData;
 using Extensions.Data.InMemoryData.SelectionContext;
 using Extensions.Helpers;
@@ -11,11 +12,20 @@ namespace StarletBooking.Data.View
     /// </summary>
     public abstract class SelectionContextViewLoader<TData> : MonoBehaviour where TData : InMemoryDataEntry
     {
-        [SerializeField]
-        protected SelectionContext<TData> selectionContext;
-
-        [SerializeField]
+        [Header("Контейнер данных для вывода"), Space]
+        [SerializeField] protected SelectionContext<TData> selectionContext;
+        
         protected InMemoryDataContainer<TData> container;
+
+        protected void Awake()
+        {
+            if (Logic.IsNull(selectionContext))
+            {
+                return;
+            }
+            
+            container = selectionContext.Container;
+        }
 
         protected virtual void OnEnable()
         {
