@@ -59,7 +59,7 @@ namespace StarletBooking.UI.Input
 
         private void SetDefaultRate()
         {
-            SetRate(DataBus.instance.DefaultExchangeRate.Value);
+            SetRate(DataBus.Instance.DefaultExchangeRate.Value);
         }
 
         [System.Serializable]

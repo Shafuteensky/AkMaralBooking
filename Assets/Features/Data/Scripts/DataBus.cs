@@ -1,18 +1,13 @@
 using Extensions.ScriptableValues;
-using UnityEditor;
+using Extensions.Singleton;
 using UnityEngine;
-
 
 namespace StarletBooking.Data
 {
     /// <summary>
     /// Центральная шина данных
     /// </summary>
-    [CreateAssetMenu(
-        fileName = nameof(DataBus),
-        menuName = "StarletBooking/Data/" + nameof(DataBus)
-    )]
-    public class DataBus : ScriptableSingleton<DataBus>
+    public class DataBus : MonoBehaviourSingleton<DataBus>
     {
         [field: Header("Настройки"), Space]
         /// <summary>

@@ -5,7 +5,6 @@ namespace Extensions.Singleton
     /// <summary>
     /// MonoBehaviour-синглтон с проверкой на экземпляр
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         [SerializeField]
