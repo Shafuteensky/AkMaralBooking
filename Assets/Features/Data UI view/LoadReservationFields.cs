@@ -39,20 +39,17 @@ namespace StarletBooking.Data.Controls
             { return; }
 
             arrivalDate.text = dataItem == null ? DataHelpers.NotFoundString :
-                DataHelpers.GetString(dataItem.ArrivalDate.ToString(DataHelpers.DateFormat));
-
+                DataHelpers.GetString(DateUtils.Format(dataItem.ArrivalDate));
             departureDate.text = dataItem == null ? DataHelpers.NotFoundString :
-                DataHelpers.GetString(dataItem.DepartureDate.ToString(DataHelpers.DateFormat));
+                DataHelpers.GetString(DateUtils.Format(dataItem.DepartureDate));
 
             daysInputField.text = dataItem == null ? DataHelpers.NotFoundString :
                 DataHelpers.GetString(dataItem.Days.ToString());
 
             paymentPerDayInputField.text = dataItem == null ? DataHelpers.NotFoundString :
                 DataHelpers.GetString(dataItem.PaymentPerDay.ToString(GetFormat));
-
             discountInputField.text = dataItem == null ? DataHelpers.NotFoundString :
                 DataHelpers.GetString(dataItem.Discount.ToString(GetFormat));
-
             prepaymentInputField.text = dataItem == null ? DataHelpers.NotFoundString :
                 DataHelpers.GetString(dataItem.Prepayment.ToString(GetFormat));
 
@@ -64,10 +61,13 @@ namespace StarletBooking.Data.Controls
         {
             if (paymentPerDayInputField != null) { paymentPerDayInputField.text = string.Empty; }
             if (daysInputField != null) { daysInputField.text = string.Empty; }
+            
             if (prepaymentInputField != null) { prepaymentInputField.text = string.Empty; }
+            
             if (discountInputField != null) { discountInputField.text = string.Empty; }
             if (arrivalDate != null) { arrivalDate.text = string.Empty; }
             if (departureDate != null) { departureDate.text = string.Empty; }
+            
             if (exchangeRateInputField != null) { exchangeRateInputField.text = string.Empty; }
         }
     }

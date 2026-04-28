@@ -1,5 +1,4 @@
 using Extensions.Identification;
-using UnityEngine;
 
 namespace Extensions.ScriptableValues
 {
@@ -14,6 +13,11 @@ namespace Extensions.ScriptableValues
         /// Сброс значения к дефолтному
         /// </summary>
         public abstract void ResetToDefault();
+        
+        /// <summary>
+        /// Очистка значения
+        /// </summary>
+        public abstract void Clear();
         
     }
 }

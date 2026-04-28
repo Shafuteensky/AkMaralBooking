@@ -1,5 +1,5 @@
 using System;
-using StarletBooking.Data;
+using Extensions.Helpers;
 using TMPro;
 using UnityEngine;
 
@@ -11,8 +11,8 @@ namespace StarletBooking.UI.Output
     [RequireComponent(typeof(TMP_InputField))]
     public sealed class DaysBetweenDatesBinder : MonoBehaviour
     {
-        [SerializeField] private TMP_InputField startDateInput = default;
-        [SerializeField] private TMP_InputField endDateInput = default;
+        [SerializeField] private TMP_InputField startDateInput;
+        [SerializeField] private TMP_InputField endDateInput;
 
         private TMP_InputField targetInput;
 
@@ -53,15 +53,14 @@ namespace StarletBooking.UI.Output
                 return;
             }
 
-            if (!DataHelpers.TryGetDate(startDateInput.text, out DateTime startDate) ||
-                !DataHelpers.TryGetDate(endDateInput.text, out DateTime endDate))
+            if (!DateUtils.TryParse(startDateInput.text, out DateTime startDate) |
+                !DateUtils.TryParse(endDateInput.text, out DateTime endDate))
             {
                 targetInput.text = string.Empty;
                 return;
             }
-
+            
             int days = (endDate - startDate).Days;
-
             targetInput.text = days.ToString();
         }
     }

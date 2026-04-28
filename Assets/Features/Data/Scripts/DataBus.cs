@@ -14,7 +14,7 @@ namespace StarletBooking.Data
     )]
     public class DataBus : ScriptableSingleton<DataBus>
     {
-        [Header("Настройки")]
+        [field: Header("Настройки"), Space]
         /// <summary>
         /// Курс $/сом по-умолчанию
         /// </summary>

@@ -12,8 +12,6 @@ namespace StarletBooking.Data
         private const string EMPTY_STRING = "ДАННЫЕ ОТСУТСТВУЮТ";
         private const string NOT_FOUND_STRING = "ОШИБКА ДАННЫХ";
         
-        private const string DATE_FORMAT = "dd.MM.yy";
-
         private static readonly Color NOT_FOUND_COLOR = Color.whiteSmoke;
         
         /// <summary>
@@ -24,11 +22,6 @@ namespace StarletBooking.Data
         /// Утеряные данные (строки)
         /// </summary>
         public static string NotFoundString => NOT_FOUND_STRING;
-        
-        /// <summary>
-        /// Формат данных даты
-        /// </summary>
-        public static string DateFormat => DATE_FORMAT;
         
         /// <summary>
         /// Утеряные данные (цвет)
@@ -43,19 +36,6 @@ namespace StarletBooking.Data
         {
             if (string.IsNullOrEmpty(dataString)) return EMPTY_STRING;
             return dataString;
-        }
-        
-        /// <summary>
-        /// Пытается распарсить дату из строки в формате DateFormat
-        /// </summary>
-        public static bool TryGetDate(string value, out DateTime date)
-        {
-            return DateTime.TryParseExact(
-                value,
-                DateFormat,
-                CultureInfo.InvariantCulture,
-                DateTimeStyles.None,
-                out date);
         }
     }
 }

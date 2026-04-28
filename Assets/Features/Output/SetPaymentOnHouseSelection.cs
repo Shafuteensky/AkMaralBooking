@@ -30,8 +30,9 @@ namespace StarletBooking.UI.Output
                 ServiceDebug.LogError("Ссылка на текстовое поле отсутствует");
                 return;
             }
-            
-            paymentInputField.text = houseSelectionContext.GetSelectedData().PaymentPerDay;
+
+            if (!houseSelectionContext.TryGetSelectedData(out HouseData houseData)) return;
+            paymentInputField.text = houseData.PaymentPerDay;
         }
     }
 }

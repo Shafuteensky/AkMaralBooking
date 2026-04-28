@@ -19,6 +19,9 @@ namespace Extensions.Data.InMemoryData.UI
         [SerializeField] protected bool rebuildOnStart = true;
         [SerializeField] protected bool rebuildOnEnable = true;
         [SerializeField] protected float spawnDelay = 0.03f;
+        
+        [Header("Параметры фильтрации"), Space]
+        [SerializeField] protected bool applyFilter = false;
 
         protected CoroutineTask rebuildTask;
         
@@ -62,6 +65,7 @@ namespace Extensions.Data.InMemoryData.UI
             {
                 TData item = data[i];
                 if (item == null) continue;
+                if (applyFilter && !FilterCheck(item)) continue;
 
                 GameObject instance = Instantiate(buttonPrefab, buttonsRoot);
                 ContextIdHolder<TContainer, TData> idHolder = instance.GetComponentInChildren<ContextIdHolder<TContainer, TData>>();
@@ -86,5 +90,7 @@ namespace Extensions.Data.InMemoryData.UI
                 Destroy(buttonsRoot.GetChild(i).gameObject);
             }
         }
+
+        protected virtual bool FilterCheck(TData data) => true;
     }
 }

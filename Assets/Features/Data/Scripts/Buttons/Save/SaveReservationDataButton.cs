@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using Extensions.Helpers;
 using Extensions.Log;
 using StarletBooking.UI;
 using TMPro;
@@ -49,8 +50,8 @@ namespace StarletBooking.Data.Controls
             float.TryParse(_discountInputField.text, out var discount);
             float.TryParse(_exchangeRateInputField.text, out var rate);
 
-            if (!DataHelpers.TryGetDate(arrivalDate.text, out DateTime arrivalDateTime)) arrivalDateTime = DateTime.Now;
-            if (!DataHelpers.TryGetDate(departureDate.text, out DateTime departureDateTime)) departureDateTime = DateTime.Now;
+            if (!DateUtils.TryParse(arrivalDate.text, out DateTime arrivalDateTime)) arrivalDateTime = DateTime.Now;
+            if (!DateUtils.TryParse(departureDate.text, out DateTime departureDateTime)) departureDateTime = DateTime.Now;
             
             if (!selectionContext.HasSelection)
             {

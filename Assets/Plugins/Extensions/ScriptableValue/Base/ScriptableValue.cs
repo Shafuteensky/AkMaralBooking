@@ -34,12 +34,12 @@ namespace Extensions.ScriptableValues
         public bool IsGlobal => isGlobal;
 
         [Header("Хранимое значение"), Space]
-        [Tooltip("Дефолтное значение, используемое если нет сохранения или оно отключено")]
-        [SerializeField] protected T defaultValue = default;
         [Tooltip("Сохранять ли значение между сессиями")]
         [SerializeField] protected bool isSaveable = false;
         [Tooltip("Глобальный профиль сохранения, иначе состояние отдельно для каждого активного профиля")]
         [SerializeField] protected bool isGlobal = false;
+        [Tooltip("Дефолтное значение, используемое если нет сохранения или оно отключено")]
+        [SerializeField] protected T defaultValue = default;
         
         [NonSerialized]
         protected T runtimeValue;
@@ -76,6 +76,11 @@ namespace Extensions.ScriptableValues
         /// Сброс значения к дефолтному
         /// </summary>
         public override void ResetToDefault() => SetValue(defaultValue);
+        
+        /// <summary>
+        /// Сброс значения к дефолтному
+        /// </summary>
+        public override void Clear() => SetValue(default);
         
         protected virtual void LoadIfNeeded()
         {

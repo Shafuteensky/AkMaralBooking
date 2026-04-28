@@ -29,6 +29,7 @@ namespace Extensions.Data
         private const string TEMP_EXTENSION = ".tmp";
         private const int CURRENT_VERSION = 1;
         private const string DEFAULT_PROFILE_NAME = "default";
+        private const string DEVELOPER_PROFILE_NAME = "developer";
         private const string SAVE_FILE_NAME = "save";
         
         #endregion
@@ -87,6 +88,11 @@ namespace Extensions.Data
         /// Активный профиль сохранения
         /// </summary>
         public static string CurrentProfile { get; set; } = DEFAULT_PROFILE_NAME;
+        
+        /// <summary>
+        /// Профиль сохранения данных разработчика
+        /// </summary>
+        public static string DeveloperProfile { get; set; } = DEVELOPER_PROFILE_NAME;
         
         private static string SaveDirectory => Path.Combine(Application.persistentDataPath, SAVE_FOLDER);
 
@@ -158,11 +164,7 @@ namespace Extensions.Data
         public static T Load<T>(string key, T defaultValue = default, string profile = null)
         {
             string cacheKey = GetCacheKey(key, profile);
-
-            if (dataCache.TryGetValue(cacheKey, out object cachedData))
-            {
-                return (T)cachedData;
-            }
+            if (dataCache.TryGetValue(cacheKey, out object cachedData)) return (T)cachedData;
 
             if (loadingTasks.ContainsKey(cacheKey))
             {
@@ -175,11 +177,7 @@ namespace Extensions.Data
             {
                 LoadInternalSync(key, defaultValue, cacheKey, profile);
 
-                if (dataCache.TryGetValue(cacheKey, out object loadedData))
-                {
-                    return (T)loadedData;
-                }
-
+                if (dataCache.TryGetValue(cacheKey, out object loadedData)) return (T)loadedData;
                 return defaultValue;
             }
             catch (Exception ex)
@@ -194,38 +192,21 @@ namespace Extensions.Data
         /// </summary>
         public static bool Exists(string key, string profile = null)
         {
-            if (string.IsNullOrEmpty(key))
-            {
-                return false;
-            }
+            if (string.IsNullOrEmpty(key)) return false;
 
             string cacheKey = GetCacheKey(key, profile);
-
-            if (dataCache.ContainsKey(cacheKey))
-            {
-                return true;
-            }
+            if (dataCache.ContainsKey(cacheKey)) return true;
 
             try
             {
                 MultiSaveContainer container = TryLoadMultiContainerSync(profile);
-                if (container == null)
-                {
-                    return false;
-                }
+                if (container == null) return false;
 
                 if (!ValidateMultiHash(container))
                 {
                     container = TryLoadMultiBackupContainerSync(profile);
-                    if (container == null)
-                    {
-                        return false;
-                    }
-
-                    if (!ValidateMultiHash(container))
-                    {
-                        return false;
-                    }
+                    if (container == null) return false;
+                    if (!ValidateMultiHash(container)) return false;
                 }
 
                 MultiSaveEntry entry = GetEntry(container, key);
@@ -245,10 +226,7 @@ namespace Extensions.Data
         {
             string cacheKey = GetCacheKey(key, profile);
 
-            if (dataCache.ContainsKey(cacheKey))
-            {
-                return;
-            }
+            if (dataCache.ContainsKey(cacheKey)) return;
 
             var _ = await LoadAsync(key, defaultValue, profile);
             // Данные уже будут в кэше после LoadAsync
@@ -274,16 +252,8 @@ namespace Extensions.Data
 
         private static string ResolveProfile(string profile = null)
         {
-            if (!string.IsNullOrEmpty(profile))
-            {
-                return profile;
-            }
-
-            if (!string.IsNullOrEmpty(CurrentProfile))
-            {
-                return CurrentProfile;
-            }
-
+            if (!string.IsNullOrEmpty(profile)) return profile;
+            if (!string.IsNullOrEmpty(CurrentProfile)) return CurrentProfile;
             return DEFAULT_PROFILE_NAME;
         }
 
@@ -292,10 +262,7 @@ namespace Extensions.Data
             string resolvedProfile = ResolveProfile(profile);
             string path = Path.Combine(SaveDirectory, resolvedProfile);
 
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
+            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
             return path;
         }

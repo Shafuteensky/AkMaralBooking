@@ -30,8 +30,9 @@ namespace Extensions.Data.InMemoryData.SelectionContext
             bool contains = Container.Data.Any(x => x.Id == selectionDataId);
             if (!contains)
             {
-                ServiceDebug.LogError($"Запись с идентификатором «{selectionDataId}» отсутствует в {Container.name}, " +
-                                      "контекст выбора не будет обновлен");
+                ServiceDebug.LogWarning($"Запись с идентификатором «{selectionDataId}» отсутствует в «{Container.name}», " +
+                                      "контекст выбора очищен");
+                Clear();
                 return;
             }
             
