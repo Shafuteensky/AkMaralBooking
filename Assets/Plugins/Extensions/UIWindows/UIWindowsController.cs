@@ -60,17 +60,38 @@ namespace Extensions.UIWindows
         #region Открытие окон
 
         /// <summary>
-        /// Открыть окно по идентификатору
+        /// Открытие нового окна по нажатию на кнопку
         /// </summary>
+        public void OpenWindow(string window, UIWindow parentWindow,
+            bool needToCloseThis = true, UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
+        {
+            if (string.IsNullOrEmpty(window))
+            {
+                ServiceDebug.LogError($"Окно для открытия ({nameof(window)}) не назначено");
+                return;
+            }
+
+            if (needToCloseThis && openMode == UIWindowOpenMode.Forward)
+                CloseWindowById(parentWindow.Id.Id);
+
+            OpenWindowByID(window, parentWindow, true, openMode);
+        }
+        
+        /// <summary>
+        /// Открытие определенного окна по идентификатору
+        /// </summary>
+        /// <param name="id">Идентификатор окна</param>
         public void OpenWindowByID(string id)
         {
             OpenWindowByID(id, lastOpenedWindow, true, UIWindowOpenMode.Forward);
         }
 
         /// <summary>
-        /// Открыть окно по идентификатору
+        /// Открытие определенного окна по идентификатору
         /// </summary>
-        public void OpenWindowByID(string id, UIWindow sourceWindow, bool addSourceToNavigation = true, UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
+        /// <param name="id">Идентификатор окна</param>
+        public void OpenWindowByID(string id, UIWindow sourceWindow, bool addSourceToNavigation = true, 
+            UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
         {
             if (string.IsNullOrEmpty(id))
             {
@@ -102,10 +123,7 @@ namespace Extensions.UIWindows
             ActivateWindow(window);
         }
 
-        /// <summary>
-        /// Открытие предыдущего окна
-        /// </summary>
-        public void OpenPreviousWindow(UIWindow currentWindow)
+        private void OpenPreviousWindow(UIWindow currentWindow)
         {
             if (currentWindow == null) return;
             if (currentWindow.Type != UIWindowType.window) return;
@@ -118,24 +136,33 @@ namespace Extensions.UIWindows
             OpenWindowByID(previousWindow.Id, currentWindow, false, UIWindowOpenMode.Forward);
         }
 
-        /// <summary>
-        /// Есть ли предыдущее окно для возврата
-        /// </summary>
-        public bool HasPreviousWindow(UIWindow currentWindow)
-        {
-            if (currentWindow == null) return false;
-            if (currentWindow.Type != UIWindowType.window) return false;
-
-            return navigationStack.Count > 0;
-        }
-
         #endregion
 
         #region Закрытие окон
-
+        
         /// <summary>
-        /// Закрытие окна по идентификатору
+        /// Закрытие текущего окна в фокусе и открытие предыдущего
         /// </summary>
+        public void CloseWindow(UIWindow window, bool needToOpenPrevious = true)
+        {
+            CloseWindowById(window.Id.Id);
+
+            if (!needToOpenPrevious) return;
+            if (window.Type != UIWindowType.window) return;
+
+            if (!HasPreviousWindow(window))
+            {
+                Debug.LogError($"Предыдущее окно не назначено для {window.name}");
+                return;
+            }
+
+            OpenPreviousWindow(window);
+        }
+        
+        /// <summary>
+        /// Закрытие определенного окна по идентификатору
+        /// </summary>
+        /// <param name="id">Идентификатор</param>
         public void CloseWindowById(string id)
         {
             if (string.IsNullOrEmpty(id)) return;
@@ -151,8 +178,9 @@ namespace Extensions.UIWindows
         }
 
         /// <summary>
-        /// Закрыть все активные окна
+        /// Закрыть все открытые окна
         /// </summary>
+        /// <param name="except">Окно-исключение</param>
         public void CloseAllWindows(UIWindow except = null)
         {
             List<UIWindow> windowsToClose = new(activeUIWindows);
@@ -356,6 +384,17 @@ namespace Extensions.UIWindows
             if (window == null) return;
 
             window.gameObject.SetActive(false);
+        }
+        
+        /// <summary>
+        /// Имеет ли окно предыдущее окно (из которого было вызвано)
+        /// </summary>
+        private bool HasPreviousWindow(UIWindow window)
+        {
+            if (window == null) return false;
+            if (window.Type != UIWindowType.window) return false;
+
+            return navigationStack.Count > 0;
         }
 
         #endregion

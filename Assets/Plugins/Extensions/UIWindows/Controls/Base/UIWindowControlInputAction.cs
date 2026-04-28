@@ -1,19 +1,17 @@
-using Extensions.Generics;
-using UnityEngine;
+using Extensions.Generics.Input;
 
 namespace Extensions.UIWindows
 {
     /// <summary>
-    /// Абстракция кнопки управления окнами <see cref="UIWindow"/>
+    /// Абстракция ввода управления окнами <see cref="UIWindow"/>
     /// </summary>
-    public abstract class UIWindowControlButtonAction : AbstractButtonAction
+    public abstract class UIWindowControlInputAction : AbstractInputAction
     {
         protected UIWindow parentUIWindow;
         protected UIWindowsController windowsController;
         
-        protected override void Awake()
+        protected virtual void Awake()
         {
-            base.Awake();
             parentUIWindow = GetComponentInParent<UIWindow>();
             windowsController = UIWindowsController.Instance;
         }

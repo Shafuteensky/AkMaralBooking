@@ -1,25 +1,20 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Extensions.UIWindows
 {
     /// <summary>
-    /// Кнопка для открытия окна интерфейса
+    /// Слушатель ввода для открытия окна интерфейса
     /// </summary>
-    public class ButtonActionOpenUIWindow : UIWindowControlButtonAction
+    public class InputActionOpenUIWindow : UIWindowControlInputAction
     {
-        /// <summary>
-        /// Режим открытия
-        /// </summary>
-        public UIWindowOpenMode OpenMode => openMode;
-        
         [SerializeField] protected UIWindowID UIWindowToOpen;
         [SerializeField] protected bool needToCloseThis = true;
         [Tooltip("Режим открытия: Forward — обычный переход вперёд, Pop — возврат к окну через обрезку хвоста истории")]
         [SerializeField] protected UIWindowOpenMode openMode = UIWindowOpenMode.Forward;
 
-        public override void OnButtonClickAction() => windowsController.OpenWindow(
+        protected override void OnInputPerformed(InputAction.CallbackContext context) => windowsController.OpenWindow(
             UIWindowToOpen.Id, parentUIWindow, needToCloseThis, openMode);
 
-        public override int GetPriority => 0;
     }
 }
