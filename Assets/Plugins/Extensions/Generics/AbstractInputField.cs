@@ -30,6 +30,6 @@ namespace Extensions.Generics
         /// <summary>
         /// Код, выполняемый при изменении текста поля ввода
         /// </summary>
-        public abstract void OnInputFieldValueUpdated(string value);
+        public virtual void OnInputFieldValueUpdated(string value) {}
     }
 }
