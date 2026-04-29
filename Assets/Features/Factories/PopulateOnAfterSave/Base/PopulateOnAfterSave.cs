@@ -1,0 +1,58 @@
+using Extensions.Helpers;
+using Extensions.Identification;
+using Extensions.UIWindows;
+using UnityEngine;
+
+namespace Extensions.Data.InMemoryData.UI
+{
+    /// <summary>
+    /// Выполнить популяцию фабрики по завершению процесса сохранения
+    /// </summary>
+    public abstract class PopulateOnAfterSave<TContainer, TData> : MonoBehaviour
+        where TContainer : InMemoryDataContainer<TData>
+        where TData : InMemoryDataEntry
+    {
+        [SerializeField] protected GenericDataPreviewButtonFactory<TContainer, TData> factory;
+        [SerializeField] protected InMemoryDataContainer<TData> container;
+        [SerializeField] protected UIWindowID loadingOverlay;
+
+        protected UIWindowsController windowsController;
+        
+        protected virtual void OnEnable()
+        {
+            if (Logic.IsNull(factory))
+            {
+                return;
+            }
+            
+            windowsController = UIWindowsController.Instance;
+            if (JsonSaveLoad.IsSaving)
+            {
+                windowsController.OpenWindowByID(loadingOverlay.Id);
+            }
+            
+            JsonSaveLoad.onAfterSave += OnAfterSave;
+        }
+
+        protected virtual void OnDisable()
+        {
+            if (Logic.IsNull(factory))
+            {
+                return;
+            }
+
+            JsonSaveLoad.onAfterSave -= OnAfterSave;
+        }
+
+        private void OnAfterSave(string saveFileName)
+        {
+            if (saveFileName == container.Id)
+            {
+                factory.Rebuild();
+                windowsController.CloseWindowById(loadingOverlay.Id);
+            }
+        }
+        
+        
+    }
+}
