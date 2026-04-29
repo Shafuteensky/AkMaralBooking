@@ -7,8 +7,8 @@ namespace Extensions.Singleton
     /// </summary>
     public class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        [SerializeField]
-        protected bool dontDestroyOnLoad = false;
+        [Header("Синглтон"), Space]
+        [SerializeField] protected bool dontDestroyOnLoad = false;
         
         private static T _instance;
 
