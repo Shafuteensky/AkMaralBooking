@@ -30,6 +30,7 @@ namespace Extensions.Generics.Input
                 if (inputActionReference == null || inputActionReference.action == null) continue;
 
                 inputActionReference.action.performed -= OnInputActionPerformed;
+                inputActionReference.action.Disable();
             }
         }
 

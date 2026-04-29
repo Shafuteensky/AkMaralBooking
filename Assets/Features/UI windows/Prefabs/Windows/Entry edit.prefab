@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2376299434987888846}
   - component: {fileID: -1072057320042193951}
+  - component: {fileID: 6255259660825337099}
   m_Layer: 5
   m_Name: Entry edit
   m_TagString: Untagged
@@ -52,6 +53,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: {fileID: 11400000, guid: 439f078092cecb746973942b07501bea, type: 2}
   type: 0
+--- !u!114 &6255259660825337099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635803074397819485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00fd9c41f18494a8b0f772f5684a62a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.UIWindows.InputActionCloseUIWindow
+  inputActions:
+  - {fileID: 842195935951836008, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  needToOpenPrevious: 1
 --- !u!1001 &88848212476983969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1771,6 +1787,10 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: c22f34aa38f4a5241a57e0a4aa3a44c8, type: 2}
     - target: {fileID: 1542663365715539084, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
       propertyPath: needToCloseThis
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581637773753366871, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1611749987532384293, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}

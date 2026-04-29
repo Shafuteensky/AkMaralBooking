@@ -7,6 +7,7 @@ namespace Extensions.UIWindows
     /// </summary>
     public class ButtonActionCloseUIWindow : UIWindowControlButtonAction
     {
+        [Header("Параметры закрытия"), Space]
         [SerializeField] protected bool needToOpenPrevious = true;
 
         public override void OnButtonClickAction() => windowsController.CloseWindow(

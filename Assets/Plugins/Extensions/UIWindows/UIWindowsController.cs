@@ -202,6 +202,17 @@ namespace Extensions.UIWindows
         #region Внутренние операции
 
         /// <summary>
+        /// Имеет ли окно предыдущее окно (из которого было вызвано)
+        /// </summary>
+        public bool HasPreviousWindow(UIWindow window)
+        {
+            if (window == null) return false;
+            if (window.Type != UIWindowType.window) return false;
+
+            return navigationStack.Count > 0;
+        }
+        
+        /// <summary>
         /// Выполнить переход по стеку навигации к указанному окну
         /// </summary>
         private void PopToWindow(string id)
@@ -384,17 +395,6 @@ namespace Extensions.UIWindows
             if (window == null) return;
 
             window.gameObject.SetActive(false);
-        }
-        
-        /// <summary>
-        /// Имеет ли окно предыдущее окно (из которого было вызвано)
-        /// </summary>
-        private bool HasPreviousWindow(UIWindow window)
-        {
-            if (window == null) return false;
-            if (window.Type != UIWindowType.window) return false;
-
-            return navigationStack.Count > 0;
         }
 
         #endregion

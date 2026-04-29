@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -8145907542830530133}
   - component: {fileID: 5944008726589650213}
   - component: {fileID: 7092229804663814950}
+  - component: {fileID: 85822860937013719}
   m_Layer: 5
   m_Name: Clients list
   m_TagString: Untagged
@@ -72,6 +73,7 @@ MonoBehaviour:
   rebuildOnStart: 1
   rebuildOnEnable: 0
   spawnDelay: 0.05
+  applyFilter: 0
 --- !u!114 &7092229804663814950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +89,21 @@ MonoBehaviour:
   factory: {fileID: 5944008726589650213}
   container: {fileID: 11400000, guid: 92c2d3cd51064c34aa7e27d42f276519, type: 2}
   loadingOverlay: {fileID: 11400000, guid: e7c957d1646afba448341a1ae627f1f7, type: 2}
+--- !u!114 &85822860937013719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2960039079141250753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00fd9c41f18494a8b0f772f5684a62a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.UIWindows.InputActionCloseUIWindow
+  inputActions:
+  - {fileID: 842195935951836008, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  needToOpenPrevious: 1
 --- !u!1001 &245354438120109791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1843,6 +1860,10 @@ PrefabInstance:
     - target: {fileID: 576159178796898544, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581637773753366871, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1611749987532384293, guid: ecb61477a6fd8494d914bbdbb398bd0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

@@ -8,6 +8,7 @@ namespace Extensions.UIWindows
     /// </summary>
     public class InputActionCloseUIWindow : UIWindowControlInputAction
     {
+        [Header("Параметры закрытия"), Space]
         [SerializeField] protected bool needToOpenPrevious = true;
 
         protected override void OnInputPerformed(InputAction.CallbackContext context) => windowsController.CloseWindow(

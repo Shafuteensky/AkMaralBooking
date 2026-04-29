@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2860962930900644063}
   - component: {fileID: 4674364953684476516}
   - component: {fileID: 5866176058679778571}
+  - component: {fileID: 1514326314559993107}
   m_Layer: 5
   m_Name: Entries list
   m_TagString: Untagged
@@ -92,6 +93,23 @@ MonoBehaviour:
   factory: {fileID: 4674364953684476516}
   container: {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
   loadingOverlay: {fileID: 11400000, guid: e7c957d1646afba448341a1ae627f1f7, type: 2}
+--- !u!114 &1514326314559993107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175838670214688323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4876b59be3854543b527ac11005a1fa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.UIWindows.InputActionOpenUIWindow
+  inputActions:
+  - {fileID: 842195935951836008, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  UIWindowToOpen: {fileID: 11400000, guid: 97e913c5a24de7246ab0a73ece2ee648, type: 2}
+  needToCloseThis: 0
+  openMode: 0
 --- !u!1001 &717811627953352351
 PrefabInstance:
   m_ObjectHideFlags: 0

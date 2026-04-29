@@ -8,6 +8,7 @@ namespace Extensions.UIWindows
     /// </summary>
     public class InputActionOpenUIWindow : UIWindowControlInputAction
     {
+        [Header("Параметры открытия"), Space]
         [SerializeField] protected UIWindowID UIWindowToOpen;
         [SerializeField] protected bool needToCloseThis = true;
         [Tooltip("Режим открытия: Forward — обычный переход вперёд, Pop — возврат к окну через обрезку хвоста истории")]
