@@ -15,5 +15,40 @@ namespace Extensions.UIWindows
             parentUIWindow = GetComponentInParent<UIWindow>();
             windowsController = UIWindowsController.Instance;
         }
+
+        protected override void OnEnable()
+        {
+            if (windowsController != null)
+                windowsController.onLastOpenedWindowChanged += OnLastOpenedWindowChanged;
+
+            UpdateInputListening();
+        }
+
+        protected override void OnDisable()
+        {
+            if (windowsController != null)
+                windowsController.onLastOpenedWindowChanged -= OnLastOpenedWindowChanged;
+
+            SetInputListening(false);
+        }
+
+        /// <summary>
+        /// Обработка изменения последнего открытого окна
+        /// </summary>
+        protected virtual void OnLastOpenedWindowChanged(UIWindow window) => UpdateInputListening();
+
+        /// <summary>
+        /// Обновить состояние слушания ввода
+        /// </summary>
+        protected virtual void UpdateInputListening()
+        {
+            if (windowsController == null)
+            {
+                SetInputListening(false);
+                return;
+            }
+
+            SetInputListening(windowsController.LastOpenedWindow == parentUIWindow);
+        }
     }
 }

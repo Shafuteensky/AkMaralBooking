@@ -12,7 +12,30 @@ namespace Extensions.Generics.Input
     {
         [SerializeField] protected List<InputActionReference> inputActions = new List<InputActionReference>();
 
-        protected virtual void OnEnable()
+        protected bool isListening;
+
+        protected virtual void OnEnable() => SetInputListening(true);
+        protected virtual void OnDisable() => SetInputListening(false);
+
+        /// <summary>
+        /// Установить состояние слушания ввода
+        /// </summary>
+        protected void SetInputListening(bool value)
+        {
+            if (isListening == value) return;
+
+            isListening = value;
+
+            if (isListening)
+                EnableInputListening();
+            else
+                DisableInputListening();
+        }
+
+        /// <summary>
+        /// Включить слушание ввода
+        /// </summary>
+        protected virtual void EnableInputListening()
         {
             foreach (InputActionReference inputActionReference in inputActions)
             {
@@ -23,7 +46,10 @@ namespace Extensions.Generics.Input
             }
         }
 
-        protected virtual void OnDisable()
+        /// <summary>
+        /// Отключить слушание ввода
+        /// </summary>
+        protected virtual void DisableInputListening()
         {
             foreach (InputActionReference inputActionReference in inputActions)
             {

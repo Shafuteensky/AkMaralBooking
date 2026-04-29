@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Extensions.Log;
 using Extensions.Singleton;
@@ -10,6 +11,15 @@ namespace Extensions.UIWindows
     /// </summary>
     public class UIWindowsController : MonoBehaviourSingleton<UIWindowsController>
     {
+        #region События
+        
+        /// <summary>
+        /// Изменение последнего открытого окна
+        /// </summary>
+        public event Action<UIWindow> onLastOpenedWindowChanged;
+        
+        #endregion
+        
         #region Свойства
 
         /// <summary>
@@ -378,7 +388,7 @@ namespace Extensions.UIWindows
             window.transform.SetAsLastSibling();
 
             activeUIWindows.Add(window);
-            lastOpenedWindow = window;
+            SetLastOpenedWindow(window);
         }
 
         /// <summary>
@@ -402,8 +412,8 @@ namespace Extensions.UIWindows
                     maxSiblingIndex = siblingIndex;
                 }
             }
-
-            lastOpenedWindow = topWindow;
+            
+            SetLastOpenedWindow(topWindow);
         }
 
         /// <summary>
@@ -414,6 +424,17 @@ namespace Extensions.UIWindows
             if (window == null) return;
 
             window.gameObject.SetActive(false);
+        }
+        
+        /// <summary>
+        /// Установить последнее открытое окно
+        /// </summary>
+        private void SetLastOpenedWindow(UIWindow window)
+        {
+            if (lastOpenedWindow == window) return;
+
+            lastOpenedWindow = window;
+            onLastOpenedWindowChanged?.Invoke(lastOpenedWindow);
         }
 
         #endregion
