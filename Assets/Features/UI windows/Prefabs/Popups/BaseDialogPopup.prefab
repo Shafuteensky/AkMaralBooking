@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9052173514178026965}
   - component: {fileID: 3118005066643095857}
   - component: {fileID: 1586389961959121699}
+  - component: {fileID: 3242179412401292051}
   m_Layer: 5
   m_Name: BaseDialogPopup
   m_TagString: Untagged
@@ -191,6 +192,21 @@ MonoBehaviour:
   optionalScrambleMode: 0
   optionalShakeRandomnessMode: 0
   optionalString: 
+--- !u!114 &3242179412401292051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2513310915668262185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a00fd9c41f18494a8b0f772f5684a62a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.UIWindows.InputActionCloseUIWindow
+  inputActions:
+  - {fileID: 842195935951836008, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  needToOpenPrevious: 1
 --- !u!1 &2865045013784278318
 GameObject:
   m_ObjectHideFlags: 0

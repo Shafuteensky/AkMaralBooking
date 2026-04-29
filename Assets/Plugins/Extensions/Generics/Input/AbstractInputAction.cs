@@ -10,6 +10,7 @@ namespace Extensions.Generics.Input
     // TODO Добавить приоритет выполнения действий через аркестратор действий
     public abstract class AbstractInputAction : MonoBehaviour
     {
+        [Header("Действия-триггеры"), Space]
         [SerializeField] protected List<InputActionReference> inputActions = new List<InputActionReference>();
 
         protected bool isListening;
