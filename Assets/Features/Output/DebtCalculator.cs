@@ -1,3 +1,4 @@
+using Extensions.Helpers;
 using TMPro;
 using UnityEngine;
 
@@ -38,34 +39,14 @@ namespace StarletBooking.UI.Output
 
         private void UpdateDebt()
         {
-            int total = ParseInt(totalInput.text, 0);
-            int discount = ParseInt(discountInput.text, 0);
-            int prepayment = ParseInt(prepaymentInput.text, 0);
+            int total = Parsers.ParseInt(totalInput.text, 0);
+            int discount = Parsers.ParseInt(discountInput.text, 0);
+            int prepayment = Parsers.ParseInt(prepaymentInput.text, 0);
             int debt = total - prepayment - discount;
 
             if (debt < 0) debt = 0;
 
             _debtInput.SetTextWithoutNotify(debt.ToString());
-        }
-
-        private int ParseInt(string text, int defaultValue)
-        {
-            if (string.IsNullOrEmpty(text)) return defaultValue;
-
-            int result = 0;
-            bool hasDigits = false;
-
-            foreach (var currentChar in text)
-            {
-                if (!char.IsDigit(currentChar)) continue;
-
-                hasDigits = true;
-                result = result * 10 + (currentChar - '0');
-            }
-
-            if (!hasDigits) return defaultValue;
-
-            return result;
         }
     }
 }

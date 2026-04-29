@@ -1010,6 +1010,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4181419874069781046, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+      propertyPath: firstInput
+      value: 
+      objectReference: {fileID: 2169246498028917126}
     - target: {fileID: 4226164955879012427, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1482,6 +1486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Entry view
       objectReference: {fileID: 0}
+    - target: {fileID: 6335657956362731182, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+      propertyPath: firstInput
+      value: 
+      objectReference: {fileID: 2169246498028917126}
     - target: {fileID: 6508770391706535782, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1818,6 +1826,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9000399691555909160, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+      propertyPath: firstInput
+      value: 
+      objectReference: {fileID: 782944161904924490}
+    - target: {fileID: 9000399691555909160, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+      propertyPath: secondInput
+      value: 
+      objectReference: {fileID: 2169251415504181674}
     - target: {fileID: 9121348292665956272, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1890,11 +1906,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!114 &782944161904924490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5346178734692188519, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+  m_PrefabInstance: {fileID: 4678363336098469421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!224 &792210918088650890 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5337501179989485223, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
   m_PrefabInstance: {fileID: 4678363336098469421}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2169246498028917126 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6842749698518435755, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+  m_PrefabInstance: {fileID: 4678363336098469421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!114 &2169251415504181674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6842753447771475847, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+  m_PrefabInstance: {fileID: 4678363336098469421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1 &8136590897369839687 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3460480735544847978, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}

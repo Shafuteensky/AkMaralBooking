@@ -2281,6 +2281,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4485424577731164023}
   m_SourcePrefab: {fileID: 100100000, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
+--- !u!114 &5638955690388760779 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8066731434236442830, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
+  m_PrefabInstance: {fileID: 2428374590392225797}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8809996985120098860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!224 &6466164203417327975 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8651203535781792098, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
@@ -3036,6 +3047,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6624852528384268841, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2787997040483770679}
+    - targetCorrespondingSourceObject: {fileID: 6624852528384268841, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8284571491149602264}
   m_SourcePrefab: {fileID: 100100000, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
 --- !u!224 &3280078902115820999 stripped
 RectTransform:
@@ -3072,6 +3086,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &8284571491149602264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110443415882360068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96691c338dd4688bff773338005bfe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.Output.TotalPriceCalculator
+  firstInput: {fileID: 4858375499196130386}
+  secondInput: {fileID: 1058384114581659448}
 --- !u!1001 &4026363987646564170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5314,8 +5342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96691c338dd4688bff773338005bfe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.UI.Output.TotalPriceCalculator
-  dollarInput: {fileID: 4359735414926061990}
-  daysInput: {fileID: 8778811566650615812}
+  firstInput: {fileID: 4359735414926061990}
+  secondInput: {fileID: 8778811566650615812}
 --- !u!1001 &7017245226942276379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5870,6 +5898,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6624852528384268841, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2599097927306161639}
+    - targetCorrespondingSourceObject: {fileID: 6624852528384268841, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2239152749765491008}
   m_SourcePrefab: {fileID: 100100000, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
 --- !u!224 &74617467647975317 stripped
 RectTransform:
@@ -5901,6 +5932,20 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2239152749765491008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519222691742059742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c96691c338dd4688bff773338005bfe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Project.UI.Output.TotalPriceCalculator
+  firstInput: {fileID: 4858375499196130386}
+  secondInput: {fileID: 5638955690388760779}
 --- !u!224 &9222572150839086109 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 503012776940034794, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
