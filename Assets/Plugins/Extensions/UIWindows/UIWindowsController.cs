@@ -51,8 +51,8 @@ namespace Extensions.UIWindows
                 ServiceDebug.LogError($"{nameof(startWindow)} не назначено в {nameof(UIWindowsController)}");
                 return;
             }
-
-            OpenWindowByID(startWindow.Id.Id, null, false, UIWindowOpenMode.Forward);
+            
+            OpenStartWindow();
         }
 
         #endregion
@@ -145,17 +145,22 @@ namespace Extensions.UIWindows
         /// </summary>
         public void CloseWindow(UIWindow window, bool needToOpenPrevious = true)
         {
-            CloseWindowById(window.Id.Id);
+            if (window == null) return;
 
-            if (!needToOpenPrevious) return;
-            if (window.Type != UIWindowType.window) return;
-
-            if (!HasPreviousWindow(window))
+            if (!needToOpenPrevious || window.Type != UIWindowType.window)
             {
-                Debug.LogError($"Предыдущее окно не назначено для {window.name}");
+                CloseWindowById(window.Id.Id);
                 return;
             }
 
+            if (!HasPreviousWindow(window))
+            {
+                CloseWindowById(window.Id.Id);
+                OpenStartWindow();
+                return;
+            }
+
+            CloseWindowById(window.Id.Id);
             OpenPreviousWindow(window);
         }
         
@@ -210,6 +215,20 @@ namespace Extensions.UIWindows
             if (window.Type != UIWindowType.window) return false;
 
             return navigationStack.Count > 0;
+        }
+        
+        /// <summary>
+        /// Открыть стартовое окно
+        /// </summary>
+        private void OpenStartWindow()
+        {
+            if (startWindow == null)
+            {
+                ServiceDebug.LogError($"{nameof(startWindow)} не назначено в {nameof(UIWindowsController)}");
+                return;
+            }
+
+            OpenWindowByID(startWindow.Id.Id, null, false, UIWindowOpenMode.Forward);
         }
         
         /// <summary>
