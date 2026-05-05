@@ -13,6 +13,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// <summary>
         /// Контейнер, данные которого назначаются как активный выбор контекста
         /// </summary>
+        [field:Header("Контейнер данных для выбора"), Space]
         [field: SerializeField]
         public InMemoryDataContainer<TData> Container { get; private set; }
 
@@ -20,7 +21,16 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// Есть ли выбор
         /// </summary>
         public override bool HasSelection => IsContainerInited() && !string.IsNullOrEmpty(SelectedId);
+        
+        /// <summary>
+        /// Идентификатор активной выбранной записи контейнера
+        /// </summary>
+        public string SelectedId => selectedId;
 
+        [Header("Превью выбранной единицы данных"), Space]
+        [SerializeField]
+        protected string selectedId;
+        
         /// <summary>
         /// Выбрать данные как активные
         /// </summary>

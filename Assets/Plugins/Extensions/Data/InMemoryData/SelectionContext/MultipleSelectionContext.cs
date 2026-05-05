@@ -11,23 +11,25 @@ namespace Extensions.Data.InMemoryData.SelectionContext
     public abstract class MultipleSelectionContext<TData> : BaseSelectionContext where TData : InMemoryDataEntry
     {
         /// <summary>
-        /// Контейнер, данные которого назначаются как активный выбор контекста
-        /// </summary>
-        [field: SerializeField]
-        public InMemoryDataContainer<TData> Container { get; private set; }
-
-        [SerializeField]
-        private List<string> dataItemIds = new List<string>();
-
-        /// <summary>
         /// Идентификаторы активных выбранных записей контейнера
         /// </summary>
-        public IReadOnlyList<string> DataItemIds => dataItemIds;
+        public IReadOnlyList<string> SelectedIds => selectedIds;
 
         /// <summary>
         /// Наличие активного выбранного элемента
         /// </summary>
-        public override bool HasSelection => Container != null && dataItemIds.Count > 0;
+        public override bool HasSelection => Container != null && selectedIds.Count > 0;
+        
+        /// <summary>
+        /// Контейнер, данные которого назначаются как активный выбор контекста
+        /// </summary>
+        [field:Header("Контейнер данных для выбора"), Space]
+        [field: SerializeField]
+        public InMemoryDataContainer<TData> Container { get; private set; }
+
+        [Header("Превью списка выбранных данных"), Space]
+        [SerializeField]
+        protected List<string> selectedIds = new List<string>();
 
         /// <summary>
         /// Задание выбора
@@ -35,8 +37,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// <param name="selectionDataId">Идентификатор</param>
         public override void Select(string selectionDataId)
         {
-            dataItemIds.Clear();
-            selectedId = string.Empty;
+            selectedIds.Clear();
 
             if (string.IsNullOrEmpty(selectionDataId))
             {
@@ -58,8 +59,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
                 return;
             }
 
-            selectedId = selectionDataId;
-            dataItemIds.Add(selectionDataId);
+            selectedIds.Add(selectionDataId);
 
             OnSelectionChanged();
         }
@@ -69,8 +69,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// </summary>
         public override void Clear()
         {
-            selectedId = string.Empty;
-            dataItemIds.Clear();
+            selectedIds.Clear();
 
             OnSelectionChanged();
         }
@@ -83,8 +82,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         public void Select(InMemoryDataContainer<TData> container, IReadOnlyList<string> dataItemIds)
         {
             Container = container;
-            this.dataItemIds.Clear();
-            selectedId = string.Empty;
+            this.selectedIds.Clear();
 
             if (dataItemIds == null)
             {
@@ -112,10 +110,8 @@ namespace Extensions.Data.InMemoryData.SelectionContext
                 }
 
                 addedIds.Add(dataItemId);
-                this.dataItemIds.Add(dataItemId);
+                this.selectedIds.Add(dataItemId);
             }
-
-            if (this.dataItemIds.Count > 0) selectedId = this.dataItemIds[0];
 
             OnSelectionChanged();
         }
@@ -128,8 +124,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         public void Select(InMemoryDataContainer<TData> container, IReadOnlyList<TData> dataItems)
         {
             Container = container;
-            dataItemIds.Clear();
-            selectedId = string.Empty;
+            selectedIds.Clear();
 
             if (dataItems == null)
             {
@@ -162,10 +157,8 @@ namespace Extensions.Data.InMemoryData.SelectionContext
                 }
 
                 addedIds.Add(dataItem.Id);
-                dataItemIds.Add(dataItem.Id);
+                selectedIds.Add(dataItem.Id);
             }
-
-            if (dataItemIds.Count > 0) selectedId = dataItemIds[0];
 
             OnSelectionChanged();
         }
@@ -182,7 +175,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
 
             if (!HasSelection) return false;
 
-            foreach (var dataItemId in dataItemIds)
+            foreach (var dataItemId in selectedIds)
             {
                 if (Container.GetById(dataItemId, out TData dataItem))
                 {
@@ -196,7 +189,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
             return dataItems.Count > 0;
         }
 
-        private bool IsContainerInited()
+        protected bool IsContainerInited()
         {
             if (Container != null) return true;
             
