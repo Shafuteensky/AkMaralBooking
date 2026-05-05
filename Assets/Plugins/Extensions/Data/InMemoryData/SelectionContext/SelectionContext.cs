@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Extensions.Data.InMemoryData.SelectionContext
 {
     /// <summary>
-    /// Контекст выбора InMemoryData-контейнера
+    /// Контекст выбора <see cref="InMemoryData"/>-контейнера
     /// </summary>
     /// <typeparam name="TData">Тип хранимых данных</typeparam>
     public abstract class SelectionContext<TData> : BaseSelectionContext where TData : InMemoryDataEntry
