@@ -13,10 +13,10 @@ namespace EZCalendarWeeklyView
         public float cellPadding = 5f;  // Padding between cells
         public float minCellSize = 50f; // Minimum size for each cell
 
-        private RectTransform rectTransform;
-        private GridLayoutGroup gridLayout;
+        protected RectTransform rectTransform;
+        protected GridLayoutGroup gridLayout;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
             gridLayout = GetComponent<GridLayoutGroup>();
@@ -44,7 +44,7 @@ namespace EZCalendarWeeklyView
             gridLayout.spacing = new Vector2(cellPadding, cellPadding);
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             // Uncomment the following line if you want to update dynamically (e.g., on parent size change)
             // UpdateGridLayout();

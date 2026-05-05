@@ -22,19 +22,19 @@ namespace EZCalendarWeeklyView
         public Color fadedDayColor;                   // Color for days not in the current month
         public Color todayHighlightColor;             // Color for highlighting today's date
 
-        private DateTime currentDate;                 // Current date displayed in the calendar
-        private DateTime selectedDate;                // Currently selected date
-        private bool doneSwiping;                     // Flag to indicate if swiping is done
+        protected DateTime currentDate;                 // Current date displayed in the calendar
+        protected DateTime selectedDate;                // Currently selected date
+        protected bool doneSwiping;                     // Flag to indicate if swiping is done
 
         public float swipeThreshold = 30;             // Threshold for detecting a swipe
         public bool normalSlideDirection = true;              // Flag for normal swipe behavior
 
-        private Dictionary<Button, DateTime> buttonDates = new Dictionary<Button, DateTime>(); // Dictionary to store date information for each button
+        protected readonly Dictionary<Button, DateTime> buttonDates = new(); // Dictionary to store date information for each button
 
         /// <summary>
         /// Initializes the current and selected dates and shows the month view.
         /// </summary>
-        void Start()
+        protected virtual void Start()
         {
             if (currentDate == DateTime.MinValue) currentDate = DateTime.Now;
             if (selectedDate == DateTime.MinValue) selectedDate = DateTime.Now;
@@ -45,7 +45,7 @@ namespace EZCalendarWeeklyView
         /// Custom method for handling date click in month view only mode.
         /// </summary>
         /// <param name="date">The date that was clicked.</param>
-        private void MonthOnlyCustomMethod(DateTime date)
+        protected virtual void MonthOnlyCustomMethod(DateTime date)
         {
             Debug.Log("Clicked Date: " + date);
 
@@ -113,7 +113,7 @@ namespace EZCalendarWeeklyView
         /// </summary>
         /// <param name="daysInPreviousMonth">The number of days in the previous month.</param>
         /// <param name="startDayOfWeek">The starting day of the week for the current month.</param>
-        void UpdateButtonsForPreviousMonth(int daysInPreviousMonth, int startDayOfWeek)
+        protected virtual void UpdateButtonsForPreviousMonth(int daysInPreviousMonth, int startDayOfWeek)
         {
             for (int i = 0; i < startDayOfWeek; i++)
             {
@@ -128,7 +128,7 @@ namespace EZCalendarWeeklyView
         /// </summary>
         /// <param name="daysInMonth">The number of days in the current month.</param>
         /// <param name="startDayOfWeek">The starting day of the week for the current month.</param>
-        void UpdateButtonsForCurrentMonth(int daysInMonth, int startDayOfWeek)
+        protected virtual void UpdateButtonsForCurrentMonth(int daysInMonth, int startDayOfWeek)
         {
             for (int i = 0; i < daysInMonth; i++)
             {
@@ -152,7 +152,7 @@ namespace EZCalendarWeeklyView
         /// </summary>
         /// <param name="startDayOfWeek">The starting day of the week for the current month.</param>
         /// <param name="daysInMonth">The number of days in the current month.</param>
-        void UpdateButtonsForNextMonth(int startDayOfWeek, int daysInMonth)
+        protected virtual void UpdateButtonsForNextMonth(int startDayOfWeek, int daysInMonth)
         {
             int nextMonthStartIndex = startDayOfWeek + daysInMonth;
             for (int i = nextMonthStartIndex; i < dayButtons.Count; i++)
@@ -169,7 +169,7 @@ namespace EZCalendarWeeklyView
         /// <param name="button">The button to update.</param>
         /// <param name="date">The date to assign to the button.</param>
         /// <param name="color">The color to set for the button.</param>
-        void UpdateDayButton(Button button, DateTime date, Color color)
+        protected virtual void UpdateDayButton(Button button, DateTime date, Color color)
         {
             var dateText = button.GetComponentInChildren<TextMeshProUGUI>();
             dateText.text = date.Day.ToString();
@@ -203,7 +203,7 @@ namespace EZCalendarWeeklyView
         /// </summary>
         /// <param name="button">The button to highlight.</param>
         /// <param name="color">The color to use for highlighting.</param>
-        void HighlightButton(Button button, Color color)
+        protected virtual void HighlightButton(Button button, Color color)
         {
             var colors = button.colors;
             colors.normalColor = color;
@@ -215,7 +215,7 @@ namespace EZCalendarWeeklyView
         /// Handles the click event for a day button.
         /// </summary>
         /// <param name="date">The date that was clicked.</param>
-        void OnDayButtonClick(DateTime date)
+        protected virtual void OnDayButtonClick(DateTime date)
         {
             selectedDate = date;
             currentDate = date;
@@ -319,7 +319,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Deselects all day buttons by resetting their colors to normal.
         /// </summary>
-        void DeselectAllDayButtons()
+        protected virtual void DeselectAllDayButtons()
         {
             foreach (var entry in buttonDates)
             {

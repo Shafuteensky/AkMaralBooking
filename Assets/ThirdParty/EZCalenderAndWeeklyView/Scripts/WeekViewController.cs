@@ -23,12 +23,12 @@ namespace EZCalendarWeeklyView
         public bool normalSlideDirection = true; // Direction of week slide (left to right)
 
         // Private variables for date management and touch input
-        private DateTime currentDate;            // Currently displayed date
-        private DateTime startOfWeek;            // Start date of the current week view
-        private List<DateTime> weekDates;        // Dates for each day in the current week
-        private DateTime selectedDate;           // Selected date in the week view
-        private Vector2 startTouchPosition;      // Initial touch position for swipe detection
-        private Vector2 currentTouchPosition;    // Current touch position during drag
+        protected DateTime currentDate;            // Currently displayed date
+        protected DateTime startOfWeek;            // Start date of the current week view
+        protected List<DateTime> weekDates;        // Dates for each day in the current week
+        protected DateTime selectedDate;           // Selected date in the week view
+        protected Vector2 startTouchPosition;      // Initial touch position for swipe detection
+        protected Vector2 currentTouchPosition;    // Current touch position during drag
         public bool useScreenWidthForSwipe = true;      // Use screen width for swipe threshold
         public float swipeThreshold = 30f;       // Threshold for swipe detection
         
@@ -36,7 +36,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Initializes starting values and updates the UI.
         /// </summary>
-        void Start()
+        protected virtual void Start()
         {
             if (useScreenWidthForSwipe) swipeThreshold = Screen.width / 1.5f;
             int dayOfWeekIndex = (int)DateTime.Now.DayOfWeek;
@@ -58,7 +58,7 @@ namespace EZCalendarWeeklyView
         /// Custom logic executed when a date is clicked.
         /// </summary>
         /// <param name="date">The clicked date.</param>
-        private void ClickedDateLogic(DateTime date)
+        protected virtual void ClickedDateLogic(DateTime date)
         {
             Debug.Log("Clicked Date: " + date);
             // Add custom logic here as needed
@@ -68,7 +68,7 @@ namespace EZCalendarWeeklyView
         /// Event handler for day button clicks.
         /// </summary>
         /// <param name="index">The index of the clicked button.</param>
-        private void OnDayButtonClick(int index)
+        protected virtual void OnDayButtonClick(int index)
         {
             selectedDate = weekDates[index];
             currentDate = selectedDate;
@@ -81,7 +81,7 @@ namespace EZCalendarWeeklyView
         /// Updates the selected date text on the UI.
         /// </summary>
         /// <param name="date">The selected date.</param>
-        private void UpdateSelectedDateText(DateTime date)
+        protected virtual void UpdateSelectedDateText(DateTime date)
         {
             if (selectedDateText != null) selectedDateText.text = date.ToString("MMMM d, yyyy");
             if (monthYearText != null) monthYearText.text = date.ToString("MMMM yyyy");
@@ -102,7 +102,7 @@ namespace EZCalendarWeeklyView
         /// </summary>
         /// <param name="date">The date to calculate from.</param>
         /// <returns>The start date of the week.</returns>
-        private DateTime GetStartOfWeek(DateTime date)
+        protected virtual DateTime GetStartOfWeek(DateTime date)
         {
             return date.AddDays(-(int)date.DayOfWeek);
         }
@@ -110,7 +110,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Updates the week view with new dates and highlights the selected button.
         /// </summary>
-        private void UpdateWeekView()
+        protected virtual void UpdateWeekView()
         {
             weekDates = new List<DateTime>();
 
@@ -152,7 +152,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Highlights the selected button based on the selected date.
         /// </summary>
-        private void HighlightSelectedButton()
+        protected virtual void HighlightSelectedButton()
         {
             for (int i = 0; i < dayButtons.Count; i++)
             {
@@ -209,7 +209,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Updates week dates during drag to simulate swipe motion.
         /// </summary>
-        private void UpdateWeekDatesDuringDrag()
+        protected virtual void UpdateWeekDatesDuringDrag()
         {
             int dayShift = CalculateDayShiftForSwipe(false);
             if (normalSlideDirection) dayShift = -dayShift;
@@ -239,7 +239,7 @@ namespace EZCalendarWeeklyView
         /// </summary>
         /// <param name="isEndDrag">Whether it is the end of the drag.</param>
         /// <returns>The day shift for swipe motion.</returns>
-        private int CalculateDayShiftForSwipe(bool isEndDrag)
+        protected virtual int CalculateDayShiftForSwipe(bool isEndDrag)
         {
             float swipeDistance = currentTouchPosition.x - startTouchPosition.x;
             int dayShift = Mathf.Clamp(Mathf.RoundToInt(7 * (swipeDistance / swipeThreshold)), -7, 7);
