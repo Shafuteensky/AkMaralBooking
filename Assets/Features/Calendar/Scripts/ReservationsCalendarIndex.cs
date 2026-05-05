@@ -23,34 +23,41 @@ namespace StarletBooking.Calendar
         /// </summary>
         /// <param name="reservationsContainer">Контейнер записей аренды</param>
         /// <param name="houseId">Идентификатор дома</param>
+        /// <param name="hasHouseFilter">Использовать фильтр дома</param>
         /// <param name="filterArrivalDate">Дата прибытия фильтра</param>
+        /// <param name="hasArrivalDateFilter">Использовать фильтр даты прибытия</param>
         /// <param name="filterDepartureDate">Дата отбытия фильтра</param>
+        /// <param name="hasDepartureDateFilter">Использовать фильтр даты отбытия</param>
         public void Rebuild(
             InMemoryDataContainer<ReservationData> reservationsContainer,
             string houseId,
+            bool hasHouseFilter,
             DateTime filterArrivalDate,
-            DateTime filterDepartureDate)
+            bool hasArrivalDateFilter,
+            DateTime filterDepartureDate,
+            bool hasDepartureDateFilter)
         {
             reservationsByDate.Clear();
 
-            if (reservationsContainer == null || string.IsNullOrEmpty(houseId)) return;
+            if (reservationsContainer == null) return;
 
             DateTime filterStart = filterArrivalDate.Date;
             DateTime filterEnd = filterDepartureDate.Date;
 
-            if (filterStart > filterEnd) return;
+            if (hasArrivalDateFilter && hasDepartureDateFilter && filterStart > filterEnd) return;
 
             List<ReservationData> reservations = reservationsContainer.Data;
 
             foreach (var reservation in reservations)
             {
-                if (reservation == null || reservation.HouseId != houseId) continue;
+                if (reservation == null) continue;
+                if (hasHouseFilter && reservation.HouseId != houseId) continue;
 
                 DateTime reservationStart = reservation.ArrivalDate.Date;
                 DateTime reservationEnd = reservation.DepartureDate.Date;
 
                 if (reservationStart > reservationEnd) continue;
-                if (!AreIntervalsIntersected(reservationStart, reservationEnd, filterStart, filterEnd)) continue;
+                if (!PassesDateFilter(reservationStart, reservationEnd, filterStart, hasArrivalDateFilter, filterEnd, hasDepartureDateFilter)) continue;
 
                 AddReservation(reservation, reservationStart, reservationEnd);
             }
@@ -87,9 +94,19 @@ namespace StarletBooking.Calendar
             }
         }
 
-        private bool AreIntervalsIntersected(DateTime firstStart, DateTime firstEnd, DateTime secondStart, DateTime secondEnd)
+        private bool PassesDateFilter(
+            DateTime reservationStart,
+            DateTime reservationEnd,
+            DateTime filterStart,
+            bool hasArrivalDateFilter,
+            DateTime filterEnd,
+            bool hasDepartureDateFilter)
         {
-            return firstStart <= secondEnd && secondStart <= firstEnd;
+            if (!hasArrivalDateFilter && !hasDepartureDateFilter) return true;
+            if (hasArrivalDateFilter && reservationEnd < filterStart) return false;
+            if (hasDepartureDateFilter && reservationStart > filterEnd) return false;
+
+            return true;
         }
     }
 }

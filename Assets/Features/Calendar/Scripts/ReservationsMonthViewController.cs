@@ -15,9 +15,6 @@ namespace StarletBooking.Calendar
     {
         [Header("Данные записей аренды")]
         [SerializeField] private ReservationsDataContainer reservationsDataContainer;
-
-        [Header("Выбранные записи")]
-        [SerializeField] private ReservationSelectionContext reservationSelectionContext;
         [SerializeField] private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
 
         [Header("Фильтрация")]
@@ -57,22 +54,32 @@ namespace StarletBooking.Calendar
         {
             reservationsIndex.Clear();
 
-            if (reservationsDataContainer == null ||
-                houseSelectionContext == null || 
-                !houseSelectionContext.HasSelection || 
-                arrivalDateFilter == null || 
-                !arrivalDateFilter.TryGetDate(out DateTime arrivalDate) || 
-                departureDateFilter == null || 
-                !departureDateFilter.TryGetDate(out DateTime departureDate))
+            if (reservationsDataContainer == null) return;
+
+            string houseId = string.Empty;
+            bool hasHouseFilter = houseSelectionContext != null && 
+                                  houseSelectionContext.HasSelection && 
+                                  !string.IsNullOrEmpty(houseSelectionContext.SelectedId);
+
+            if (hasHouseFilter)
             {
-                return;
+                houseId = houseSelectionContext.SelectedId;
             }
+
+            DateTime arrivalDate = default;
+            DateTime departureDate = default;
+
+            bool hasArrivalDateFilter = arrivalDateFilter != null && arrivalDateFilter.TryGetDate(out arrivalDate);
+            bool hasDepartureDateFilter = departureDateFilter != null && departureDateFilter.TryGetDate(out departureDate);
 
             reservationsIndex.Rebuild(
                 reservationsDataContainer,
-                houseSelectionContext.SelectedId,
+                houseId,
+                hasHouseFilter,
                 arrivalDate,
-                departureDate
+                hasArrivalDateFilter,
+                departureDate,
+                hasDepartureDateFilter
             );
         }
 
@@ -96,28 +103,24 @@ namespace StarletBooking.Calendar
                 return;
             }
 
-            button.onClick.AddListener(() => SelectReservations(reservations));
+            button.onClick.AddListener(() => OnReservationDayClick(date, reservations));
         }
 
         private void OnEmptyDayClick(DateTime date)
         {
-            reservationSelectionContext.Clear();
             reservationsMultipleSelectionContext.Clear();
 
             OnDayButtonClick(date);
         }
-
+        
+        private void OnReservationDayClick(DateTime date, IReadOnlyList<ReservationData> reservations)
+        {
+            SelectReservations(reservations);
+            OnDayButtonClick(date);
+        }
+        
         private void SelectReservations(IReadOnlyList<ReservationData> reservations)
         {
-            if (reservations.Count == 1)
-            {
-                reservationsMultipleSelectionContext.Clear();
-                reservationSelectionContext.Select(reservations[0].Id);
-                return;
-            }
-
-            reservationSelectionContext.Clear();
-
             reservationIds.Clear();
 
             foreach (var t in reservations)
