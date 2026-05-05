@@ -184,6 +184,7 @@ namespace Extensions.EditorTools
             bool isSelected = resolved != null && resolved == selected;
 
             DrawNameButton(data, resolved, isSelected);
+            DrawOpenFolderButtonIfNeeded(resolved);
             DrawSceneActionIfNeeded(data);
             DrawRemoveButton(data);
 
@@ -206,10 +207,36 @@ namespace Extensions.EditorTools
 
             if (GUILayout.Button(data.Name, isSelected ? selectedBookmarkStyle : bookmarkStyle))
             {
-                OpenBookmark(data, resolved);
+                Selection.activeObject = resolved;
+                EditorGUIUtility.PingObject(resolved);
             }
 
             GUI.enabled = true;
+        }
+
+        private void DrawOpenFolderButtonIfNeeded(Object resolved)
+        {
+            if (resolved == null) return;
+
+            string assetPath = AssetDatabase.GetAssetPath(resolved);
+
+            if (string.IsNullOrEmpty(assetPath) ||
+                !AssetDatabase.IsValidFolder(assetPath))
+            {
+                return;
+            }
+
+            Color prevColor = GUI.backgroundColor;
+            GUI.backgroundColor = new Color(1f, 0.52f, 0.05f);
+
+            GUIContent content = EditorGUIUtility.IconContent("FolderOpened Icon");
+
+            if (GUILayout.Button(content, GUILayout.Width(EditorToolsConstraints.BASE_ELEMENT_HEIGHT), GUILayout.Height(EditorToolsConstraints.BASE_ELEMENT_HEIGHT)))
+            {
+                OpenProjectFolder(assetPath);
+            }
+
+            GUI.backgroundColor = prevColor;
         }
 
         private void DrawSceneActionIfNeeded(BookmarkData data)
@@ -313,20 +340,6 @@ namespace Extensions.EditorTools
             if (!GlobalObjectId.TryParse(objectId, out GlobalObjectId gid)) return null;
 
             return GlobalObjectId.GlobalObjectIdentifierToObjectSlow(gid);
-        }
-
-        private void OpenBookmark(BookmarkData data, Object resolved)
-        {
-            string assetPath = AssetDatabase.GetAssetPath(resolved);
-
-            if (!string.IsNullOrEmpty(assetPath) && AssetDatabase.IsValidFolder(assetPath))
-            {
-                OpenProjectFolder(assetPath);
-                return;
-            }
-
-            Selection.activeObject = resolved;
-            EditorGUIUtility.PingObject(resolved);
         }
 
         private void OpenProjectFolder(string folderPath)
