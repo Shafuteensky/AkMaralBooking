@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -44,10 +45,7 @@ namespace Extensions.EditorTools
                 return;
             }
 
-            if (bookmarkStyle == null)
-            {
-                InitStyles();
-            }
+            if (bookmarkStyle == null) InitStyles();
 
             DrawAddButton();
             GUILayout.Space(EditorToolsConstraints.SPACE_BLOCK_SIZE);
@@ -113,13 +111,9 @@ namespace Extensions.EditorTools
                 string key;
 
                 if (b.Type == BookmarkType.ProjectAsset)
-                {
                     key = PROJECT_ASSETS_SECTION;
-                }
                 else
-                {
                     key = string.IsNullOrEmpty(b.ScenePath) ? UNKNOWN_SCENE_SECTION : b.ScenePath;
-                }
 
                 if (!groups.ContainsKey(key))
                     groups[key] = new List<BookmarkData>();
@@ -145,9 +139,7 @@ namespace Extensions.EditorTools
                 string foldoutLabel;
 
                 if (key == PROJECT_ASSETS_SECTION)
-                {
                     foldoutLabel = $"Ассеты проекта ({groups[key].Count})";
-                }
                 else
                 {
                     string sceneName = System.IO.Path.GetFileNameWithoutExtension(key);
@@ -214,8 +206,7 @@ namespace Extensions.EditorTools
 
             if (GUILayout.Button(data.Name, isSelected ? selectedBookmarkStyle : bookmarkStyle))
             {
-                Selection.activeObject = resolved;
-                EditorGUIUtility.PingObject(resolved);
+                OpenBookmark(data, resolved);
             }
 
             GUI.enabled = true;
@@ -223,12 +214,8 @@ namespace Extensions.EditorTools
 
         private void DrawSceneActionIfNeeded(BookmarkData data)
         {
-            if (data.Type != BookmarkType.SceneObject)
-            {
-                return;
-            }
-
-            if (!SceneFileExists(data))
+            if (data.Type != BookmarkType.SceneObject || 
+                !SceneFileExists(data))
             {
                 return;
             }
@@ -267,8 +254,7 @@ namespace Extensions.EditorTools
 
         private void AddBookmark(Object obj)
         {
-            if (obj == null)
-                return;
+            if (obj == null) return;
 
             BookmarkData data = new BookmarkData
             {
@@ -276,65 +262,133 @@ namespace Extensions.EditorTools
             };
 
             string assetPath = AssetDatabase.GetAssetPath(obj);
-            bool isSceneObj = obj is GameObject || obj is Component;
-            GameObject gameObject = GetSceneGameObject(obj);
-            
-            if (!string.IsNullOrEmpty(assetPath) && !isSceneObj)
+
+            if (!string.IsNullOrEmpty(assetPath))
             {
                 data.Type = BookmarkType.ProjectAsset;
                 data.AssetPath = assetPath;
-                data.ObjectId = GlobalObjectId.GetGlobalObjectIdSlow(gameObject).ToString();
-            }
-            else
-            {
-                data.ObjectId = GlobalObjectId.GetGlobalObjectIdSlow(gameObject).ToString();
-                if (gameObject == null)
-                {
-                    ServiceDebug.LogWarning("Невозможно сохранить закладку на объект сцены");
-                    return;
-                }
+                data.ObjectId = GlobalObjectId.GetGlobalObjectIdSlow(obj).ToString();
 
-                data.Type = BookmarkType.SceneObject;
-                data.ScenePath = gameObject.scene.path;
+                dataBase.Add(data);
+                return;
             }
+
+            GameObject gameObject = GetSceneGameObject(obj);
+
+            if (gameObject == null)
+            {
+                ServiceDebug.LogWarning("Невозможно сохранить закладку на объект сцены");
+                return;
+            }
+
+            data.Type = BookmarkType.SceneObject;
+            data.ScenePath = gameObject.scene.path;
+            data.ObjectId = GlobalObjectId.GetGlobalObjectIdSlow(gameObject).ToString();
 
             dataBase.Add(data);
         }
 
         private GameObject GetSceneGameObject(Object obj)
         {
-            if (obj is GameObject go)
-                return go;
-
-            if (obj is Component comp)
-                return comp.gameObject;
+            if (obj is GameObject go) return go;
+            if (obj is Component comp) return comp.gameObject;
 
             return null;
         }
 
         private Object ResolveUnityObject(BookmarkData data)
         {
-            if (data.Type == BookmarkType.ProjectAsset)
-            {
-                return AssetDatabase.LoadAssetAtPath<Object>(data.AssetPath);
-            }
+            Object resolvedById = ResolveByGlobalObjectId(data.ObjectId);
 
-            if (!IsSceneLoaded(data.ScenePath))
-            {
-                return null;
-            }
+            if (resolvedById != null) return resolvedById;
+            if (data.Type == BookmarkType.ProjectAsset) return AssetDatabase.LoadAssetAtPath<Object>(data.AssetPath);
+            if (!IsSceneLoaded(data.ScenePath)) return null;
 
-            if (string.IsNullOrEmpty(data.ObjectId))
-            {
-                return null;
-            }
+            return null;
+        }
 
-            if (!GlobalObjectId.TryParse(data.ObjectId, out GlobalObjectId gid))
-            {
-                return null;
-            }
+        private Object ResolveByGlobalObjectId(string objectId)
+        {
+            if (string.IsNullOrEmpty(objectId)) return null;
+            if (!GlobalObjectId.TryParse(objectId, out GlobalObjectId gid)) return null;
 
             return GlobalObjectId.GlobalObjectIdentifierToObjectSlow(gid);
+        }
+
+        private void OpenBookmark(BookmarkData data, Object resolved)
+        {
+            string assetPath = AssetDatabase.GetAssetPath(resolved);
+
+            if (!string.IsNullOrEmpty(assetPath) && AssetDatabase.IsValidFolder(assetPath))
+            {
+                OpenProjectFolder(assetPath);
+                return;
+            }
+
+            Selection.activeObject = resolved;
+            EditorGUIUtility.PingObject(resolved);
+        }
+
+        private void OpenProjectFolder(string folderPath)
+        {
+            Object folder = AssetDatabase.LoadAssetAtPath<Object>(folderPath);
+            if (folder == null) return;
+
+            EditorUtility.FocusProjectWindow();
+
+            EditorApplication.delayCall += () =>
+            {
+                Selection.activeObject = folder;
+
+                EditorApplication.delayCall += () =>
+                {
+                    Type projectBrowserType = typeof(Editor).Assembly.GetType("UnityEditor.ProjectBrowser");
+                    if (projectBrowserType == null)
+                    {
+                        AssetDatabase.OpenAsset(folder);
+                        return;
+                    }
+
+                    EditorWindow projectBrowser = GetWindow(projectBrowserType);
+                    if (projectBrowser == null)
+                    {
+                        AssetDatabase.OpenAsset(folder);
+                        return;
+                    }
+
+                    MethodInfo showFolderContentsMethod = GetShowFolderContentsMethod(projectBrowserType);
+                    if (showFolderContentsMethod == null)
+                    {
+                        AssetDatabase.OpenAsset(folder);
+                        return;
+                    }
+
+                    showFolderContentsMethod.Invoke(projectBrowser, new object[] { folder.GetInstanceID(), true });
+                };
+            };
+        }
+
+        private MethodInfo GetShowFolderContentsMethod(Type projectBrowserType)
+        {
+            MethodInfo[] methods = projectBrowserType.GetMethods(BindingFlags.Instance | BindingFlags.NonPublic);
+
+            for (int i = 0; i < methods.Length; i++)
+            {
+                MethodInfo method = methods[i];
+
+                if (method.Name != "ShowFolderContents") continue;
+
+                ParameterInfo[] parameters = method.GetParameters();
+
+                if (parameters.Length == 2 &&
+                    parameters[0].ParameterType == typeof(int) &&
+                    parameters[1].ParameterType == typeof(bool))
+                {
+                    return method;
+                }
+            }
+
+            return null;
         }
 
         #endregion
@@ -360,8 +414,20 @@ namespace Extensions.EditorTools
 
         private Color GetRowColor(BookmarkData data, Object resolved)
         {
+            if (resolved != null)
+            {
+                string assetPath = AssetDatabase.GetAssetPath(resolved);
+
+                if (!string.IsNullOrEmpty(assetPath)) 
+                    return EditorToolsConstraints.COLOR_CYAN;
+            }
+
             if (data.Type == BookmarkType.ProjectAsset)
-                return EditorToolsConstraints.COLOR_CYAN;
+            {
+                return resolved == null
+                    ? EditorToolsConstraints.COLOR_RED
+                    : EditorToolsConstraints.COLOR_CYAN;
+            }
 
             if (!SceneFileExists(data))
                 return EditorToolsConstraints.COLOR_RED;
