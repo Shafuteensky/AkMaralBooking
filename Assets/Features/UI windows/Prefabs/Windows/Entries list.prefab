@@ -2260,34 +2260,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2411362886151757949, guid: 5ae49f77883727848a15ce99b1fb6145, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6845856584534574263}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ae49f77883727848a15ce99b1fb6145, type: 3}
 --- !u!224 &5622961946632223645 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 210908128130933065, guid: 5ae49f77883727848a15ce99b1fb6145, type: 3}
   m_PrefabInstance: {fileID: 5540990817418730196}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7895773381819316905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2411362886151757949, guid: 5ae49f77883727848a15ce99b1fb6145, type: 3}
-  m_PrefabInstance: {fileID: 5540990817418730196}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6845856584534574263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7895773381819316905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2e626d001a143079ec57e439965ec99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.SelectionContextUpdateOnDropdown
-  selectionContext: {fileID: 11400000, guid: c0ef11649f256194292c9aa135f6ee8e, type: 2}
 --- !u!1001 &5605512599166217778
 PrefabInstance:
   m_ObjectHideFlags: 0

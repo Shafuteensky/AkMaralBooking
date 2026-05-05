@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 7588177341060780409}
   - component: {fileID: 1923490209277713477}
   - component: {fileID: 8812444839319961202}
+  - component: {fileID: 1433503130527604323}
   m_Layer: 5
   m_Name: Houses
   m_TagString: Untagged
@@ -103,6 +104,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.InMemoryDataDropdownFactory
   optionsProvider: {fileID: 11400000, guid: f4f1124d4a59653438105e86edc957a2, type: 2}
   rebuildOnEnable: 1
+--- !u!114 &1433503130527604323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411362886151757949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e626d001a143079ec57e439965ec99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.SelectionContextUpdateOnDropdown
+  selectionContext: {fileID: 11400000, guid: c0ef11649f256194292c9aa135f6ee8e, type: 2}
 --- !u!1 &2561924797411551013
 GameObject:
   m_ObjectHideFlags: 0
