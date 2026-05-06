@@ -92,7 +92,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Updates the month view to reflect the current date.
         /// </summary>
-        public void UpdateMonthView()
+        public virtual void UpdateMonthView()
         {
             monthYearText.text = currentDate.ToString("MMMM yyyy");
             var firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);

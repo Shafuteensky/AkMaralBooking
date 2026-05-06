@@ -41,6 +41,22 @@ namespace StarletBooking.Calendar
             UpdateMonthView();
         }
 
+        public override void UpdateMonthView()
+        {
+            monthYearText.text = currentDate.ToString("MMMM yyyy");
+            var firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+            int daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
+            int startDayOfWeek = GetWeekDayIndex(firstDayOfMonth);
+
+            var previousMonth = currentDate.AddMonths(-1);
+            int daysInPreviousMonth = DateTime.DaysInMonth(previousMonth.Year, previousMonth.Month);
+
+            UpdateButtonsForPreviousMonth(daysInPreviousMonth, startDayOfWeek);
+            UpdateButtonsForCurrentMonth(daysInMonth, startDayOfWeek);
+            UpdateButtonsForNextMonth(startDayOfWeek, daysInMonth);
+            dynamicGridLayout.UpdateGridLayout();
+        }
+        
         protected override void UpdateDayButton(Button button, DateTime date, Color color)
         {
             base.UpdateDayButton(button, date, color);
@@ -153,5 +169,7 @@ namespace StarletBooking.Calendar
                 reservationColors.Add(client.Color);
             }
         }
+        
+        private int GetWeekDayIndex(DateTime date) => ((int)date.DayOfWeek + 6) % 7;
     }
 }

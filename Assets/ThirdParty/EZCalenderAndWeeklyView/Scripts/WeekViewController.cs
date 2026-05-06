@@ -31,7 +31,6 @@ namespace EZCalendarWeeklyView
         protected Vector2 currentTouchPosition;    // Current touch position during drag
         public bool useScreenWidthForSwipe = true;      // Use screen width for swipe threshold
         public float swipeThreshold = 30f;       // Threshold for swipe detection
-        
 
         /// <summary>
         /// Initializes starting values and updates the UI.
@@ -249,7 +248,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Navigates to today's week and updates the view.
         /// </summary>
-        public void GoToToday()
+        public virtual void GoToToday()
         {
             DateTime today = DateTime.Now;
             startOfWeek = GetStartOfWeek(today);
