@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Extensions.Data.InMemoryData.SelectionContext;
+using StarletBooking.UI;
 using UnityEngine;
 
 namespace StarletBooking.Data.View
@@ -7,6 +8,7 @@ namespace StarletBooking.Data.View
     /// <summary>
     /// Проигрывает DOTweenAnimation при изменении SelectionContext
     /// </summary>
+    [RequireComponent(typeof(SetCanvasGroupAlphaOnStart))]
     [RequireComponent(typeof(DOTweenAnimation))]
     public sealed class PlayTweenOnSelectionChanged : MonoBehaviour
     {

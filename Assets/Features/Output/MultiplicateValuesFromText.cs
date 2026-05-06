@@ -34,7 +34,6 @@ namespace StarletBooking.UI.Output
 
         private void UpdateResult(string _)
         {
-            Debug.Log(_);
             float dollars = Parsers.ParseFloat(firstInput.text);
             float days = Parsers.ParseFloat(secondInput.text, 1);
 
