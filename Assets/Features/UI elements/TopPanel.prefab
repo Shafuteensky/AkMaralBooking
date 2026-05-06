@@ -1447,10 +1447,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 5061318998147070277}
     m_Modifications:
     - target: {fileID: 4676487250557209, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676487250557209, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
       propertyPath: m_TargetGraphic
       value: 
       objectReference: {fileID: 1228544946687587886}
+    - target: {fileID: 1021645128221405074, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1537951516792344040, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225282444727385728, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1540,6 +1552,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2528545826723775493, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543638217726425558, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6221787733448421920, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6746666204649781352, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
