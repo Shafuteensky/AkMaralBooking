@@ -39,14 +39,14 @@ namespace StarletBooking.UI.Output
 
         private void UpdateDebt()
         {
-            int total = Parsers.ParseInt(totalInput.text, 0);
-            int discount = Parsers.ParseInt(discountInput.text, 0);
-            int prepayment = Parsers.ParseInt(prepaymentInput.text, 0);
-            int debt = total - prepayment - discount;
+            float total = Parsers.ParseFloat(totalInput.text);
+            float discount = Parsers.ParseFloat(discountInput.text);
+            float prepayment = Parsers.ParseFloat(prepaymentInput.text);
+            float debt = total - prepayment - discount;
 
             if (debt < 0) debt = 0;
 
-            _debtInput.SetTextWithoutNotify(debt.ToString());
+            _debtInput.text = Formatters.FormatFloat(debt);
         }
     }
 }

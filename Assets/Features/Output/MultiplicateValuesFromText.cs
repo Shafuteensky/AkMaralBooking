@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using Extensions.Generics;
 using Extensions.Helpers;
 using TMPro;
@@ -19,7 +21,7 @@ namespace StarletBooking.UI.Output
             firstInput.onValueChanged.AddListener(OnValueChanged);
             secondInput.onValueChanged.AddListener(OnValueChanged);
 
-            UpdateResult();
+            UpdateResult("");
         }
 
         protected override void OnDisable()
@@ -28,18 +30,19 @@ namespace StarletBooking.UI.Output
             secondInput.onValueChanged.RemoveListener(OnValueChanged);
         }
 
-        private void OnValueChanged(string _) => UpdateResult();
+        private void OnValueChanged(string _) => UpdateResult(_);
 
-        private void UpdateResult()
+        private void UpdateResult(string _)
         {
-            int dollars = Parsers.ParseInt(firstInput.text, 0);
-            int days = Parsers.ParseInt(secondInput.text, 1);
+            Debug.Log(_);
+            float dollars = Parsers.ParseFloat(firstInput.text);
+            float days = Parsers.ParseFloat(secondInput.text, 1);
 
             if (days < 1) days = 1;
 
-            int total = dollars * days;
+            float total = dollars * days;
 
-            inputField.SetTextWithoutNotify(total.ToString());
+            inputField.text = Formatters.FormatFloat(total);
         }
     }
 }

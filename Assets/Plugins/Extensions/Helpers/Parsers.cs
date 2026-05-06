@@ -1,3 +1,5 @@
+using System.Globalization;
+
 namespace Extensions.Helpers
 {
     /// <summary>
@@ -6,27 +8,55 @@ namespace Extensions.Helpers
     public static class Parsers
     {
         /// <summary>
-        /// Парс целочисленного значения из строки
+        /// Парсит целочисленное значение из строки
         /// </summary>
         /// <param name="text">Строка</param>
         /// <param name="defaultValue">Дефолтное значение на случай ошибки</param>
-        /// <returns></returns>
+        /// <returns>Целочисленное значение или дефолтное значение</returns>
         public static int ParseInt(string text, int defaultValue = 0)
         {
-            if (string.IsNullOrEmpty(text)) return defaultValue;
-
-            int result = 0;
-            bool hasDigits = false;
-
-            foreach (var currentChar in text)
+            if (string.IsNullOrWhiteSpace(text))
             {
-                if (!char.IsDigit(currentChar)) continue;
-
-                hasDigits = true;
-                result = result * 10 + (currentChar - '0');
+                return defaultValue;
             }
 
-            if (!hasDigits) return defaultValue;
+            return int.TryParse(
+                text.Trim(),
+                NumberStyles.Integer,
+                CultureInfo.InvariantCulture,
+                out int result)
+                ? result
+                : defaultValue;
+        }
+
+        /// <summary>
+        /// Парсит дробное значение из строки
+        /// </summary>
+        /// <param name="text">Строка</param>
+        /// <param name="defaultValue">Дефолтное значение на случай ошибки</param>
+        /// <returns>Дробное значение или дефолтное значение</returns>
+        public static float ParseFloat(string text, float defaultValue = 0f)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                return defaultValue;
+            }
+
+            string normalizedText = text.Trim().Replace(',', '.');
+
+            if (!float.TryParse(
+                    normalizedText,
+                    NumberStyles.Float,
+                    CultureInfo.InvariantCulture,
+                    out float result))
+            {
+                return defaultValue;
+            }
+
+            if (float.IsNaN(result) || float.IsInfinity(result))
+            {
+                return defaultValue;
+            }
 
             return result;
         }
