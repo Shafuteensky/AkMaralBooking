@@ -5,7 +5,6 @@ using Extensions.Helpers;
 using Extensions.ScriptableValues;
 using EZCalendarWeeklyView;
 using StarletBooking.Data;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -100,10 +99,25 @@ namespace StarletBooking.Calendar
             DateTime newDate = DateTime.Now;
             
             base.GoToToday();
+
+            RaiseMonthChangedByDate(previousDate, newDate);
+        }
+
+        protected override void OnDayButtonClick(DateTime date)
+        {
+            DateTime previousDate = currentDate;
+            DateTime newDate = DateTime.Now;
             
+            base.OnDayButtonClick(date);
+            
+            RaiseMonthChangedByDate(previousDate, newDate);
+        }
+
+        private void RaiseMonthChangedByDate(DateTime previousDate, DateTime newDate)
+        {
             int monthOffset = (newDate.Year - previousDate.Year) * 12 + newDate.Month - previousDate.Month;
-            if (monthOffset < 0) onPreviousMonthChanged?.Invoke();
-            else if (monthOffset > 0) onNextMonthChanged?.Invoke();
+            if (monthOffset <= 0) onPreviousMonthChanged?.Invoke();
+            else onNextMonthChanged?.Invoke();
         }
         
         #endregion

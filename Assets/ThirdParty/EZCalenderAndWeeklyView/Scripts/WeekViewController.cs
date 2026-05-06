@@ -278,7 +278,7 @@ namespace EZCalendarWeeklyView
         /// Navigates to a specific date's week and updates the view.
         /// </summary>
         /// <param name="date">The date to navigate to.</param>
-        public void GoToDate(DateTime date)
+        public virtual void GoToDate(DateTime date)
         {
             selectedDate = date;
             startOfWeek = GetStartOfWeek(date);
