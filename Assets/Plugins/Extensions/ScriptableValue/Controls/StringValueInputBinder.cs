@@ -31,7 +31,7 @@ namespace Extensions.ScriptableValues
             stringValue.onValueChanged -= OnValueChanged;
         }
 
-        public override void OnInputFieldValueUpdated(string value) => ApplyValue(value);
+        protected override void OnInputFieldValueUpdated(string value) => ApplyValue(value);
 
         private void ApplyValue(string value)
         {

@@ -1,53 +1,44 @@
-using TMPro;
+using Extensions.Generics;
 using UnityEngine;
 
 namespace Extensions.UI
 {
     /// <summary>
-    /// Прокручивает текст TMP InputField по горизонтали в режиме просмотра.
+    /// Прокручивание текста по горизонтали, если он не помещается в viewport
     /// </summary>
-    [RequireComponent(typeof(TMP_InputField))]
-    public sealed class TMPInputFieldHorizontalTextScroller : MonoBehaviour
+    public sealed class HorizontalTextScroller : AbstractText
     {
-        [SerializeField] private TMP_InputField inputField;
+        [Range(10f, 50f)]
         [SerializeField] private float scrollSpeed = 25f;
+        [Range(0f, 10f)]
         [SerializeField] private float edgePause = 1f;
+        [Range(0f, 15f)]
         [SerializeField] private float sidePadding = 8f;
 
-        private RectTransform textRectTransform;
         private RectTransform viewportRectTransform;
+        private RectTransform textRectTransform;
 
         private float startX;
         private float minX;
         private float pauseTimer;
         private int direction = -1;
 
-        private void Awake()
+        public bool IsBlocked { get; set; }
+
+        protected override void Awake()
         {
-            if (inputField == null)
-            {
-                inputField = GetComponent<TMP_InputField>();
-            }
-
-            textRectTransform = inputField.textComponent.rectTransform;
-            viewportRectTransform = inputField.textViewport;
-
-            if (viewportRectTransform == null)
-            {
-                viewportRectTransform = inputField.GetComponent<RectTransform>();
-            }
-
+            base.Awake();
+            
+            textRectTransform = text.rectTransform;
+            viewportRectTransform = textRectTransform.parent as RectTransform;
             startX = textRectTransform.anchoredPosition.x;
         }
 
-        private void OnEnable()
-        {
-            ResetScroll();
-        }
+        private void OnEnable() => ResetScroll();
 
         private void Update()
         {
-            if (inputField.isFocused)
+            if (IsBlocked)
             {
                 ResetScroll();
                 return;
@@ -64,7 +55,7 @@ namespace Extensions.UI
         }
 
         /// <summary>
-        /// Сбрасывает положение текста.
+        /// Сброс положения текста
         /// </summary>
         public void ResetScroll()
         {
@@ -78,7 +69,7 @@ namespace Extensions.UI
 
         private bool IsOverflowing()
         {
-            float textWidth = inputField.textComponent.preferredWidth;
+            float textWidth = text.preferredWidth;
             float viewportWidth = viewportRectTransform.rect.width - sidePadding * 2f;
 
             return textWidth > viewportWidth;
@@ -86,7 +77,7 @@ namespace Extensions.UI
 
         private void UpdateScrollBounds()
         {
-            float textWidth = inputField.textComponent.preferredWidth;
+            float textWidth = text.preferredWidth;
             float viewportWidth = viewportRectTransform.rect.width - sidePadding * 2f;
 
             minX = startX - (textWidth - viewportWidth);

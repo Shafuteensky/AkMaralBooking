@@ -21,7 +21,7 @@ namespace Extensions.Generics
         protected virtual void OnEnable() => inputField.onValueChanged.AddListener(OnInputFieldAction);
         protected virtual void OnDisable() => inputField.onValueChanged.RemoveListener(OnInputFieldAction);
 
-        protected virtual void OnInputFieldAction(string value)
+        private void OnInputFieldAction(string value)
         {
             OnInputFieldValueUpdated(value);
             onInputFieldValueUpdated?.Invoke(value);
@@ -30,6 +30,6 @@ namespace Extensions.Generics
         /// <summary>
         /// Код, выполняемый при изменении текста поля ввода
         /// </summary>
-        public virtual void OnInputFieldValueUpdated(string value) {}
+        protected virtual void OnInputFieldValueUpdated(string value) {}
     }
 }

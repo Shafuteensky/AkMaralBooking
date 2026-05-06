@@ -23,9 +23,7 @@ namespace StarletBooking.UI.Input
             StartCoroutine(LoadRate());
         }
 
-        public override void OnInputFieldValueUpdated(string value)
-        {
-        }
+        protected override void OnInputFieldValueUpdated(string value) { }
 
         private IEnumerator LoadRate()
         {
