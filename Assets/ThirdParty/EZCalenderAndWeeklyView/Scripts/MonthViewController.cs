@@ -238,7 +238,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Navigates to the previous month and updates the month view.
         /// </summary>
-        public void GoToPreviousMonth()
+        public virtual void GoToPreviousMonth()
         {
             doneSwiping = true;
             currentDate = currentDate.AddMonths(-1);
@@ -248,7 +248,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Navigates to the next month and updates the month view.
         /// </summary>
-        public void GoToNextMonth()
+        public virtual void GoToNextMonth()
         {
             doneSwiping = true;
             currentDate = currentDate.AddMonths(1);
@@ -258,7 +258,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Navigates to the previous year and updates the month view.
         /// </summary>
-        public void GoToPreviousYear()
+        public virtual void GoToPreviousYear()
         {
             doneSwiping = true;
             currentDate = currentDate.AddYears(-1);
@@ -268,7 +268,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Navigates to the next year and updates the month view.
         /// </summary>
-        public void GoToNextYear()
+        public virtual void GoToNextYear()
         {
             doneSwiping = true;
             currentDate = currentDate.AddYears(1);
@@ -279,7 +279,7 @@ namespace EZCalendarWeeklyView
         /// Handles the drag event for swiping between months.
         /// </summary>
         /// <param name="eventData">The pointer event data.</param>
-        public void OnDrag(PointerEventData eventData)
+        public virtual void OnDrag(PointerEventData eventData)
         {
             if (doneSwiping) return;
 
@@ -308,7 +308,7 @@ namespace EZCalendarWeeklyView
         /// <summary>
         /// Navigates to today's date and updates the month view.
         /// </summary>
-        public void GoToToday()
+        public virtual void GoToToday()
         {
             currentDate = DateTime.Now;
             selectedDate = DateTime.Now;

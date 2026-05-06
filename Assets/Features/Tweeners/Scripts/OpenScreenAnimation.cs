@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using Extensions.ScriptableValues;
 
 namespace StarletBooking.Tweeners
 {
@@ -10,6 +11,8 @@ namespace StarletBooking.Tweeners
     [RequireComponent(typeof(CanvasGroup))]
     public sealed class OpenScreenAnimation : MonoBehaviour
     {
+        [SerializeField] private BoolValue animationState;
+        
         [Header("Move"), Space]
         [SerializeField] private bool moveEnabled = true;
         [SerializeField] private Vector3 fromOffset = new Vector3(-50f, 0f, 0f);
@@ -50,6 +53,8 @@ namespace StarletBooking.Tweeners
         /// </summary>
         public void Play()
         {
+            if (animationState != null && !animationState.Value) return;
+            
             Kill();
             RestoreClosedState();
 

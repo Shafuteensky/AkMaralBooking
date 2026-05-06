@@ -5,7 +5,9 @@ using Extensions.ScriptableValues;
 using EZCalendarWeeklyView;
 using StarletBooking.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using DynamicGridLayout = Extensions.Layouts.DynamicGridLayout;
 
 namespace StarletBooking.Calendar
 {
@@ -14,6 +16,23 @@ namespace StarletBooking.Calendar
     /// </summary>
     public sealed class ReservationsMonthViewController : MonthViewController
     {
+        #region События
+        
+        /// <summary>
+        /// Событие изменения месяца назад от текущего
+        /// </summary>
+        public event Action onPreviousMonthChanged;
+        /// <summary>
+        /// Событие изменения месяца вперед от текущего
+        /// </summary>
+        public event Action onNextMonthChanged;
+        
+        #endregion
+        
+        #region Параметры
+        
+        [SerializeField] private DynamicGridLayout newDynamicGridLayout;   
+        
         [Header("Данные записей аренды")]
         [SerializeField] private ReservationsDataContainer reservationsDataContainer;
         [SerializeField] private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
@@ -26,7 +45,11 @@ namespace StarletBooking.Calendar
         private readonly ReservationsCalendarIndex reservationsIndex = new ReservationsCalendarIndex();
         private readonly List<Color> reservationColors = new List<Color>();
         private readonly List<string> reservationIds = new List<string>();
+        
+        #endregion
 
+        #region MonoBehavior
+        
         private void Awake()
         {
             currentDate = DateTime.Now;
@@ -38,9 +61,53 @@ namespace StarletBooking.Calendar
             RebuildReservationsIndex();
             base.Start();
             RefreshReservationsCalendar();
-            CoroutineDelay.Run(this, dynamicGridLayout.UpdateGridLayout);
+            CoroutineDelay.Run(this, newDynamicGridLayout.UpdateGridLayout);
+        }
+        
+        #endregion
+
+        #region Управление вьюшкой
+
+        public override void GoToPreviousMonth()
+        {
+            base.GoToPreviousMonth();
+            onPreviousMonthChanged?.Invoke();
         }
 
+        public override void GoToNextMonth()
+        {
+            base.GoToNextMonth();
+            onNextMonthChanged?.Invoke();
+        }
+
+        public override void GoToPreviousYear()
+        {
+            base.GoToPreviousYear();
+            onPreviousMonthChanged?.Invoke();
+        }
+
+        public override void GoToNextYear()
+        {
+            base.GoToNextYear();
+            onNextMonthChanged?.Invoke();
+        }
+
+        public override void GoToToday()
+        {
+            DateTime previousDate = currentDate;
+            DateTime newDate = DateTime.Now;
+            
+            base.GoToToday();
+            
+            int monthOffset = (newDate.Year - previousDate.Year) * 12 + newDate.Month - previousDate.Month;
+            if (monthOffset < 0) onPreviousMonthChanged?.Invoke();
+            else if (monthOffset > 0) onNextMonthChanged?.Invoke();
+        }
+        
+        #endregion
+
+        #region Обновление календаря и его элементов
+        
         /// <summary>
         /// Обновить календарь записей аренды
         /// </summary>
@@ -63,7 +130,7 @@ namespace StarletBooking.Calendar
             UpdateButtonsForPreviousMonth(daysInPreviousMonth, startDayOfWeek);
             UpdateButtonsForCurrentMonth(daysInMonth, startDayOfWeek);
             UpdateButtonsForNextMonth(startDayOfWeek, daysInMonth);
-            dynamicGridLayout.UpdateGridLayout();
+            newDynamicGridLayout.UpdateGridLayout();
         }
         
         protected override void UpdateDayButton(Button button, DateTime date, Color color)
@@ -73,39 +140,6 @@ namespace StarletBooking.Calendar
             IReadOnlyList<ReservationData> reservations = reservationsIndex.GetReservations(date);
             UpdateDayView(button, reservations);
             UpdateDayClick(button, date, reservations);
-        }
-
-        private void RebuildReservationsIndex()
-        {
-            reservationsIndex.Clear();
-
-            if (reservationsDataContainer == null) return;
-
-            string houseId = string.Empty;
-            bool hasHouseFilter = houseSelectionContext != null && 
-                                  houseSelectionContext.HasSelection && 
-                                  !string.IsNullOrEmpty(houseSelectionContext.SelectedId);
-
-            if (hasHouseFilter)
-            {
-                houseId = houseSelectionContext.SelectedId;
-            }
-
-            DateTime arrivalDate = default;
-            DateTime departureDate = default;
-
-            bool hasArrivalDateFilter = arrivalDateFilter != null && arrivalDateFilter.TryGetDate(out arrivalDate);
-            bool hasDepartureDateFilter = departureDateFilter != null && departureDateFilter.TryGetDate(out departureDate);
-
-            reservationsIndex.Rebuild(
-                reservationsDataContainer,
-                houseId,
-                hasHouseFilter,
-                arrivalDate,
-                hasArrivalDateFilter,
-                departureDate,
-                hasDepartureDateFilter
-            );
         }
 
         private void UpdateDayView(Button button, IReadOnlyList<ReservationData> reservations)
@@ -130,7 +164,11 @@ namespace StarletBooking.Calendar
 
             button.onClick.AddListener(() => OnReservationDayClick(date, reservations));
         }
+        
+        #endregion
 
+        #region Выполнение при нажатии на кнопки дня
+        
         private void OnEmptyDayClick(DateTime date)
         {
             reservationsMultipleSelectionContext.Clear();
@@ -144,6 +182,57 @@ namespace StarletBooking.Calendar
             OnDayButtonClick(date);
         }
         
+        #endregion
+
+        #region Тачскрин
+        
+        public override void OnDrag(PointerEventData eventData)
+        {
+            if (doneSwiping) return;
+
+            Vector2 dragDelta = eventData.delta;
+
+            if (Mathf.Abs(dragDelta.x) >= Mathf.Abs(dragDelta.y))
+            {
+                HandleHorizontalDrag(dragDelta.x);
+                return;
+            }
+
+            HandleVerticalDrag(dragDelta.y);
+        }
+        
+        private void HandleHorizontalDrag(float dragDistance)
+        {
+            if (dragDistance > swipeThreshold)
+            {
+                if (normalSlideDirection) GoToPreviousMonth();
+                else GoToNextMonth();
+            }
+            else if (dragDistance < -swipeThreshold)
+            {
+                if (normalSlideDirection) GoToNextMonth();
+                else GoToPreviousMonth();
+            }
+        }
+
+        private void HandleVerticalDrag(float dragDistance)
+        {
+            if (dragDistance > swipeThreshold)
+            {
+                if (normalSlideDirection) GoToNextMonth();
+                else GoToPreviousMonth();
+            }
+            else if (dragDistance < -swipeThreshold)
+            {
+                if (normalSlideDirection) GoToPreviousMonth();
+                else GoToNextMonth();
+            }
+        }
+        
+        #endregion
+        
+        #region Внутренние функции
+
         private void SelectReservations(IReadOnlyList<ReservationData> reservations)
         {
             reservationIds.Clear();
@@ -179,6 +268,42 @@ namespace StarletBooking.Calendar
             }
         }
         
+        
+        private void RebuildReservationsIndex()
+        {
+            reservationsIndex.Clear();
+
+            if (reservationsDataContainer == null) return;
+
+            string houseId = string.Empty;
+            bool hasHouseFilter = houseSelectionContext != null && 
+                                  houseSelectionContext.HasSelection && 
+                                  !string.IsNullOrEmpty(houseSelectionContext.SelectedId);
+
+            if (hasHouseFilter)
+            {
+                houseId = houseSelectionContext.SelectedId;
+            }
+
+            DateTime arrivalDate = default;
+            DateTime departureDate = default;
+
+            bool hasArrivalDateFilter = arrivalDateFilter != null && arrivalDateFilter.TryGetDate(out arrivalDate);
+            bool hasDepartureDateFilter = departureDateFilter != null && departureDateFilter.TryGetDate(out departureDate);
+
+            reservationsIndex.Rebuild(
+                reservationsDataContainer,
+                houseId,
+                hasHouseFilter,
+                arrivalDate,
+                hasArrivalDateFilter,
+                departureDate,
+                hasDepartureDateFilter
+            );
+        }
+        
         private int GetWeekDayIndex(DateTime date) => ((int)date.DayOfWeek + 6) % 7;
+        
+        #endregion
     }
 }

@@ -6,29 +6,39 @@ namespace Extensions.Layouts
     /// <summary>
     /// Автоматическая подстройка <see cref="GridLayoutGroup"/> под свободное пространство
     /// </summary>
+    [ExecuteAlways]
     [RequireComponent(typeof(RectTransform))]
     [RequireComponent(typeof(GridLayoutGroup))]
     public sealed class DynamicGridLayout : MonoBehaviour
     {
-        [Header("Сетка"), Space]
-        [Tooltip("Количество колонн"), Min(1)]
-        [SerializeField] private float columns = 7;
-        [Tooltip("Количество рядов"), Min(1)]
-        [SerializeField] private float rows = 6;
+        [Header("Параметры сетки"), Space]
+        [Tooltip("Количество колонн"), Min(1f)]
+        [SerializeField] private int columns = 7;
+        [Tooltip("Количество рядов"), Min(1f)]
+        [SerializeField] private int rows = 6;
         
-        [Header("Ячейки"), Space]
-        [Tooltip("Расстояние между ячейками")]
+        [Header("Размеры ячейки"), Space]
+        [Tooltip("Расстояние между ячейками"), Min(0f)]
         [SerializeField] private float cellPadding = 5f;
         // [Tooltip("Минимальный размер каждой отдельной ячейки")]
         // [SerializeField] private  float minCellSize = 50f;
         
-        [Header("Макет"), Space]
-        [Tooltip("Автообновление макета каждый кадр"), Min(1)]
+        [Header("Обновление макета"), Space]
+        [Tooltip("Автообновление макета каждый кадр")]
         [SerializeField] private bool updateDynamically = false;
 
         private RectTransform rectTransform;
         private GridLayoutGroup gridLayout;
 
+        private void Update()
+        {
+            if (updateDynamically) UpdateGridLayout();
+        }
+        
+        private void OnValidate() => UpdateGridLayout();
+        
+        private void OnRectTransformDimensionsChange() => UpdateGridLayout();
+        
         /// <summary>
         /// Автоматическая подстройка макета под свободное пространство
         /// </summary>
@@ -45,11 +55,6 @@ namespace Extensions.Layouts
 
             gridLayout.cellSize = new Vector2(cellSizeX, cellSizeY);
             gridLayout.spacing = new Vector2(cellPadding, cellPadding);
-        }
-
-        private void Update()
-        {
-            if (updateDynamically) UpdateGridLayout();
         }
     }
 }

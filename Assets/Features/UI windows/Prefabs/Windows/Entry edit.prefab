@@ -1699,6 +1699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283ca0fc64f4a2245be6f37c180d92cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Tweeners.OpenScreenAnimation
+  animationState: {fileID: 0}
   moveEnabled: 0
   fromOffset: {x: -50, y: 0, z: 0}
   moveDuration: 0.25
@@ -1736,6 +1737,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283ca0fc64f4a2245be6f37c180d92cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Tweeners.OpenScreenAnimation
+  animationState: {fileID: 11400000, guid: 24eef6ed155b2a84f930abae6a700137, type: 2}
   moveEnabled: 1
   fromOffset: {x: -50, y: 0, z: 0}
   moveDuration: 0.25
