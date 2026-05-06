@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7444808042706328248}
   - component: {fileID: 4792890270998257936}
   - component: {fileID: 390552162100064897}
+  - component: {fileID: 3978267951401836631}
   m_Layer: 5
   m_Name: Input field
   m_TagString: Untagged
@@ -166,6 +167,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2decff7c6f8993349948a3585a5671eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.Input.ClearOnFocusIfEmptyString
+--- !u!114 &3978267951401836631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3879533044318287874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c712358ef145b5910de429809e40a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Extensions.UI.HorizontalTextScrollBlocker
+  textScroller: {fileID: 5874430716385291260}
 --- !u!1 &5774133409176967891
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +611,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2068245741613752386, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}
   m_PrefabInstance: {fileID: 6481336118189476154}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5874430716385291260 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 609251766371754694, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}
+  m_PrefabInstance: {fileID: 6481336118189476154}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fde1fd75a14a5bb2a46677bc6bdad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Extensions.UI.HorizontalTextScroller
 --- !u!114 &8009301899243538465 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3950947116977881371, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}

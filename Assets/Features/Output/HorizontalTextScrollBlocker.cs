@@ -1,4 +1,5 @@
 using Extensions.Generics;
+using TMPro;
 using UnityEngine;
 
 namespace Extensions.UI 
@@ -9,6 +10,19 @@ namespace Extensions.UI
     public sealed class HorizontalTextScrollBlocker : AbstractInputField
     {
         [SerializeField] private HorizontalTextScroller textScroller;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            
+            if ((inputField.textComponent.enableAutoSizing ||
+                inputField.lineType != TMP_InputField.LineType.SingleLine) &&
+                textScroller != null)
+            {
+                textScroller.enabled = false;
+                enabled = false;
+            }
+        }
 
         protected override void OnEnable()
         {

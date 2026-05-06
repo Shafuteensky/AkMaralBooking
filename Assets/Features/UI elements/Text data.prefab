@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 1121723546787984379}
   - component: {fileID: 1760027677491610199}
   - component: {fileID: 4341314241123058862}
+  - component: {fileID: 1138638645472669765}
   m_Layer: 5
   m_Name: Text data
   m_TagString: Untagged
@@ -203,6 +204,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593f97ac251d4d308ec0fdb20938917d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Project.UI.ScrollRectChildDragRouter
+--- !u!114 &1138638645472669765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3201533900307095728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c712358ef145b5910de429809e40a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Extensions.UI.HorizontalTextScrollBlocker
+  textScroller: {fileID: 4895630180960072330}
 --- !u!1001 &5441679819631775820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -308,6 +322,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}
+--- !u!114 &4895630180960072330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 609251766371754694, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}
+  m_PrefabInstance: {fileID: 5441679819631775820}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fde1fd75a14a5bb2a46677bc6bdad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Extensions.UI.HorizontalTextScroller
 --- !u!224 &6284589101992275982 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2068245741613752386, guid: 074b972fc3d73734e9e4ce49af47e180, type: 3}

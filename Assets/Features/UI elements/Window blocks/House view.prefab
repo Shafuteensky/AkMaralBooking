@@ -374,6 +374,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1760027677491610199, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+      propertyPath: m_LineType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3201533900307095728, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_Name
       value: House notes text
@@ -381,6 +385,10 @@ PrefabInstance:
     - target: {fileID: 6799837912470315907, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_fontSize
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029769543018500439, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+      propertyPath: m_TextWrappingMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9029769543018500439, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
       propertyPath: m_VerticalAlignment
@@ -443,10 +451,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5694055380172923093}
     m_Modifications:
-    - target: {fileID: 6799837912470315907, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
-      propertyPath: m_fontSize
-      value: 24
-      objectReference: {fileID: 0}
     - target: {fileID: 6624852528384268841, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
       propertyPath: m_Name
       value: Payment text
@@ -530,6 +534,10 @@ PrefabInstance:
     - target: {fileID: 8651203535781792098, guid: 06ba41b63ba1b95488bc6803a62a378f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6799837912470315907, guid: 1bdf98b6fd2b7164ca1ff3613aaff3c7, type: 3}
+      propertyPath: m_fontSize
+      value: 24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -8,6 +8,8 @@ namespace Extensions.UI
     /// </summary>
     public sealed class HorizontalTextScroller : AbstractText
     {
+        private const int INITIAL_DIRECTION = -1;
+        
         [Range(10f, 50f)]
         [SerializeField] private float scrollSpeed = 25f;
         [Range(0f, 10f)]
@@ -21,13 +23,15 @@ namespace Extensions.UI
         private float startX;
         private float minX;
         private float pauseTimer;
-        private int direction = -1;
+        private int direction = INITIAL_DIRECTION;
 
         public bool IsBlocked { get; set; }
 
         protected override void Awake()
         {
             base.Awake();
+
+            if (text.enableAutoSizing) enabled = false;
             
             textRectTransform = text.rectTransform;
             viewportRectTransform = textRectTransform.parent as RectTransform;
