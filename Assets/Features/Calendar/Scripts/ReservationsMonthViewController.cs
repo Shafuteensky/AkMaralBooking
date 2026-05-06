@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using Extensions.Coroutines;
+using Extensions.Helpers;
 using Extensions.ScriptableValues;
 using EZCalendarWeeklyView;
 using StarletBooking.Data;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -119,7 +121,7 @@ namespace StarletBooking.Calendar
 
         public override void UpdateMonthView()
         {
-            monthYearText.text = currentDate.ToString("MMMM yyyy");
+            monthYearText.text = Formatters.FormatString(currentDate.ToString("MMMM yyyy"));
             var firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
             int daysInMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
             int startDayOfWeek = GetWeekDayIndex(firstDayOfMonth);
@@ -233,6 +235,8 @@ namespace StarletBooking.Calendar
         
         #region Внутренние функции
 
+        protected override void MonthOnlyCustomMethod(DateTime date) { }
+        
         private void SelectReservations(IReadOnlyList<ReservationData> reservations)
         {
             reservationIds.Clear();
