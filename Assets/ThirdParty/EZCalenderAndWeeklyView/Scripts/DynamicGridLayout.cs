@@ -27,6 +27,9 @@ namespace EZCalendarWeeklyView
         /// </summary>
         public void UpdateGridLayout()
         {
+            if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
+            if (gridLayout == null) gridLayout = GetComponent<GridLayoutGroup>();
+            
             // Calculate available width and height
             float availableWidth = rectTransform.rect.width;
             float availableHeight = rectTransform.rect.height;

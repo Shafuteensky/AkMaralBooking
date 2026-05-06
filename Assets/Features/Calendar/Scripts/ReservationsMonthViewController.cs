@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Extensions.Coroutines;
 using Extensions.ScriptableValues;
 using EZCalendarWeeklyView;
 using StarletBooking.Data;
@@ -26,10 +27,18 @@ namespace StarletBooking.Calendar
         private readonly List<Color> reservationColors = new List<Color>();
         private readonly List<string> reservationIds = new List<string>();
 
+        private void Awake()
+        {
+            currentDate = DateTime.Now;
+            selectedDate = DateTime.Now;
+        }
+        
         protected override void Start()
         {
             RebuildReservationsIndex();
             base.Start();
+            RefreshReservationsCalendar();
+            CoroutineDelay.Run(this, dynamicGridLayout.UpdateGridLayout);
         }
 
         /// <summary>
