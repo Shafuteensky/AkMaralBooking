@@ -121,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908121857594483530}
   - component: {fileID: 7628805440549875171}
+  - component: {fileID: -6785594849155165983}
   m_Layer: 5
   m_Name: Legend element
   m_TagString: Untagged
@@ -165,6 +166,18 @@ MonoBehaviour:
   text: {fileID: 317864246862359195}
   houseImage: {fileID: 21300000, guid: dd53dd9995c6bd64daed6547e85b05e7, type: 3}
   clientImage: {fileID: 21300000, guid: 0307149f6932e9b4586783a5f5d047dc, type: 3}
+--- !u!114 &-6785594849155165983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498470645920533402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391e91d28bb94063915b1863e7395b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Pool.PooledObject
 --- !u!1 &6951212914415274671
 GameObject:
   m_ObjectHideFlags: 0

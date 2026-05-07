@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Extensions.Helpers;
+using Extensions.Pool;
 using Extensions.ScriptableValues;
 using StarletBooking.Data;
 using UnityEngine;
@@ -29,6 +30,14 @@ namespace StarletBooking.Calendar
         [SerializeField] private LegendElement legendElementPrefab;
         [SerializeField] private Transform legendElementsHolder;
 
+        private ObjectPool<LegendElement> legendElementsPool;
+        private Transform poolRoot;
+
+        private void Awake()
+        {
+            CreatePool();
+        }
+
         private void OnEnable()
         {
             if (Logic.IsNull(calendar)) return;
@@ -37,6 +46,8 @@ namespace StarletBooking.Calendar
 
         private void OnDisable()
         {
+            ReleaseLegendElements();
+
             if (Logic.IsNull(calendar)) return;
             calendar.onCalendarUpdated -= UpdateLegend;
         }
@@ -48,7 +59,8 @@ namespace StarletBooking.Calendar
         {
             calendar.GetVisibleDateRange(out DateTime viewedStartDate, out DateTime viewedEndDate);
             if (Logic.IsNull(legendElementsHolder)) return;
-            GameObjectUtils.ClearChildren(legendElementsHolder);
+
+            ReleaseLegendElements();
             
             if (Logic.IsNull(houseSelectionContext)) return;
             if (houseSelectionContext.HasSelection)
@@ -63,10 +75,21 @@ namespace StarletBooking.Calendar
             }
         }
 
+        private void CreatePool()
+        {
+            if (legendElementPrefab == null) return;
+
+            GameObject poolRootObject = new GameObject($"{nameof(CalendarLegendController)} Pool");
+            poolRoot = poolRootObject.transform;
+            poolRoot.SetParent(transform, false);
+
+            legendElementsPool = new ObjectPool<LegendElement>(legendElementPrefab, poolRoot);
+        }
+
         private HashSet<string> GetViewedHouses(DateTime viewedStartDate, DateTime viewedEndDate)
         {
             if (Logic.IsNull(reservationsDataContainer)) return new HashSet<string>();
-            HashSet<string> houses = new();
+            HashSet<string> houses = new HashSet<string>();
             
             foreach (var reservation in reservationsDataContainer.Data)
             {
@@ -85,7 +108,7 @@ namespace StarletBooking.Calendar
         {
             if (Logic.IsNull(reservationsDataContainer) ||
                 Logic.IsNull(houseSelectionContext)) return new HashSet<string>();
-            HashSet<string> clients = new();
+            HashSet<string> clients = new HashSet<string>();
             
             foreach (var reservation in reservationsDataContainer.Data)
             {
@@ -112,7 +135,8 @@ namespace StarletBooking.Calendar
                 ClientData client = clientsDataContainer.GetById(clientId);
                 if (client == null) return;
                 
-                LegendElement legendElement = Instantiate(legendElementPrefab, legendElementsHolder);
+                LegendElement legendElement = GetLegendElement();
+                if (legendElement == null) return;
                 
                 legendElement.SetColor(client.Color);
                 legendElement.SetText(client.Name);
@@ -133,13 +157,44 @@ namespace StarletBooking.Calendar
                 HouseData house = housesDataContainer.GetById(houseId);
                 if (house == null) return;
                 
-                LegendElement legendElement = Instantiate(legendElementPrefab, legendElementsHolder);
+                LegendElement legendElement = GetLegendElement();
+                if (legendElement == null) return;
                 
                 legendElement.SetColor(house.Color);
                 legendElement.SetText(house.Name);
                 legendElement.SetAsHouse();
                 
                 legendElement.Initialize(houseId);
+            }
+        }
+
+        private LegendElement GetLegendElement()
+        {
+            if (legendElementsPool == null)
+            {
+                CreatePool();
+            }
+
+            if (legendElementsPool == null) return null;
+
+            return legendElementsPool.Get(legendElementsHolder);
+        }
+
+        private void ReleaseLegendElements()
+        {
+            if (legendElementsHolder == null) return;
+            if (legendElementsPool == null) return;
+
+            for (int i = legendElementsHolder.childCount - 1; i >= 0; i--)
+            {
+                LegendElement legendElement = legendElementsHolder.GetChild(i).GetComponent<LegendElement>();
+                if (legendElement == null)
+                {
+                    Destroy(legendElementsHolder.GetChild(i).gameObject);
+                    continue;
+                }
+
+                legendElementsPool.Release(legendElement);
             }
         }
     }
