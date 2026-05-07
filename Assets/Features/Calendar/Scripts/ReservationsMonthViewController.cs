@@ -108,7 +108,7 @@ namespace StarletBooking.Calendar
         protected override void OnDayButtonClick(DateTime date)
         {
             DateTime previousDate = currentDate;
-            DateTime newDate = DateTime.Now;
+            DateTime newDate = date;
             
             base.OnDayButtonClick(date);
             
@@ -118,8 +118,8 @@ namespace StarletBooking.Calendar
         private void RaiseMonthChangedByDate(DateTime previousDate, DateTime newDate)
         {
             int monthOffset = (newDate.Year - previousDate.Year) * 12 + newDate.Month - previousDate.Month;
-            if (monthOffset <= 0) onPreviousMonthChanged?.Invoke();
-            else onNextMonthChanged?.Invoke();
+            if (monthOffset < 0) onPreviousMonthChanged?.Invoke();
+            else if (monthOffset > 0) onNextMonthChanged?.Invoke();
         }
         
         #endregion
