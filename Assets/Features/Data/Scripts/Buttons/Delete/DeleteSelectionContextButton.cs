@@ -14,24 +14,24 @@ namespace StarletBooking.Data.Controls
         where TData : InMemoryDataEntry
     {
         [SerializeField]
-        protected SelectionContext<TData> selectionContext;
+        protected SingleSelectionContext<TData> singleSelectionContext;
 
         public override void OnButtonClickAction()
         {
-            if (Logic.IsNull(selectionContext) ||
-                Logic.IsNull(selectionContext.Container) ||
-                !selectionContext.HasSelection)
+            if (Logic.IsNull(singleSelectionContext) ||
+                Logic.IsNull(singleSelectionContext.Container) ||
+                !singleSelectionContext.HasSelection)
             { return; }
 
-            string id = selectionContext.SelectedId;
+            string id = singleSelectionContext.SelectedId;
             if (string.IsNullOrEmpty(id))
             {
                 ServiceDebug.LogWarning("Идентификатор активного элемента пуст, удаление невозможно");
                 return;
             }
 
-            selectionContext.Container.Remove(id);
-            selectionContext.Clear();
+            singleSelectionContext.Container.Remove(id);
+            singleSelectionContext.Clear();
         }
     }
 }

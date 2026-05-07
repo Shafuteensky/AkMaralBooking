@@ -3,6 +3,7 @@ using Extensions.Log;
 using Extensions.ScriptableValues;
 using StarletBooking.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Extensions.Data.InMemoryData.UI
 {
@@ -11,7 +12,7 @@ namespace Extensions.Data.InMemoryData.UI
     /// </summary>
     public class ReservationPreviewButtonFactory : GenericDataPreviewButtonFactory<ReservationsDataContainer, ReservationData>
     {
-        [SerializeField] private HouseSelectionContext houseSelectionContext;
+        [FormerlySerializedAs("houseSelectionContext")] [SerializeField] private HouseSingleSelectionContext houseSingleSelectionContext;
         [SerializeField] private DateValue fromDate;
         [SerializeField] private DateValue toDate;
 
@@ -20,7 +21,7 @@ namespace Extensions.Data.InMemoryData.UI
             base.OnEnable();
             if (applyFilter)
             {
-                houseSelectionContext.onSelectionChanged += Rebuild;
+                houseSingleSelectionContext.onSelectionChanged += Rebuild;
                 fromDate.onValueChanged += Rebuild;
                 toDate.onValueChanged += Rebuild;
             }
@@ -28,14 +29,14 @@ namespace Extensions.Data.InMemoryData.UI
         
         protected void OnDisable()
         {
-            houseSelectionContext.onSelectionChanged -= Rebuild;
+            houseSingleSelectionContext.onSelectionChanged -= Rebuild;
             fromDate.onValueChanged -= Rebuild;
             toDate.onValueChanged -= Rebuild;
         }
 
         protected override bool FilterCheck(ReservationData data)
         {
-            if (!houseSelectionContext ||
+            if (!houseSingleSelectionContext ||
                 fromDate == null || toDate == null)
             {
                 ServiceDebug.LogError("Компоненты фильтрации не назначены, фильтрация не выполнена");
@@ -47,7 +48,7 @@ namespace Extensions.Data.InMemoryData.UI
 
         private bool IsFilteredByHouse(ReservationData data)
         {
-            bool isDataValid = houseSelectionContext.TryGetSelectedData(out HouseData houseData);
+            bool isDataValid = houseSingleSelectionContext.TryGetSelectedData(out HouseData houseData);
             
             if (!isDataValid || data.HouseId == houseData.Id) 
                 return true;

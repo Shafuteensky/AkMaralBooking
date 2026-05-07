@@ -8,7 +8,7 @@ namespace StarletBooking.Data.Controls
     /// <summary>
     /// Сохранение записи о клиенте
     /// </summary>
-    public class SaveClientDataButton : SaveDataButton<ClientsDataContainer, ClientSelectionContext>
+    public class SaveClientDataButton : SaveDataButton<ClientsDataContainer, ClientSingleSelectionContext>
     {
         [Header("Поля данных"), Space]
         [SerializeField] private TMP_InputField _nameInputField;

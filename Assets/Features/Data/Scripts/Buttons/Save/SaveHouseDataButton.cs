@@ -7,7 +7,7 @@ namespace StarletBooking.Data.Controls
     /// <summary>
     /// Сохранение записи о доме
     /// </summary>
-    public class SaveHouseDataButton : SaveDataButton<HousesDataContainer, HouseSelectionContext>
+    public class SaveHouseDataButton : SaveDataButton<HousesDataContainer, HouseSingleSelectionContext>
     {
         [Header("Поля данных"), Space]
         [SerializeField] private TMP_InputField _nameInputField;

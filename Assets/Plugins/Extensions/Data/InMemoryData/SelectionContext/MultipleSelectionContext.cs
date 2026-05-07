@@ -8,16 +8,14 @@ namespace Extensions.Data.InMemoryData.SelectionContext
     /// Контекст множественного выбора <see cref="InMemoryData"/>-контейнера
     /// </summary>
     /// <typeparam name="TData">Тип хранимых данных</typeparam>
-    public abstract class MultipleSelectionContext<TData> : BaseSelectionContext where TData : InMemoryDataEntry
+    public abstract class MultipleSelectionContext<TData> : BaseSelectionContext, IMultipleSelectionContext
+        where TData : InMemoryDataEntry
     {
         /// <summary>
         /// Идентификаторы активных выбранных записей контейнера
         /// </summary>
         public IReadOnlyList<string> SelectedIds => selectedIds;
 
-        /// <summary>
-        /// Наличие активного выбранного элемента
-        /// </summary>
         public override bool HasSelection => Container != null && selectedIds.Count > 0;
         
         /// <summary>

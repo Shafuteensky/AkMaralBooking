@@ -7,7 +7,7 @@ namespace StarletBooking.UI
     /// </summary>
     public class ReservationHouseDropdownSelector : ReservationDropdownSelector
     {
-        protected override string GetSelected(ReservationSelectionContext reservationSelectionContext) 
-            => reservationSelectionContext.GetSelectedData().HouseId;
+        protected override string GetSelected(ReservationSingleSelectionContext reservationSingleSelectionContext) 
+            => reservationSingleSelectionContext.GetSelectedData().HouseId;
     }
 }

@@ -35,10 +35,12 @@ namespace Extensions.Data.InMemoryData.UI
             Clear();
             rebuildTask = new CoroutineTask(this);
         }
+        
         protected void Start()
         {
             if (rebuildOnStart) Rebuild();
         }
+        
         protected virtual void OnEnable()
         {
             if (rebuildOnEnable) Rebuild();

@@ -8,7 +8,8 @@ namespace Extensions.Data.InMemoryData.SelectionContext
     /// Контекст выбора <see cref="InMemoryData"/>-контейнера
     /// </summary>
     /// <typeparam name="TData">Тип хранимых данных</typeparam>
-    public abstract class SelectionContext<TData> : BaseSelectionContext where TData : InMemoryDataEntry
+    public abstract class SingleSelectionContext<TData> : BaseSelectionContext, ISingleSelectionContext 
+        where TData : InMemoryDataEntry
     {
         /// <summary>
         /// Контейнер, данные которого назначаются как активный выбор контекста

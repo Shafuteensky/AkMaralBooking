@@ -25,7 +25,7 @@ namespace StarletBooking.Calendar
 
         private void OnEnable()
         {
-            if (houseSelectionContext is HouseSelectionContext houseContext)
+            if (houseSelectionContext is HouseSingleSelectionContext houseContext)
                 houseContext.onSelectionChanged += Refresh;
 
             if (arrivalDateFilter != null)
@@ -42,7 +42,7 @@ namespace StarletBooking.Calendar
 
         private void OnDisable()
         {
-            if (houseSelectionContext is HouseSelectionContext houseContext)
+            if (houseSelectionContext is HouseSingleSelectionContext houseContext)
                 houseContext.onSelectionChanged -= Refresh;
 
             if (arrivalDateFilter != null)

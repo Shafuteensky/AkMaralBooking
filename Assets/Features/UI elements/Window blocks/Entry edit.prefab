@@ -3613,7 +3613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cacf1cd9f594e6f896c436283d1de6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.LoadReservationDropdowns
-  selectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
+  singleSelectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
   clientsDropdown: {fileID: 5767690818303762792}
   housesDropdown: {fileID: 5427839897127123769}
 --- !u!114 &2351527268513933079
@@ -3628,7 +3628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6783f4c9c4344f0d872c9f8642379a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.LoadReservationFields
-  selectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
+  singleSelectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
   viewOutputFormat: 0
   paymentPerDayInputField: {fileID: 7524098561762460469}
   daysInputField: {fileID: 8778811566650615812}
@@ -5492,7 +5492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2c8c126c3b4866959cca598a0c1e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.Output.SetPaymentOnHouseSelection
-  houseSelectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
+  houseSingleSelectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
 --- !u!224 &6509720704405104535 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}

@@ -7,6 +7,7 @@ using EZCalendarWeeklyView;
 using StarletBooking.Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using DynamicGridLayout = Extensions.Layouts.DynamicGridLayout;
 
@@ -38,8 +39,9 @@ namespace StarletBooking.Calendar
         [SerializeField] private ReservationsDataContainer reservationsDataContainer;
         [SerializeField] private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
 
+        [FormerlySerializedAs("houseSelectionContext")]
         [Header("Фильтрация")]
-        [SerializeField] private HouseSelectionContext houseSelectionContext;
+        [SerializeField] private HouseSingleSelectionContext houseSingleSelectionContext;
         [SerializeField] private DateValue arrivalDateFilter;
         [SerializeField] private DateValue departureDateFilter;
 
@@ -279,7 +281,7 @@ namespace StarletBooking.Calendar
             {
                 if (reservation == null) continue;
 
-                if (!houseSelectionContext.HasSelection)
+                if (!houseSingleSelectionContext.HasSelection)
                 {
                     HouseData house = reservationsDataContainer.GetHouseById(reservation.Id);
                     if (house == null) continue;
@@ -304,13 +306,13 @@ namespace StarletBooking.Calendar
             if (reservationsDataContainer == null) return;
 
             string houseId = string.Empty;
-            bool hasHouseFilter = houseSelectionContext != null && 
-                                  houseSelectionContext.HasSelection && 
-                                  !string.IsNullOrEmpty(houseSelectionContext.SelectedId);
+            bool hasHouseFilter = houseSingleSelectionContext != null && 
+                                  houseSingleSelectionContext.HasSelection && 
+                                  !string.IsNullOrEmpty(houseSingleSelectionContext.SelectedId);
 
             if (hasHouseFilter)
             {
-                houseId = houseSelectionContext.SelectedId;
+                houseId = houseSingleSelectionContext.SelectedId;
             }
 
             DateTime arrivalDate = default;

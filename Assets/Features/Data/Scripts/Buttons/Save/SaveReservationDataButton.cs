@@ -11,7 +11,7 @@ namespace StarletBooking.Data.Controls
     /// <summary>
     /// Сохранение записи об аренде
     /// </summary>
-    public class SaveReservationDataButton : SaveDataButton<ReservationsDataContainer, ReservationSelectionContext>
+    public class SaveReservationDataButton : SaveDataButton<ReservationsDataContainer, ReservationSingleSelectionContext>
     {
         [Header("Поля данных"), Space]
         [SerializeField] private DropdownIdBinder _housesDropDown;

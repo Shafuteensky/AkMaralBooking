@@ -4,7 +4,7 @@ using UnityEngine;
 namespace StarletBooking.UI
 {
     /// <summary>
-    /// Обновление контекста выбора <see cref="BaseSelectionContext"/> при изменении выбора в dropdown-списке
+    /// Двусторонняя синхронизация контекста выбора и dropdown-списка
     /// </summary>
     [RequireComponent(typeof(DropdownIdBinder))]
     public class SelectionContextUpdateOnDropdown : MonoBehaviour
@@ -12,6 +12,8 @@ namespace StarletBooking.UI
         [SerializeField] private BaseSelectionContext selectionContext;
         
         private DropdownIdBinder dropdownIdBinder;
+        private bool isUpdating;
+        private bool ignoreNextDropdownSelection;
 
         private void Awake()
         {
@@ -23,16 +25,62 @@ namespace StarletBooking.UI
             if (selectionContext == null) return;
 
             dropdownIdBinder.onSelectedIdChanged += SelectNewContext;
+            dropdownIdBinder.onOptionsSet += OnOptionsSet;
+            selectionContext.onSelectionChanged += SelectDropdown;
+
+            SelectDropdown();
         }
 
         private void OnDisable()
         {
-            dropdownIdBinder.onSelectedIdChanged -= SelectNewContext;
+            if (dropdownIdBinder != null)
+            {
+                dropdownIdBinder.onSelectedIdChanged -= SelectNewContext;
+                dropdownIdBinder.onOptionsSet -= OnOptionsSet;
+            }
+
+            if (selectionContext != null)
+                selectionContext.onSelectionChanged -= SelectDropdown;
         }
 
+        private void OnOptionsSet()
+        {
+            ignoreNextDropdownSelection = true;
+            SelectDropdown();
+        }
+        
         private void SelectNewContext(string selectedDataId)
         {
-            selectionContext.Select(selectedDataId);
+            if (isUpdating) return;
+
+            if (ignoreNextDropdownSelection)
+            {
+                ignoreNextDropdownSelection = false;
+                return;
+            }
+
+            isUpdating = true;
+
+            if (string.IsNullOrEmpty(selectedDataId))
+                selectionContext.Clear();
+            else
+                selectionContext.Select(selectedDataId);
+
+            isUpdating = false;
+        }
+
+        private void SelectDropdown()
+        {
+            if (isUpdating) return;
+
+            isUpdating = true;
+
+            if (selectionContext.HasSelection && selectionContext is ISingleSelectionContext singleSelectionContext)
+                dropdownIdBinder.SetSelectedById(singleSelectionContext.SelectedId);
+            else
+                dropdownIdBinder.ClearSelection();
+
+            isUpdating = false;
         }
     }
 }

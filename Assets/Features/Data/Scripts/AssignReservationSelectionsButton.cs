@@ -1,6 +1,7 @@
 using Extensions.Data.InMemoryData.SelectionContext;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 namespace StarletBooking.Data
 {
@@ -9,18 +10,19 @@ namespace StarletBooking.Data
     /// </summary>
     public class AssignReservationSelectionsButton : AssignSelectionContextButton
     {
+        [FormerlySerializedAs("houseSelectionContext")]
         [Header("Контейнера данных записи аренды для вывода"), Space]
-        [SerializeField] protected HouseSelectionContext houseSelectionContext;
-        [SerializeField] protected ClientSelectionContext clientSelectionContext;
+        [SerializeField] protected HouseSingleSelectionContext houseSingleSelectionContext;
+        [FormerlySerializedAs("clientSelectionContext")] [SerializeField] protected ClientSingleSelectionContext clientSingleSelectionContext;
 
         public override void OnPointerDown(PointerEventData eventData)
         {
             base.OnPointerDown(eventData);
             
-            if (selectionContext is not ReservationSelectionContext reservationSelectionContext) return;
+            if (selectionContext is not ReservationSingleSelectionContext reservationSelectionContext) return;
             
-            houseSelectionContext.Select(reservationSelectionContext.GetSelectedData().HouseId);
-            clientSelectionContext.Select(reservationSelectionContext.GetSelectedData().ClientId);
+            houseSingleSelectionContext.Select(reservationSelectionContext.GetSelectedData().HouseId);
+            clientSingleSelectionContext.Select(reservationSelectionContext.GetSelectedData().ClientId);
         }
     }
 }
