@@ -751,6 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 283ca0fc64f4a2245be6f37c180d92cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Tweeners.OpenScreenAnimation
+  animationState: {fileID: 0}
   moveEnabled: 0
   fromOffset: {x: -50, y: 0, z: 0}
   moveDuration: 0.25
@@ -1125,6 +1126,10 @@ PrefabInstance:
     - target: {fileID: 4063754611748450113, guid: c0f77ff9ff4e7d24c91fef8dac2eda8c, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7069281062503731810, guid: c0f77ff9ff4e7d24c91fef8dac2eda8c, type: 3}
+      propertyPath: rightPadding
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7841625303233922225, guid: c0f77ff9ff4e7d24c91fef8dac2eda8c, type: 3}
       propertyPath: m_Name
