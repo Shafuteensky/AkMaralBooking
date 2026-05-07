@@ -17,11 +17,11 @@ namespace Extensions.Helpers
         /// <param name="obj">Проверяемый объект</param>
         /// <returns></returns>
         [HideInCallstack]
-        public static bool IsNull(Object obj, string message = "")
+        public static bool IsNull(Object obj, string name = "")
         {
             if (obj == null)
             {
-                ServiceDebug.LogError(message != "" ? message : "Объект = NULL");
+                ServiceDebug.LogError(name == "" ? "Объект = null" : $"{name} = null");
                 return true;
             }
 
@@ -34,7 +34,7 @@ namespace Extensions.Helpers
         /// <param name="obj">Проверяемый объект</param>
         /// <returns></returns>
         [HideInCallstack]
-        public static bool IsNotNull(Object obj) => !IsNull(obj);
+        public static bool IsNotNull(Object obj, string name = "") => !IsNull(obj, name);
         
         #endregion
     }
