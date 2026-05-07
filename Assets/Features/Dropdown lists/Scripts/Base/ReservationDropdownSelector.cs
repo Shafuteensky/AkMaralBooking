@@ -9,13 +9,13 @@ namespace StarletBooking.UI
     /// </summary>
     public abstract class ReservationDropdownSelector : DropdownOptionSelector
     {
-        protected abstract string GetSelected(ReservationSingleSelectionContext reservationSingleSelectionContext);
+        protected abstract string GetSelected(ReservationSelectionContext reservationSelectionContext);
         
         protected override void Select()
         {
-            if (selectionContext is not ReservationSingleSelectionContext reservationSelectionContext)
+            if (selectionContext is not ReservationSelectionContext reservationSelectionContext)
             {
-                ServiceDebug.LogError("Неверный тип контекста выбора, должен быть " + nameof(ReservationSingleSelectionContext));
+                ServiceDebug.LogError("Неверный тип контекста выбора, должен быть " + nameof(ReservationSelectionContext));
                 return;
             }
             

@@ -13,39 +13,39 @@ namespace StarletBooking.Data.View
     public abstract class SelectionContextViewLoader<TData> : MonoBehaviour where TData : InMemoryDataEntry
     {
         [Header("Контейнер данных для вывода"), Space]
-        [SerializeField] protected SingleSelectionContext<TData> singleSelectionContext;
+        [SerializeField] protected SingleSelectionContext<TData> selectionContext;
         
         protected InMemoryDataContainer<TData> container;
 
         protected void Awake()
         {
-            if (Logic.IsNull(singleSelectionContext))
+            if (Logic.IsNull(selectionContext))
             {
                 return;
             }
             
-            container = singleSelectionContext.Container;
+            container = selectionContext.Container;
         }
 
         protected virtual void OnEnable()
         {
-            if (Logic.IsNull(singleSelectionContext) || Logic.IsNull(container))
+            if (Logic.IsNull(selectionContext) || Logic.IsNull(container))
             {
                 return;
             }
 
-            singleSelectionContext.onSelectionChanged += OnSingleSelectionChanged;
+            selectionContext.onSelectionChanged += OnSelectionChanged;
             Rebuild();
         }
 
         protected virtual void OnDisable()
         {
-            if (Logic.IsNull(singleSelectionContext))
+            if (Logic.IsNull(selectionContext))
             {
                 return;
             }
 
-            singleSelectionContext.onSelectionChanged -= OnSingleSelectionChanged;
+            selectionContext.onSelectionChanged -= OnSelectionChanged;
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace StarletBooking.Data.View
         {
             ApplyEmpty();
             
-            if (singleSelectionContext == null || container == null) return;
+            if (selectionContext == null || container == null) return;
 
-            string id = singleSelectionContext.SelectedId;
+            string id = selectionContext.SelectedId;
             
             if (string.IsNullOrEmpty(id)) return;
             
@@ -70,7 +70,7 @@ namespace StarletBooking.Data.View
             ApplyToView(dataItem);
         }
 
-        protected void OnSingleSelectionChanged() => Rebuild();
+        protected void OnSelectionChanged() => Rebuild();
         
         protected abstract void ApplyToView(TData dataItem);
 

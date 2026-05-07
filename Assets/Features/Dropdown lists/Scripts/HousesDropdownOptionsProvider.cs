@@ -48,11 +48,7 @@ namespace StarletBooking.UI
                     continue;
                 }
 
-                string label = house.Name;
-                if (!string.IsNullOrEmpty(house.Number))
-                {
-                    label += " (" + house.Number + ")";
-                }
+                string label = house.Signature;
 
                 labels.Add(label);
                 ids.Add(house.Id);

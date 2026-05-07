@@ -48,6 +48,11 @@ namespace StarletBooking.Data
         public string OwnerContactNumber => ownerContactNumber;
 
         /// <summary>
+        /// Получить сигнатуру дома формата {Название (номер)}
+        /// </summary>
+        public string Signature => $"{Name} ({Number})";
+        
+        /// <summary>
         /// Конструктор класса
         /// </summary>
         public HouseData(string name, string number, Color color, string notes, string paymentPerDay, string ownerName, string ownerContactNumber)

@@ -12,7 +12,7 @@ namespace Extensions.Data.InMemoryData.UI
     /// </summary>
     public class ReservationPreviewButtonFactory : GenericDataPreviewButtonFactory<ReservationsDataContainer, ReservationData>
     {
-        [FormerlySerializedAs("houseSelectionContext")] [SerializeField] private HouseSingleSelectionContext houseSingleSelectionContext;
+        [FormerlySerializedAs("houseSingleSelectionContext")] [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue fromDate;
         [SerializeField] private DateValue toDate;
 
@@ -21,7 +21,7 @@ namespace Extensions.Data.InMemoryData.UI
             base.OnEnable();
             if (applyFilter)
             {
-                houseSingleSelectionContext.onSelectionChanged += Rebuild;
+                houseSelectionContext.onSelectionChanged += Rebuild;
                 fromDate.onValueChanged += Rebuild;
                 toDate.onValueChanged += Rebuild;
             }
@@ -29,14 +29,14 @@ namespace Extensions.Data.InMemoryData.UI
         
         protected void OnDisable()
         {
-            houseSingleSelectionContext.onSelectionChanged -= Rebuild;
+            houseSelectionContext.onSelectionChanged -= Rebuild;
             fromDate.onValueChanged -= Rebuild;
             toDate.onValueChanged -= Rebuild;
         }
 
         protected override bool FilterCheck(ReservationData data)
         {
-            if (!houseSingleSelectionContext ||
+            if (!houseSelectionContext ||
                 fromDate == null || toDate == null)
             {
                 ServiceDebug.LogError("Компоненты фильтрации не назначены, фильтрация не выполнена");
@@ -48,7 +48,7 @@ namespace Extensions.Data.InMemoryData.UI
 
         private bool IsFilteredByHouse(ReservationData data)
         {
-            bool isDataValid = houseSingleSelectionContext.TryGetSelectedData(out HouseData houseData);
+            bool isDataValid = houseSelectionContext.TryGetSelectedData(out HouseData houseData);
             
             if (!isDataValid || data.HouseId == houseData.Id) 
                 return true;

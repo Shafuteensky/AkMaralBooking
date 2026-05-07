@@ -28,6 +28,10 @@ namespace StarletBooking.Calendar
         /// Событие изменения месяца вперед от текущего
         /// </summary>
         public event Action onNextMonthChanged;
+        /// <summary>
+        /// Событие отрисовки календаря
+        /// </summary>
+        public event Action onCalendarUpdated;
         
         #endregion
         
@@ -39,9 +43,9 @@ namespace StarletBooking.Calendar
         [SerializeField] private ReservationsDataContainer reservationsDataContainer;
         [SerializeField] private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
 
-        [FormerlySerializedAs("houseSelectionContext")]
+        [FormerlySerializedAs("houseSingleSelectionContext")]
         [Header("Фильтрация")]
-        [SerializeField] private HouseSingleSelectionContext houseSingleSelectionContext;
+        [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue arrivalDateFilter;
         [SerializeField] private DateValue departureDateFilter;
 
@@ -123,6 +127,22 @@ namespace StarletBooking.Calendar
         }
         
         #endregion
+        
+        #region Получение данных
+
+        /// <summary>
+        /// Получить диапазон дат, видимый в месячном календаре
+        /// </summary>
+        public void GetVisibleDateRange(out DateTime firstVisibleDate, out DateTime lastVisibleDate)
+        {
+            DateTime firstDayOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+            int startDayOfWeek = GetWeekDayIndex(firstDayOfMonth);
+
+            firstVisibleDate = firstDayOfMonth.AddDays(-startDayOfWeek).Date;
+            lastVisibleDate = firstVisibleDate.AddDays(dayButtons.Count - 1).Date;
+        }
+        
+        #endregion
 
         #region Обновление календаря и его элементов
         
@@ -148,7 +168,9 @@ namespace StarletBooking.Calendar
             UpdateButtonsForPreviousMonth(daysInPreviousMonth, startDayOfWeek);
             UpdateButtonsForCurrentMonth(daysInMonth, startDayOfWeek);
             UpdateButtonsForNextMonth(startDayOfWeek, daysInMonth);
+            
             newDynamicGridLayout.UpdateGridLayout();
+            onCalendarUpdated?.Invoke();
         }
         
         protected override void UpdateDayButton(Button button, DateTime date, Color color)
@@ -281,7 +303,7 @@ namespace StarletBooking.Calendar
             {
                 if (reservation == null) continue;
 
-                if (!houseSingleSelectionContext.HasSelection)
+                if (!houseSelectionContext.HasSelection)
                 {
                     HouseData house = reservationsDataContainer.GetHouseById(reservation.Id);
                     if (house == null) continue;
@@ -306,13 +328,13 @@ namespace StarletBooking.Calendar
             if (reservationsDataContainer == null) return;
 
             string houseId = string.Empty;
-            bool hasHouseFilter = houseSingleSelectionContext != null && 
-                                  houseSingleSelectionContext.HasSelection && 
-                                  !string.IsNullOrEmpty(houseSingleSelectionContext.SelectedId);
+            bool hasHouseFilter = houseSelectionContext != null && 
+                                  houseSelectionContext.HasSelection && 
+                                  !string.IsNullOrEmpty(houseSelectionContext.SelectedId);
 
             if (hasHouseFilter)
             {
-                houseId = houseSingleSelectionContext.SelectedId;
+                houseId = houseSelectionContext.SelectedId;
             }
 
             DateTime arrivalDate = default;

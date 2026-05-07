@@ -14,6 +14,8 @@ namespace Extensions.Helpers
         private static DateUtilsSettings settings;
         private static CultureInfo dateCulture;
 
+        #region Значения параметров настроек дат
+        
         /// <summary>
         /// Формат даты
         /// </summary>
@@ -28,16 +30,10 @@ namespace Extensions.Helpers
         /// Текущая дата в формате проекта
         /// </summary>
         public static string Now => Format(DateTime.Now);
-        
-        private static DateUtilsSettings Settings
-        {
-            get
-            {
-                if (settings == null) LoadSettings();
 
-                return settings;
-            }
-        }
+        #endregion
+        
+        #region Настройки даты
 
         /// <summary>
         /// Загрузить настройки
@@ -73,11 +69,32 @@ namespace Extensions.Helpers
             DateUtilsSettings defaultSettings = new DateUtilsSettings();
             SaveSettings(defaultSettings.DateFormat, defaultSettings.TwoDigitYearMax);
         }
+        
+        private static DateUtilsSettings Settings
+        {
+            get
+            {
+                if (settings == null) LoadSettings();
 
-        /// <summary>
-        /// Проверка даты
-        /// </summary>
-        public static bool IsValidDate(string value) => TryParse(value, out DateTime _);
+                return settings;
+            }
+        }
+        
+        private static void ValidateSettings()
+        {
+            if (settings == null) 
+                settings = new DateUtilsSettings();
+
+            if (string.IsNullOrWhiteSpace(settings.DateFormat))
+                settings.DateFormat = new DateUtilsSettings().DateFormat;
+
+            if (settings.TwoDigitYearMax < 2000)
+                settings.TwoDigitYearMax = new DateUtilsSettings().TwoDigitYearMax;
+        }
+        
+        #endregion
+
+        #region Парсинг
 
         /// <summary>
         /// Получить дату
@@ -93,6 +110,10 @@ namespace Extensions.Helpers
             );
         }
 
+        #endregion
+        
+        #region Форматирование
+        
         /// <summary>
         /// Форматировать дату
         /// </summary>
@@ -103,18 +124,29 @@ namespace Extensions.Helpers
         /// </summary>
         public static string Format(DateTime dateTime, string format) => dateTime.ToString(format, dateCulture);
         
-        private static void ValidateSettings()
+        #endregion
+        
+        #region Проверки
+
+        /// <summary>
+        /// Проверка даты
+        /// </summary>
+        public static bool IsValidDate(string value) => TryParse(value, out DateTime _);
+        
+        /// <summary>
+        /// Проверить, пересекаются ли два интервала дат
+        /// </summary>
+        public static bool IsDateRangesIntersect(
+            DateTime firstStart, DateTime firstEnd, 
+            DateTime secondStart, DateTime secondEnd)
         {
-            if (settings == null) 
-                settings = new DateUtilsSettings();
-
-            if (string.IsNullOrWhiteSpace(settings.DateFormat))
-                settings.DateFormat = new DateUtilsSettings().DateFormat;
-
-            if (settings.TwoDigitYearMax < 2000)
-                settings.TwoDigitYearMax = new DateUtilsSettings().TwoDigitYearMax;
+            return firstStart.Date <= secondEnd.Date && secondStart.Date <= firstEnd.Date;
         }
+        
+        #endregion
 
+        #region Внутренние методы
+        
         private static void RebuildCulture()
         {
             CultureInfo cultureInfo = (CultureInfo)CultureInfo.InvariantCulture.Clone();
@@ -125,5 +157,7 @@ namespace Extensions.Helpers
             cultureInfo.DateTimeFormat.Calendar = calendar;
             dateCulture = cultureInfo;
         }
+        
+        #endregion
     }
 }

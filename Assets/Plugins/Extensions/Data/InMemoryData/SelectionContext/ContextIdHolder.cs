@@ -31,9 +31,7 @@ namespace Extensions.Data.InMemoryData.SelectionContext
             }
             
             dataContainer = newContainer;
-            entryId = newItemCellId;
-            isInitialized = true;
-            OnInitialized();
+            base.Initialize(newItemCellId);
         }
     }
 
@@ -60,5 +58,16 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         protected bool isInitialized = false;
         
         protected virtual void OnInitialized() => onInitialized?.Invoke();
+        
+        /// <summary>
+        /// Инициализация данных
+        /// </summary>
+        /// <param name="id">Идентификатор единицы данных</param>
+        public virtual void Initialize(string newItemCellId = null)
+        {
+            entryId = newItemCellId;
+            isInitialized = true;
+            OnInitialized();
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace StarletBooking.Data.Preview
         
         [Header("Дом")]
         [SerializeField] protected HousesDataContainer housesContainer;
-        [FormerlySerializedAs("houseSelectionContext")] [SerializeField] protected HouseSingleSelectionContext houseSingleSelectionContext;
+        [FormerlySerializedAs("houseSingleSelectionContext")] [SerializeField] protected HouseSelectionContext houseSelectionContext;
         [SerializeField] protected TMP_Text houseNumber; 
         
         [Header("Даты")]
@@ -33,7 +33,7 @@ namespace StarletBooking.Data.Preview
                 Logic.IsNull(clientsContainer) ||
                 Logic.IsNull(houseNumber) ||
                 Logic.IsNull(housesContainer) ||
-                Logic.IsNull(houseSingleSelectionContext) ||
+                Logic.IsNull(houseSelectionContext) ||
                 Logic.IsNull(arrivalDate) ||
                 Logic.IsNull(departureDate))
             {
@@ -53,7 +53,7 @@ namespace StarletBooking.Data.Preview
             departureDate.text = data == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(data.DepartureDate.ToShortDateString()); 
             
-            if (houseSingleSelectionContext.HasSelection)
+            if (houseSelectionContext.HasSelection)
                 colorImage.color = clientData?.Color ?? DataHelpers.NotFoundColor; 
             else
                 colorImage.color = houseData?.Color ?? DataHelpers.NotFoundColor; 
