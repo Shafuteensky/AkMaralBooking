@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Preview.ShowHousePreviewPanel
   container: {fileID: 11400000, guid: ed708a5cea0fac345901fecc6c0039b9, type: 2}
+  colorImage: {fileID: 7463682603311122506}
   number: {fileID: 6991999147643464207}
   houseName: {fileID: 3860545723321568463}
 --- !u!224 &4736182180174797454 stripped
@@ -212,6 +213,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7463682603311122506 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5068799567264130482, guid: c29da13f08ec0994b867bf7cbd6343da, type: 3}
+  m_PrefabInstance: {fileID: 2432979063115214328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &4722841105264053598
 PrefabInstance:
   m_ObjectHideFlags: 0

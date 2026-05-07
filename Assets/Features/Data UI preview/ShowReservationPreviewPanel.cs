@@ -10,33 +10,29 @@ namespace StarletBooking.Data.Preview
     /// </summary>
     public class ShowReservationPreviewPanel : ShowPreviewPanel<ReservationData>
     {
+        [SerializeField] protected Image colorImage;
+        
         [Header("Клиент")]
-        [SerializeField]
-        protected Image colorImage;
-        [SerializeField]
-        protected ClientsDataContainer clientsContainer;
-        [SerializeField]
-        protected TMP_Text clientName; 
+        [SerializeField] protected ClientsDataContainer clientsContainer;
+        [SerializeField] protected TMP_Text clientName; 
         
         [Header("Дом")]
-        [SerializeField]
-        protected HousesDataContainer housesContainer;
-        [SerializeField]
-        protected TMP_Text houseNumber; 
+        [SerializeField] protected HousesDataContainer housesContainer;
+        [SerializeField] protected HouseSelectionContext houseSelectionContext;
+        [SerializeField] protected TMP_Text houseNumber; 
         
         [Header("Даты")]
-        [SerializeField]
-        protected TMP_Text arrivalDate;
-        [SerializeField]
-        protected TMP_Text departureDate;
+        [SerializeField] protected TMP_Text arrivalDate;
+        [SerializeField] protected TMP_Text departureDate;
 
         protected override void ShowInfo()
         {
             if (Logic.IsNull(clientName) ||
-                Logic.IsNull(clientName) ||
+                Logic.IsNull(colorImage) ||
                 Logic.IsNull(clientsContainer) ||
                 Logic.IsNull(houseNumber) ||
                 Logic.IsNull(housesContainer) ||
+                Logic.IsNull(houseSelectionContext) ||
                 Logic.IsNull(arrivalDate) ||
                 Logic.IsNull(departureDate))
             {
@@ -44,7 +40,6 @@ namespace StarletBooking.Data.Preview
             }
             
             ClientData clientData = clientsContainer.GetById(data.ClientId);
-            colorImage.color = clientData?.Color ?? DataHelpers.NotFoundColor; 
             clientName.text = clientData == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(clientData.Name);
             
@@ -56,6 +51,11 @@ namespace StarletBooking.Data.Preview
                 DataHelpers.GetString(data.ArrivalDate.ToShortDateString()); 
             departureDate.text = data == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(data.DepartureDate.ToShortDateString()); 
+            
+            if (houseSelectionContext.HasSelection)
+                colorImage.color = clientData?.Color ?? DataHelpers.NotFoundColor; 
+            else
+                colorImage.color = houseData?.Color ?? DataHelpers.NotFoundColor; 
         }
     }
 }

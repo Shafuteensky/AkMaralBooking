@@ -10,16 +10,11 @@ namespace StarletBooking.Data
     [Serializable]
     public class ClientData : InMemoryDataEntry
     {
-        [SerializeField]
-        protected string name = string.Empty;
-        [SerializeField]
-        protected Color color = Color.white;
-        [SerializeField]
-        protected string contactNumber = string.Empty;
-        [SerializeField]
-        protected int rating = 0;
-        [SerializeField]
-        protected string notes = string.Empty;
+        [SerializeField] protected string name = string.Empty;
+        [SerializeField] protected Color color = Color.white;
+        [SerializeField] protected string contactNumber = string.Empty;
+        [SerializeField] protected int rating = 0;
+        [SerializeField] protected string notes = string.Empty;
         
         /// <summary>
         /// Цвет записи

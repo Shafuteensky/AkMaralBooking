@@ -12,6 +12,7 @@ namespace StarletBooking.Data.Controls
         [Header("Поля данных"), Space]
         [SerializeField] private TMP_InputField _nameInputField;
         [SerializeField] private TMP_InputField _numberInputField;
+        [SerializeField] private ColorPicker.ColorPicker _colorPicker;
         [SerializeField] private TMP_InputField _notesInputField;
         [SerializeField] private TMP_InputField paymentInputField;
         [SerializeField] private TMP_InputField _ownerNameInputField;
@@ -28,6 +29,7 @@ namespace StarletBooking.Data.Controls
             
             if (_nameInputField == null 
                 || _numberInputField == null
+                || _colorPicker == null
                 || _notesInputField == null
                 || paymentInputField == null
                 || _ownerNameInputField == null 
@@ -40,14 +42,16 @@ namespace StarletBooking.Data.Controls
             if (!selectionContext.HasSelection)
             {
                 HouseData newHouse = new HouseData(
-                    _nameInputField.text, _numberInputField.text, _notesInputField.text, paymentInputField.text,
+                    _nameInputField.text, _numberInputField.text, _colorPicker.GetColor(), 
+                    _notesInputField.text, paymentInputField.text,
                     _ownerNameInputField.text, _ownerContactNumberInputField.text);
                 dataContainer.Add(newHouse);
             }
             else
             {
                 selectionContext.GetSelectedData().UpdateData(
-                    _nameInputField.text, _numberInputField.text, _notesInputField.text, paymentInputField.text,
+                    _nameInputField.text, _numberInputField.text, _colorPicker.GetColor(), 
+                    _notesInputField.text, paymentInputField.text,
                     _ownerNameInputField.text, _ownerContactNumberInputField.text);
                 dataContainer.NotifyUpdated();
             }

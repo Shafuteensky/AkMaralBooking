@@ -13,6 +13,7 @@ namespace StarletBooking.Data.Controls
         [Header("Заполняемые поля"), Space]
         [SerializeField] protected TMP_InputField nameInputField;
         [SerializeField] protected TMP_InputField numberInputField;
+        [SerializeField] protected ColorPicker.ColorPicker colorPicker;
         [SerializeField] protected TMP_InputField notesInputField;
         [SerializeField] protected TMP_InputField paymentInputField;
         [SerializeField] protected TMP_InputField ownerNameInputField;
@@ -22,6 +23,7 @@ namespace StarletBooking.Data.Controls
         {
             if (Logic.IsNull(nameInputField) ||
                 Logic.IsNull(numberInputField) ||
+                Logic.IsNull(colorPicker) ||
                 Logic.IsNull(notesInputField) ||
                 Logic.IsNull(paymentInputField) ||
                 Logic.IsNull(ownerNameInputField) ||
@@ -29,11 +31,12 @@ namespace StarletBooking.Data.Controls
             {
                 return;
             }
-
+            
             nameInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(dataItem.Name); 
             numberInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(dataItem.Number);
+            colorPicker.SetColor(dataItem?.Color ?? DataHelpers.NotFoundColor);
             notesInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
                 DataHelpers.GetString(dataItem.Notes); 
             paymentInputField.text = dataItem == null ? DataHelpers.NotFoundString : 
@@ -48,6 +51,7 @@ namespace StarletBooking.Data.Controls
         {
             if (nameInputField != null) { nameInputField.text = string.Empty; }
             if (numberInputField != null) { numberInputField.text = string.Empty; }
+            if (colorPicker != null) { colorPicker.SetColor(Random.ColorHSV()); }
             if (notesInputField != null) { notesInputField.text = string.Empty; }
             if (paymentInputField != null) { paymentInputField.text = string.Empty; }
             if (ownerNameInputField != null) { ownerNameInputField.text = string.Empty; }

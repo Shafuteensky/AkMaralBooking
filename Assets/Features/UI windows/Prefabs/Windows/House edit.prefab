@@ -812,6 +812,7 @@ MonoBehaviour:
   selectionContext: {fileID: 11400000, guid: 482e96b656868a94ab76ce3281d6b5bf, type: 2}
   _nameInputField: {fileID: 2647109007842184591}
   _numberInputField: {fileID: 4863848396576751314}
+  _colorPicker: {fileID: 4884716450297881448}
   _notesInputField: {fileID: 4378985992833494677}
   paymentInputField: {fileID: 8573168216615752898}
   _ownerNameInputField: {fileID: 3739476748269033714}
@@ -1828,6 +1829,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3778737067898409279, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8550153832593906415}
     - target: {fileID: 3947179992183889591, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1930,6 +1935,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4675497630240010456, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896500964270880033, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5161936708779056249, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
@@ -2039,6 +2048,10 @@ PrefabInstance:
     - target: {fileID: 7551679365109450860, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607035009040138063, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
+      propertyPath: m_fontSize
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7902720409746549466, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
       propertyPath: m_IsActive
@@ -2163,6 +2176,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!114 &4884716450297881448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2174378464222008134, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
+  m_PrefabInstance: {fileID: 6765829453180661806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a39404e0314f599e9ab9603a5f4942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.ColorPicker.ColorPicker
 --- !u!224 &5373760288720250885 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1690644850358097963, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
@@ -2171,6 +2195,11 @@ RectTransform:
 --- !u!224 &6847800033183125863 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 210908128130933065, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
+  m_PrefabInstance: {fileID: 6765829453180661806}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8550153832593906415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3120204638243072705, guid: adbdb30d038ea654fa75cdce0cda289f, type: 3}
   m_PrefabInstance: {fileID: 6765829453180661806}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &8573168216615752898 stripped

@@ -44,8 +44,8 @@ namespace StarletBooking.Calendar
         [SerializeField] private DateValue departureDateFilter;
 
         private readonly ReservationsCalendarIndex reservationsIndex = new ReservationsCalendarIndex();
-        private readonly List<Color> reservationColors = new List<Color>();
-        private readonly List<string> reservationIds = new List<string>();
+        private readonly List<Color> reservationColors = new();
+        private readonly List<string> reservationIds = new();
         
         #endregion
 
@@ -275,14 +275,24 @@ namespace StarletBooking.Calendar
 
             if (reservations == null) return;
 
-            foreach (var t in reservations)
+            foreach (var reservation in reservations)
             {
-                if (t == null) continue;
+                if (reservation == null) continue;
 
-                ClientData client = reservationsDataContainer.GetClientById(t.Id);
-                if (client == null) continue;
+                if (!houseSelectionContext.HasSelection)
+                {
+                    HouseData house = reservationsDataContainer.GetHouseById(reservation.Id);
+                    if (house == null) continue;
 
-                reservationColors.Add(client.Color);
+                    reservationColors.Add(house.Color);
+                }
+                else
+                {
+                    ClientData client = reservationsDataContainer.GetClientById(reservation.Id);
+                    if (client == null) continue;
+
+                    reservationColors.Add(client.Color);
+                }
             }
         }
         
