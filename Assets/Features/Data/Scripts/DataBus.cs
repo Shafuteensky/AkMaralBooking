@@ -32,6 +32,10 @@ namespace StarletBooking.Data
         /// Контекст выбора данных о записе аренды
         /// </summary>
         [field:SerializeField] public ReservationSelectionContext ReservationSelectionContext { get; private set; }
+        /// <summary>
+        /// Контекст мнржественного выбора данных о записях аренды
+        /// </summary>
+        [field:SerializeField] public ReservationsMultipleSelectionContext ReservationsMultipleSelectionContext { get; private set; }
         
         [field: Header("Фильтры данных"), Space]
         /// <summary>

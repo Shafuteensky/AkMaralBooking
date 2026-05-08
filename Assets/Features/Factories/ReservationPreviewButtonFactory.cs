@@ -3,7 +3,6 @@ using Extensions.Log;
 using Extensions.ScriptableValues;
 using StarletBooking.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Extensions.Data.InMemoryData.UI
 {

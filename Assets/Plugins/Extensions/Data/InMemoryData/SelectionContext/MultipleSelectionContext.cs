@@ -17,6 +17,10 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         public IReadOnlyList<string> SelectedIds => selectedIds;
 
         public override bool HasSelection => Container != null && selectedIds.Count > 0;
+        /// <summary>
+        /// Количество выбранных элементов
+        /// </summary>
+        public int SelectionsNumber => selectedIds.Count;
         
         /// <summary>
         /// Контейнер, данные которого назначаются как активный выбор контекста

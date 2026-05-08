@@ -43,7 +43,6 @@ namespace StarletBooking.Calendar
         [SerializeField] private ReservationsDataContainer reservationsDataContainer;
         [SerializeField] private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
 
-        [FormerlySerializedAs("houseSingleSelectionContext")]
         [Header("Фильтрация")]
         [SerializeField] private DateValue arrivalDateFilter;
         [SerializeField] private DateValue departureDateFilter;
