@@ -49,8 +49,8 @@ namespace StarletBooking.Data
 
         /// <summary>
         /// Получить сигнатуру дома формата {Название (номер)}
-        /// </summary>
-        public string Signature => $"{Name} ({Number})";
+        /// </summary>using UnityEngine;
+        public string Signature => $"<b><color=#{ColorUtility.ToHtmlStringRGBA(Color)}>{Number}</color></b> {Name}";
         
         /// <summary>
         /// Конструктор класса

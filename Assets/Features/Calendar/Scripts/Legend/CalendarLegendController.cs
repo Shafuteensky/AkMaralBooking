@@ -163,7 +163,7 @@ namespace StarletBooking.Calendar
                 if (legendElement == null) return;
                 
                 legendElement.SetColor(house.Color);
-                legendElement.SetText(house.Name);
+                legendElement.SetText(house.Signature);
                 legendElement.SetAsHouse();
                 
                 legendElement.Initialize(houseId);
