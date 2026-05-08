@@ -13,8 +13,7 @@ namespace StarletBooking.Data.Controls
     public abstract class DeleteSelectionContextButtonBase<TData> : AbstractButtonAction
         where TData : InMemoryDataEntry
     {
-        [SerializeField]
-        protected SingleSelectionContext<TData> singleSelectionContext;
+        protected abstract SingleSelectionContext<TData> singleSelectionContext { get; }
 
         public override void OnButtonClickAction()
         {
