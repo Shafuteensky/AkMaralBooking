@@ -48,11 +48,11 @@ namespace StarletBooking.Calendar
 
         private void OnDisable()
         {
-            ReleaseLegendElements();
-
             if (Logic.IsNull(calendar)) return;
             calendar.onCalendarUpdated -= UpdateLegend;
         }
+
+        private void OnDestroy() => ReleaseLegendElements();
 
         /// <summary>
         /// Обновить легенду

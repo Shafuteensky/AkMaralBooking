@@ -56,7 +56,7 @@ namespace Extensions.Data.InMemoryData.UI
             Clear();
             
             IReadOnlyList<TData> data = container.Data;
-            rebuildTask.Start(RebuildRoutine(data));
+            GetOrSetCoroutineTask().Start(RebuildRoutine(data));
         }
 
         protected IEnumerator RebuildRoutine(IReadOnlyList<TData> data)
@@ -94,5 +94,7 @@ namespace Extensions.Data.InMemoryData.UI
         }
 
         protected virtual bool FilterCheck(TData data) => true;
+
+        private CoroutineTask GetOrSetCoroutineTask() => rebuildTask ??= new CoroutineTask(this);
     }
 }

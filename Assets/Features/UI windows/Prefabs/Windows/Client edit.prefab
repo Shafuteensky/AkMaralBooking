@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5615969777589976906}
   - component: {fileID: 4667790373107922274}
   - component: {fileID: 7719127998530885786}
+  - component: {fileID: 3109219847054330193}
   m_Layer: 5
   m_Name: Client edit
   m_TagString: Untagged
@@ -68,6 +69,20 @@ MonoBehaviour:
   inputActions:
   - {fileID: 842195935951836008, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   needToOpenPrevious: 1
+--- !u!114 &3109219847054330193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928678256239355722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ad5e7c2fde4a06b9a9316519bf3acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.ElementActivityBySelection
+  element: {fileID: 6528368132609604942}
+  selectionContext: {fileID: 11400000, guid: 7f54c7f73f69c4749acf0bb4b3ecd21d, type: 2}
 --- !u!1001 &2627547823358824494
 PrefabInstance:
   m_ObjectHideFlags: 0
