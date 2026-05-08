@@ -1,20 +1,24 @@
 using Extensions.Generics;
 using Extensions.Helpers;
 using StarletBooking.Data;
-using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace StarletBooking.UI.Output
 {
     /// <summary>
     /// Вывод стоимости аренды дома при изменении контекста выбора
     /// </summary>
-    public class SetPaymentOnHouseSelection : AbstractInputField
+    public sealed class SetPaymentOnHouseSelection : AbstractInputField
     {
         private const float DEFAULT_PAYMENT = 0;
         
-        [FormerlySerializedAs("houseSelectionContext")] [SerializeField] protected HouseSelectionContext houseSelectionContext;
+        private HouseSelectionContext houseSelectionContext;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            houseSelectionContext = DataBus.Instance.HouseSelectionContext;
+        }
+        
         protected override void OnEnable()
         {
             base.OnEnable();

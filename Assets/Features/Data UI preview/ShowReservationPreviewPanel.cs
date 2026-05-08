@@ -19,12 +19,19 @@ namespace StarletBooking.Data.Preview
         
         [Header("Дом")]
         [SerializeField] protected HousesDataContainer housesContainer;
-        [FormerlySerializedAs("houseSingleSelectionContext")] [SerializeField] protected HouseSelectionContext houseSelectionContext;
         [SerializeField] protected TMP_Text houseNumber; 
         
         [Header("Даты")]
         [SerializeField] protected TMP_Text arrivalDate;
         [SerializeField] protected TMP_Text departureDate;
+
+        private HouseSelectionContext houseSelectionContext;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            houseSelectionContext = DataBus.Instance.HouseFilter;
+        }
 
         protected override void ShowInfo()
         {

@@ -228,10 +228,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 686676964077469761, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
-      propertyPath: secondInput
-      value: 
-      objectReference: {fileID: 4780514091449294579}
     - target: {fileID: 771490079264647221, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -420,10 +416,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1897777452176097720, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
-      propertyPath: secondInput
-      value: 
-      objectReference: {fileID: 4780514091449294579}
     - target: {fileID: 2197878302941283513, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -436,10 +428,6 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 23.55
       objectReference: {fileID: 0}
-    - target: {fileID: 2624683803858478474, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
-      propertyPath: secondInput
-      value: 
-      objectReference: {fileID: 4780514091449294579}
     - target: {fileID: 2752414191939644590, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -620,10 +608,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4374873201752005075, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
-      propertyPath: secondInput
-      value: 
-      objectReference: {fileID: 4780514091449294579}
     - target: {fileID: 4461330651052192232, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -828,10 +812,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5912486940385200446, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
-      propertyPath: secondInput
-      value: 
-      objectReference: {fileID: 4780514091449294579}
     - target: {fileID: 5939567924107873302, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1280,7 +1260,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7027380259933328866, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
       insertIndex: 2
       addedObject: {fileID: 9078913931252571894}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4777660748558894489, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2627546959479080960}
   m_SourcePrefab: {fileID: 100100000, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
 --- !u!224 &276669188668578792 stripped
 RectTransform:
@@ -1347,6 +1330,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!1 &4861090273560657720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4777660748558894489, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
+  m_PrefabInstance: {fileID: 88848212476983969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2627546959479080960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861090273560657720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e626d001a143079ec57e439965ec99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.SelectionContextUpdateOnDropdown
+  selectionContext: {fileID: 11400000, guid: 7f54c7f73f69c4749acf0bb4b3ecd21d, type: 2}
 --- !u!224 &4951596087089393882 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5011447084959861371, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
@@ -1368,7 +1369,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5767690818303762792, guid: 69a6c7d319b3d47449018d693cc1eb64, type: 3}
   m_PrefabInstance: {fileID: 88848212476983969}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4861090273560657720}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1350b8c923c241d3959b263c77693100, type: 3}

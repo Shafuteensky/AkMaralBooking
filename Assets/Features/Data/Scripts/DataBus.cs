@@ -18,5 +18,21 @@ namespace StarletBooking.Data
         /// Громкость нажатий
         /// </summary>
         [field:SerializeField] public FloatValue AudioVolume { get; private set; }
+        
+        [field: Header("Хранимые данные"), Space]
+        /// <summary>
+        /// Контекст выбора данных о доме
+        /// </summary>
+        [field:SerializeField] public HouseSelectionContext HouseSelectionContext { get; private set; }
+        /// <summary>
+        /// Контекст выбора данных о клиенте
+        /// </summary>
+        [field:SerializeField] public ClientSelectionContext ClientSelectionContext { get; private set; }
+        
+        [field: Header("Фильтры данных"), Space]
+        /// <summary>
+        /// Контекст выбора данных о доме (для фильтрации)
+        /// </summary>
+        [field:SerializeField] public HouseSelectionContext HouseFilter { get; private set; }
     }
 }

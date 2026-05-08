@@ -12,10 +12,16 @@ namespace Extensions.Data.InMemoryData.UI
     /// </summary>
     public class ReservationPreviewButtonFactory : GenericDataPreviewButtonFactory<ReservationsDataContainer, ReservationData>
     {
-        [FormerlySerializedAs("houseSingleSelectionContext")] [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue fromDate;
         [SerializeField] private DateValue toDate;
+        
+        private HouseSelectionContext houseSelectionContext;
 
+        private void Awake()
+        {
+            houseSelectionContext = DataBus.Instance.HouseFilter;
+        }
+        
         protected override void OnEnable()
         {
             base.OnEnable();

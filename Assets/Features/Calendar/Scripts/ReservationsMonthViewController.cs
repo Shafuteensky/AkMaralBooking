@@ -45,13 +45,14 @@ namespace StarletBooking.Calendar
 
         [FormerlySerializedAs("houseSingleSelectionContext")]
         [Header("Фильтрация")]
-        [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue arrivalDateFilter;
         [SerializeField] private DateValue departureDateFilter;
 
         private readonly ReservationsCalendarIndex reservationsIndex = new ReservationsCalendarIndex();
         private readonly List<Color> reservationColors = new();
         private readonly List<string> reservationIds = new();
+        
+        private HouseSelectionContext houseSelectionContext;
         
         #endregion
 
@@ -61,6 +62,7 @@ namespace StarletBooking.Calendar
         {
             currentDate = DateTime.Now;
             selectedDate = DateTime.Now;
+            houseSelectionContext = DataBus.Instance.HouseFilter;
         }
         
         protected override void Start()

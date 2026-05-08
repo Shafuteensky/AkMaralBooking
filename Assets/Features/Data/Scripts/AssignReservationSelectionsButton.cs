@@ -10,11 +10,16 @@ namespace StarletBooking.Data
     /// </summary>
     public class AssignReservationSelectionsButton : AssignSelectionContextButton
     {
-        [FormerlySerializedAs("houseSingleSelectionContext")]
-        [Header("Контейнера данных записи аренды для вывода"), Space]
-        [SerializeField] protected HouseSelectionContext houseSelectionContext;
-        [FormerlySerializedAs("clientSelectionContext")] [SerializeField] protected ClientSelectionContext clientSelectionContext;
+        private HouseSelectionContext houseSelectionContext;
+        private ClientSelectionContext clientSelectionContext;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            houseSelectionContext = DataBus.Instance.HouseSelectionContext;
+            clientSelectionContext = DataBus.Instance.ClientSelectionContext;
+        }
+        
         public override void OnPointerDown(PointerEventData eventData)
         {
             base.OnPointerDown(eventData);

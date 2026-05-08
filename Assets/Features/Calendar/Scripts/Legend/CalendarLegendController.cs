@@ -11,13 +11,12 @@ namespace StarletBooking.Calendar
     /// <summary>
     /// Контроллер легенды календаря
     /// </summary>
-    public class CalendarLegendController : MonoBehaviour
+    public sealed class CalendarLegendController : MonoBehaviour
     {
         [Header("Календарь"), Space]
         [SerializeField] private ReservationsMonthViewController calendar;
         
         [Header("Фильтры"), Space]
-        [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue dateFilterFrom;
         [SerializeField] private DateValue dateFilterTo;
         
@@ -30,12 +29,15 @@ namespace StarletBooking.Calendar
         [SerializeField] private LegendElement legendElementPrefab;
         [SerializeField] private Transform legendElementsHolder;
 
+        private HouseSelectionContext houseSelectionContext;
+        
         private ObjectPool<LegendElement> legendElementsPool;
         private Transform poolRoot;
 
         private void Awake()
         {
             CreatePool();
+            houseSelectionContext = DataBus.Instance.HouseFilter;
         }
 
         private void OnEnable()
