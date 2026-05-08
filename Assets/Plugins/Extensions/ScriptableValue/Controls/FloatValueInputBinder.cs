@@ -1,4 +1,6 @@
+using System.Globalization;
 using Extensions.Generics;
+using Extensions.Helpers;
 using UnityEngine;
 
 namespace Extensions.ScriptableValues
@@ -43,11 +45,13 @@ namespace Extensions.ScriptableValues
         private void ApplyValue(string value)
         {
             if (floatValue == null) return;
-            if (!float.TryParse(value, out float parsedValue)) return;
+            Debug.Log(value);
+            float parsedValue = Parsers.ParseFloat(value);
+            Debug.Log(parsedValue);
 
             floatValue.SetValue(parsedValue);
         }
 
-        private void OnValueChanged(float value) => inputField.SetTextWithoutNotify(value.ToString(format));
+        private void OnValueChanged(float value) => inputField.SetTextWithoutNotify(value.ToString(format, CultureInfo.InvariantCulture));
     }
 }

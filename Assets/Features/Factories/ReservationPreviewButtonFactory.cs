@@ -17,8 +17,9 @@ namespace Extensions.Data.InMemoryData.UI
         
         private HouseSelectionContext houseSelectionContext;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             houseSelectionContext = DataBus.Instance.HouseFilter;
         }
         

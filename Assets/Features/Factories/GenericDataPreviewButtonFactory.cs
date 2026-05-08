@@ -30,13 +30,13 @@ namespace Extensions.Data.InMemoryData.UI
         /// </summary>
         public bool RebuildOnEnable => rebuildOnEnable;
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             Clear();
             rebuildTask = new CoroutineTask(this);
         }
         
-        protected void Start()
+        protected virtual void Start()
         {
             if (rebuildOnStart) Rebuild();
         }

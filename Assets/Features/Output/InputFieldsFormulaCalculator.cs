@@ -72,7 +72,7 @@ namespace Extensions.UI
         private float GetValue(TMP_InputField field, float defaultValue)
         {
             if (field == null) return defaultValue;
-            if (!float.TryParse(field.text, out float value)) return defaultValue;
+            float value = Parsers.ParseFloat(field.text, defaultValue);
 
             return value;
         }

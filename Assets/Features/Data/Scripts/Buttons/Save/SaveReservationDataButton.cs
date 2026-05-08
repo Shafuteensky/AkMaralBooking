@@ -44,11 +44,11 @@ namespace StarletBooking.Data.Controls
                 return;
             }
 
-            float.TryParse(_paymentPerDayInputField.text, out var paymentPerDay);
-            int.TryParse(_daysInputField.text, out var days);
-            float.TryParse(_prepaymentInputField.text, out var prepayment);
-            float.TryParse(_discountInputField.text, out var discount);
-            float.TryParse(_exchangeRateInputField.text, out var rate);
+            float paymentPerDay = Parsers.ParseFloat(_paymentPerDayInputField.text);
+            int days = Parsers.ParseInt(_daysInputField.text);
+            float prepayment = Parsers.ParseFloat(_prepaymentInputField.text);
+            float discount = Parsers.ParseFloat(_discountInputField.text);
+            float rate = Parsers.ParseFloat(_exchangeRateInputField.text);
 
             if (!DateUtils.TryParse(arrivalDate.text, out DateTime arrivalDateTime)) arrivalDateTime = DateTime.Now;
             if (!DateUtils.TryParse(departureDate.text, out DateTime departureDateTime)) departureDateTime = DateTime.Now;

@@ -1,5 +1,6 @@
 using System.Collections;
 using Extensions.Generics;
+using Extensions.Helpers;
 using StarletBooking.Data;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -52,7 +53,7 @@ namespace StarletBooking.UI.Input
 
         private void SetRate(float value)
         {
-            inputField.SetTextWithoutNotify(value.ToString("0.00", System.Globalization.CultureInfo.GetCultureInfo("ru-RU")));
+            inputField.SetTextWithoutNotify(Formatters.FormatFloat(value));
         }
 
         private void SetDefaultRate()
