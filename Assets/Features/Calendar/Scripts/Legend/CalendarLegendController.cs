@@ -95,9 +95,7 @@ namespace StarletBooking.Calendar
             
             foreach (var reservation in reservationsDataContainer.Data)
             {
-                if (DateUtils.IsDateRangesIntersect(
-                        reservation.ArrivalDate, reservation.DepartureDate,
-                        viewedStartDate, viewedEndDate))
+                if (IsReservationVisible(reservation, viewedStartDate, viewedEndDate))
                 {
                     houses.Add(reservation.HouseId);
                 }
@@ -110,13 +108,12 @@ namespace StarletBooking.Calendar
         {
             if (Logic.IsNull(reservationsDataContainer) ||
                 Logic.IsNull(houseSelectionContext)) return new HashSet<string>();
+
             HashSet<string> clients = new HashSet<string>();
             
             foreach (var reservation in reservationsDataContainer.Data)
             {
-                if (DateUtils.IsDateRangesIntersect(
-                        reservation.ArrivalDate, reservation.DepartureDate,
-                        viewedStartDate, viewedEndDate) &&
+                if (IsReservationVisible(reservation, viewedStartDate, viewedEndDate) &&
                     reservation.HouseId == houseSelectionContext.SelectedId)
                 {
                     clients.Add(reservation.ClientId);
@@ -198,6 +195,29 @@ namespace StarletBooking.Calendar
 
                 legendElementsPool.Release(legendElement);
             }
+        }
+        private bool IsReservationVisible(ReservationData reservation, DateTime viewedStartDate, DateTime viewedEndDate)
+        {
+            DateTime arrivalDate = reservation.ArrivalDate.Date;
+            DateTime departureDate = reservation.DepartureDate.Date;
+
+            if (!DateUtils.IsDateRangesIntersect(
+                    arrivalDate, departureDate,
+                    viewedStartDate.Date, viewedEndDate.Date))
+            {
+                return false;
+            }
+
+            if (Logic.IsNotNull(dateFilterFrom) &&
+                Logic.IsNotNull(dateFilterTo) &&
+                !DateUtils.IsDateRangesIntersect(
+                    arrivalDate, departureDate,
+                    dateFilterFrom.GetDate(DateTime.MinValue), dateFilterTo.GetDate(DateTime.MaxValue)))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

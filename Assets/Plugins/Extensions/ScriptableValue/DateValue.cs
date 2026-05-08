@@ -54,9 +54,18 @@ namespace Extensions.ScriptableValues
         public void SetValue(DateTime dateTime) => SetValue(DateUtils.Format(dateTime, DateFormat));
 
         /// <summary>
-        /// Получить дату
+        /// Попытаться получить дату
         /// </summary>
         public bool TryGetDate(out DateTime result) => DateUtils.TryParse(Value, out result);
+
+        /// <summary>
+        /// Получить дату
+        /// </summary>
+        public DateTime GetDate(DateTime defaultDate)
+        {
+            if (TryGetDate(out DateTime result)) return result;
+            else return defaultDate;
+        }
         
         /// <summary>
         /// Проверка дефолтного значения
