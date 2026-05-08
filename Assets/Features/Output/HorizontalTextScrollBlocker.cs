@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Extensions.UI 
 {
     /// <summary>
-    /// Блокировка горизонтальной прокрутки текста, пока TMP InputField редактируется
+    /// Блокировка горизонтальной прокрутки текста, пока <see cref="TMP_InputField"/> интерактивен
     /// </summary>
     public sealed class HorizontalTextScrollBlocker : AbstractInputField
     {

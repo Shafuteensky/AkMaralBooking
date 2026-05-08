@@ -44,11 +44,7 @@ namespace Extensions.UI
 
         private void Update()
         {
-            if (IsBlocked)
-            {
-                ResetScroll();
-                return;
-            }
+            if (IsBlocked) return;
 
             if (!IsOverflowing())
             {
