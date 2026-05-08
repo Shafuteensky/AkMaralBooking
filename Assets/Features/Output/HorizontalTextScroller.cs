@@ -12,6 +12,8 @@ namespace Extensions.UI
         
         [Range(10f, 50f)]
         [SerializeField] private float scrollSpeed = 25f;
+        [Range(10f, 200f)]
+        [SerializeField] private float returnScrollSpeed = 100f;
         [Range(0f, 10f)]
         [SerializeField] private float edgePause = 1f;
         [Range(0f, 15f)]
@@ -64,7 +66,7 @@ namespace Extensions.UI
         public void ResetScroll()
         {
             pauseTimer = edgePause;
-            direction = -1;
+            direction = INITIAL_DIRECTION;
 
             Vector2 anchoredPosition = textRectTransform.anchoredPosition;
             anchoredPosition.x = startX;
@@ -95,8 +97,10 @@ namespace Extensions.UI
                 return;
             }
 
+            float currentSpeed = direction > 0 ? returnScrollSpeed : scrollSpeed;
+
             Vector2 anchoredPosition = textRectTransform.anchoredPosition;
-            anchoredPosition.x += direction * scrollSpeed * Time.unscaledDeltaTime;
+            anchoredPosition.x += direction * currentSpeed * Time.unscaledDeltaTime;
 
             if (anchoredPosition.x <= minX)
             {
@@ -107,7 +111,7 @@ namespace Extensions.UI
             else if (anchoredPosition.x >= startX)
             {
                 anchoredPosition.x = startX;
-                direction = -1;
+                direction = INITIAL_DIRECTION;
                 pauseTimer = edgePause;
             }
 
