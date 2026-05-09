@@ -26,14 +26,13 @@ namespace StarletBooking.Calendar
                 DataBus.Instance.ReservationSelectionContext.Select(reservations.SelectedIds[0]);
                 
                 windowsController.OpenWindow(
-                    entryWindow.Id, parentUIWindow, 
-                    true, UIWindowOpenMode.Forward);
+                    entryWindow.Id, parentUIWindow);
             }
             else if (reservations.SelectionsNumber > 1)
             {
                 windowsController.OpenWindow(
                     listWindow.Id, parentUIWindow, 
-                    false, UIWindowOpenMode.Forward);
+                    false);
             }
         }
 

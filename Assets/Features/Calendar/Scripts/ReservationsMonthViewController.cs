@@ -41,7 +41,6 @@ namespace StarletBooking.Calendar
         
         [Header("Данные записей аренды")]
         [SerializeField] private ReservationsDataContainer reservationsDataContainer;
-        [SerializeField] private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
 
         [Header("Фильтрация")]
         [SerializeField] private DateValue arrivalDateFilter;
@@ -52,6 +51,7 @@ namespace StarletBooking.Calendar
         private readonly List<string> reservationIds = new();
         
         private HouseSelectionContext houseSelectionContext;
+        private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
         
         #endregion
 
@@ -62,6 +62,7 @@ namespace StarletBooking.Calendar
             currentDate = DateTime.Now;
             selectedDate = DateTime.Now;
             houseSelectionContext = DataBus.Instance.HouseFilter;
+            reservationsMultipleSelectionContext = DataBus.Instance.ReservationsMultipleSelectionContext;
         }
         
         protected override void Start()

@@ -10,12 +10,12 @@ namespace Extensions.UIWindows
     {
         [Header("Параметры открытия"), Space]
         [SerializeField] protected UIWindowID UIWindowToOpen;
+        [SerializeField] protected bool needToCloseOpened = false;
         [SerializeField] protected bool needToCloseThis = true;
         [Tooltip("Режим открытия: Forward — обычный переход вперёд, Pop — возврат к окну через обрезку хвоста истории")]
         [SerializeField] protected UIWindowOpenMode openMode = UIWindowOpenMode.Forward;
 
         protected override void OnInputPerformed(InputAction.CallbackContext context) => windowsController.OpenWindow(
-            UIWindowToOpen.Id, parentUIWindow, needToCloseThis, openMode);
-
+            UIWindowToOpen.Id, parentUIWindow, needToCloseThis, needToCloseOpened, openMode);
     }
 }

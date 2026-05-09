@@ -10,7 +10,11 @@ namespace Extensions.UIWindows.Editor
     {
         public override void OnInspectorGUI()
         {
-            DrawDefaultInspector();
+            serializedObject.Update();
+
+            UIWindowsEditorDrawer.DrawOpenWindowInspector(serializedObject);
+
+            serializedObject.ApplyModifiedProperties();
 
             ButtonActionOpenUIWindowAnimated buttonAction = (ButtonActionOpenUIWindowAnimated)target;
 

@@ -72,8 +72,13 @@ namespace Extensions.UIWindows
         /// <summary>
         /// Открытие нового окна по нажатию на кнопку
         /// </summary>
+        /// <summary>
+        /// Открытие нового окна по нажатию на кнопку
+        /// </summary>
         public void OpenWindow(string window, UIWindow parentWindow,
-            bool needToCloseThis = true, UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
+            bool needToCloseThis = true,
+            bool needToCloseOpened = false,
+            UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
         {
             if (string.IsNullOrEmpty(window))
             {
@@ -81,7 +86,14 @@ namespace Extensions.UIWindows
                 return;
             }
 
-            if (needToCloseThis && openMode == UIWindowOpenMode.Forward)
+            if (needToCloseOpened && openMode == UIWindowOpenMode.Forward)
+            {
+                CloseAllWindows();
+                OpenWindowByID(window, null, false, openMode);
+                return;
+            }
+
+            if (needToCloseThis && openMode == UIWindowOpenMode.Forward && parentWindow != null)
                 CloseWindowById(parentWindow.Id.Id);
 
             OpenWindowByID(window, parentWindow, true, openMode);
