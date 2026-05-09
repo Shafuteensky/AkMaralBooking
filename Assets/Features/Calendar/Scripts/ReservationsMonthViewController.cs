@@ -32,6 +32,10 @@ namespace StarletBooking.Calendar
         /// Событие отрисовки календаря
         /// </summary>
         public event Action onCalendarUpdated;
+        /// <summary>
+        /// Событие нажатия по кнопке даты
+        /// </summary>
+        public event Action<DateTime> onDayButtonClicked;
         
         #endregion
         
@@ -113,12 +117,7 @@ namespace StarletBooking.Calendar
 
         protected override void OnDayButtonClick(DateTime date)
         {
-            DateTime previousDate = currentDate;
-            DateTime newDate = date;
-            
-            base.OnDayButtonClick(date);
-            
-            RaiseMonthChangedByDate(previousDate, newDate);
+            onDayButtonClicked?.Invoke(date);
         }
 
         private void RaiseMonthChangedByDate(DateTime previousDate, DateTime newDate)

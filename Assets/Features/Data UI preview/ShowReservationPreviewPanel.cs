@@ -1,7 +1,6 @@
 using Extensions.Helpers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace StarletBooking.Data.Preview
@@ -56,9 +55,9 @@ namespace StarletBooking.Data.Preview
                 DataHelpers.GetString(houseData.Number); 
             
             arrivalDate.text = data == null ? DataHelpers.NotFoundString : 
-                DataHelpers.GetString(data.ArrivalDate.ToShortDateString()); 
+                DataHelpers.GetString(DateUtils.Format(data.ArrivalDate)); 
             departureDate.text = data == null ? DataHelpers.NotFoundString : 
-                DataHelpers.GetString(data.DepartureDate.ToShortDateString()); 
+                DataHelpers.GetString(DateUtils.Format(data.DepartureDate)); 
             
             if (houseSelectionContext.HasSelection)
                 colorImage.color = clientData?.Color ?? DataHelpers.NotFoundColor; 

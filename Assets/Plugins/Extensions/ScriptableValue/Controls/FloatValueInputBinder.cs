@@ -45,9 +45,7 @@ namespace Extensions.ScriptableValues
         private void ApplyValue(string value)
         {
             if (floatValue == null) return;
-            Debug.Log(value);
             float parsedValue = Parsers.ParseFloat(value);
-            Debug.Log(parsedValue);
 
             floatValue.SetValue(parsedValue);
         }

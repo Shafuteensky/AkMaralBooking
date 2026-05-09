@@ -366,6 +366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.UIWindows.ButtonOpenUIWindow
   UIWindowToOpen: {fileID: 0}
+  needToCloseOpened: 0
   needToCloseThis: 1
   openMode: 0
 --- !u!114 &151671345961976317
@@ -534,6 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.UIWindows.ButtonOpenUIWindow
   UIWindowToOpen: {fileID: 11400000, guid: 6863a6a9a482fde4788fba76eeab6fff, type: 2}
+  needToCloseOpened: 0
   needToCloseThis: 0
   openMode: 0
 --- !u!224 &4717430319467814997 stripped
@@ -663,6 +665,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5061318998147070277}
     m_Modifications:
+    - target: {fileID: 4429749373663504744, guid: 2c131b7bf2b56bf469af7a18e9176151, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aaacd4f1cacb63b43a8acac9a0b24710, type: 3}
     - target: {fileID: 5392710105173159042, guid: 2c131b7bf2b56bf469af7a18e9176151, type: 3}
       propertyPath: m_Name
       value: Base panel
@@ -1756,6 +1762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.UIWindows.ButtonOpenUIWindow
   UIWindowToOpen: {fileID: 0}
+  needToCloseOpened: 0
   needToCloseThis: 1
   openMode: 0
 --- !u!114 &2378459975281330633
@@ -1912,6 +1919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIWindowToOpen: {fileID: 0}
+  needToCloseOpened: 0
   needToCloseThis: 0
   openMode: 0
 --- !u!114 &176017150910085694

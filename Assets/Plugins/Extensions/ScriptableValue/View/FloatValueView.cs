@@ -1,18 +1,16 @@
+using Extensions.Generics;
 using Extensions.ScriptableValues;
-using TMPro;
 using UnityEngine;
 
 namespace Extensions.UI
 {
     /// <summary>
-    /// Отображение значения FloatValue
+    /// Отображение значения <see cref="FloatValue"/>
     /// </summary>
-    public sealed class FloatValueView : MonoBehaviour
+    public sealed class FloatValueView : AbstractText
     {
         [Tooltip("Отображаемое значение")]
         [SerializeField] private FloatValue value;
-        [Tooltip("Текст для вывода")]
-        [SerializeField] private TMP_Text text;
         [Tooltip("Показывать в процентах")]
         [SerializeField] private bool showAsPercent;
 
@@ -21,7 +19,7 @@ namespace Extensions.UI
             if (value != null)
             {
                 value.onValueChanged += OnValueChanged;
-                UpdateText(value.Value);
+                SetText(value.Value);
             }
         }
 
@@ -30,19 +28,17 @@ namespace Extensions.UI
             if (value != null) value.onValueChanged -= OnValueChanged;
         }
 
-        private void OnValueChanged(float v) => UpdateText(v);
+        private void OnValueChanged(float value) => SetText(value);
 
-        private void UpdateText(float v)
+        private void SetText(float value)
         {
-            if (text == null) return;
-
             if (showAsPercent)
             {
-                text.text = Mathf.RoundToInt(v * 100f) + "%";
+                UpdateText(Mathf.RoundToInt(value * 100f) + "%");
                 return;
             }
 
-            text.text = v.ToString("0.##");
+            UpdateText(value.ToString("0.##"));
         }
     }
 }
