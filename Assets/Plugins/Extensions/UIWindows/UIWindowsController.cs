@@ -75,9 +75,11 @@ namespace Extensions.UIWindows
         /// <summary>
         /// Открытие нового окна по нажатию на кнопку
         /// </summary>
-        public void OpenWindow(string window, UIWindow parentWindow,
+        public void OpenWindow(
+            string window,
+            UIWindow parentWindow,
             bool needToCloseThis = true,
-            bool needToCloseOpened = false,
+            bool needToCloseOpened = true,
             UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
         {
             if (string.IsNullOrEmpty(window))
@@ -86,19 +88,21 @@ namespace Extensions.UIWindows
                 return;
             }
 
-            if (openMode == UIWindowOpenMode.Forward)
+            if (openMode == UIWindowOpenMode.Pop)
             {
-                if (needToCloseOpened)
-                {
-                    CloseAllWindows();
-                    OpenWindowByID(window, null, false, openMode);
-                    return;
-                }
-                if (needToCloseThis && parentWindow != null)
-                    CloseWindowById(parentWindow.Id.Id);
+                if (TryPopToWindow(window)) return;
+
+                OpenWindowByID(window, parentWindow, false);
+                return;
             }
 
-            OpenWindowByID(window, parentWindow, true, openMode);
+            if (needToCloseThis && parentWindow != null)
+                CloseWindowById(parentWindow.Id.Id);
+
+            if (needToCloseOpened)
+                CloseAllWindows();
+
+            OpenWindowByID(window, parentWindow);
         }
         
         /// <summary>
@@ -107,7 +111,7 @@ namespace Extensions.UIWindows
         /// <param name="id">Идентификатор окна</param>
         public void OpenWindowByID(string id)
         {
-            OpenWindowByID(id, lastOpenedWindow, true, UIWindowOpenMode.Forward);
+            OpenWindowByID(id, lastOpenedWindow);
         }
 
         /// <summary>
@@ -125,7 +129,7 @@ namespace Extensions.UIWindows
 
             if (openMode == UIWindowOpenMode.Pop)
             {
-                PopToWindow(id);
+                TryPopToWindow(id);
                 return;
             }
 
@@ -157,7 +161,7 @@ namespace Extensions.UIWindows
 
             if (!previousWindow) return;
 
-            OpenWindowByID(previousWindow.Id, currentWindow, false, UIWindowOpenMode.Forward);
+            OpenWindowByID(previousWindow.Id, currentWindow, false);
         }
 
         #endregion
@@ -252,24 +256,24 @@ namespace Extensions.UIWindows
                 return;
             }
 
-            OpenWindowByID(startWindow.Id.Id, null, false, UIWindowOpenMode.Forward);
+            OpenWindowByID(startWindow.Id.Id, null, false);
         }
         
         /// <summary>
-        /// Выполнить переход по стеку навигации к указанному окну
+        /// Попытаться выполнить переход по стеку навигации к указанному окну
         /// </summary>
-        private void PopToWindow(string id)
+        private bool TryPopToWindow(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
-                ServiceDebug.LogError($"Передан пустой id в {nameof(PopToWindow)}");
-                return;
+                ServiceDebug.LogError($"Передан пустой id в {nameof(TryPopToWindow)}");
+                return false;
             }
 
-            if (!TrimNavigationStackTo(id))
+            if (!TryTrimNavigationStackTo(id))
             {
                 ServiceDebug.LogError($"PopTo: окно {id} не найдено в стеке");
-                return;
+                return false;
             }
 
             UIWindow targetWindow = GetOrCreateWindowById(id);
@@ -277,7 +281,7 @@ namespace Extensions.UIWindows
             if (targetWindow == null)
             {
                 ServiceDebug.LogError($"PopTo: окно {id} не найдено в {nameof(UIWindowsController)}");
-                return;
+                return false;
             }
 
             List<UIWindow> windowsToClose = new(activeUIWindows);
@@ -291,31 +295,32 @@ namespace Extensions.UIWindows
             }
 
             ActivateWindow(targetWindow);
+            return true;
         }
 
         /// <summary>
-        /// Обрезать стек навигации до указанного окна
+        /// Попытаться обрезать стек навигации до указанного окна
         /// </summary>
-        private bool TrimNavigationStackTo(string id)
+        private bool TryTrimNavigationStackTo(string id)
         {
             if (navigationStack.Count == 0) return false;
 
-            bool isFound = false;
+            Stack<UIWindowID> skippedWindows = new();
 
             while (navigationStack.Count > 0)
             {
                 UIWindowID navigationWindow = navigationStack.Pop();
+                skippedWindows.Push(navigationWindow);
 
                 if (!navigationWindow) continue;
 
-                if (navigationWindow.Id == id)
-                {
-                    isFound = true;
-                    break;
-                }
+                if (navigationWindow.Id == id) return true;
             }
 
-            return isFound;
+            while (skippedWindows.Count > 0)
+                navigationStack.Push(skippedWindows.Pop());
+
+            return false;
         }
 
         /// <summary>
