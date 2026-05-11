@@ -273,7 +273,11 @@ namespace Extensions.Data.InMemoryData
         /// <summary>
         /// Оповещение об обновлении данных
         /// </summary>
-        public void NotifyUpdated() => MarkDirty();
+        public void NotifyUpdated(TData entry)
+        {
+            if (entry != null) entry.Touch();
+            MarkDirty();
+        }
         
         #endregion
 

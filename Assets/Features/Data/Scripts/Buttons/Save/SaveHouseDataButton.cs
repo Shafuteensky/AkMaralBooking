@@ -49,11 +49,12 @@ namespace StarletBooking.Data.Controls
             }
             else
             {
-                selectionContext.GetSelectedData().UpdateData(
+                HouseData house = selectionContext.GetSelectedData();
+                house.UpdateData(
                     _nameInputField.text, _numberInputField.text, _colorPicker.GetColor(), 
                     EmptyIfDefault(_notesInputField.text), paymentInputField.text,
                     _ownerNameInputField.text, _ownerContactNumberInputField.text);
-                dataContainer.NotifyUpdated();
+                dataContainer.NotifyUpdated(house);
             }
         }
     }

@@ -71,7 +71,8 @@ namespace StarletBooking.Data.Controls
             }
             else
             {
-                selectionContext.GetSelectedData().UpdateData(
+                ReservationData reservation = selectionContext.GetSelectedData();
+                reservation.UpdateData(
                     _housesDropDown.SelectedId,
                     _clientsDropDown.SelectedId,
                     arrivalDateTime,
@@ -82,7 +83,7 @@ namespace StarletBooking.Data.Controls
                     discount,
                     rate,
                     notes);
-                dataContainer.NotifyUpdated();
+                dataContainer.NotifyUpdated(reservation);
             }
         }
     }

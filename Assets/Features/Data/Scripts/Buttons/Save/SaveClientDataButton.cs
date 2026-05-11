@@ -45,10 +45,11 @@ namespace StarletBooking.Data.Controls
             }
             else
             {
-                selectionContext.GetSelectedData().UpdateData(
+                ClientData client = selectionContext.GetSelectedData();
+                client.UpdateData(
                     _nameInputField.text, _colorPicker.GetColor(), _contactNumberInputField.text, 
                     _ratingToggleGroup.GetActiveCount(), EmptyIfDefault(_notesInputField.text));
-                dataContainer.NotifyUpdated();
+                dataContainer.NotifyUpdated(client);
             }
         }
     }
