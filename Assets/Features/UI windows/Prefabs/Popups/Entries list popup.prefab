@@ -165,6 +165,7 @@ MonoBehaviour:
   enterSound: {fileID: 0}
   downSound: {fileID: 0}
   upSound: {fileID: 8300000, guid: 72c790b752b80554c95e1bc35620116c, type: 3}
+  clickSound: {fileID: 0}
 --- !u!1 &6175838670214688323
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ GameObject:
   - component: {fileID: 2602319405650389356}
   - component: {fileID: 2860962930900644063}
   - component: {fileID: 184085423279054915}
-  - component: {fileID: 1514326314559993107}
+  - component: {fileID: 2266996417694981555}
   m_Layer: 5
   m_Name: Entries list popup
   m_TagString: Untagged
@@ -238,7 +239,7 @@ MonoBehaviour:
   rebuildOnEnable: 1
   spawnDelay: 0.05
   applyFilter: 1
---- !u!114 &1514326314559993107
+--- !u!114 &2266996417694981555
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -247,15 +248,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6175838670214688323}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4876b59be3854543b527ac11005a1fa7, type: 3}
+  m_Script: {fileID: 11500000, guid: a00fd9c41f18494a8b0f772f5684a62a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.UIWindows.InputActionOpenUIWindow
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.UIWindows.InputActionCloseUIWindow
   inputActions:
   - {fileID: 842195935951836008, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  UIWindowToOpen: {fileID: 11400000, guid: 97e913c5a24de7246ab0a73ece2ee648, type: 2}
-  needToCloseOpened: 0
-  needToCloseThis: 0
-  openMode: 0
+  needToOpenPrevious: 1
 --- !u!1001 &717811627953352351
 PrefabInstance:
   m_ObjectHideFlags: 0
