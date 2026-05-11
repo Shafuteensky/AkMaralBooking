@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIWindowToOpen: {fileID: 0}
-  needToCloseOpened: 1
+  needToCloseOpened: 0
   needToCloseThis: 1
   openMode: 0
 --- !u!114 &3665595425321417708
@@ -266,6 +266,7 @@ MonoBehaviour:
   enterSound: {fileID: 0}
   downSound: {fileID: 8300000, guid: d26e5b633b6f1944b8b2ae8a3ce6d326, type: 3}
   upSound: {fileID: 8300000, guid: 72c790b752b80554c95e1bc35620116c, type: 3}
+  clickSound: {fileID: 0}
 --- !u!114 &1515528024077341340
 MonoBehaviour:
   m_ObjectHideFlags: 0

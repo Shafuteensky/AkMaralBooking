@@ -86,15 +86,17 @@ namespace Extensions.UIWindows
                 return;
             }
 
-            if (needToCloseOpened && openMode == UIWindowOpenMode.Forward)
+            if (openMode == UIWindowOpenMode.Forward)
             {
-                CloseAllWindows();
-                OpenWindowByID(window, null, false, openMode);
-                return;
+                if (needToCloseOpened)
+                {
+                    CloseAllWindows();
+                    OpenWindowByID(window, null, false, openMode);
+                    return;
+                }
+                if (needToCloseThis && parentWindow != null)
+                    CloseWindowById(parentWindow.Id.Id);
             }
-
-            if (needToCloseThis && openMode == UIWindowOpenMode.Forward && parentWindow != null)
-                CloseWindowById(parentWindow.Id.Id);
 
             OpenWindowByID(window, parentWindow, true, openMode);
         }
