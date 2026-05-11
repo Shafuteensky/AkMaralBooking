@@ -55,9 +55,15 @@ namespace Extensions.Data.InMemoryData.UI
 
             Clear();
             
-            IReadOnlyList<TData> data = container.Data;
+            List<TData> data = container.Data;
+            SortData(data);
             GetOrSetCoroutineTask().Start(RebuildRoutine(data));
         }
+        
+        /// <summary>
+        /// Сортировка данных перед созданием кнопок
+        /// </summary>
+        protected virtual void SortData(List<TData> data) { }
 
         protected IEnumerator RebuildRoutine(IReadOnlyList<TData> data)
         {

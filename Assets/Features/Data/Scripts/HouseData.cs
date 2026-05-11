@@ -49,7 +49,7 @@ namespace StarletBooking.Data
 
         /// <summary>
         /// Получить сигнатуру дома формата {Название (номер)}
-        /// </summary>using UnityEngine;
+        /// </summary>
         public string Signature => $"<b><color=#{ColorUtility.ToHtmlStringRGBA(Color)}>{Number}</color></b> {Name}";
         
         /// <summary>

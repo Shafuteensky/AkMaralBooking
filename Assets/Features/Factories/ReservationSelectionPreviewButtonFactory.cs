@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using StarletBooking.Data;
 
 namespace Extensions.Data.InMemoryData.UI
@@ -25,7 +26,24 @@ namespace Extensions.Data.InMemoryData.UI
         {
             reservationsMultipleSelectionContext.onSelectionChanged -= Rebuild;
         }
+        
+        /// <summary>
+        /// Сортировка записей аренды по актуальности
+        /// </summary>
+        protected override void SortData(List<ReservationData> data)
+        {
+            data.Sort(CompareByActuality);
+        }
 
+        private int CompareByActuality(ReservationData first, ReservationData second)
+        {
+            if (first == null && second == null) return 0;
+            if (first == null) return 1;
+            if (second == null) return -1;
+
+            return second.ArrivalDate.CompareTo(first.ArrivalDate);
+        }
+        
         protected override bool FilterCheck(ReservationData data)
         {
             if (!reservationsMultipleSelectionContext.HasSelection) 
