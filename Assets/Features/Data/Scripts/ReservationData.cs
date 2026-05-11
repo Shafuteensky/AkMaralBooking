@@ -21,6 +21,7 @@ namespace StarletBooking.Data
         [SerializeField] protected float prepayment = 0f;
         [SerializeField] protected float discount = 0f;
         [SerializeField] protected float exchangeRate = 0f;
+        [SerializeField] protected string notes = string.Empty;
 
         /// <summary>
         /// Идентификатор дома
@@ -60,6 +61,11 @@ namespace StarletBooking.Data
         /// Курс валют (доллар/сом)
         /// </summary>
         public float ExchangeRate => exchangeRate;
+        
+        /// <summary>
+        /// Заметки
+        /// </summary>
+        public string Notes => notes;
 
         /// <summary>
         /// Конструктор класса
@@ -73,9 +79,10 @@ namespace StarletBooking.Data
             int days,
             float prepayment,
             float discount,
-            float exchangeRate)
+            float exchangeRate,
+            string notes)
         {
-            UpdateData(houseId, clientId, arrivalDate, departureDate, paymentPerDay, days, prepayment, discount, exchangeRate);
+            UpdateData(houseId, clientId, arrivalDate, departureDate, paymentPerDay, days, prepayment, discount, exchangeRate, notes);
         }
         
         /// <summary>
@@ -90,7 +97,8 @@ namespace StarletBooking.Data
             int days,
             float prepayment,
             float discount,
-            float exchangeRate)
+            float exchangeRate,
+            string notes)
         {
             this.houseId = houseId;
             this.clientId = clientId;
@@ -101,6 +109,7 @@ namespace StarletBooking.Data
             this.prepayment = prepayment;
             this.discount = discount;
             this.exchangeRate = exchangeRate;
+            this.notes = notes;
         }
     }
 }

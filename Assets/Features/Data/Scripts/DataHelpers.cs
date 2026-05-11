@@ -1,5 +1,3 @@
-using System;
-using System.Globalization;
 using UnityEngine;
 
 namespace StarletBooking.Data
@@ -9,8 +7,8 @@ namespace StarletBooking.Data
     /// </summary>
     public static class DataHelpers
     {
-        private const string EMPTY_STRING = "ДАННЫЕ ОТСУТСТВУЮТ";
-        private const string NOT_FOUND_STRING = "ОШИБКА ДАННЫХ";
+        private const string EMPTY_STRING = "<color=yellow><i>ДАННЫЕ ОТСУТСТВУЮТ</i></color>";
+        private const string NOT_FOUND_STRING = "<color=red><i>ОШИБКА ДАННЫХ</i></color>";
         
         private static readonly Color NOT_FOUND_COLOR = Color.whiteSmoke;
         
@@ -34,8 +32,7 @@ namespace StarletBooking.Data
         /// <returns>Информативная строка</returns>
         public static string GetString(string dataString)
         {
-            if (string.IsNullOrEmpty(dataString)) return EMPTY_STRING;
-            return dataString;
+            return string.IsNullOrEmpty(dataString) ? EMPTY_STRING : dataString;
         }
     }
 }

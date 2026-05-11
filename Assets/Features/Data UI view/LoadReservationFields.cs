@@ -52,7 +52,7 @@ namespace StarletBooking.Data.Controls
                 DataHelpers.GetString(dataItem.Discount.ToString(GetFormat));
             prepaymentInputField.text = dataItem == null ? DataHelpers.NotFoundString :
                 DataHelpers.GetString(dataItem.Prepayment.ToString(GetFormat));
-
+            
             exchangeRateInputField.text = dataItem == null ? DataHelpers.NotFoundString :
                 DataHelpers.GetString(dataItem.ExchangeRate.ToString(GetFormat));
         }

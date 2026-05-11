@@ -40,14 +40,14 @@ namespace StarletBooking.Data.Controls
             {
                 ClientData newClient = new ClientData(
                     _nameInputField.text, _colorPicker.GetColor(), _contactNumberInputField.text, 
-                    _ratingToggleGroup.GetActiveCount(), _notesInputField.text);
+                    _ratingToggleGroup.GetActiveCount(), EmptyIfDefault(_notesInputField.text));
                 dataContainer.Add(newClient);
             }
             else
             {
                 selectionContext.GetSelectedData().UpdateData(
                     _nameInputField.text, _colorPicker.GetColor(), _contactNumberInputField.text, 
-                    _ratingToggleGroup.GetActiveCount(), _notesInputField.text);
+                    _ratingToggleGroup.GetActiveCount(), EmptyIfDefault(_notesInputField.text));
                 dataContainer.NotifyUpdated();
             }
         }

@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using Extensions.Helpers;
 using Extensions.Log;
 using StarletBooking.UI;
@@ -23,6 +22,7 @@ namespace StarletBooking.Data.Controls
         [SerializeField] private TMP_InputField _prepaymentInputField;
         [SerializeField] private TMP_InputField _discountInputField;
         [SerializeField] private TMP_InputField _exchangeRateInputField;
+        [SerializeField] private TMP_InputField _notesInputField;
         
         public override void OnButtonClickAction()
         {
@@ -49,6 +49,7 @@ namespace StarletBooking.Data.Controls
             float prepayment = Parsers.ParseFloat(_prepaymentInputField.text);
             float discount = Parsers.ParseFloat(_discountInputField.text);
             float rate = Parsers.ParseFloat(_exchangeRateInputField.text);
+            string notes = EmptyIfDefault(_notesInputField.text);
 
             if (!DateUtils.TryParse(arrivalDate.text, out DateTime arrivalDateTime)) arrivalDateTime = DateTime.Now;
             if (!DateUtils.TryParse(departureDate.text, out DateTime departureDateTime)) departureDateTime = DateTime.Now;
@@ -64,7 +65,8 @@ namespace StarletBooking.Data.Controls
                     days,
                     prepayment,
                     discount,
-                    rate);
+                    rate,
+                    notes);
                 dataContainer.Add(newHouse);
             }
             else
@@ -78,7 +80,8 @@ namespace StarletBooking.Data.Controls
                     days,
                     prepayment,
                     discount,
-                    rate);
+                    rate,
+                    notes);
                 dataContainer.NotifyUpdated();
             }
         }

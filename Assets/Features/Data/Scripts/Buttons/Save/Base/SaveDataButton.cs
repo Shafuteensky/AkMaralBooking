@@ -12,5 +12,8 @@ namespace StarletBooking.Data.Controls
         [Header("Контейнер данных"), Space]
         [SerializeField] protected TDataContainer dataContainer;
         [SerializeField] protected TSelectionContext selectionContext;
+        
+        protected string EmptyIfDefault(string value) => 
+            value == DataHelpers.NotFoundString || value == DataHelpers.EmptyString ? "" : value;
     }
 }

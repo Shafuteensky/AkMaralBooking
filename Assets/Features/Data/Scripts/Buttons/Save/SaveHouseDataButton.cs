@@ -43,7 +43,7 @@ namespace StarletBooking.Data.Controls
             {
                 HouseData newHouse = new HouseData(
                     _nameInputField.text, _numberInputField.text, _colorPicker.GetColor(), 
-                    _notesInputField.text, paymentInputField.text,
+                    EmptyIfDefault(_notesInputField.text), paymentInputField.text,
                     _ownerNameInputField.text, _ownerContactNumberInputField.text);
                 dataContainer.Add(newHouse);
             }
@@ -51,7 +51,7 @@ namespace StarletBooking.Data.Controls
             {
                 selectionContext.GetSelectedData().UpdateData(
                     _nameInputField.text, _numberInputField.text, _colorPicker.GetColor(), 
-                    _notesInputField.text, paymentInputField.text,
+                    EmptyIfDefault(_notesInputField.text), paymentInputField.text,
                     _ownerNameInputField.text, _ownerContactNumberInputField.text);
                 dataContainer.NotifyUpdated();
             }
