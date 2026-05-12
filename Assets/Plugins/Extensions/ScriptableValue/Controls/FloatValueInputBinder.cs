@@ -17,6 +17,7 @@ namespace Extensions.ScriptableValues
         [SerializeField] private bool onlyReadInput;
         [Tooltip("Формат отображения значения")]
         [SerializeField] private string format = "0.##";
+        [SerializeField] private bool updateInputOnEnable = true;
 
         protected override void OnEnable()
         {
@@ -29,7 +30,7 @@ namespace Extensions.ScriptableValues
                 floatValue.onValueChanged += OnValueChanged;
             }
 
-            ApplyValue(inputField.text);
+            if (updateInputOnEnable) ApplyValue(inputField.text);
         }
 
         protected override void OnDisable()

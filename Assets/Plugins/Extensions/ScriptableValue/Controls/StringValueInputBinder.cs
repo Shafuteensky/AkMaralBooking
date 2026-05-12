@@ -11,6 +11,7 @@ namespace Extensions.ScriptableValues
     {
         [Tooltip("Хранилище значения, синхронизируемое с полем ввода")]
         [SerializeField] private StringValue stringValue;
+        [SerializeField] private bool updateInputOnEnable = true;
 
         protected override void OnEnable()
         {
@@ -18,7 +19,7 @@ namespace Extensions.ScriptableValues
 
             if (stringValue == null) return;
 
-            inputField.SetTextWithoutNotify(stringValue.Value);
+            if (updateInputOnEnable) inputField.SetTextWithoutNotify(stringValue.Value);
             stringValue.onValueChanged += OnValueChanged;
         }
 

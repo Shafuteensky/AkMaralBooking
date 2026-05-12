@@ -11,6 +11,7 @@ namespace Extensions.ScriptableValues
     {
         [Tooltip("Хранилище значения, синхронизируемое со слайдером")]
         [SerializeField] protected FloatValue floatValue;
+        [SerializeField] private bool updateInputOnEnable = true;
 
         protected override void OnEnable()
         {
@@ -18,7 +19,7 @@ namespace Extensions.ScriptableValues
 
             if (floatValue == null) return;
 
-            slider.SetValueWithoutNotify(floatValue.Value);
+            if (updateInputOnEnable) slider.SetValueWithoutNotify(floatValue.Value);
             floatValue.onValueChanged += OnValueChanged;
         }
 

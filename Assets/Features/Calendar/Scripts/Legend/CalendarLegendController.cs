@@ -17,6 +17,7 @@ namespace StarletBooking.Calendar
         [SerializeField] private ReservationsMonthViewController calendar;
         
         [Header("Фильтры"), Space]
+        [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue dateFilterFrom;
         [SerializeField] private DateValue dateFilterTo;
         
@@ -29,7 +30,6 @@ namespace StarletBooking.Calendar
         [SerializeField] private LegendElement legendElementPrefab;
         [SerializeField] private Transform legendElementsHolder;
 
-        private HouseSelectionContext houseSelectionContext;
         
         private ObjectPool<LegendElement> legendElementsPool;
         private Transform poolRoot;
@@ -37,13 +37,13 @@ namespace StarletBooking.Calendar
         private void Awake()
         {
             CreatePool();
-            houseSelectionContext = DataBus.Instance.HouseFilter;
         }
 
         private void OnEnable()
         {
             if (Logic.IsNull(calendar)) return;
             calendar.onCalendarUpdated += UpdateLegend;
+            UpdateLegend();
         }
 
         private void OnDisable()
@@ -208,8 +208,8 @@ namespace StarletBooking.Calendar
                 return false;
             }
 
-            if (Logic.IsNotNull(dateFilterFrom) &&
-                Logic.IsNotNull(dateFilterTo) &&
+            if (dateFilterFrom != null &&
+                dateFilterTo != null &&
                 !DateUtils.IsDateRangesIntersect(
                     arrivalDate, departureDate,
                     dateFilterFrom.GetDate(DateTime.MinValue), dateFilterTo.GetDate(DateTime.MaxValue)))

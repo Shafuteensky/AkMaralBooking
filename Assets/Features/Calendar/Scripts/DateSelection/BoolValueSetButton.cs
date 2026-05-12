@@ -3,7 +3,7 @@ using Extensions.Helpers;
 using Extensions.ScriptableValues;
 using UnityEngine;
 
-namespace Features.Calendar.Scripts.DateSelection
+namespace StarletBooking.Calendar
 {
     /// <summary>
     /// Кнопка назначения состояния <see cref="BoolValue"/>

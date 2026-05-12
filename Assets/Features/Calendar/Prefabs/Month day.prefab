@@ -799,6 +799,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4429749373663504744, guid: 2c131b7bf2b56bf469af7a18e9176151, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5392710105173159042, guid: 2c131b7bf2b56bf469af7a18e9176151, type: 3}
       propertyPath: m_Name
       value: Frame
@@ -910,6 +914,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4074439674270778983}
     m_Modifications:
+    - target: {fileID: 4676487250557209, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4676487250557209, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
       propertyPath: m_TargetGraphic
       value: 

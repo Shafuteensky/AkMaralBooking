@@ -1,7 +1,7 @@
 using Extensions.ScriptableValues;
 using Extensions.UIWindows;
 
-namespace StarletBooking.Calendar.DateSelection
+namespace StarletBooking.Calendar
 {
     /// <summary>
     /// Закрытие окна по готовности выбора даты

@@ -2521,10 +2521,26 @@ PrefabInstance:
     - target: {fileID: 3168670908376414838, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8356770635288796980}
+    - target: {fileID: 3168670908376414838, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToPreviousMonth
+      objectReference: {fileID: 0}
+    - target: {fileID: 3168670908376414838, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StarletBooking.Calendar.DatePickMonthViewController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3417076143600857437, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8356770635288796980}
+    - target: {fileID: 3417076143600857437, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToPreviousYear
+      objectReference: {fileID: 0}
+    - target: {fileID: 3417076143600857437, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StarletBooking.Calendar.DatePickMonthViewController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3626824238393515169, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2557,6 +2573,14 @@ PrefabInstance:
     - target: {fileID: 5032220170365335743, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8356770635288796980}
+    - target: {fileID: 5032220170365335743, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToNextMonth
+      objectReference: {fileID: 0}
+    - target: {fileID: 5032220170365335743, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StarletBooking.Calendar.DatePickMonthViewController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5246686073615485403, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
       propertyPath: m_Name
@@ -2725,10 +2749,26 @@ PrefabInstance:
     - target: {fileID: 8870407182186663715, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8356770635288796980}
+    - target: {fileID: 8870407182186663715, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToNextYear
+      objectReference: {fileID: 0}
+    - target: {fileID: 8870407182186663715, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StarletBooking.Calendar.DatePickMonthViewController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9012586875642711423, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 8356770635288796980}
+    - target: {fileID: 9012586875642711423, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToToday
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012586875642711423, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: StarletBooking.Calendar.DatePickMonthViewController, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5644208548237761561, guid: 213183bd3ac6f5545a076aa020ca9070, type: 3}

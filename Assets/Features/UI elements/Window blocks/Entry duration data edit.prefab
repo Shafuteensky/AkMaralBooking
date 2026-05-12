@@ -1577,6 +1577,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6525956751280869372, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6749005315405752812}
+    - targetCorrespondingSourceObject: {fileID: 6525956751280869372, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4436502238358188722}
+    - targetCorrespondingSourceObject: {fileID: 6525956751280869372, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8388227235889151701}
+    - targetCorrespondingSourceObject: {fileID: 6525956751280869372, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3024596302316859257}
   m_SourcePrefab: {fileID: 100100000, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
 --- !u!224 &210908128130933065 stripped
 RectTransform:
@@ -1605,6 +1614,48 @@ MonoBehaviour:
   daysInputField: {fileID: 8778811566650615812}
   arrivalDate: {fileID: 1796233132722243768}
   departureDate: {fileID: 3631482332627194756}
+--- !u!114 &4436502238358188722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265516869745388511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1275956209a445f2b609c297e402bc7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Extensions.ScriptableValues.DateRangeOrderListener
+  arrivalDate: {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
+  departureDate: {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
+--- !u!114 &8388227235889151701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265516869745388511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e044d4db1cf144a6bba35b9cbc19f8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Calendar.DateValueInputInserter
+  dateValue: {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
+  isArrival: 1
+--- !u!114 &3024596302316859257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2265516869745388511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e044d4db1cf144a6bba35b9cbc19f8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Calendar.DateValueInputInserter
+  dateValue: {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
+  isArrival: 0
 --- !u!1001 &6139770273225935164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1778,6 +1829,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.ScriptableValues.StringValueInputBinder
   stringValue: {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
+  updateInputOnEnable: 1
 --- !u!1001 &9204449424691499520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1955,3 +2007,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.ScriptableValues.StringValueInputBinder
   stringValue: {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
+  updateInputOnEnable: 1

@@ -89,7 +89,15 @@ namespace Extensions.ScriptableValues
         /// Установка даты
         /// </summary>
         public void SetValue(DateTime dateTime) => SetValue(DateUtils.Format(dateTime, DateFormat));
-
+        
+        /// <summary>
+        /// Очистка даты
+        /// </summary>
+        public override void Clear()
+        {
+            base.SetValue(default);
+        }
+        
         /// <summary>
         /// Попытаться получить дату
         /// </summary>

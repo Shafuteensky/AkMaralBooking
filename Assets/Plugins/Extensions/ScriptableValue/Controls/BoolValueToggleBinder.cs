@@ -11,6 +11,7 @@ namespace Extensions.ScriptableValues
     {
         [Tooltip("Хранилище значения, синхронизируемое с тогглом")]
         [SerializeField] private BoolValue boolValue;
+        [SerializeField] private bool updateInputOnEnable = true;
 
         protected override void OnEnable()
         {
@@ -18,7 +19,7 @@ namespace Extensions.ScriptableValues
 
             if (boolValue == null) return;
 
-            toggle.SetIsOnWithoutNotify(boolValue.Value);
+            if (updateInputOnEnable) toggle.SetIsOnWithoutNotify(boolValue.Value);
             boolValue.onValueChanged += OnValueChanged;
         }
 
