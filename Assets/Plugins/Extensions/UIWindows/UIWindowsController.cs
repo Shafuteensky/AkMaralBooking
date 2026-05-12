@@ -79,7 +79,7 @@ namespace Extensions.UIWindows
             string window,
             UIWindow parentWindow,
             bool needToCloseThis = true,
-            bool needToCloseOpened = true,
+            bool needToCloseOpened = false,
             UIWindowOpenMode openMode = UIWindowOpenMode.Forward)
         {
             if (string.IsNullOrEmpty(window))

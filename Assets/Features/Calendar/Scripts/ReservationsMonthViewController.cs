@@ -7,7 +7,6 @@ using EZCalendarWeeklyView;
 using StarletBooking.Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using DynamicGridLayout = Extensions.Layouts.DynamicGridLayout;
 
@@ -16,7 +15,7 @@ namespace StarletBooking.Calendar
     /// <summary>
     /// Месячный календарь записей аренды
     /// </summary>
-    public sealed class ReservationsMonthViewController : MonthViewController
+    public class ReservationsMonthViewController : MonthViewController
     {
         #region События
         
@@ -43,10 +42,11 @@ namespace StarletBooking.Calendar
         
         [SerializeField] private DynamicGridLayout newDynamicGridLayout;   
         
-        [Header("Данные записей аренды")]
+        [Header("Данные записей аренды"), Space]
         [SerializeField] private ReservationsDataContainer reservationsDataContainer;
 
-        [Header("Фильтрация")]
+        [Header("Фильтрация"), Space]
+        [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue arrivalDateFilter;
         [SerializeField] private DateValue departureDateFilter;
 
@@ -54,7 +54,6 @@ namespace StarletBooking.Calendar
         private readonly List<Color> reservationColors = new();
         private readonly List<string> reservationIds = new();
         
-        private HouseSelectionContext houseSelectionContext;
         private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
         
         #endregion
@@ -65,7 +64,6 @@ namespace StarletBooking.Calendar
         {
             currentDate = DateTime.Now;
             selectedDate = DateTime.Now;
-            houseSelectionContext = DataBus.Instance.HouseFilter;
             reservationsMultipleSelectionContext = DataBus.Instance.ReservationsMultipleSelectionContext;
         }
         

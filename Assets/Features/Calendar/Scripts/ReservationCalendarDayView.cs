@@ -11,6 +11,7 @@ namespace StarletBooking.Calendar
     {
         [SerializeField] private Transform stripsRoot;
         [SerializeField] private ObservableImage stripPrefab;
+        [SerializeField] private GameObject frame;
 
         private readonly List<ObservableImage> strips = new List<ObservableImage>();
 
@@ -46,6 +47,11 @@ namespace StarletBooking.Calendar
                 t.gameObject.SetActive(false);
             }
         }
+        
+        /// <summary>
+        /// Установить активность выделения (рамки)
+        /// </summary>
+        public void SetFrame(bool isActive) => frame.SetActive(isActive);
 
         private void EnsureStripsCount(int count)
         {

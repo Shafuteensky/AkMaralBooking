@@ -18,7 +18,7 @@ namespace Extensions.ScriptableValues.Editor
             {
                 EditorGUILayout.HelpBox(
                     $"Некорректная дефолтная дата. Ожидаемый формат: {dateValue.DateFormat} (пример: 28.04.26)",
-                    MessageType.Warning
+                    MessageType.Error
                 );
             }
         }

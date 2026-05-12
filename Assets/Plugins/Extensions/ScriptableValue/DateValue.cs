@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using Extensions.Helpers;
+using Extensions.Log;
 using UnityEngine;
 
 namespace Extensions.ScriptableValues
@@ -14,6 +15,8 @@ namespace Extensions.ScriptableValues
     )]
     public class DateValue : StringValue
     {
+        private const string DEFAULT_DATE_FORMAT = "dd.MM.yy";
+        
         [SerializeField] private bool useNowAsDefault = false;
         [SerializeField] private string dateFormat = "dd.MM.yy";
         
@@ -32,7 +35,35 @@ namespace Extensions.ScriptableValues
             if (useNowAsDefault) defaultValue = DateUtils.Format(DateTime.Now);
             base.OnEnable();
         }
+        
+        protected override void OnValidate()
+        {
+            base.OnValidate();
+            
+            if (string.IsNullOrWhiteSpace(dateFormat))
+            {
+                dateFormat = DEFAULT_DATE_FORMAT;
+            }
 
+            if (useNowAsDefault) return;
+
+            if (string.IsNullOrWhiteSpace(defaultValue))
+            {
+                defaultValue = DateTime.MinValue.ToString(dateFormat, CultureInfo.InvariantCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Проверка, установлено ли дефолтное значение даты
+        /// </summary>
+        public bool IsDefaultDate()
+        {
+            if (!DateUtils.TryParse(Value, out DateTime valueDate)) return false;
+            if (!DateUtils.TryParse(defaultValue, out DateTime defaultDate)) return false;
+
+            return valueDate.Date == defaultDate.Date;
+        }
+        
         /// <summary>
         /// Установка даты
         /// </summary>
@@ -40,8 +71,14 @@ namespace Extensions.ScriptableValues
         {
             if (!DateUtils.IsValidDate(newValue))
             {
-                Debug.LogError($"Некорректная дата: {newValue}. Ожидаемый формат: {DateFormat}. Значение сброшено до дефолтного");
-                ResetToDefault();
+                ServiceDebug.LogError($"Некорректная дата: {newValue}. Ожидаемый формат: {DateFormat}. Значение сброшено до дефолтного");
+
+                if (!DateUtils.IsValidDate(defaultValue))
+                {
+                    defaultValue = DateTime.MinValue.ToString(dateFormat, CultureInfo.InvariantCulture);
+                }
+
+                base.SetValue(defaultValue);
                 return;
             }
 

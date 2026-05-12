@@ -1,4 +1,3 @@
-using Extensions.Data.InMemoryData.SelectionContext;
 using Extensions.ScriptableValues;
 using StarletBooking.Data;
 using UnityEngine;
@@ -12,17 +11,15 @@ namespace StarletBooking.Calendar
     public sealed class ReservationsCalendarRefreshBinder : MonoBehaviour
     {
         [SerializeField] private ReservationsDataContainer reservationsDataContainer;
+        [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue arrivalDateFilter;
         [SerializeField] private DateValue departureDateFilter;
         
-        private HouseSelectionContext houseSelectionContext;
-
         private ReservationsMonthViewController calendar;
 
         private void Awake()
         {
             calendar = GetComponent<ReservationsMonthViewController>();
-            houseSelectionContext = DataBus.Instance.HouseFilter;
         }
 
         private void OnEnable()

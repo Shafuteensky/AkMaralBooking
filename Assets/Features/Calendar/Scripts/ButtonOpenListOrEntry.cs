@@ -1,6 +1,3 @@
-using System;
-using Extensions.Helpers;
-using Extensions.ScriptableValues;
 using Extensions.UIWindows;
 using StarletBooking.Data;
 using UnityEngine;
