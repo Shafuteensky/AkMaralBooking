@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 7288347091377277873}
   - component: {fileID: 630824037966353681}
   - component: {fileID: 5033808031046833296}
-  - component: {fileID: 8979853050492324230}
-  - component: {fileID: 3139445633446062609}
   m_Layer: 5
   m_Name: Date pick calendar
   m_TagString: Untagged
@@ -208,32 +206,6 @@ MonoBehaviour:
   inputActions:
   - {fileID: 842195935951836008, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   needToOpenPrevious: 1
---- !u!114 &8979853050492324230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2513310915668262185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea7215f2250421b915653d31efde590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Calendar.DateSelection.WindowCloseOnValueChange
-  scriptableValue: {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
---- !u!114 &3139445633446062609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2513310915668262185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea7215f2250421b915653d31efde590, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Calendar.DateSelection.WindowCloseOnValueChange
-  scriptableValue: {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
 --- !u!1 &5971960112973985819
 GameObject:
   m_ObjectHideFlags: 0
