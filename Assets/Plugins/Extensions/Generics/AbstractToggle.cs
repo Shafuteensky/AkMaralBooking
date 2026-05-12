@@ -15,6 +15,11 @@ namespace Extensions.Generics
         /// </summary>
         public event Action<bool> onToggled;
         
+        /// <summary>
+        /// Состояние тоггла
+        /// </summary>
+        public bool IsOn => toggle.isOn;
+        
         protected Toggle toggle;
 
         protected virtual void Awake() => toggle = GetComponent<Toggle>();
