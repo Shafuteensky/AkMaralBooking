@@ -92,6 +92,12 @@ namespace Extensions.UIWindows
             {
                 if (TryPopToWindow(window)) return;
 
+                if (navigationStack.Count > 0)
+                {
+                    UIWindowID topWindow = navigationStack.Pop();
+                    if (topWindow) CloseWindowById(topWindow.Id);
+                }
+
                 OpenWindowByID(window, parentWindow, false);
                 return;
             }
@@ -256,7 +262,7 @@ namespace Extensions.UIWindows
                 return;
             }
 
-            OpenWindowByID(startWindow.Id.Id, null, false);
+            OpenWindowByID(startWindow.Id.Id, null);
         }
         
         /// <summary>

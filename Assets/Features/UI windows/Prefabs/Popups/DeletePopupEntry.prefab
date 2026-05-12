@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 4384080391251971495, guid: a288baa79ff5aa74581f493dc2729911, type: 3}
       propertyPath: UIWindowToOpen
       value: 
-      objectReference: {fileID: 11400000, guid: e1d0d49dcd0045546bc8f568e651dfa6, type: 2}
+      objectReference: {fileID: 11400000, guid: 730ec476803ec1940a0e1585dc6e16cd, type: 2}
     - target: {fileID: 5167500071766623657, guid: a288baa79ff5aa74581f493dc2729911, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -168,6 +168,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8376832558121816444, guid: a288baa79ff5aa74581f493dc2729911, type: 3}
+      propertyPath: m_fontSize
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 8539234127067206954, guid: a288baa79ff5aa74581f493dc2729911, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -251,4 +255,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fba7317a614d639c1c7e3d18fdc128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.DeleteReservationSelectionButton
-  selectionContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
