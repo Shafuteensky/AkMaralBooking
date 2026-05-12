@@ -92,12 +92,7 @@ namespace Extensions.UIWindows
             {
                 if (TryPopToWindow(window)) return;
 
-                if (navigationStack.Count > 0)
-                {
-                    UIWindowID topWindow = navigationStack.Pop();
-                    if (topWindow) CloseWindowById(topWindow.Id);
-                }
-
+                CloseAllWindows();
                 OpenWindowByID(window, parentWindow, false);
                 return;
             }
