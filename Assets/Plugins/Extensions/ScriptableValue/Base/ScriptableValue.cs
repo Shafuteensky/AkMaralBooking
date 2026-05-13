@@ -32,6 +32,10 @@ namespace Extensions.ScriptableValues
         /// Является ли состояние глобальным (иначе состояние отдельно для каждого активного профиля)
         /// </summary>
         public bool IsGlobal => isGlobal;
+        /// <summary>
+        /// Значение по-умолчанию
+        /// </summary>
+        public T DefaultValue => defaultValue;
 
         [Header("Хранимое значение"), Space]
         [Tooltip("Сохранять ли значение между сессиями")]

@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Extensions.UI.HorizontalTextScroller
   scrollSpeed: 25
+  returnScrollSpeed: 100
   edgePause: 1
   sidePadding: 0
 --- !u!1 &4736465182677297894
@@ -1058,7 +1059,7 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_ReverseArrangement: 1
 --- !u!114 &4961992854493793022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,6 +1259,7 @@ MonoBehaviour:
   enterSound: {fileID: 0}
   downSound: {fileID: 8300000, guid: 005b621d2141c5e4587e0f7da6a8a72e, type: 3}
   upSound: {fileID: 8300000, guid: 72c790b752b80554c95e1bc35620116c, type: 3}
+  clickSound: {fileID: 0}
 --- !u!114 &5451639189234662897
 MonoBehaviour:
   m_ObjectHideFlags: 0
