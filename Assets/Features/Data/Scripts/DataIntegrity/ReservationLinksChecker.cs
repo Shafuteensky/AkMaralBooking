@@ -43,7 +43,7 @@ namespace StarletBooking.Data
             foreach (ReservationData reservation in reservationsContainer.Data)
             {
                 if (reservation == null || reservation.Id == data.Id) continue;
-                if (reservation.ClientId == data.ClientId)
+                if (!string.IsNullOrEmpty(data.ClientId) && reservation.ClientId == data.ClientId)
                     OtherClientReservations.Add(reservation);
             }
         }

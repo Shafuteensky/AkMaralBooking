@@ -60,7 +60,6 @@ namespace StarletBooking.Data.Controls
         private void DeleteLinkedClient()
         {
             clientsContainer.Remove(checker.LinkedClient);
-            DataBus.Instance.ClientSelectionContext.Clear();
         }
 
         #endregion

@@ -23,7 +23,10 @@ namespace StarletBooking.Data.Controls
             string clientId = context.SelectedId;
 
             if (ShouldDeleteReservations())
+            {
                 DeleteLinkedReservations();
+                DataBus.Instance.ReservationSelectionContext?.Clear();
+            }
 
             context.Container.Remove(clientId);
             context.Clear();

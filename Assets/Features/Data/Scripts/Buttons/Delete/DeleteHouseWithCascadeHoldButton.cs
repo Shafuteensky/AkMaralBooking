@@ -24,7 +24,10 @@ namespace StarletBooking.Data.Controls
             string houseId = context.SelectedId;
 
             if (ShouldDeleteReservations())
+            {
                 DeleteLinkedReservations();
+                DataBus.Instance.ReservationSelectionContext?.Clear();
+            }
 
             context.Container.Remove(houseId);
             context.Clear();
