@@ -36,10 +36,14 @@ namespace Extensions.ScriptableValues
             base.OnEnable();
         }
         
+#if UNITY_EDITOR
         protected override void OnValidate()
         {
             base.OnValidate();
-            
+#else
+        private void OnValidate()
+        {
+#endif            
             if (string.IsNullOrWhiteSpace(dateFormat))
             {
                 dateFormat = DEFAULT_DATE_FORMAT;
