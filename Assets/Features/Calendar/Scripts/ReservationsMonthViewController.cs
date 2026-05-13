@@ -19,24 +19,19 @@ namespace StarletBooking.Calendar
     {
         #region События
         
-        /// <summary>
-        /// Событие изменения месяца назад от текущего
-        /// </summary>
+        /// <summary> Событие изменения месяца назад от текущего </summary>
         public event Action onPreviousMonthChanged;
-        /// <summary>
-        /// Событие изменения месяца вперед от текущего
-        /// </summary>
+        /// <summary> Событие изменения месяца вперед от текущего </summary>
         public event Action onNextMonthChanged;
-        /// <summary>
-        /// Событие отрисовки календаря
-        /// </summary>
+        /// <summary> Событие отрисовки календаря </summary>
         public event Action onCalendarUpdated;
-        /// <summary>
-        /// Событие нажатия по кнопке даты
-        /// </summary>
+        /// <summary> Событие нажатия по кнопке даты </summary>
         public event Action<DateTime> onDayButtonClicked;
         
         #endregion
+        
+        /// <summary> Текущая дата календаря </summary>
+        public DateTime CurrentDate => currentDate; 
         
         #region Параметры
         
@@ -49,14 +44,14 @@ namespace StarletBooking.Calendar
         [SerializeField] private HouseSelectionContext houseSelectionContext;
         [SerializeField] private DateValue arrivalDateFilter;
         [SerializeField] private DateValue departureDateFilter;
+        
+        #endregion
 
         private readonly ReservationsCalendarIndex reservationsIndex = new ReservationsCalendarIndex();
         private readonly List<Color> reservationColors = new();
         private readonly List<string> reservationIds = new();
         
         private ReservationsMultipleSelectionContext reservationsMultipleSelectionContext;
-        
-        #endregion
 
         #region MonoBehavior
         
