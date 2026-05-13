@@ -206,7 +206,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8722698054976595851
@@ -589,6 +589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.ScriptableValues.FloatValueSliderBinder
   floatValue: {fileID: 11400000, guid: 4171d3c6af4c63244aef2f5d66cc77bc, type: 2}
+  updateInputOnEnable: 1
 --- !u!114 &7048029417144711979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,6 +607,7 @@ MonoBehaviour:
   enterSound: {fileID: 0}
   downSound: {fileID: 8300000, guid: 005b621d2141c5e4587e0f7da6a8a72e, type: 3}
   upSound: {fileID: 8300000, guid: 72c790b752b80554c95e1bc35620116c, type: 3}
+  clickSound: {fileID: 0}
 --- !u!1 &5971960112973985819
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,6 +773,7 @@ MonoBehaviour:
   enterSound: {fileID: 0}
   downSound: {fileID: 0}
   upSound: {fileID: 8300000, guid: 72c790b752b80554c95e1bc35620116c, type: 3}
+  clickSound: {fileID: 0}
 --- !u!1 &6576651034366568272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1400,7 +1403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -60
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 5119795987392497002, guid: 302d3ade02f85ff44b467a7ef42f4d27, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2188,6 +2191,7 @@ MonoBehaviour:
   floatValue: {fileID: 11400000, guid: 6ee39532931fb1d45acf6db6755c7104, type: 2}
   onlyReadInput: 0
   format: 0.##
+  updateInputOnEnable: 1
 --- !u!1001 &8923429134895567316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2432,6 +2436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.ScriptableValues.BoolValueToggleBinder
   boolValue: {fileID: 11400000, guid: 24eef6ed155b2a84f930abae6a700137, type: 2}
+  updateInputOnEnable: 1
 --- !u!224 &1591564719627230202 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7506067251835676012, guid: 72474a89071ed304bbace461b31aac1b, type: 3}

@@ -26,6 +26,7 @@ namespace Extensions.UI
         private float minX;
         private float pauseTimer;
         private int direction = INITIAL_DIRECTION;
+        private bool startXCaptured;
 
         public bool IsBlocked { get; set; }
 
@@ -34,17 +35,28 @@ namespace Extensions.UI
             base.Awake();
 
             if (text.enableAutoSizing) enabled = false;
-            
+
             textRectTransform = text.rectTransform;
             viewportRectTransform = textRectTransform.parent as RectTransform;
-            startX = textRectTransform.anchoredPosition.x;
         }
 
-        private void OnEnable() => ResetScroll();
+        private void OnEnable()
+        {
+            if (startXCaptured) ResetScroll();
+        }
 
         private void Update()
         {
             if (IsBlocked) return;
+
+            if (!startXCaptured)
+            {
+                if (viewportRectTransform.rect.width <= 0f) return;
+                startX = textRectTransform.anchoredPosition.x;
+                startXCaptured = true;
+                ResetScroll();
+                return;
+            }
 
             if (!IsOverflowing())
             {
@@ -71,10 +83,10 @@ namespace Extensions.UI
 
         private bool IsOverflowing()
         {
-            float textWidth = text.preferredWidth;
             float viewportWidth = viewportRectTransform.rect.width - sidePadding * 2f;
+            if (viewportWidth <= 0f) return false;
 
-            return textWidth > viewportWidth;
+            return text.preferredWidth > viewportWidth;
         }
 
         private void UpdateScrollBounds()

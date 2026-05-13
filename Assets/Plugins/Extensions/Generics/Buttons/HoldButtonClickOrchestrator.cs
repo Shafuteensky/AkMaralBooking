@@ -102,7 +102,7 @@ namespace Extensions.Generics
         /// </summary>
         public void AddAction(AbstractHoldButtonAction action)
         {
-            if (action == null) actions.Add(action);
+            if (action != null) actions.Add(action);
             sortActionsByPriority();
         }
 
@@ -111,7 +111,7 @@ namespace Extensions.Generics
         /// </summary>
         public void RemoveAction(AbstractHoldButtonAction action)
         {
-            if (action == null) actions.Remove(action);
+            if (action != null) actions.Remove(action);
         }
         
         #endregion
