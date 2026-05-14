@@ -50,7 +50,7 @@ namespace StarletBooking.UI.Output
             if (arrivalDateValue == null || departureDateValue == null) return;
 
             int days = (departureDateValue.GetDate() - arrivalDateValue.GetDate()).Days;
-            targetInput.text = Math.Abs(days).ToString() + 1;
+            targetInput.text = (Math.Abs(days) + 1).ToString();
         }
     }
 }
