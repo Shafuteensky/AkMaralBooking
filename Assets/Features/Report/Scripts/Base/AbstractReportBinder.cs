@@ -11,6 +11,7 @@ namespace StarletBooking.Report
     public abstract class AbstractReportBinder : AbstractInputField
     {
         [SerializeField] private ReservationReportCalculator calculator;
+        [SerializeField] private bool inUSD;
 
         protected override void OnEnable()
         {
@@ -23,6 +24,9 @@ namespace StarletBooking.Report
             if (calculator == null) return;
             calculator.onReportCalculated -= Refresh;
         }
+
+        protected float SelectValue(float somValue, float usdValue) =>
+            inUSD ? usdValue : somValue;
 
         protected abstract void Refresh(ReservationReportData data);
     }

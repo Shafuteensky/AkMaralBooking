@@ -8,10 +8,15 @@ namespace StarletBooking.Report
         public int ReservationsCount;
         public int UniqueClientsCount;
         public int TotalDays;
-        public float TotalPrepayment;
-        public float TotalDiscount;
-        public float RemainingPayment;
-        public float NetProfit;
         public float GrossProfit;
+        public float GrossProfitUsd;
+        public float TotalDiscount;
+        public float TotalDiscountUsd;
+        public float NetProfit;
+        public float NetProfitUsd;
+        public float TotalPrepayment;
+        public float TotalPrepaymentUsd;
+        public float RemainingPayment;
+        public float RemainingPaymentUsd;
     }
 }

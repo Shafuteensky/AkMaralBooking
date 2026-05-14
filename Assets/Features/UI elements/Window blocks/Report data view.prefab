@@ -770,19 +770,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: Currency input field (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7410596207522999054, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6736784558542284008}
+    - targetCorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7664571698465796232}
   m_SourcePrefab: {fileID: 100100000, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
 --- !u!224 &3873938601110674655 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
   m_PrefabInstance: {fileID: 1374769592299311614}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4705191049730405963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 1374769592299311614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7664571698465796232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705191049730405963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36cf19c9e0913f42b73105e83a0c58d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportNetBinder
+  calculator: {fileID: 1169449222530772202}
+  inUSD: 0
 --- !u!1 &6158882346147977927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
@@ -801,6 +824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportNetBinder
   calculator: {fileID: 1169449222530772202}
+  inUSD: 1
 --- !u!1001 &1591353968721924919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1049,6 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportUniqueClientsBinder
   calculator: {fileID: 1169449222530772202}
+  inUSD: 0
 --- !u!224 &5488809287703771447 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
@@ -1230,13 +1255,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Currency input field (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7410596207522999054, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 336878134700069176}
+    - targetCorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5684618747829004507}
   m_SourcePrefab: {fileID: 100100000, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
 --- !u!224 &890031667435529534 stripped
 RectTransform:
@@ -1261,6 +1290,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportDiscountBinder
   calculator: {fileID: 1169449222530772202}
+  inUSD: 1
+--- !u!1 &8706808157163278250 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 3066054277722384415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5684618747829004507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8706808157163278250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60009e2caa5ad9347aa3d7bd8fbd318b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportDiscountBinder
+  calculator: {fileID: 1169449222530772202}
+  inUSD: 0
 --- !u!1001 &3222540396846008903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1501,6 +1550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportTotalDaysBinder
   calculator: {fileID: 1169449222530772202}
+  inUSD: 0
 --- !u!224 &6561457162863768242 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
@@ -1644,6 +1694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportReservationsCountBinder
   calculator: {fileID: 1169449222530772202}
+  inUSD: 0
 --- !u!224 &5990465564261376603 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7979806391612296303, guid: 4ec393e3fe553914e8f804c8df52ac3d, type: 3}
@@ -2223,14 +2274,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Currency input field (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7410596207522999054, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2943925051048562065}
+    - targetCorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7242129983070458850}
   m_SourcePrefab: {fileID: 100100000, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+--- !u!1 &604931321549921854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 6502421784501483915}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7242129983070458850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604931321549921854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca402c8bd2e4d6347b9999eda650f7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportGrossBinder
+  calculator: {fileID: 1169449222530772202}
+  inUSD: 0
 --- !u!1 &2040598321972228786 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
@@ -2249,6 +2323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportGrossBinder
   calculator: {fileID: 1169449222530772202}
+  inUSD: 1
 --- !u!224 &9001544610607707306 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
@@ -2650,13 +2725,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Currency input field (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7410596207522999054, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6555570173346166796}
+    - targetCorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7406572105691046095}
   m_SourcePrefab: {fileID: 100100000, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
 --- !u!1 &2489010431420255104 stripped
 GameObject:
@@ -2676,6 +2755,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportPrepaymentBinder
   calculator: {fileID: 1169449222530772202}
+  inUSD: 1
+--- !u!1 &3944644494017685260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 7270545622856007865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7406572105691046095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3944644494017685260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8122ab92a929b043a126ba7335f9a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportPrepaymentBinder
+  calculator: {fileID: 1169449222530772202}
+  inUSD: 0
 --- !u!224 &4769590945802407320 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
@@ -2967,14 +3066,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Currency input field (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7410596207522999054, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3156739737155076554}
+    - targetCorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6254321655651732518}
   m_SourcePrefab: {fileID: 100100000, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+--- !u!1 &3394338461636752213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5933523284959520693, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 9026065935282771168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6254321655651732518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394338461636752213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c5a364435fc9114dab3a2779662767b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportRemainingBinder
+  calculator: {fileID: 1169449222530772202}
+  inUSD: 0
 --- !u!1 &4264786047652192217 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
@@ -2993,6 +3115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Report.ReportRemainingBinder
   calculator: {fileID: 1169449222530772202}
+  inUSD: 1
 --- !u!224 &6599409723528370625 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}

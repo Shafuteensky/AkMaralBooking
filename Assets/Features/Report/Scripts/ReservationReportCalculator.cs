@@ -56,13 +56,21 @@ namespace StarletBooking.Report
                 report.TotalDays += reservation.Days;
 
                 float gross = reservation.PaymentPerDay * reservation.Days;
-                report.GrossProfit += gross;
-                report.TotalDiscount += reservation.Discount;
-                report.NetProfit += gross - reservation.Discount;
-                report.TotalPrepayment += reservation.Prepayment;
+                float net = gross - reservation.Discount;
+                float rate = reservation.ExchangeRate;
+
+                report.GrossProfitUsd += gross;
+                report.GrossProfit += gross * rate;
+                report.TotalDiscountUsd += reservation.Discount;
+                report.TotalDiscount += reservation.Discount * rate;
+                report.NetProfitUsd += net;
+                report.NetProfit += net * rate;
+                report.TotalPrepaymentUsd += reservation.Prepayment;
+                report.TotalPrepayment += reservation.Prepayment * rate;
             }
 
             report.UniqueClientsCount = uniqueClients.Count;
+            report.RemainingPaymentUsd = report.NetProfitUsd - report.TotalPrepaymentUsd;
             report.RemainingPayment = report.NetProfit - report.TotalPrepayment;
 
             onReportCalculated?.Invoke(report);

@@ -7,6 +7,6 @@ namespace StarletBooking.Report
     public sealed class ReportDiscountBinder : AbstractReportBinder
     {
         protected override void Refresh(ReservationReportData data) =>
-            inputField.SetTextWithoutNotify(Formatters.FormatFloat(data.TotalDiscount));
+            inputField.SetTextWithoutNotify(Formatters.FormatFloat(SelectValue(data.TotalDiscount, data.TotalDiscountUsd)));
     }
 }
