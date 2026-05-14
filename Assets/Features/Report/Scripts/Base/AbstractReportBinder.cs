@@ -17,6 +17,8 @@ namespace StarletBooking.Report
         {
             if (Logic.IsNull(calculator, nameof(calculator))) return;
             calculator.onReportCalculated += Refresh;
+            if (calculator.LastReport != null)
+                Refresh(calculator.LastReport);
         }
 
         protected override void OnDisable()

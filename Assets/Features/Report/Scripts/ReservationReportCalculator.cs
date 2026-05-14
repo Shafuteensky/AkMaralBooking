@@ -17,6 +17,8 @@ namespace StarletBooking.Report
         [SerializeField] private DateValue fromDate;
         [SerializeField] private DateValue toDate;
 
+        public ReservationReportData LastReport { get; private set; }
+
         public event Action<ReservationReportData> onReportCalculated;
 
         private void OnEnable()
@@ -73,6 +75,7 @@ namespace StarletBooking.Report
             report.RemainingPaymentUsd = report.NetProfitUsd - report.TotalPrepaymentUsd;
             report.RemainingPayment = report.NetProfit - report.TotalPrepayment;
 
+            LastReport = report;
             onReportCalculated?.Invoke(report);
         }
 
