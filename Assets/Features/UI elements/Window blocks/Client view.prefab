@@ -713,8 +713,110 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6573688967913360095, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8937720638781804057}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6229527944529957604, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2816152157713776050}
+    - targetCorrespondingSourceObject: {fileID: 6229527944529957604, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7323531283818411737}
+    - targetCorrespondingSourceObject: {fileID: 6229527944529957604, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5175646610173303521}
+    - targetCorrespondingSourceObject: {fileID: 3290064580280672243, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2430658211820879979}
+    - targetCorrespondingSourceObject: {fileID: 3290064580280672243, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 282569446133800944}
+    - targetCorrespondingSourceObject: {fileID: 3290064580280672243, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2615970473689420697}
   m_SourcePrefab: {fileID: 100100000, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+--- !u!1 &2170307894980649143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3290064580280672243, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+  m_PrefabInstance: {fileID: 3726398589022601028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2430658211820879979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2170307894980649143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!114 &282569446133800944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2170307894980649143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8038f586b46354783fe56b5eaae2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.PhoneContactButton
+  type: 1
+--- !u!114 &2615970473689420697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2170307894980649143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a093f07ee5407354086e943f774631c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.PhoneContact.WhatsAppContactAvailabilityController
+--- !u!1 &7333383485151161760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6229527944529957604, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+  m_PrefabInstance: {fileID: 3726398589022601028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2816152157713776050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333383485151161760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
+--- !u!114 &7323531283818411737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333383485151161760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8038f586b46354783fe56b5eaae2c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.PhoneContactButton
+  type: 0
+--- !u!114 &5175646610173303521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333383485151161760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ecc4f7e047d0e4cb45007173d58988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.PhoneContact.CallContactAvailabilityController
 --- !u!224 &7533603587949344155 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6573688967913360095, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
