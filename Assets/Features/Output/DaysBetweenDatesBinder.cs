@@ -1,5 +1,6 @@
 using System;
 using Extensions.Helpers;
+using Extensions.ScriptableValues;
 using TMPro;
 using UnityEngine;
 
@@ -11,8 +12,8 @@ namespace StarletBooking.UI.Output
     [RequireComponent(typeof(TMP_InputField))]
     public sealed class DaysBetweenDatesBinder : MonoBehaviour
     {
-        [SerializeField] private TMP_InputField startDateInput;
-        [SerializeField] private TMP_InputField endDateInput;
+        [SerializeField] private DateValue arrivalDateValue;
+        [SerializeField] private DateValue departureDateValue;
 
         private TMP_InputField targetInput;
 
@@ -23,45 +24,33 @@ namespace StarletBooking.UI.Output
 
         private void OnEnable()
         {
-            if (startDateInput != null)
-                startDateInput.onValueChanged.AddListener(OnDateChanged);
+            if (arrivalDateValue != null)
+                arrivalDateValue.onValueChanged += OnDateChanged;
 
-            if (endDateInput != null)
-                endDateInput.onValueChanged.AddListener(OnDateChanged);
+            if (departureDateValue != null)
+                departureDateValue.onValueChanged += OnDateChanged;
+
+            OnDateChanged();
         }
 
         private void OnDisable()
         {
-            if (startDateInput != null)
-                startDateInput.onValueChanged.RemoveListener(OnDateChanged);
+            if (arrivalDateValue != null)
+                arrivalDateValue.onValueChanged -= OnDateChanged;
 
-            if (endDateInput != null)
-                endDateInput.onValueChanged.RemoveListener(OnDateChanged);
+            if (departureDateValue != null)
+                departureDateValue.onValueChanged -= OnDateChanged;
         }
 
         /// <summary>
         /// Пересчитывает дни при изменении любой даты
         /// </summary>
-        private void OnDateChanged(string _)
+        private void OnDateChanged(string _ = null)
         {
-            if (startDateInput == null || endDateInput == null) return;
+            if (arrivalDateValue == null || departureDateValue == null) return;
 
-            if (string.IsNullOrEmpty(startDateInput.text) ||
-                string.IsNullOrEmpty(endDateInput.text))
-            {
-                targetInput.text = string.Empty;
-                return;
-            }
-
-            if (!DateUtils.TryParse(startDateInput.text, out DateTime startDate) |
-                !DateUtils.TryParse(endDateInput.text, out DateTime endDate))
-            {
-                targetInput.text = string.Empty;
-                return;
-            }
-            
-            int days = (endDate - startDate).Days;
-            targetInput.text = days.ToString();
+            int days = (departureDateValue.GetDate() - arrivalDateValue.GetDate()).Days;
+            targetInput.text = Math.Abs(days).ToString() + 1;
         }
     }
 }

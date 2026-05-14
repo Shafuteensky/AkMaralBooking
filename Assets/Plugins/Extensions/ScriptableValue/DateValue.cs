@@ -110,8 +110,10 @@ namespace Extensions.ScriptableValues
         /// <summary>
         /// Получить дату
         /// </summary>
-        public DateTime GetDate(DateTime defaultDate)
+        public DateTime GetDate(DateTime defaultDate = default)
         {
+            if (defaultDate == default) defaultDate = DateTime.Now;
+            
             if (TryGetDate(out DateTime result)) return result;
             else return defaultDate;
         }

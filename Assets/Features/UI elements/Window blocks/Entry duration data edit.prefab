@@ -790,8 +790,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af7c402d4c142d9846258dc26ef6a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.Output.DaysBetweenDatesBinder
-  startDateInput: {fileID: 1796233132722243768}
-  endDateInput: {fileID: 3631482332627194756}
+  arrivalDateValue: {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
+  departureDateValue: {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
 --- !u!224 &8086257392834510547 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9034322739079984591, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
@@ -1830,6 +1830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.ScriptableValues.StringValueInputBinder
   stringValue: {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
   updateInputOnEnable: 1
+  overwriteDefaultOutput: 0
+  overwriteOutput: 
 --- !u!1001 &9204449424691499520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2008,3 +2010,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.ScriptableValues.StringValueInputBinder
   stringValue: {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
   updateInputOnEnable: 1
+  overwriteDefaultOutput: 0
+  overwriteOutput: 
