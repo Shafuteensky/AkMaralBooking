@@ -1072,10 +1072,13 @@ PrefabInstance:
       addedObject: {fileID: 3092710593192186609}
     - targetCorrespondingSourceObject: {fileID: 6746666204649781352, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7326316249232357873}
+      addedObject: {fileID: 2137208511703770063}
     - targetCorrespondingSourceObject: {fileID: 6746666204649781352, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2137208511703770063}
+      addedObject: {fileID: 6159460182648165234}
+    - targetCorrespondingSourceObject: {fileID: 6746666204649781352, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8807113591811262966}
   m_SourcePrefab: {fileID: 100100000, guid: f8542386dcf57a44a8dde256546d26da, type: 3}
 --- !u!224 &796261225892274918 stripped
 RectTransform:
@@ -1099,20 +1102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f51cabeb734bc586eed9e9619a3a40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.ButtonClickOrchestrator
---- !u!114 &7326316249232357873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8483419948920299147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0524d228da5a4e4fa1972a6217817655, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Calendar.ButtonOpenListOrEntry
-  entryWindow: {fileID: 11400000, guid: 49076007156513f4a816ae11feceb198, type: 2}
-  listWindow: {fileID: 11400000, guid: f66dc4f76b3913e4e8dfdcbdfd7df902, type: 2}
 --- !u!114 &2137208511703770063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,6 +1115,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Calendar.ButtonRouter
   buttonToRoute: {fileID: 1647760919199505753}
+--- !u!114 &6159460182648165234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483419948920299147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9797e2d230c74681aa3c83f3e2f2c9cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.Generics.HoldButtonClickOrchestrator
+  holdDurationValue: {fileID: 11400000, guid: ec5aeedbce3b89041a4cfe01323f95f9, type: 2}
+  useUnscaledTime: 1
+--- !u!114 &8807113591811262966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483419948920299147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d72732028efceb647a30bafbcb628dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Calendar.HoldDayButtonActivateDateRangeMode
+  controller: {fileID: 0}
 --- !u!1001 &4457357387065203715
 PrefabInstance:
   m_ObjectHideFlags: 0
