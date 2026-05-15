@@ -40,6 +40,8 @@ namespace StarletBooking.Calendar
         [SerializeField] private DateValue arrivalDate;
         [SerializeField] private DateValue departureDate;
         [SerializeField] private BoolValue dateRangePreset;
+        [SerializeField] private HouseSelectionContext filterHouseContext;
+        [SerializeField] private HouseSelectionContext entryHouseContext;
 
         #endregion
 
@@ -145,6 +147,9 @@ namespace StarletBooking.Calendar
             arrivalDate.SetValue(arrival);
             departureDate.SetValue(departure);
             dateRangePreset.SetValue(true);
+
+            if (filterHouseContext != null && filterHouseContext.HasSelection)
+                entryHouseContext?.Select(filterHouseContext.SelectedId);
 
             windowsController.OpenWindow(editWindow.Id, parentWindow);
 
