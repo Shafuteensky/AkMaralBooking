@@ -24,8 +24,8 @@ namespace StarletBooking.Calendar
 
         #region Свойства
 
-        /// <summary>Режим выбора диапазона дат активен</summary>
-        public bool IsDateRangeActive => isDateRangeActive;
+        /// <summary>Режим выбора диапазона дат активен (включая ожидание первого клика)</summary>
+        public bool IsDateRangeActive => isDateRangeActive || pendingHold;
 
         #endregion
 
@@ -79,16 +79,21 @@ namespace StarletBooking.Calendar
         #region Публичные методы
 
         /// <summary>
-        /// Зафиксировать сигнал зажатия кнопки
+        /// Зафиксировать сигнал зажатия кнопки и активировать визуальный индикатор режима
         /// </summary>
-        public void SetPendingHold() => pendingHold = true;
+        public void SetPendingHold()
+        {
+            if (pendingHold) return;
+            pendingHold = true;
+            onDateRangeModeChanged?.Invoke(true);
+        }
 
         /// <summary>
         /// Деактивировать режим выбора диапазона дат
         /// </summary>
         public void DeactivateDateRangeMode()
         {
-            if (!isDateRangeActive) return;
+            if (!isDateRangeActive && !pendingHold) return;
             isDateRangeActive = false;
             pendingHold = false;
             onDateRangeModeChanged?.Invoke(false);
@@ -103,7 +108,9 @@ namespace StarletBooking.Calendar
             if (pendingHold)
             {
                 pendingHold = false;
-                ActivateDateRangeMode(date);
+                pendingArrival = date;
+                arrivalDate.SetValue(date);
+                isDateRangeActive = true;
                 return;
             }
 
@@ -115,13 +122,6 @@ namespace StarletBooking.Calendar
             }
 
             OpenListOrEntry();
-        }
-
-        private void ActivateDateRangeMode(DateTime arrival)
-        {
-            pendingArrival = arrival;
-            isDateRangeActive = true;
-            onDateRangeModeChanged?.Invoke(true);
         }
 
         private void OpenListOrEntry()
