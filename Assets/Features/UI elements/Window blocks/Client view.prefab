@@ -207,6 +207,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1057228347842480185, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+      propertyPath: m_text
+      value: 996 700 12 34 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 1057228347842480185, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -762,6 +766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8038f586b46354783fe56b5eaae2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.PhoneContactButton
+  phoneNumber: {fileID: 5337214204721792718}
   type: 1
 --- !u!114 &2615970473689420697
 MonoBehaviour:
@@ -775,6 +780,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a093f07ee5407354086e943f774631c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.PhoneContact.WhatsAppContactAvailabilityController
+  phoneNumber: {fileID: 5337214204721792718}
+--- !u!114 &5337214204721792718 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8766058553819134346, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
+  m_PrefabInstance: {fileID: 3726398589022601028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1 &7333383485151161760 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6229527944529957604, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}
@@ -804,6 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de8038f586b46354783fe56b5eaae2c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.Data.Controls.PhoneContactButton
+  phoneNumber: {fileID: 5337214204721792718}
   type: 0
 --- !u!114 &5175646610173303521
 MonoBehaviour:
@@ -817,6 +835,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ecc4f7e047d0e4cb45007173d58988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.PhoneContact.CallContactAvailabilityController
+  phoneNumber: {fileID: 5337214204721792718}
 --- !u!224 &7533603587949344155 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6573688967913360095, guid: 929ba3efcdeee71439f40d64b6b80714, type: 3}

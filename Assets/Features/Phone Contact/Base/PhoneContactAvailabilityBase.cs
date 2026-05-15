@@ -1,5 +1,7 @@
 using Extensions.Generics;
 using StarletBooking.Data;
+using TMPro;
+using UnityEngine;
 
 namespace StarletBooking.PhoneContact
 {
@@ -10,6 +12,8 @@ namespace StarletBooking.PhoneContact
     /// </summary>
     public abstract class PhoneContactAvailabilityBase : AbstractButton
     {
+        [SerializeField] private TMP_InputField phoneNumber;
+        
         protected override void OnEnable()
         {
             base.OnEnable();
@@ -25,26 +29,20 @@ namespace StarletBooking.PhoneContact
         /// <summary>Определить доступность кнопки при наличии номера телефона</summary>
         protected abstract bool ResolveAvailability(bool hasNumber);
 
-        private ClientSelectionContext Context => DataBus.Instance.ClientSelectionContext;
-
         private void Subscribe()
         {
-            Context.onSelectionChanged += Refresh;
-            Refresh();
+            phoneNumber.onValueChanged.AddListener(Refresh);
+            Refresh(phoneNumber.text);
         }
 
         private void Unsubscribe()
         {
-            Context.onSelectionChanged -= Refresh;
+            phoneNumber.onValueChanged.RemoveListener(Refresh);
         }
 
-        private void Refresh()
+        private void Refresh(string number)
         {
-            ClientData client = Context.HasSelection
-                ? Context.GetSelectedData()
-                : null;
-
-            bool hasNumber = !string.IsNullOrWhiteSpace(client?.ContactNumber);
+            bool hasNumber = !string.IsNullOrEmpty(number);
             button.interactable = ResolveAvailability(hasNumber);
         }
     }

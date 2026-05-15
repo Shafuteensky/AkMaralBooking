@@ -1,6 +1,7 @@
 using Extensions.Generics;
 using StarletBooking.Data;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 namespace StarletBooking.PhoneContact
@@ -14,15 +15,13 @@ namespace StarletBooking.PhoneContact
     public sealed class PhoneContactButton : AbstractButtonAction
     {
         [Header("Параметры"), Space]
+        [SerializeField] private TMP_InputField phoneNumber;
         [SerializeField] private PhoneContactType type;
 
         /// <summary>Открыть звонок или чат WhatsApp по номеру выбранного клиента</summary>
         public override void OnButtonClickAction()
         {
-            var ctx = DataBus.Instance.ClientSelectionContext;
-            if (!ctx.HasSelection) return;
-
-            string number = ctx.GetSelectedData()?.ContactNumber;
+            string number = phoneNumber.text;
             if (string.IsNullOrWhiteSpace(number)) return;
 
             string url = type == PhoneContactType.Call
