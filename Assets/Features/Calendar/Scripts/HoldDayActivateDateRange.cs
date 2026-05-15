@@ -7,7 +7,7 @@ namespace StarletBooking.Calendar
     /// Действие зажатия кнопки дня для активации режима выбора диапазона дат.
     /// Не хранит дату — только сигнализирует контроллеру о завершённом зажатии.
     /// </summary>
-    public sealed class HoldDayButtonActivateDateRangeMode : AbstractHoldButtonAction
+    public sealed class HoldDayActivateDateRange : AbstractHoldButtonAction
     {
         [Header("Зависимости"), Space]
         [SerializeField] private CalendarDayInteractionController controller;

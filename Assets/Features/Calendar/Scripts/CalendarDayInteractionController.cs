@@ -7,10 +7,12 @@ using UnityEngine;
 namespace StarletBooking.Calendar
 {
     /// <summary>
-    /// Контроллер взаимодействий с кнопками дней календаря.
+    /// Контроллер взаимодействий с кнопками дней календаря
+    /// </summary>
+    /// <remarks>
     /// Управляет открытием списка/записи в нормальном режиме
     /// и режимом выбора диапазона дат (зажатие → прибытие, клик → отбытие → Entry edit).
-    /// </summary>
+    /// </remarks>
     public sealed class CalendarDayInteractionController : MonoBehaviour
     {
         #region События
@@ -37,6 +39,7 @@ namespace StarletBooking.Calendar
         [SerializeField] private UIWindowID editWindow;
         [SerializeField] private DateValue arrivalDate;
         [SerializeField] private DateValue departureDate;
+        [SerializeField] private BoolValue dateRangePreset;
 
         #endregion
 
@@ -45,9 +48,6 @@ namespace StarletBooking.Calendar
         private bool isDateRangeActive;
         private bool pendingHold;
         private DateTime pendingArrival;
-
-        private DateTime pendingArrivalForEdit;
-        private DateTime pendingDepartureForEdit;
 
         private ReservationsMonthViewController calendarController;
         private ReservationsMultipleSelectionContext reservationsContext;
@@ -79,12 +79,13 @@ namespace StarletBooking.Calendar
         #region Публичные методы
 
         /// <summary>
-        /// Зафиксировать сигнал зажатия кнопки.
-        /// Следующий onDayButtonClicked активирует режим выбора дат с этой датой.
+        /// Зафиксировать сигнал зажатия кнопки
         /// </summary>
         public void SetPendingHold() => pendingHold = true;
 
-        /// <summary>Деактивировать режим выбора диапазона дат</summary>
+        /// <summary>
+        /// Деактивировать режим выбора диапазона дат
+        /// </summary>
         public void DeactivateDateRangeMode()
         {
             if (!isDateRangeActive) return;
@@ -141,25 +142,13 @@ namespace StarletBooking.Calendar
         {
             DataBus.Instance.ReservationSelectionContext.Clear();
 
-            pendingArrivalForEdit = arrival;
-            pendingDepartureForEdit = departure;
-
-            // Подписываемся до открытия окна. onLastOpenedWindowChanged стреляет после
-            // SetActive(true) на новом окне — то есть уже после DateValueInputInserter.OnEnable().
-            // Это позволяет перезаписать даты, сброшенные инсертером, без корутин.
-            windowsController.onLastOpenedWindowChanged += OnEditWindowOpened;
+            arrivalDate.SetValue(arrival);
+            departureDate.SetValue(departure);
+            dateRangePreset.SetValue(true);
 
             windowsController.OpenWindow(editWindow.Id, parentWindow);
-        }
 
-        private void OnEditWindowOpened(UIWindow window)
-        {
-            if (window == null || window.Id.Id != editWindow.Id) return;
-
-            windowsController.onLastOpenedWindowChanged -= OnEditWindowOpened;
-
-            arrivalDate.SetValue(pendingArrivalForEdit);
-            departureDate.SetValue(pendingDepartureForEdit);
+            dateRangePreset.SetValue(false);
         }
 
         #endregion

@@ -5,10 +5,9 @@ using UnityEngine.InputSystem;
 namespace StarletBooking.Calendar
 {
     /// <summary>
-    /// Расширение InputActionOpenUIWindow: в режиме выбора диапазона дат
-    /// Cancel деактивирует режим, иначе — стандартное поведение.
+    /// Действие или отмена режима ввода дат новой записи
     /// </summary>
-    public sealed class InputActionOpenUIWindowWithModeCheck : InputActionOpenUIWindow
+    public sealed class InputActionCalendarCancel : InputActionOpenUIWindow
     {
         [Header("Режим выбора дат"), Space]
         [SerializeField] private CalendarDayInteractionController controller;

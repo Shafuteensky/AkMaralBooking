@@ -12,9 +12,10 @@ namespace StarletBooking.Calendar
     {
         [SerializeField] private DateValue dateValue;
         [SerializeField] private bool isArrival;
+        [SerializeField] private BoolValue dateRangeMode;
 
         private ReservationSelectionContext reservation;
-        
+
         private void Awake()
         {
             reservation = DataBus.Instance.ReservationSelectionContext;
@@ -23,13 +24,14 @@ namespace StarletBooking.Calendar
         private void OnEnable()
         {
             if (Logic.IsNull(dateValue)) return;
-            
+            if (dateRangeMode != null && dateRangeMode.Value) return;
+
             if (!reservation.HasSelection)
             {
                 dateValue.ResetToDefault();
                 return;
             }
-            
+
             if (isArrival)
                 dateValue.SetValue(reservation.GetSelectedData().ArrivalDate);
             else
