@@ -1,9 +1,10 @@
 using DG.Tweening;
 using Extensions.Generics;
+using Extensions.ScriptableValues;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Features.Data_UI_view
+namespace StarletBooking.Data.View
 {
     /// <summary>
     /// Кнопка для сворачивания/разворачивания панели
@@ -17,23 +18,41 @@ namespace Features.Data_UI_view
         [SerializeField] private RectTransform panel;
         
         [SerializeField] private DOTweenAnimation collapseAnimation;
+        [SerializeField] private BoolValue collapseState;
         
         private bool isCollapsed;
-        
+
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            if (collapseState != null)
+            {
+                isCollapsed = collapseState.Value;
+                SwitchCollapse(isCollapsed);
+            }
+        }
+
         public override void OnButtonClickAction()
         {
             isCollapsed = !isCollapsed;
-            
+            SwitchCollapse(isCollapsed);
+        }
+
+        private void SwitchCollapse(bool isCollapsed)
+        {
             if (fitter != null) fitter.enabled = !isCollapsed;
-            
+
             if (isCollapsed && panel != null)
             {
                 panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, collapsedHeight);
                 if (collapseAnimation != null) collapseAnimation.tween.Restart();
             }
-            else
-                if (collapseAnimation != null) collapseAnimation.tween.PlayBackwards();
-            
+            else if (collapseAnimation != null)
+            {
+                collapseAnimation.tween.PlayBackwards();
+            }
+
+            if (collapseState != null) collapseState.SetValue(isCollapsed);
             LayoutRebuilder.ForceRebuildLayoutImmediate(panel.parent.transform as RectTransform);
         }
     }
