@@ -30,16 +30,14 @@ namespace StarletBooking.UI.Output
 
         private void OnValueChanged(string _) => UpdateResult();
 
-        private void UpdateResult(string _ = "")
+        private void UpdateResult()
         {
             if (Logic.IsNull(firstInput) || Logic.IsNull(secondInput)) return;
-            
+
             float firstValue = Parsers.ParseFloat(firstInput.text, 1);
             float secondValue = Parsers.ParseFloat(secondInput.text, 1);
 
-            float total = firstValue * secondValue;
-
-            inputField.text = Formatters.FormatFloat(total);
+            inputField.SetTextWithoutNotify(Formatters.FormatFloat(firstValue * secondValue));
         }
     }
 }

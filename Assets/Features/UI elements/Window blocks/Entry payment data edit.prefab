@@ -881,6 +881,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3081978679661878600}
     m_Modifications:
+    - target: {fileID: 62909907141461263, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 499287865011931001, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -909,6 +913,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1358221365259742197, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2091849907804258132, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -932,6 +940,10 @@ PrefabInstance:
     - target: {fileID: 2091849907804258132, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721704212351582820, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: editing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_Pivot.x
@@ -1029,6 +1041,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6543320506759468494, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_Name
       value: Prepayment input field
@@ -1045,10 +1061,17 @@ PrefabInstance:
       propertyPath: secondInput
       value: 
       objectReference: {fileID: 4858375499196130386}
+    - target: {fileID: 7410596207522999054, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: bidirectional
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7772812548808979490}
   m_SourcePrefab: {fileID: 100100000, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
 --- !u!224 &1300468817195593489 stripped
 RectTransform:
@@ -1066,6 +1089,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!114 &3748514746216556351 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 62909907141461263, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 3808609834602340912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!1 &8004911668808406189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 3808609834602340912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7772812548808979490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8004911668808406189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8799847335d900643b62c21670cf10be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.Output.BidirectionalCurrencyBinder
+  primaryField: {fileID: 2319893416304511923}
+  secondaryField: {fileID: 3748514746216556351}
+  rateField: {fileID: 4858375499196130386}
 --- !u!1001 &4026363987646564170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1223,9 +1277,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2741414231278797218, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8176568125924177857}
-    - targetCorrespondingSourceObject: {fileID: 2741414231278797218, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3708856697798105963}
   m_SourcePrefab: {fileID: 100100000, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
 --- !u!1 &1291390705466050280 stripped
 GameObject:
@@ -1264,22 +1315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c3a5b1f7f14275b9f2464dba830757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.CurrencyRateToInputField
---- !u!114 &3708856697798105963
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1291390705466050280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4ebee195f145658d58ae594f76fc3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Extensions.ScriptableValues.FloatValueInputBinder
-  floatValue: {fileID: 11400000, guid: acec18ce7e29a064496d388be44e7f20, type: 2}
-  onlyReadInput: 1
-  format: 0.##
-  updateInputOnEnable: 1
 --- !u!224 &1397834269456235445 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2631965212392504575, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
@@ -2481,6 +2516,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1101656667410909174}
     m_Modifications:
+    - target: {fileID: 62909907141461263, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 499287865011931001, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2509,6 +2548,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1358221365259742197, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2091849907804258132, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2532,6 +2575,10 @@ PrefabInstance:
     - target: {fileID: 2091849907804258132, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721704212351582820, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: editing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_Pivot.x
@@ -2629,6 +2676,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6543320506759468494, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_Name
       value: Discount input field
@@ -2645,16 +2696,54 @@ PrefabInstance:
       propertyPath: secondInput
       value: 
       objectReference: {fileID: 4858375499196130386}
+    - target: {fileID: 7410596207522999054, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: bidirectional
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6279138700029103805}
   m_SourcePrefab: {fileID: 100100000, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+--- !u!1 &3791439642494475730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 8020955962033302351}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6279138700029103805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3791439642494475730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8799847335d900643b62c21670cf10be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.Output.BidirectionalCurrencyBinder
+  primaryField: {fileID: 8915759749842780876}
+  secondaryField: {fileID: 8038829443001544256}
+  rateField: {fileID: 4858375499196130386}
 --- !u!224 &5298203468000503406 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
   m_PrefabInstance: {fileID: 8020955962033302351}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8038829443001544256 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 62909907141461263, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 8020955962033302351}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!114 &8915759749842780876 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1507312460608121219, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
@@ -2997,6 +3086,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1317428449151326187}
     m_Modifications:
+    - target: {fileID: 62909907141461263, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 499287865011931001, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3025,6 +3118,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1358221365259742197, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2091849907804258132, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3048,6 +3145,10 @@ PrefabInstance:
     - target: {fileID: 2091849907804258132, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2721704212351582820, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: editing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_Pivot.x
@@ -3145,6 +3246,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6543320506759468494, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       propertyPath: m_Name
       value: Payment per day input field
@@ -3161,14 +3266,41 @@ PrefabInstance:
       propertyPath: secondInput
       value: 
       objectReference: {fileID: 4858375499196130386}
+    - target: {fileID: 7410596207522999054, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      propertyPath: bidirectional
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3159324107099797897}
     - targetCorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4327854195411464272}
   m_SourcePrefab: {fileID: 100100000, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+--- !u!1 &2831697374706687019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6615170713223198365, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 8971728414389054134}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3159324107099797897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831697374706687019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8799847335d900643b62c21670cf10be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.Output.BidirectionalCurrencyBinder
+  primaryField: {fileID: 7524098561762460469}
+  secondaryField: {fileID: 8961735888903417785}
+  rateField: {fileID: 4858375499196130386}
 --- !u!1 &4246168773928771983 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5074597412573629241, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
@@ -3197,6 +3329,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8971728414389054134}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4246168773928771983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!114 &8961735888903417785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 62909907141461263, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
+  m_PrefabInstance: {fileID: 8971728414389054134}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
