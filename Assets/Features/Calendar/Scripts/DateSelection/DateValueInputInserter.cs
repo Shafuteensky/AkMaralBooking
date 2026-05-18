@@ -26,11 +26,7 @@ namespace StarletBooking.Calendar
             if (Logic.IsNull(dateValue)) return;
             if (dateRangeMode != null && dateRangeMode.Value) return;
 
-            if (!reservation.HasSelection)
-            {
-                dateValue.ResetToDefault();
-                return;
-            }
+            if (!reservation.HasSelection) return;
 
             if (isArrival)
                 dateValue.SetValue(reservation.GetSelectedData().ArrivalDate);
