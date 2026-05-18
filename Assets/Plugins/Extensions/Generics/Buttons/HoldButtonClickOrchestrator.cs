@@ -13,7 +13,7 @@ namespace Extensions.Generics
     /// </summary>
     [RequireComponent(typeof(Button))]
     public sealed class HoldButtonClickOrchestrator : BaseButtonOrchestrator,
-        IPointerDownHandler, IPointerExitHandler
+        IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
     {
         private const float DEFAULT_HOLD_DURATION = 1f;
         
@@ -67,14 +67,12 @@ namespace Extensions.Generics
         
         private void OnEnable()
         {
-            button.onClick.AddListener(TryCancelHold);
             holdDuration = holdDurationValue == null ? DEFAULT_HOLD_DURATION : holdDurationValue.Value;
             if (holdDuration < 0f) holdDuration = 0f;
         }
-        
+
         private void OnDisable()
         {
-            button.onClick.RemoveListener(TryCancelHold);
             if (isHolding) CancelHoldInternal(true);
             else holdTask?.Stop();
         }
@@ -90,6 +88,8 @@ namespace Extensions.Generics
 
             StartHold();
         }
+
+        public void OnPointerUp(PointerEventData eventData) => TryCancelHold();
 
         public void OnPointerExit(PointerEventData eventData) => TryCancelHold();
         

@@ -66,8 +66,7 @@ namespace StarletBooking.Calendar
         {
             RebuildReservationsIndex();
             base.Start();
-            RefreshReservationsCalendar();
-            CoroutineDelay.Run(this, newDynamicGridLayout.UpdateGridLayout);
+            CoroutineDelay.Run(this, RefreshReservationsCalendar);
         }
         
         #endregion

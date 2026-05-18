@@ -15,6 +15,7 @@ namespace Extensions.UI
         [SerializeField] private TMP_InputField paymentPerDay;
         [SerializeField] private TMP_InputField numberOfDays;
         [SerializeField] private List<TMP_InputField> subtractValues;
+        [SerializeField] private List<TMP_InputField> additionalUpdateSources;
 
         protected override void OnEnable()
         {
@@ -22,8 +23,8 @@ namespace Extensions.UI
             
             Subscribe(paymentPerDay);
             Subscribe(numberOfDays);
-            foreach (TMP_InputField field in subtractValues)
-                Subscribe(field);
+            Subscribe(subtractValues);
+            Subscribe(additionalUpdateSources);
 
             UpdateResult();
         }
@@ -34,8 +35,8 @@ namespace Extensions.UI
             
             Unsubscribe(paymentPerDay);
             Unsubscribe(numberOfDays);
-            foreach (TMP_InputField field in subtractValues)
-                Unsubscribe(field);
+            Unsubscribe(subtractValues);
+            Unsubscribe(additionalUpdateSources);
         }
 
         private void Subscribe(TMP_InputField field)
@@ -44,10 +45,24 @@ namespace Extensions.UI
             field.onValueChanged.AddListener(OnValueChanged);
         }
 
+        private void Subscribe(List<TMP_InputField> fields)
+        {
+            if (fields == null) return;
+            foreach (TMP_InputField field in fields)
+                Subscribe(field);
+        }
+
         private void Unsubscribe(TMP_InputField field)
         {
             if (field == null) return;
             field.onValueChanged.RemoveListener(OnValueChanged);
+        }
+
+        private void Unsubscribe(List<TMP_InputField> fields)
+        {
+            if (fields == null) return;
+            foreach (TMP_InputField field in fields)
+                Unsubscribe(field);
         }
 
         private void OnValueChanged(string value) => UpdateResult();
@@ -62,6 +77,8 @@ namespace Extensions.UI
 
         private float GetSum(List<TMP_InputField> fields)
         {
+            if (fields == null) return 0f;
+
             float result = 0f;
             foreach (TMP_InputField field in fields)
                 result += GetValue(field, 0f);
