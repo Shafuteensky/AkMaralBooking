@@ -2776,7 +2776,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3254810010217491104, guid: ed71149bc8edb804183ac1d6e14afa5b, type: 3}
       insertIndex: 2
       addedObject: {fileID: 5083746276376998684}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4777660748558894489, guid: ed71149bc8edb804183ac1d6e14afa5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3148697433806082200}
   m_SourcePrefab: {fileID: 100100000, guid: ed71149bc8edb804183ac1d6e14afa5b, type: 3}
 --- !u!114 &639464279692754547 stripped
 MonoBehaviour:
@@ -2815,12 +2818,30 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5011447084959861371, guid: ed71149bc8edb804183ac1d6e14afa5b, type: 3}
   m_PrefabInstance: {fileID: 1067080693297103227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5513146050946843874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4777660748558894489, guid: ed71149bc8edb804183ac1d6e14afa5b, type: 3}
+  m_PrefabInstance: {fileID: 1067080693297103227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3148697433806082200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5513146050946843874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e626d001a143079ec57e439965ec99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.SelectionContextUpdateOnDropdown
+  selectionContext: {fileID: 11400000, guid: 7f54c7f73f69c4749acf0bb4b3ecd21d, type: 2}
 --- !u!114 &6829141492173496339 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5767690818303762792, guid: ed71149bc8edb804183ac1d6e14afa5b, type: 3}
   m_PrefabInstance: {fileID: 1067080693297103227}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5513146050946843874}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1350b8c923c241d3959b263c77693100, type: 3}
