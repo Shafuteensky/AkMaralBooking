@@ -102,8 +102,10 @@ namespace StarletBooking.Calendar
         {
             DateTime previousDate = currentDate;
             DateTime newDate = DateTime.Now;
-            
-            base.GoToToday();
+
+            currentDate = newDate;
+            selectedDate = newDate;
+            UpdateMonthView();
 
             RaiseMonthChangedByDate(previousDate, newDate);
         }
