@@ -60,10 +60,10 @@ namespace StarletBooking.Calendar
             arrivalDate.SetValueSilent(departureValue);
             departureDate.SetValueSilent(arrivalValue);
 
-            isApplying = false;
-
             arrivalDate.ForceNotify();
             departureDate.ForceNotify();
+
+            isApplying = false;
         }
     }
 }
