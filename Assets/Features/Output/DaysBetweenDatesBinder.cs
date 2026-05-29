@@ -1,5 +1,4 @@
 using System;
-using Extensions.Helpers;
 using Extensions.ScriptableValues;
 using TMPro;
 using UnityEngine;
@@ -50,7 +49,7 @@ namespace StarletBooking.UI.Output
             if (arrivalDateValue == null || departureDateValue == null) return;
 
             int days = (departureDateValue.GetDate() - arrivalDateValue.GetDate()).Days;
-            targetInput.text = (Math.Abs(days) + 1).ToString();
+            targetInput.SetTextWithoutNotify((Math.Abs(days) + 1).ToString());
         }
     }
 }

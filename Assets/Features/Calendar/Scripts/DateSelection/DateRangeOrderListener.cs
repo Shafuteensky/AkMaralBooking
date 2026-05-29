@@ -50,17 +50,20 @@ namespace StarletBooking.Calendar
 
             if (!arrivalDate.TryGetDate(out DateTime arrival)) return;
             if (!departureDate.TryGetDate(out DateTime departure)) return;
-            if (departure >= arrival) return;
+            if (departure > arrival) return;
 
             isApplying = true;
 
             string arrivalValue = arrivalDate.Value;
             string departureValue = departureDate.Value;
 
-            arrivalDate.SetValue(departureValue);
-            departureDate.SetValue(arrivalValue);
+            arrivalDate.SetValueSilent(departureValue);
+            departureDate.SetValueSilent(arrivalValue);
 
             isApplying = false;
+
+            arrivalDate.ForceNotify();
+            departureDate.ForceNotify();
         }
     }
 }

@@ -77,6 +77,20 @@ namespace Extensions.ScriptableValues
         }
         
         /// <summary>
+        /// Установить значение без уведомления подписчиков
+        /// </summary>
+        public void SetValueSilent(T newValue)
+        {
+            LoadIfNeeded();
+            runtimeValue = newValue;
+        }
+
+        /// <summary>
+        /// Уведомить подписчиков о текущем значении без его изменения
+        /// </summary>
+        public void ForceNotify() => onValueChanged?.Invoke(runtimeValue);
+
+        /// <summary>
         /// Сброс значения к дефолтному
         /// </summary>
         public override void ResetToDefault() => SetValue(defaultValue);

@@ -47,14 +47,14 @@ namespace Extensions.ScriptableValues
 
         private void OnValueChanged(string value)
         {
-            if (overwriteDefaultOutput && 
+            if (overwriteDefaultOutput &&
                 stringValue.Value == stringValue.DefaultValue)
             {
                 inputField.SetTextWithoutNotify(overwriteOutput);
                 return;
             }
-            
-            inputField.SetTextWithoutNotify(value);
+
+            inputField.SetTextWithoutNotify(stringValue.Value);
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace StarletBooking.Calendar
 {
     /// <summary>
-    /// Установщие даты из поля ввода
+    /// Назначение даты в контейнер из активных данных записи аренды
     /// </summary>
     public class DateValueInputInserter : MonoBehaviour
     {
