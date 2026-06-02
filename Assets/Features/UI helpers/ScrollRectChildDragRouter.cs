@@ -19,6 +19,11 @@ namespace Project.UI
         private ScrollRect parentScrollRect;
         private bool isRoutingDrag;
 
+        /// <summary>
+        /// Был ли в рамках текущего нажатия совершён drag (свайп)
+        /// </summary>
+        public bool WasDragged { get; private set; }
+
         private void Awake()
         {
             parentScrollRect = GetComponentInParent<ScrollRect>();
@@ -28,6 +33,8 @@ namespace Project.UI
 
         public void OnInitializePotentialDrag(PointerEventData eventData)
         {
+            WasDragged = false;
+
             if (parentScrollRect == null) return;
 
             parentScrollRect.OnInitializePotentialDrag(eventData);
@@ -35,6 +42,10 @@ namespace Project.UI
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            // Любой drag (в т.ч. не направленный в сторону прокрутки) означает,
+            // что это не клик — отметим, чтобы подавить нажатие.
+            WasDragged = true;
+
             if (parentScrollRect == null) return;
 
             if (!ShouldRouteDragToScroll(eventData))

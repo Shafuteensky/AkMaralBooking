@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Extensions.Generics;
 using Extensions.ScriptableValues;
+using Project.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,14 +14,21 @@ namespace StarletBooking.Data.View
     {
         [Min(0)]
         [SerializeField] private float collapsedHeight = 50f;
-        
+
         [SerializeField] private ContentSizeFitter fitter;
         [SerializeField] private RectTransform panel;
-        
+
         [SerializeField] private DOTweenAnimation collapseAnimation;
         [SerializeField] private BoolValue collapseState;
-        
+
+        private ScrollRectChildDragRouter dragRouter;
         private bool isCollapsed;
+
+        protected override void Awake()
+        {
+            base.Awake();
+            dragRouter = GetComponent<ScrollRectChildDragRouter>();
+        }
 
         protected override void OnEnable()
         {
@@ -34,6 +42,8 @@ namespace StarletBooking.Data.View
 
         public override void OnButtonClickAction()
         {
+            if (dragRouter != null && dragRouter.WasDragged) return;
+
             isCollapsed = !isCollapsed;
             SwitchCollapse(isCollapsed);
         }
