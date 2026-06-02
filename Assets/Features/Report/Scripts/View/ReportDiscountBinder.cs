@@ -1,4 +1,3 @@
-using Extensions.Helpers;
 using UnityEngine;
 
 namespace StarletBooking.Report
@@ -7,6 +6,6 @@ namespace StarletBooking.Report
     public sealed class ReportDiscountBinder : AbstractReportBinder
     {
         protected override void Refresh(ReservationReportData data) =>
-            inputField.SetTextWithoutNotify(Formatters.FormatFloat(SelectValue(data.TotalDiscount, data.TotalDiscountUsd)));
+            inputField.SetTextWithoutNotify(FormatSelected(data.TotalDiscount, data.TotalDiscountUsd));
     }
 }

@@ -14,6 +14,10 @@ namespace StarletBooking.UI.Output
         [SerializeField] private DateValue arrivalDateValue;
         [SerializeField] private DateValue departureDateValue;
 
+        [Header("Режим подсчёта"), Space]
+        [Tooltip("Если активно — считаются ночи (минимум 1), иначе включительно прибытие и отбытие")]
+        [SerializeField] private BoolValue countNightsMode;
+
         private TMP_InputField targetInput;
 
         private void Awake()
@@ -29,6 +33,9 @@ namespace StarletBooking.UI.Output
             if (departureDateValue != null)
                 departureDateValue.onValueChanged += OnDateChanged;
 
+            if (countNightsMode != null)
+                countNightsMode.onValueChanged += OnModeChanged;
+
             OnDateChanged();
         }
 
@@ -39,7 +46,12 @@ namespace StarletBooking.UI.Output
 
             if (departureDateValue != null)
                 departureDateValue.onValueChanged -= OnDateChanged;
+
+            if (countNightsMode != null)
+                countNightsMode.onValueChanged -= OnModeChanged;
         }
+
+        private void OnModeChanged(bool _) => OnDateChanged();
 
         /// <summary>
         /// Пересчитывает дни при изменении любой даты
@@ -48,8 +60,15 @@ namespace StarletBooking.UI.Output
         {
             if (arrivalDateValue == null || departureDateValue == null) return;
 
-            int days = (departureDateValue.GetDate() - arrivalDateValue.GetDate()).Days;
-            targetInput.SetTextWithoutNotify((Math.Abs(days) + 1).ToString());
+            int days = Math.Abs((departureDateValue.GetDate() - arrivalDateValue.GetDate()).Days);
+
+            // Режим ночей: количество ночей между датами, но не меньше одних суток.
+            // Иначе — включительный подсчёт суток (прибытие и отбытие считаются отдельными днями).
+            int result = countNightsMode != null && countNightsMode.Value
+                ? Math.Max(days, 1)
+                : days + 1;
+
+            targetInput.SetTextWithoutNotify(result.ToString());
         }
     }
 }

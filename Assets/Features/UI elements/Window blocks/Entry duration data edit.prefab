@@ -829,6 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StarletBooking.UI.Output.DaysBetweenDatesBinder
   arrivalDateValue: {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
   departureDateValue: {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
+  countNightsMode: {fileID: 11400000, guid: b10ac0367248d32479a50631df4aa162, type: 2}
 --- !u!224 &8086257392834510547 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9034322739079984591, guid: 14c06865e4c9f8c4faf1c94e30ee5c70, type: 3}
@@ -1798,6 +1799,7 @@ MonoBehaviour:
   container: {fileID: 11400000, guid: a068f14fae65a4344922a24add05ea1b, type: 2}
   editingContext: {fileID: 11400000, guid: f037634820c23ce4ab5bdeac307306be, type: 2}
   indicator: {fileID: 1439187255964387766}
+  layoutRoot: {fileID: 0}
 --- !u!114 &3024596302316859257
 MonoBehaviour:
   m_ObjectHideFlags: 0

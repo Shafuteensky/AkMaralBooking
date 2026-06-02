@@ -37,7 +37,8 @@ namespace StarletBooking.UI.Output
             float firstValue = Parsers.ParseFloat(firstInput.text, 1);
             float secondValue = Parsers.ParseFloat(secondInput.text, 1);
 
-            inputField.SetTextWithoutNotify(Formatters.FormatFloat(firstValue * secondValue));
+            // Результат выводится в сомах — дробная часть не нужна
+            inputField.SetTextWithoutNotify(Formatters.FormatFloat(firstValue * secondValue, 0));
         }
     }
 }

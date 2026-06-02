@@ -18,6 +18,5 @@ namespace Extensions.ScriptableValues
         /// Очистка значения
         /// </summary>
         public abstract void Clear();
-        
     }
 }

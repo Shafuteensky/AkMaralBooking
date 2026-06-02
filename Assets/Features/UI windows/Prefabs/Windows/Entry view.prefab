@@ -1987,6 +1987,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5337501179989485223, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
   m_PrefabInstance: {fileID: 4678363336098469421}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1224615120551991675 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5769769027720089430, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+  m_PrefabInstance: {fileID: 4678363336098469421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1 &1420456202459725467 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6006284341393549494, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
@@ -2017,6 +2028,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::DG.Tweening.DOTweenAnimation
+--- !u!114 &4212740877849281095 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8834456258114557034, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+  m_PrefabInstance: {fileID: 4678363336098469421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
+--- !u!114 &8198713963927337415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3543009384931012586, guid: fdb12cb6526909b44b357ddfcd1dece7, type: 3}
+  m_PrefabInstance: {fileID: 4678363336098469421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TMP_InputField
 --- !u!1001 &5370925045982852748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3324,6 +3357,18 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5892291927589378919, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
+      propertyPath: numberOfDays
+      value: 
+      objectReference: {fileID: 8198713963927337415}
+    - target: {fileID: 5892291927589378919, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
+      propertyPath: 'additionalUpdateSources.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1224615120551991675}
+    - target: {fileID: 5892291927589378919, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
+      propertyPath: 'additionalUpdateSources.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4212740877849281095}
     - target: {fileID: 6098868618444972681, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -3428,6 +3473,22 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7220661088999119552, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
+      propertyPath: numberOfDays
+      value: 
+      objectReference: {fileID: 8198713963927337415}
+    - target: {fileID: 7220661088999119552, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
+      propertyPath: additionalUpdateSources.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7220661088999119552, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
+      propertyPath: 'additionalUpdateSources.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1224615120551991675}
+    - target: {fileID: 7220661088999119552, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
+      propertyPath: 'additionalUpdateSources.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4212740877849281095}
     - target: {fileID: 7257429835324313850, guid: 07b79d480e1f5aa4bb2d08fe16b8fd93, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

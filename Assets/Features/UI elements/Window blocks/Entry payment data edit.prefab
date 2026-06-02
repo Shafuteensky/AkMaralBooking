@@ -1552,8 +1552,9 @@ MonoBehaviour:
   - {fileID: 8915759749842780876}
   additionalUpdateSources:
   - {fileID: 8961735888903417785}
-  - {fileID: 3748514746216556351}
-  - {fileID: 8038829443001544256}
+  valueUpdateSources:
+  - {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
+  - {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
 --- !u!224 &7236632553712845733 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}
@@ -2286,6 +2287,9 @@ MonoBehaviour:
   subtractValues: []
   additionalUpdateSources:
   - {fileID: 8961735888903417785}
+  valueUpdateSources:
+  - {fileID: 11400000, guid: 8c2b957fb5ce3794c96e4cdb7180c45a, type: 2}
+  - {fileID: 11400000, guid: b37120f739918a3409788be18c2cda2c, type: 2}
 --- !u!224 &8986868233976709116 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2798660651942300961, guid: c9ca1a4535ebe774883c4bb7fd803b9c, type: 3}

@@ -1,3 +1,4 @@
+using System.Globalization;
 using Extensions.Helpers;
 using StarletBooking.Data.View;
 using TMPro;
@@ -10,8 +11,8 @@ namespace StarletBooking.Data.Controls
     /// </summary>
     public sealed class LoadReservationPaymentData : SelectionContextViewLoader<ReservationData>
     {
-        private const string EDIT_INTEGER_FORMAT = "0";
-        private const string VIEW_INTEGER_FORMAT = "N0";
+        private const string EDIT_DECIMAL_FORMAT = "0.###";
+        private const string VIEW_DECIMAL_FORMAT = "N3";
 
         [Header("Формат вывода численных данных"), Space]
         [SerializeField] private bool viewOutputFormat = false;
@@ -22,8 +23,10 @@ namespace StarletBooking.Data.Controls
         [SerializeField] private TMP_InputField discountInputField;
         [SerializeField] private TMP_InputField exchangeRateInputField;
 
-        private string GetFormat => viewOutputFormat ? VIEW_INTEGER_FORMAT : EDIT_INTEGER_FORMAT;
-        
+        private string GetFormat => viewOutputFormat ? VIEW_DECIMAL_FORMAT : EDIT_DECIMAL_FORMAT;
+
+        private string Format(float value) => value.ToString(GetFormat, CultureInfo.InvariantCulture);
+
         protected override void ApplyToView(ReservationData dataItem)
         {
             if (Logic.IsNull(paymentPerDayInputField) ||
@@ -33,14 +36,14 @@ namespace StarletBooking.Data.Controls
             { return; }
 
             exchangeRateInputField.text = dataItem == null ? DataHelpers.NotFoundString :
-                DataHelpers.GetString(dataItem.ExchangeRate.ToString(GetFormat));
-            
+                DataHelpers.GetString(Format(dataItem.ExchangeRate));
+
             paymentPerDayInputField.text = dataItem == null ? DataHelpers.NotFoundString :
-                DataHelpers.GetString(dataItem.PaymentPerDay.ToString(GetFormat));
+                DataHelpers.GetString(Format(dataItem.PaymentPerDay));
             discountInputField.text = dataItem == null ? DataHelpers.NotFoundString :
-                DataHelpers.GetString(dataItem.Discount.ToString(GetFormat));
+                DataHelpers.GetString(Format(dataItem.Discount));
             prepaymentInputField.text = dataItem == null ? DataHelpers.NotFoundString :
-                DataHelpers.GetString(dataItem.Prepayment.ToString(GetFormat));
+                DataHelpers.GetString(Format(dataItem.Prepayment));
         }
 
         protected override void ApplyEmpty()

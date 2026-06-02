@@ -32,7 +32,8 @@ namespace StarletBooking.UI.Output
             }
 
             float secondaryValue = Parsers.ParseFloat(secondaryField.text, 0);
-            primaryField.SetTextWithoutNotify(Formatters.FormatFloat(secondaryValue / rate));
+            // Результат — доллары: 3 знака после запятой
+            primaryField.SetTextWithoutNotify(Formatters.FormatFloat(secondaryValue / rate, 3));
         }
     }
 }

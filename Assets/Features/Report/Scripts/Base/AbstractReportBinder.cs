@@ -30,6 +30,13 @@ namespace StarletBooking.Report
         protected float SelectValue(float somValue, float usdValue) =>
             inUSD ? usdValue : somValue;
 
+        /// <summary>
+        /// Выбирает значение по валюте и форматирует по стандарту:
+        /// доллары — 3 знака после запятой, сомы — целочисленно
+        /// </summary>
+        protected string FormatSelected(float somValue, float usdValue) =>
+            inUSD ? Formatters.FormatFloat(usdValue, 3) : Formatters.FormatFloat(somValue, 0);
+
         protected abstract void Refresh(ReservationReportData data);
     }
 }

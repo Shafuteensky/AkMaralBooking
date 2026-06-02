@@ -10,7 +10,13 @@ namespace Extensions.Helpers
         /// <summary>
         /// Форматирование float-значения к 12.34
         /// </summary>
-        public static string FormatFloat(float value) => value.ToString("0.##", CultureInfo.InvariantCulture);
+        /// <param name="value">Значение</param>
+        /// <param name="decimals">Максимальное число знаков после запятой</param>
+        public static string FormatFloat(float value, int decimals = 2)
+        {
+            string format = decimals > 0 ? "0." + new string('#', decimals) : "0";
+            return value.ToString(format, CultureInfo.InvariantCulture);
+        }
         
         /// <summary>
         /// Форматирование string-значения к Hello

@@ -53,7 +53,8 @@ namespace StarletBooking.UI.Input
 
         private void SetRate(float value)
         {
-            inputField.SetTextWithoutNotify(Formatters.FormatFloat(value));
+            // Курс — точное долларовое значение: 3 знака после запятой
+            inputField.SetTextWithoutNotify(Formatters.FormatFloat(value, 3));
         }
 
         private void SetDefaultRate()

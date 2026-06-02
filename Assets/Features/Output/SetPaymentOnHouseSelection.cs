@@ -35,7 +35,7 @@ namespace StarletBooking.UI.Output
         {
             if (Logic.IsNull(houseSelectionContext)) return;
             if (!houseSelectionContext.TryGetSelectedData(out HouseData houseData))
-                inputField.text = Formatters.FormatFloat(DEFAULT_PAYMENT);
+                inputField.text = Formatters.FormatFloat(DEFAULT_PAYMENT, 3);
             else
                 inputField.text = houseData.PaymentPerDay;
         }

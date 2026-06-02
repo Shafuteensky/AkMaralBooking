@@ -1,4 +1,3 @@
-using Extensions.Helpers;
 using UnityEngine;
 
 namespace StarletBooking.Report
@@ -7,6 +6,6 @@ namespace StarletBooking.Report
     public sealed class ReportNetBinder : AbstractReportBinder
     {
         protected override void Refresh(ReservationReportData data) =>
-            inputField.SetTextWithoutNotify(Formatters.FormatFloat(SelectValue(data.NetProfit, data.NetProfitUsd)));
+            inputField.SetTextWithoutNotify(FormatSelected(data.NetProfit, data.NetProfitUsd));
     }
 }

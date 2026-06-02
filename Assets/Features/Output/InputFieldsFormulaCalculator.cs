@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Extensions.Generics;
 using Extensions.Helpers;
+using Extensions.ScriptableValues;
 using TMPro;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Extensions.UI
         [SerializeField] private TMP_InputField numberOfDays;
         [SerializeField] private List<TMP_InputField> subtractValues;
         [SerializeField] private List<TMP_InputField> additionalUpdateSources;
+        [SerializeField] private List<StringValue> valueUpdateSources;
 
         protected override void OnEnable()
         {
@@ -25,6 +27,8 @@ namespace Extensions.UI
             Subscribe(numberOfDays);
             Subscribe(subtractValues);
             Subscribe(additionalUpdateSources);
+            foreach (StringValue scriptableValue in valueUpdateSources)
+                scriptableValue.onValueChanged += OnValueChanged;
 
             UpdateResult();
         }
@@ -37,6 +41,8 @@ namespace Extensions.UI
             Unsubscribe(numberOfDays);
             Unsubscribe(subtractValues);
             Unsubscribe(additionalUpdateSources);
+            foreach (StringValue scriptableValue in valueUpdateSources)
+                scriptableValue.onValueChanged -= OnValueChanged;
         }
 
         private void Subscribe(TMP_InputField field)
@@ -72,7 +78,8 @@ namespace Extensions.UI
             float result = GetValue(paymentPerDay, 0f) * GetValue(numberOfDays, 1f) - GetSum(subtractValues);
 
             if (inputField == null) return;
-            inputField.text = Formatters.FormatFloat(result);
+            // Итог по оплате считается в долларах: 3 знака после запятой
+            inputField.text = Formatters.FormatFloat(result, 3);
         }
 
         private float GetSum(List<TMP_InputField> fields)

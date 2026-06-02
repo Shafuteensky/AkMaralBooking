@@ -46,7 +46,8 @@ namespace StarletBooking.UI.Output
 
             if (debt < 0) debt = 0;
 
-            _debtInput.text = Formatters.FormatFloat(debt);
+            // Долг считается в долларах: 3 знака после запятой
+            _debtInput.text = Formatters.FormatFloat(debt, 3);
         }
     }
 }
