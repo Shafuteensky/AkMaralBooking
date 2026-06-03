@@ -7,8 +7,6 @@ namespace StarletBooking.UI
     /// </summary>
     public static class MobileScreenHelper
     {
-        private const float ReferenceHeight = 853f;
-
         /// <summary>
         /// Получить высоту клавиатуры в screen pixels
         /// </summary>
@@ -68,31 +66,30 @@ namespace StarletBooking.UI
         }
 
         /// <summary>
-        /// Перевести screen pixels в canvas units
+        /// Перевести screen pixels в canvas units, используя реальный scaleFactor канваса
         /// </summary>
-        public static float ConvertScreenPixelsToCanvasUnits(float screenPixels)
+        public static float ConvertScreenPixelsToCanvasUnits(float screenPixels, float canvasScaleFactor)
         {
             if (screenPixels <= 0f)
             {
                 return 0f;
             }
 
-            float scaleFactor = Screen.height / ReferenceHeight;
-            if (scaleFactor <= 0f)
+            if (canvasScaleFactor <= 0f)
             {
-                scaleFactor = 1f;
+                canvasScaleFactor = 1f;
             }
 
-            return screenPixels / scaleFactor;
+            return screenPixels / canvasScaleFactor;
         }
 
         /// <summary>
-        /// Получить высоту клавиатуры в canvas units
+        /// Получить высоту клавиатуры в canvas units относительно переданного scaleFactor канваса
         /// </summary>
-        public static float GetKeyboardHeightInCanvasUnits()
+        public static float GetKeyboardHeightInCanvasUnits(float canvasScaleFactor)
         {
             float keyboardHeightInScreenPixels = GetKeyboardHeightInScreenPixels();
-            return ConvertScreenPixelsToCanvasUnits(keyboardHeightInScreenPixels);
+            return ConvertScreenPixelsToCanvasUnits(keyboardHeightInScreenPixels, canvasScaleFactor);
         }
     }
 }

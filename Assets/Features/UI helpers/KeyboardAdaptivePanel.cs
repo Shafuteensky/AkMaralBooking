@@ -19,6 +19,7 @@ namespace StarletBooking.UI
         [SerializeField] private float animationDuration = 0.2f;
 
         private RectTransform rectTransform;
+        private Canvas rootCanvas;
 
         private Vector2 defaultOffsetMin;
         private Vector2 defaultOffsetMax;
@@ -32,6 +33,9 @@ namespace StarletBooking.UI
         private void Awake()
         {
             rectTransform = GetComponent<RectTransform>();
+
+            Canvas canvas = GetComponentInParent<Canvas>();
+            if (canvas != null) rootCanvas = canvas.rootCanvas;
 
             CacheDefaultState();
 
@@ -88,7 +92,9 @@ namespace StarletBooking.UI
 
         private float GetKeyboardHeight()
         {
-            float keyboardHeight = MobileScreenHelper.GetKeyboardHeightInCanvasUnits();
+            float canvasScaleFactor = rootCanvas != null ? rootCanvas.scaleFactor : 1f;
+
+            float keyboardHeight = MobileScreenHelper.GetKeyboardHeightInCanvasUnits(canvasScaleFactor);
 
             if (keyboardHeight <= 0f) return 0f;
 
