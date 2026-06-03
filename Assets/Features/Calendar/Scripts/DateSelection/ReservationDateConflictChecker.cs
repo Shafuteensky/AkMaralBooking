@@ -59,6 +59,7 @@ namespace StarletBooking.Calendar
             if (!houseContext.HasSelection) return false;
             if (!arrivalDate.TryGetDate(out DateTime arrival)) return false;
             if (!departureDate.TryGetDate(out DateTime departure)) return false;
+            if (arrivalDate.IsDefaultDate() || departureDate.IsDefaultDate()) return false;
             if (arrival >= departure) return false;
 
             string houseId = houseContext.SelectedId;

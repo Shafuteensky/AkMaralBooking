@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace StarletBooking.Calendar
 {
     /// <summary>
-    /// Месячный календарь для выбора даты интервала аренды
+    /// Месячный календарь для выбора даты интервала аренды (с подсветкой дат в интервале выбора)
     /// </summary>
     public class DatePickMonthViewController : ReservationsMonthViewController
     {
@@ -17,13 +17,32 @@ namespace StarletBooking.Calendar
         protected override void UpdateDayButton(Button button, DateTime date, Color color)
         {
             base.UpdateDayButton(button, date, color);
-            
+    
             ReservationCalendarDayView dayView = button.GetComponent<ReservationCalendarDayView>();
-
             if (dayView == null) return;
+    
+            dayView.SetFrame(false);
 
-            bool dateInInterval = date >= arrivalDate.GetDate(DateTime.MinValue) && 
-                                  date <= departureDate.GetDate(DateTime.MaxValue);
+            bool hasArrivalDate = !arrivalDate.IsDefaultDate();
+            bool hasDepartureDate = !departureDate.IsDefaultDate();
+
+            if (!hasArrivalDate && !hasDepartureDate) return;
+
+            if (hasArrivalDate && !hasDepartureDate)
+            {
+                dayView.SetFrame(date == arrivalDate.GetDate());
+                return;
+            }
+
+            if (!hasArrivalDate && hasDepartureDate)
+            {
+                dayView.SetFrame(date == departureDate.GetDate());
+                return;
+            }
+
+            bool dateInInterval = date >= arrivalDate.GetDate() && 
+                                  date <= departureDate.GetDate();
+
             dayView.SetFrame(dateInInterval);
         }
     }

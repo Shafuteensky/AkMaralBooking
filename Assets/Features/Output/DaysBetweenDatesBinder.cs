@@ -58,12 +58,11 @@ namespace StarletBooking.UI.Output
         /// </summary>
         private void OnDateChanged(string _ = null)
         {
-            if (arrivalDateValue == null || departureDateValue == null) return;
+            if (arrivalDateValue == null || departureDateValue == null ||
+                arrivalDateValue.IsDefaultDate() || departureDateValue.IsDefaultDate()) return;
 
             int days = Math.Abs((departureDateValue.GetDate() - arrivalDateValue.GetDate()).Days);
 
-            // Режим ночей: количество ночей между датами, но не меньше одних суток.
-            // Иначе — включительный подсчёт суток (прибытие и отбытие считаются отдельными днями).
             int result = countNightsMode != null && countNightsMode.Value
                 ? Math.Max(days, 1)
                 : days + 1;

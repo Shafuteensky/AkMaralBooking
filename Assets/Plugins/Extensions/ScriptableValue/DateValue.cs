@@ -30,6 +30,15 @@ namespace Extensions.ScriptableValues
         /// </summary>
         public bool UseNowAsDefault => useNowAsDefault;
 
+        public DateTime DefaultDate
+        {
+            get
+            {
+                DateUtils.TryParse(DefaultValue, out DateTime defaultDate);
+                return defaultDate;
+            }
+        }
+
         protected override void OnEnable()
         {
             if (useNowAsDefault) defaultValue = DateUtils.Format(DateTime.Now);
@@ -112,7 +121,7 @@ namespace Extensions.ScriptableValues
         /// </summary>
         public DateTime GetDate(DateTime defaultDate = default)
         {
-            if (defaultDate == default) defaultDate = DateTime.Now;
+            if (defaultDate == default) DateUtils.TryParse(DefaultValue, out defaultDate);
             
             if (TryGetDate(out DateTime result)) return result;
             else return defaultDate;
