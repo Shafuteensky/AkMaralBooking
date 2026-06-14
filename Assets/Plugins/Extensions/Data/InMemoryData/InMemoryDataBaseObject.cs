@@ -59,9 +59,14 @@ namespace Extensions.Data.InMemoryData
         }
 
         [NonSerialized] protected TData data;
-        
+
         [NonSerialized] protected bool loaded;
         [NonSerialized] protected bool dirty;
+
+        /// <summary>
+        /// Версия данных, увеличивается при каждом изменении хранилища
+        /// </summary>
+        public int DataVersion { get; private set; }
         
         /// <summary>
         /// Гарантированная загрузка данных (синхронно через кэш)
@@ -196,7 +201,8 @@ namespace Extensions.Data.InMemoryData
         protected virtual void MarkDirty(bool notify = true)
         {
             dirty = true;
-            
+            DataVersion++;
+
             if (notify) onDataUpdated?.Invoke();
 
             if (autoSave) Save();

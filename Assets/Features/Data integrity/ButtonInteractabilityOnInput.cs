@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using Extensions.Coroutines;
 using Extensions.Generics;
+using Extensions.ScriptableValues;
 using TMPro;
 using UnityEngine;
 
@@ -12,6 +14,7 @@ namespace StarletBooking.Data
     {
         [SerializeField] private List<TMP_Dropdown> dropdowns = new();
         [SerializeField] private List<TMP_InputField> inputFields = new();
+        [SerializeField] private List<StringValue> valueUpdateSources = new();
 
         protected override void OnEnable()
         {
@@ -29,7 +32,14 @@ namespace StarletBooking.Data
                     inputField.onValueChanged.AddListener(UpdateButtonInteractabilityOnInput);
             }
 
+            foreach (var valueSource in valueUpdateSources)
+            {
+                if (valueSource != null)
+                    valueSource.onValueChanged += UpdateButtonInteractabilityOnValue;
+            }
+
             UpdateButtonInteractability();
+            CoroutineDelay.Run(this, UpdateButtonInteractability);
         }
 
         protected override void OnDisable()
@@ -47,6 +57,12 @@ namespace StarletBooking.Data
                 if (inputField != null)
                     inputField.onValueChanged.RemoveListener(UpdateButtonInteractabilityOnInput);
             }
+
+            foreach (var valueSource in valueUpdateSources)
+            {
+                if (valueSource != null)
+                    valueSource.onValueChanged -= UpdateButtonInteractabilityOnValue;
+            }
         }
 
         private void UpdateButtonInteractabilityOnDropdown(int value)
@@ -57,6 +73,11 @@ namespace StarletBooking.Data
         private void UpdateButtonInteractabilityOnInput(string inputText)
         {
             UpdateButtonInteractability();
+        }
+
+        private void UpdateButtonInteractabilityOnValue(string value)
+        {
+            CoroutineDelay.Run(this, UpdateButtonInteractability);
         }
 
         private void UpdateButtonInteractability()

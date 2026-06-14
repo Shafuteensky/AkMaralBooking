@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Extensions.Coroutines;
 using Extensions.Generics;
 using Extensions.Helpers;
 using Extensions.ScriptableValues;
@@ -31,6 +32,7 @@ namespace Extensions.UI
                 scriptableValue.onValueChanged += OnValueChanged;
 
             UpdateResult();
+            CoroutineDelay.Run(this, UpdateResult);
         }
 
         protected override void OnDisable()

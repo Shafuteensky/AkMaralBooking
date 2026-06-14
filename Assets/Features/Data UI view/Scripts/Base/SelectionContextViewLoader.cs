@@ -14,8 +14,12 @@ namespace StarletBooking.Data.View
     {
         [Header("Контейнер данных для вывода"), Space]
         [SerializeField] protected SingleSelectionContext<TData> selectionContext;
-        
+
         protected InMemoryDataContainer<TData> container;
+
+        private bool initialized;
+        private string lastSyncedSelectionId;
+        private int lastSyncedDataVersion;
 
         protected void Awake()
         {
@@ -35,7 +39,13 @@ namespace StarletBooking.Data.View
             }
 
             selectionContext.onSelectionChanged += OnSelectionChanged;
-            Rebuild();
+
+            if (!initialized
+                || selectionContext.SelectedId != lastSyncedSelectionId
+                || container.DataVersion != lastSyncedDataVersion)
+            {
+                Rebuild();
+            }
         }
 
         protected virtual void OnDisable()
@@ -54,13 +64,17 @@ namespace StarletBooking.Data.View
         public void Rebuild()
         {
             ApplyEmpty();
-            
+
             if (selectionContext == null || container == null) return;
 
+            initialized = true;
+            lastSyncedSelectionId = selectionContext.SelectedId;
+            lastSyncedDataVersion = container.DataVersion;
+
             string id = selectionContext.SelectedId;
-            
+
             if (string.IsNullOrEmpty(id)) return;
-            
+
             if (!container.GetById(id, out TData dataItem) || dataItem == null)
             {
                 ServiceDebug.LogError("Ошибка получения данных");
