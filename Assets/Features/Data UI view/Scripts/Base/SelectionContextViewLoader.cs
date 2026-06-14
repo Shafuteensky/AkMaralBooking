@@ -18,7 +18,7 @@ namespace StarletBooking.Data.View
         protected InMemoryDataContainer<TData> container;
 
         private bool initialized;
-        private string lastSyncedSelectionId;
+        private int lastSyncedSelectionVersion;
         private int lastSyncedDataVersion;
 
         protected void Awake()
@@ -41,7 +41,7 @@ namespace StarletBooking.Data.View
             selectionContext.onSelectionChanged += OnSelectionChanged;
 
             if (!initialized
-                || selectionContext.SelectedId != lastSyncedSelectionId
+                || selectionContext.SelectionVersion != lastSyncedSelectionVersion
                 || container.DataVersion != lastSyncedDataVersion)
             {
                 Rebuild();
@@ -68,7 +68,7 @@ namespace StarletBooking.Data.View
             if (selectionContext == null || container == null) return;
 
             initialized = true;
-            lastSyncedSelectionId = selectionContext.SelectedId;
+            lastSyncedSelectionVersion = selectionContext.SelectionVersion;
             lastSyncedDataVersion = container.DataVersion;
 
             string id = selectionContext.SelectedId;

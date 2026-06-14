@@ -1,4 +1,5 @@
 using System.Collections;
+using Extensions.Coroutines;
 using Extensions.Generics;
 using Extensions.Helpers;
 using StarletBooking.Data;
@@ -19,6 +20,11 @@ namespace StarletBooking.UI.Input
         {
             base.OnEnable();
 
+            CoroutineDelay.Run(this, CheckAndLoadRate);
+        }
+
+        private void CheckAndLoadRate()
+        {
             if (!string.IsNullOrEmpty(inputField.text)) return;
 
             StartCoroutine(LoadRate());

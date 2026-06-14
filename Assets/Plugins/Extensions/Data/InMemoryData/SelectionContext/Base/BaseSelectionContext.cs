@@ -17,7 +17,12 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// Наличие активного выбранного элемента
         /// </summary>
         public abstract bool HasSelection { get; }
-        
+
+        /// <summary>
+        /// Версия выбора, увеличивается при каждом вызове <see cref="Select"/> или <see cref="Clear"/>
+        /// </summary>
+        public int SelectionVersion { get; private set; }
+
         /// <summary>
         /// Очистка выбора
         /// </summary>
@@ -27,7 +32,11 @@ namespace Extensions.Data.InMemoryData.SelectionContext
         /// Задание выбора
         /// </summary>
         public abstract void Select(string selectionDataId);
-        
-        protected void OnSelectionChanged() => onSelectionChanged?.Invoke();
+
+        protected void OnSelectionChanged()
+        {
+            SelectionVersion++;
+            onSelectionChanged?.Invoke();
+        }
     }
 }
