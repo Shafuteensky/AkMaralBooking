@@ -12,12 +12,14 @@ namespace StarletBooking.UI.Output
         private const float DEFAULT_PAYMENT = 0;
 
         private HouseSelectionContext houseSelectionContext;
+        private ReservationSelectionContext reservationSelectionContext;
         private int lastSyncedSelectionVersion = -1;
 
         protected override void Awake()
         {
             base.Awake();
             houseSelectionContext = DataBus.Instance.HouseSelectionContext;
+            reservationSelectionContext = DataBus.Instance.ReservationSelectionContext;
         }
 
         protected override void OnEnable()
@@ -29,7 +31,7 @@ namespace StarletBooking.UI.Output
                 UpdatePaymentText();
         }
 
-        protected override  void OnDisable()
+        protected override void OnDisable()
         {
             base.OnDisable();
             houseSelectionContext.onSelectionChanged -= UpdatePaymentText;
@@ -37,7 +39,9 @@ namespace StarletBooking.UI.Output
 
         private void UpdatePaymentText()
         {
-            if (Logic.IsNull(houseSelectionContext)) return;
+            if (Logic.IsNull(houseSelectionContext) || Logic.IsNull(reservationSelectionContext)) return;
+
+            if (reservationSelectionContext.HasSelection) return;
 
             lastSyncedSelectionVersion = houseSelectionContext.SelectionVersion;
 
